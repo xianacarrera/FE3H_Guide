@@ -1,0 +1,98 @@
+1_Crescent_Moon Tea
+1_Honeyed-Fruit Blend
+2_Seiros Tea
+2_Dagda Fruit Blend
+2_Bergamot
+3_Sweet-Apple Blend
+3_Rose Petal Blend
+3_Almond Blend
+4_Mint Leaves
+4_Angelica Tea
+5_Almyran Pine Needles
+5_Ginger Tea
+6_Albinean Berry Blend
+6_Honeyed-Fruit Blend
+7_Ginger Tea
+8_Rose Petal Blend
+9_Almyran Pine Needles
+9_Chamomile
+10_Bergamot
+10_Rose Petal Blend
+10_Sweet-Apple Blend
+10_Albinean Berry Blend
+11_Almyran Pine Needles
+12_Cinnamon Blend
+12_Four-Spice Blend
+12_Ginger Tea
+13_Chamomile
+14_Sweet-Apple Blend
+14_Albinean Berry Blend
+15_Bergamot
+16_Almyran Pine Needles
+16_Four-Spice Blend
+17_Almyran Pine Needles
+17_Southern Fruit Blend
+17_Seiros Tea
+18_Sweet-Apple Blend
+18_Crescent-Moon Tea
+18_Almond Blend
+19_Almond Blend
+19_Lavender Blend
+20_Bergamot
+20_Sweet-Apple Blend
+20_Honeyed-Fruit Blend
+20_Cinnamon Blend
+21_Cinnamon Blend
+21_Dagda Fruit Blend
+21_Four-Spice Blend
+22_Albinean Berry Blend
+22_Southern Fruit Blend
+22_Rose Petal Blend
+22_Mint Leaves
+23_Dagda Fruit Blend
+23_Cinnamon Blend
+24_Dagda Fruit Blend
+24_Seiros Tea
+24_Lavender Blend
+25_Mint Leaves
+25_Chamomile
+26_Albinean Berry Blend
+26_Southern Fruit Blend
+26_Honeyed-Fruit Blend
+26_Sweet-Apple Blend
+27_Four-Spice Blend
+27_Angelica Tea
+28_Almyran Pine Needles
+28_Angelica Tea
+29_Bergamot
+29_Rose Petal Blend
+29_Seiros Tea
+30_Sweet-Apple Blend
+30_Southern Fruit Blend
+30_Crescent-Moon Tea
+30_Honeyed-Fruit Blend
+31_Mint Leaves
+31_Lavender Blend
+32_Dagda Fruit Blend
+32_Cinnamon Blend
+32_Lavender Blend
+33_Albinean Berry Blend
+33_Southern Fruit Blend
+33_Crescent-Moon Tea
+34_Four-Spice Blend
+34_Ginger Tea
+35_Almond Blend
+35_Ginger Tea
+36_Crescent-Moon Tea
+36_Angelica Tea
+36_Chamomile
+37_Four-Spice Blend
+37_Ginger Tea
+37_Angelica Tea
+38_Crescent-Moon Tea
+38_Chamomile
+39_Bergamot
+39_Seiros Tea
+40_Albinean Berry Blend
+40_Honeyed-Fruit Blend
+40_Seiros Tea

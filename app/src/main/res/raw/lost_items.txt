@@ -1,0 +1,116 @@
+1_Introduction to Magic
+1_Foreign Gold Coin
+1_Mysterious Notebook
+2_Secret Ledger
+2_Balance Scale
+2_Rare Item Index
+3_Unfinished Score
+3_School of Sorcery Book
+3_Wax Diptych
+4_Moon Knight's Tale
+4_Evil-Repelling Amulet
+4_Bundle of Herbs
+5_Well-Worn Hammock
+5_Stiff Hand Wrap
+6_Needle and Thread
+6_Still-Life Picture
+6_Hedgehog Case
+7_Thunderbrand Replica
+7_Tattered Overcoat
+7_Grounding Charm
+8_Weathered Cloak
+8_Letter to Rhea
+8_Badge of Graduation
+9_Leather Bow Sheath
+9_Mild Stomach Poison
+9_Board Game Piece
+10_Nimbus Charm
+10_Repellent Powder
+11_Well-Used Hatchet
+11_Portrait of Rhea
+11_Old Cleaning Cloth
+12_Gold Earring
+12_Gardening Shears
+12_Iron Cooking Pot
+13_Black Leather Gloves
+13_Training Logbook
+13_Dulled Longsword
+14_Silver Brooch
+14_Songstress Poster
+14_Lovely Comb
+15_Time-worn Quill Pen
+15_Eastern Porcelain
+15_White Glove
+16_Black Iron Spur
+16_Sword Belt Fragment
+16_Toothed Dagger
+17_Maintenance Oil
+17_Agricultural Suvey
+17_Bag of Tea Leaves
+18_Antique Clasp
+18_Old Map of Enbarr
+18_Dusty Book of Fables
+19_Noseless Puppet
+19_Carving Hammer
+19_Silver Necklace
+20_Lens Cloth
+20_Hammer and Chisel
+20_Sketch of a Sigil
+21_Shiny Striated Pebble
+21_Basket of Berries
+22_Handmade Hair Clip
+22_Spotless Bandage
+22_Used Bottle of Perfume
+23_Noxious Handkerchief
+23_Hresvelg Treatise
+23_Folding Razor
+24_Blue Stone
+24_Art Book
+24_Letter to the Goddess
+25_Pegasus Horseshoes
+25_Jousting Almanac
+25_Curry Comb
+26_Jar of Sweets
+26_Black Hair Tie
+26_Armor Clasp
+27_Hand Drawn Map
+27_Crude Arrowheads
+27_Fur Scarf
+28_The Saints Revealed
+28_Feather Pillow
+28_Animated Bait
+29_Artificial Flower
+29_A Treatise on Etiquette
+29_Silk Handkerchief
+30_Encyclopedia of Sweets
+30_Princess Doll
+30_New Bottle of Perfume
+31_Wellness Herbs
+31_Clean Dusting Cloth
+31_Light Purple Veil
+32_Bag of Seeds
+32_How to be Tidy
+32_Confessional Letter
+33_Book of Ghost Stories
+33_Fruit Preserves
+33_How to Bake Sweets
+34_Exotic Feather
+34_Small Tanned Hide
+34_Annotated Dictionary
+35_Wooden Button
+35_Burlap Sack of Rocks
+35_Big Spoon
+36_Elegant Hair Clip
+36_Seiros Scriptures
+36_Faded Star Chart
+37_Unfinished Fable
+37_Old Fishing Rod
+37_Snapped Writing Quill
+38_Bundle of Dry Hemp
+38_Centipede Picture
+38_Animal Bone Dice
+39_Unused Lipstick
+39_Crumpled Love Letter
+39_The History of Sreng
+40_Makeup Brush
+40_Suspicious Dice

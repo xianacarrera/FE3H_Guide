@@ -1,0 +1,368 @@
+1_You don't look much like Captain Jeralt, but you remind me of him._Nod_Commend_Disagree
+1_There's nothing worse than trying to explain a joke._Commend_-_-
+1_Ghosts, sailing, spicy foods… These are the fears I have yet to conquer._Laugh_-_-
+1_You should go fishing with me soon! The other day, I almost caught one._Laugh_Chat_Praise
+1_Don't forget, if you ever need anything, just let me know._Nod_Praise_-
+1_I've been prattling on and on about myself. How are you today?_Nod_Chat_-
+1_The other night, I felt a ghostly presence in my bed. I leapt to my feet, but... no one was there._Laugh_-_-
+1_I'm your big brother Alois! You can ask me anything you want._Nod_Laugh_Commend
+1_When the war's over, I can finally go home to my wife and daughter..._Nod_Praise_-
+2_Of course I pay my taxes! The fact that I can even do business at all is thanks to the goddess._Commend_Chat_Praise
+2_Being a merchant is really dangerous. You have to be able to protect yourself at the very least._Nod_Commend_Praise
+2_There's a lot of competition between us merchants. So if you've got any ideas on how I can corner the market..._Nod_Chat_Praise
+2_You're not half bad at brewing tea! I bet you could make a killing doing this for a living._Disagree_Siptea_Blush
+2_The Sreng region is rich in high-quality minerals. Wonder how I can distribute them to a buyer..._Commend_Praise_-
+2_This place is just loaded with kids from noble families. So many fat wallets... so little time!_Nod_Admonish_Chat
+2_I know it's good to get my mind off of business and enjoy simple things like tea sometimes, but... it's hard. Really, really hard..._Laugh_Disagree_Admonish
+2_You're wondering where I'm from, are you? Ha! I'll never reveal my secrets!_Laugh_Chat_-
+2_War pushes the profit margins up, but at what cost_Nod_Sigh_-
+3_No effort is ever in vain... My father used to tell me that._Commend_Chat_Praise
+3_The only way to clean is to clean with all your might! Otherwise you're wasting your time!_Nod_-_-
+3_Maybe I should have baked us a cake or something..._Nod_Laugh_-
+3_I feel so at ease here! I really like spending time with you._Laugh_Blush_-
+3_I remember the first time I met you. Right away, it was like talking to an old friend._Laugh_-_-
+3_I broke a plate again the other day... I wish I could be as calm and graceful as you are._Disagree_Chat_Praise
+3_There's an equation I've been thinking about... Can you help me with it later?_Nod_Commend_Praise
+3_The confectioner is back in town! Would you like to go with me sometime?_Nod_-_-
+3_When I'm with you... I feel like I can be myself._Laugh_Blush_-
+4_I still have a lot to learn. I need to work harder._Disagree_Praise_-
+4_Have you ever seen a ghost? Probably for the best if you haven't..._Disagree_Siptea_-
+4_I'm good with children. I've taken care of my younger siblings since I was a kid._Laugh_Commend_-
+4_It's nice in here. I feel like I can relax._Laugh_Siptea_-
+4_The years I had with Lonato... those were some of the best of my life._Nod_Sigh_Praise
+4_I'm confident in my speed. No one can outrun me!_Commend_-_-
+4_I get letters from my brother and sister every once in a while. They have it tough, but they're getting by._Laugh_Praise_-
+4_Time flies when I'm with you._Nod_Blush_-
+4_A lot's happened, but none of it's been in vain. That's what I believe._Nod_Commend_-
+5_Since I gave up my noble status, my tea invitations have really dried up..._Nod_Siptea_-
+5_I'm not big on stuffy formalities. Do what you like and drink what you like, I always say._Commend_Admonish_Chat
+5_Huh, not a bad way to stay alert. I don't get much sleep, you see._Nod_Praise_-
+5_You don't have any dice, do you? Or cards? If so... feelin' lucky?_Admonish_Sigh_Siptea
+5_A while ago, at a Leicester fighting tourney, I went toe-to-toe with Holst for the title. Nearly won too._Nod_Commend_-
+5_My mother's bloodline is pretty rare. That means… I'm a walking treasure._Chat_Praise_-
+5_Ah... Sunshine. Women. Fighting. Everything's better in excess, don't ya think?_Disagree_Admonish_Sigh
+5_Everyone and their dog knows now, but not too long ago, this Crest of mine was top secret._Commend_Chat_Siptea
+5_I'll just come right out and say it. You've got a nice face. Oh, and your personality's all right too._Laugh_Siptea_Blush
+6_My mother works in the Imperial capital. People there say she's a genius._Laugh_Commend_-
+6_Please don't eavesdrop on my singing anymore, OK?_Nod_Praise_-
+6_I was worried you called me here to punish me for something. I'm glad I was wrong._Admonish_-_-
+6_If two people decide to be recluses together... does that even still count?_Laugh_Chat_-
+6_I like to hide out in the greenhouse, but I always have to leave eventually. No place to sleep._Nod_-_-
+6_It's relaxing here! Should've brought my sewing kit._Nod_-_-
+6_You're spoiling me. I don't want to go out on my own anymore._Admonish_Praise_-
+6_My room at the monastery is my home away from home, but this is cozy too._Laugh_Disagree_Admonish
+6_The room feels a little... empty. Needs more cuteness._Laugh_Admonish_-
+7_Hey, are you getting hungry?_Laugh_Sigh_-
+7_I'm gonna keep training until I can beat you!_Disagree_Blush_-
+7_I just wanna go wild and let it all out! Come on, Professor, send me out front in our next battle!_Admonish_Chat_-
+7_I usually don't get hung up on things, but when I do, I feel stuck!_Praise_-_-
+7_What is justice really? I'm not so sure I know anymore…_Commend_Chat_-
+7_Who was that guy? You don't know who I'm talking about? The suspicious guy who killed himself!_Nod_Chat_-
+7_They say hard work pays off, but I don't think that's always true. Either way, I'm gonna keep trying!_Commend_Praise_-
+7_I really love fighting alongside you. I can always count on your commands to get us through!_Nod_Laugh_Blush
+7_I'm always gonna do things my way. If there's a wall blocking my path, I'll punch a hole right through it!_Laugh_Commend_Praise
+8_I hear your nickname is 'Ashen Demon.' It's good, but not as good as 'Thunder Catherine.'_Disagree_Siptea_Blush
+8_I'm always watching you. I guess this is your way of returning the favor._Nod_Sigh_-
+8_You know war strategy, not just how to wield a sword. Maybe I should study that too._Admonish_Siptea_-
+8_I'm not going to hurt you. No need to look so nervous._Sigh_Siptea_-
+8_I'm a little restless. I don't much care for waiting around._Disagree_Chat_-
+8_You look calm, as usual. I wonder what you look like when you're nervous._Admonish_Siptea_Blush
+8_I have zero desire to go back to Faerghus. Can you imagine me as a noble?_Nod_Laugh_-
+8_We should train together._Laugh_Siptea_-
+8_You and I both have sword Relics. We should spar with them soon._Nod_Commend_Praise
+9_You're such a mystery._Disagree_-_-
+9_I want to know more about you_Nod_-_-
+9_Do you really have time for this? I know how busy you are..._Disagree_Siptea_-
+9_I feel like we've known each other for a while, and yet, I'm still fascinated by you._Laugh_Blush_-
+9_You're not like the others. You're an outsider, just like me._Nod_Chat_-
+9_There are too many mysteries in this world. I wonder how many we can solve in our lifetime..._Nod_Praise_-
+9_I'll take you to my hometown one day. There are some truly tasty dishes you can't find in Fodlan._Nod_Laugh_-
+9_By the way, they've discovered a new kind of poison mushroom. When you eat it, your body exudes a mysterious steam! Um, or so I hear..._Laugh_Commend_-
+9_You've become quite expressive, haven't you? You weren't like that when we first met._Nod_Laugh_Blush
+10_Should you decide to lend your aid to the restoration of House Nuvelle, seek me at any hour._Nod_Siptea_Praise
+10_Tea parties such as this were once so... commonplace for me. And they will be again!_Laugh_Praise_-
+10_Moments like these make me wistful for the time I spent and the people I knew underground._Sigh_Chat_-
+10_I haven't anything in the way of funds, so my comeback must be earned through some grand achievement._Nod_Commend_Praise
+10_I was born and raised on the western edge of Adrestia. My home was a beautiful port town._Nod_Sigh_-
+10_You wish to know the secret of House Nuvelle? That's not something I divulge to just anybody._Disagree_Sigh_Chat
+10_Ever since that fateful day when the Dagdan army took House Nuvelle's territory, I've been on my own_Disagree_Sigh_Praise
+10_The field of magic is brimming with mysteries, and I shall be the one to unravel them!_Nod_Praise_-
+10_Your noble cause and my own grand dreams both ought to be held tight. May nothing stand in our way!_Laugh_Chat_Siptea
+11_Lady Rhea sure seems to like you, Professor. I don't know why..._Nod_Siptea_-
+11_If I got kicked out of the monastery, I'd have no other place to go._Commend_Disagree_Praise
+11_I like working. Feels real good to be needed._Commend_Praise_-
+11_If there's anything 'bout Lady Rhea you wanna know, I can probably tell ya._Nod_Siptea_-
+11_I'm the best at cleaning. I never miss any smudge or spot or dirt or grime or even... filth._Commend_-_-
+11_Even if the goddess really does exist, I wonder if she'd protect Almyrans..._Disagree_Chat_Praise
+11_I think you're an amazing person, Professor. I mean, Lady Rhea is still the best, but I like ya well enough._Nod_Laugh_-
+11_I'm real busy all the time, but talking with you like this gets me excited to do more!_Laugh_Blush_-
+11_I'm getting sleepy… Busy day and all._Nod_Laugh_-
+12_Was there something you wanted to discuss?_Nod_Siptea_Blush
+12_I do not like classrooms. I would rather learn at my own pace._Disagree_Praise_-
+12_I am the sword and shield of His Highness. I must constantly work to improve._Commend_Praise_-
+12_Should I have brought sweets?_Nod_Disagree_-
+12_This life was given to me by His Highness. I do not intend to give it to anyone else._Commend_Chat_-
+12_The flowers in the greenhouse are in bloom. You should have a look later._Nod_Laugh_-
+12_I feel comfortable here._Laugh_Blush_-
+12_Next time, you should visit me. I will prepare tea and cake._Nod_Blush_-
+12_Long ago, I once held a grudge against the blood of Duscur. Now, I... Well, it is not important._Chat_Praise_-
+13_Please join me for training when you have the time. There is much I could learn from you._Nod_Disagree_Blush
+13_I cannot tell you how long it has been since I indulged in a nice, relaxing conversation..._Laugh_Siptea_-
+13_I apologize for troubling you. I am grateful for your support._Nod_Blush_-
+13_Perhaps because of my strength, I have always been rather clumsy. I always end up breaking things that are precious..._Chat_Praise_-
+13_When I feel down, I go out for a long ride on my own. There is no place more relaxing than a trusted steed's back._Nod_-_-
+13_I do my training, and then care for my swords and spears... and then the day is over before I know it._Nod_Laugh_-
+13_You really helped me. More than I can say. If it weren't for you, I do not know where I would be now..._Disagree_Blush_Praise
+13_I would invite you to my quarters next, but I fear my space is so bare it is almost laughable._Laugh_Disagree_-
+13_These last five years, I have been many places, and I have seen many things._Chat_Praise_-
+14_More nobles than you'd expect make a pilgrimage to Garreg Mach to pray._Commend_-_-
+14_I am not really a fan of hymns. I don't want to offer silly songs to my goddess._Sigh_Chat_-
+14_My ideal partner is religious, but only just. And they have enough money to live on for all our days._Blush_Praise_-
+14_So, you don't have any weaknesses after all? I'm totally envious of you._Disagree_Siptea_-
+14_You're such an open-minded person, Professor. I'm glad you don't judge me for living how I want to._Laugh_Siptea_Blush
+14_Why are men so vain? They should know their lies will never last._Laugh_Chat_Siptea
+14_Don't you think you feel stronger attraction to someone when you know you may die tomorrow?_Nod_Chat_-
+14_So many people have died… I'm so terribly down. I feel better here, with you though._Nod_Praise_-
+14_Whatever the future may bring, I'm so glad I met you._Blush_-_-
+15_It upsets Hubert when I spend time alone with you. I'll refrain from telling him about this._Nod_Laugh_-
+15_If I hadn't been born to House Hresvelg, I imagine life would have been much simpler._Laugh_Praise_-
+15_You're much more meticulous than I would have guessed._Nod_Disagree_Blush
+15_A moment of relaxation... It has been a while. I find spending these quiet moments with you rather comforting._Siptea_Blush_-
+15_Do you remember the day we met? You protected me from those bandits._Nod_Blush_-
+15_You're always so calm._Disagree_Sigh_Siptea
+15_One day, I'll show you around the palace in Enbarr. It has a lovely garden._Nod_-_-
+15_Here I can take a break from the burden of being emperor. Perhaps that's why I'm so comfortable with you._Nod_Laugh_Blush
+15_I have no intention of handing the Imperial throne over to any child I might have. Instead, I'll choose an outsider who's brilliant and kind._Commend_Chat_Praise
+16_Crests, lineage, knighthood... Trifles. Skill and survival are the only things that matter._Nod_Commend_Chat
+16_You intrigue me. What made you so strong?_Chat_Blush_-
+16_I'm glad I was born into a family of soldiers. I've been wielding a sword for as long as I can remember._Commend_-_-
+16_I know it's important to take a break, but if you rest too long, your muscles wither._Nod_Chat_-
+16_Some people like to snack when they take a break. No willpower._Nod_Siptea_-
+16_Spending time with you is... not bad._Laugh_Blush_-
+16_Join me for sword training again. I want to know my victory isn't a fluke._Nod_Commend_-
+16_I'm always thinking about wars, but this room feels so peaceful._Laugh_-_-
+16_Well... I appreciate all that you do for me._Laugh_Blush_-
+17_You have a way of making people feel comfortable. I almost cannot help telling you everything._Disagree_Blush_-
+17_Since I was a child, I have loved riding horses and fighting. People used to tell me to act more like a noble._Laugh_Commend_-
+17_You often hear stories of nobles and commoners in love. I am not against such things, but reality is not so simple._Nod_Commend_Chat
+17_When I am unhappy, I try to bestow happiness upon others. Such is the way of the true noble._Sigh_Chat_Praise
+17_You treat everyone the same, regardless of status. Perhaps I should do that as well._Commend_Blush_Praise
+17_I am extremely versatile. In fact, I fear I am a jack-of-all-trades._Laugh_Disagree_Praise
+17_I suppose the Sword of the Creator never goes dull, so you do not need to sharpen it._Nod_Chat_-
+17_You will always remember me, will you not?_Siptea_Blush_-
+17_Hmm. It can be good to relax now and then. Shall we play a game?_Nod_Laugh_-
+18_Lively places are my favorite. I like the monastery because there are always so many people bustling about._Nod_-_-
+18_I desire to see the ocean again–it is difficult being so far away from it_Nod_Chat_-
+18_You are an interesting person, Professor. You do not seem to know much about yourself._Nod_Disagree_-
+18_Have you any idea how many types of fish there are? It is unthinkable–their different sizes, shapes, colors... I find it fascinating!_Commend_-_-
+18_Whenever I look at you, a wave of nostalgia washes over me. I wonder why that is._Laugh_Siptea_-
+18_I have a fear of sleeping. I worry that I will awake, and everyone I know and love will have vanished._Disagree_Praise_-
+18_I was born in Enbarr, though I have lived in remote lands far away, at times..._Nod_-_-
+18_You and I are of a rare breed. We should take care of each other._Nod_-_-
+18_Even if I fall asleep, please do not leave my side. Promise you will stay near._Nod_Laugh_Blush
+19_Walking first thing in the morning is a pleasant way to begin your day. Try it sometime._Nod_-_-
+19_I enjoy a bit of fishing. I hear you do as well?_Nod_-_-
+19_Spear, sword, archery, martial arts, soldiery… I believe I've mastered most things worth mastering._Nod_-_-
+19_I've served the royal family for decades, and marched through history by their side._Nod_Sigh_-
+19_I am an unforgivable sinner. I do not deserve a peaceful life._Disagree_Praise_-
+19_No judge, not even the goddess herself, will bring me to justice. Though I deserve it._Sigh_Praise_-
+19_It's true that strength alone will not make you powerful. Yet you will not become powerful without it._Chat_-_-
+19_The Holy Kingdom of Faerghus is the nation of proud knights. I love that country... and miss it deeply._Nod_-_-
+19_I am sorry, but relaxing is... not a skill I possess._Laugh_Praise_-
+20_The 'Ashen Demon.' What an unbelievable title, knowing who you are now... _Disagree_Siptea_-
+20_Since I have never found out the secret of your birth, I am exceptionally intrigued._Chat_Blush_-
+20_Why don't you come by later? I'd very much like to dive into some research together._Commend_Siptea_-
+20_The Crest of Flames shares many traits with other Crests. Yet, it also has many unique characteristics._Nod_Chat_-
+20_It was my own choice to leave behind my noble title and holdings. I'll not be going back._Commend_Praise_-
+20_The monastery holds so many documents in its library, yet certain facts continue to elude me._Commend_Chat_Praise
+20_All of my hard work, my unrelenting study of Crests, is all in the name of my sister, rest her soul._Sigh_Praise_-
+20_I never can stop talking about Crests, can I? Don't you dare laugh at me._Laugh_Admonish_-
+20_Can't be helped. I'll tell you about my favorite food again. Or perhaps we should talk about drinks?_Laugh_Admonish_Siptea
+21_You're in no hurry to wrap this up. Don't you have some actual, y'know... work to do?_Laugh_Disagree_Siptea
+21_I'm feeling a bit sleepy... Oh, not that you're boring or anything._Sigh_Chat_-
+21_Right now I feel so... free. It's nice._Nod_Chat_-
+21_I haven't seen my parents for more than a decade. I can't remember what they look like..._Admonish_Chat_Praise
+21_I saw you playing with a cat earlier. How did you manage that? Cats always run away from me..._Chat_Siptea_Blush
+21_Did you know people can sigh simply because they're happy? Not much risk of me doing that._Nod_Chat_-
+21_Sometimes I have regrets about my choices, but... right now, I'm just grateful to be here._Nod_Commend_Praise
+21_Everyone knows about my curse, so I've got no shortage of alone time._Disagree_Sigh_-
+21_his might sound sappy, but... I care about you._Nod_Admonish_Blush
+22_You know? I love hearing myself talk!_Nod_Siptea_-
+22_Have you ever cried, Professor? It's hard to imagine you crying._Siptea_-_-
+22_You don't say much, so you're easy to talk to._Laugh_Admonish_-
+22_My mind keeps drifting today..._Nod_Laugh_-
+22_No matter what happens in this crazy world, I know I'll be safe if I stay by your side._Nod_Chat_-
+22_Everyone's so serious all the time. Boooooring._Nod_Laugh_-
+22_We should go on a trip together someday, when it's peaceful._Nod_Laugh_Blush
+22_Your room's so neat! You should clean mine too._Nod_Disagree_-
+22_I wish I could stay here and chat all day. Time to go back to the real world though._Laugh_Praise_-
+23_While I am quite busy, this is not a waste of my time. I'm grateful for the opportunity to observe you._Sigh_Siptea_-
+23_The head of House Vestra has always been a minister to the emperor._Commend_Praise_-
+23_Lady Edelgard has taken a liking to you. She will want to hear all about this._Nod_Disagree_-
+23_Most who spend time around me seem to become bored and depressed. Heh. Can't imagine why._Disagree_Admonish_Praise
+23_Sometimes your insights are so keen they seem to border on precognition._Disagree_Siptea_-
+23_House Vestra is one of few noble houses not to lay claim to any territory._Commend_Chat_-
+23_As a humble servant to Her Majesty, I sometimes envy the status she has given you._Disagree_Chat_Praise
+23_For choosing to walk this path with Her Majesty, you have my eternal gratitude._Nod_Blush_-
+23_Sometimes I like to imagine that you were sent to us by a rival of the goddess to bring her low._Chat_Blush_-
+24_I wanna support my family, but I don't know if I can handle being a knight._Nod_Praise_-
+24_I think it's good to have a hobby. Some people say it's a waste of time, but I think it's nice._Nod_Chat_-
+24_You're so young and so accomplished! I admire you._Disagree_Siptea_Blush
+24_I'm realizing that I can learn a lot from you._Laugh_-_-
+24_I don't know what I can do, but I'm prepared to assume responsibility for my future._Commend_Praise_-
+24_With you and all the friends I've made, I'm glad I came here._Laugh_-_-
+24_Thank you for letting me continue with my art. I'll do my part on the battlefield._Nod_Laugh_Praise
+24_Oh, don't mind me. I was just admiring you._Siptea_Blush_-
+24_I need to keep training. I know a brush and canvas aren't enough to protect you._Chat_Blush_Praise
+25_As a child, my father and brother used to yell at me for spending so much time with my horse._Laugh_Admonish_-
+25_I'm already thinking of my next meal..._Laugh_-_-
+25_It's warm around the monastery and the soil is rich... Honestly, I'm envious._Chat_Praise_-
+25_Being here calms my nerves... Oh! But I'll leave if I'm in your way._Disagree_Blush_-
+25_I wonder what your favorite food is. Meat? Veggies? Fish, perhaps? Oh, or maybe sweets..._Laugh_Chat_-
+25_When did you start sword training? I was five when I began..._Chat_-_-
+25_When I'm here, I feel like I can forget about fighting, even if just for a moment._Laugh_Praise_-
+25_Would you like to have a meal with me? Though... it wasn't long ago that I ate._Laugh_Admonish_-
+25_Speaking with you helps me realize I can't hesitate in life!_Disagree_Blush_-
+26_This is a questionable pastime._Nod_Disagree_-
+26_I'm deathly allergic to this sort of thing._Admonish_Sigh_Siptea
+26_Good tea, bad tea. It's all the same._Nod_Chat_Siptea
+26_I'm better at fighting than talking._Nod_Commend_Chat
+26_I like sweets. What of it?_Nod_Disagree_Chat
+26_Sitting here reminds me of... But that was long ago._Laugh_Siptea_Blush
+26_Wouldn't you like to meet death by my hand? No? Well, that is... frustrating._Disagree_Admonish_Sigh
+26_In such a peaceful setting, I am able to control my impulses. But only just barely._Sigh_Siptea_Praise
+26_Ironic, really. The end of war seems more horrible to me, by far._Admonish_Sigh_Chat
+27_Hope you've been keeping up with your training. If you're not careful, I'll surpass you._Nod_Commend_-
+27_I don't care what you think of me. I just don't want to lose to you._Commend_Admonish_-
+27_Don't throw away anything that's still usable, OK? I'll take whatever you don't need._Nod_Commend_-
+27_Back home, I always trained alone. No one else in my village wanted to be a mercenary._Nod_Sigh_Praise
+27_I'm proud to be the greatest apprentice to the best mercenary in Fodlan. That keeps me going._Nod_Praise_-
+27_I feel bad acting out so much around you. Seems like I just can't help it._Laugh_Disagree_Chat
+27_I'll always be here for you. Just like I promised Captain Jeralt._Nod_Laugh_-
+27_Don't worry about what I owe to my village. I don't live this frugally for nothing._Nod_Commend_Praise
+27_People always seem to be talking about romance, but…honestly, I'm just not interested in that stuff._Commend_Chat_Praise
+28_You are full of mysteries and yet offer no answers. How unfair._Disagree_Chat_-
+28_Being surrounded by all these Crest-bearers makes me want to better understand Crestology._Nod_Praise_-
+28_Crest versus nurture. Which causes a noble's personality disorder? There's a research project, eh?_Chat_-_-
+28_I always feel as if I cannot keep up with other people. Everyone else seems to have a destination in mind._Laugh_Praise_-
+28_Please wake me if I fall asleep. I don't wish to be a rude guest._Admonish_Siptea_-
+28_They say the Crest's power dwells in blood. So why does it have to be so disgusting?_Admonish_Chat_-
+28_If I don't become a scholar then perhaps librarian is the job for me._Nod_Praise_-
+28_You bear the legendary Crest of Flames. You simply must allow me to study it–please, Professor._Commend_-_-
+28_We should explore ways to utilize the power of Relics and Crests for something other than combat._Nod_Commend_Chat
+29_A noble's life is full of rigid expectation. I sometimes envy the freedom of commoners._Disagree_Praise_-
+29_The rose perfectly embodies the blend of elegance and power that I seek to possess._Nod_Siptea_-
+29_Do not concern yourself with the rumors. It is not possible for a lady to find me irritating._Admonish_Siptea_-
+29_Even a noble needs a break now and then. One cannot be at one's best all the time._Nod_Praise_-
+29_I am not mindlessly following my father. When it is time to make a choice, I decide what I will do._Commend_Chat_Praise
+29_You are quite an intriguing person. I would be lying if I said I did not find you fascinating._Laugh_Blush_-
+29_Being here helps soothe the heartache from all the bloodshed of this war._Nod_Praise_-
+29_I cannot yet speak to you as an equal. Not when there is still so much left to learn._Commend_Disagree_Praise
+29_I hope it is not untoward of me to ask, but... might I stay a little longer?___
+30_I know I could stand to lighten up from time to time._Admonish_Chat_Praise
+30_One of the few pleasures I find is in eating sweets. It's... kind of embarrassing._Nod_Laugh_-
+30_Do you believe in ghosts, Professor? Just wondering._Laugh_Chat_-
+30_If I hadn't met you, I don't think I'd be who I am today._Laugh_Disagree_-
+30_It's not in me to put energy into things that won't yield results. I just don't see the point._Admonish_Chat_-
+30_Talking to you feels worth my time. I feel there's a lot I can learn from you._Laugh_Blush_-
+30_I wonder what I'd do, who I'd be, if I gave everything up for freedom. I think about that all the time._Nod_Chat_-
+30_If not for Crests, the world might've been a more peaceful place._Sigh_Chat_Praise
+30_I'm exhausted by all my incessant thoughts. I just want to empty my mind for now._Nod_Laugh_Siptea
+31_There's no alcohol in here. It's better if you can sleep without it, but... All you have is tea?_Admonish_Siptea_-
+31_Am I that terrible of a woman? So, I'm a little unkempt, what of it?_Disagree_Admonish_-
+31_Who are you really? Such a mystery. I don't really understand you... Tell me everything._Sigh_Chat_-
+31_What should I do to find love, Professor? I don't want to spend my days alone._Chat_Praise_-
+31_You think I complain too much, don't you? I know I do, but I can't help it._Disagree_Praise_-
+31_Sometimes I think back to when I used to shine as a songstress._Nod_Siptea_-
+31_I must thank you for spending so much time with me. Your company helps me keep sane._Laugh_Praise_-
+31_Your room is so nice and clean. How do you keep it like this?_Disagree_Chat_-
+31_You are always so kind to me, Professor. I love it, but that, too, is its own vice, isn't it?_Siptea_Blush_-
+32_Spending time with me must be boring, isn't it?_Disagree_Admonish_-
+32_I-I'm sorry... I don't know what to say..._Chat_Praise_-
+32_It's a waste to spend your time with me..._Disagree_-_-
+32_You'll be met with misfortune if you spend too much time with me..._Disagree_Admonish_Chat
+32_You don't seem to be very good at talking… At least you're not as bad as me._Nod_Sigh_-
+32_It's not like I can go home... My adoptive father doesn't want me there..._Chat_Praise_-
+32_Thanks to you, I'm beginning to feel more comfortable talking to people._Nod_Disagree_-
+32_I'm all right now. I think I can look forward to living my life._Nod_Laugh_Commend
+32_I hope you never leave... oh! Never mind... Ignore me._Laugh_Blush_-
+33_I baked a cake earlier today. Should I have brought some with me?_Nod_Siptea_-
+33_The cathedral is nice and quiet. It's so relaxing!_Disagree_Blush_-
+33_I'm actually quite skilled at drawing. I wouldn't mind using you as a model!_Nod_Commend_Blush
+33_I used to live in a quiet and beautiful church... but it's not bad here either!_Commend_-_-
+33_I should probably write to my mother soon..._Nod_Chat_Praise
+33_You should really brighten this room up a bit. Have you considered putting flowers in the window?_Nod_Commend_-
+33_As I continue to grow, I've learned not to regret the choices I've made!_Commend_Praise_-
+33_Not to be a bother, but do you mind if I stay just a little longer?_Nod_Siptea_Blush
+34_If you are having problems, I am happy to be listening._Chat_-_-
+34_The ocean is far from Garreg Mach... I am feeling a bit lonely at times._Sigh_Praise_-
+34_Next I will be studying, training, researching, sparring... I am having a lot to do!_Admonish_Praise_-
+34_You are working with much... diligence. I am admiring of you._Laugh_Disagree_-
+34_You are not remembering where your homeland is? I am thinking that is strange..._Sigh_Chat_-
+34_One day I am wanting to show you the wonderful land of Brigid and its abundant nature._Nod_Blush_-
+34_It gives me great pleasure to be speaking with you like this._Siptea_Blush_-
+34_In Enbarr, I was a hostage. I was spending much time locked away. Books gave me great comfort._Sigh_Praise_-
+34_I am requiring much sleep to be staying alert. At least a quarter of each day._Laugh_Admonish_-
+35_I gotta become a proper knight so I can take care of my little sis!_Commend_Praise_-
+35_No one else comes close to having muscles like me, but that's not good enough, is it?_Laugh_Chat_-
+35_Is there anything to eat, Professor? My stomach's saying it's snack time!_Laugh_Commend_Admonish
+35_I can't miss a single lecture if I wanna become a proper knight!_Nod_Chat_Praise
+35_My grandpa used to be real strong when he was younger. I obviously take after the guy!_Laugh_Commend_-
+35_You're pretty strong for being so shrimpy. You'd be unstoppable if you put on some muscle!_Laugh_Disagree_Blush
+35_Wanna train together? I can show you some new techniques I thought up!_Nod_Siptea_-
+35_I wouldn't have come here if my parents were still alive. That means I never woulda met you!_Nod_Sigh_-
+35_You seem tired, Professor. The best cure for sleepiness is sleep!_Laugh_Disagree_-
+36_Have you grown accustomed to living in the monastery?_Nod_Disagree_-
+36_Have confidence. I truly believe you can lead your students down the right path._Nod_-_-
+36_I sense great potential in you. You possess something extraordinary..._Nod_Chat_-
+36_You are truly special. It seems that I was right about you._Chat_-_-
+36_I would like you to be a pillar of support for the Church in order to keep peace in Fodlan._Nod_Chat_-
+36_Being the Archbishop can be lonely, no matter how many followers surrounded you..._Sigh_Praise_-
+36_I, too, like to spread my wings from time to time. Doing so in your company is a treat._Blush_-_-
+36_I do not have a friend whom I can fully trust. Such is the burden of my position..._Disagree_Chat_Praise
+36_You are the only person I can talk to as myself, rather than as the Archbishop._Blush_-_-
+37_I wonder why the archbishop is so interested in you._Chat_Siptea_-
+37_I do hope you will inform me of any issues you may encounter in the monastery._Nod_-_-
+37_I know I speak harshly at times, but I hope you understand that I am merely doing my job._Nod_Sigh_-
+37_You have become very special to us._Nod_Chat_-
+37_The more you learn about yourself, the more paths will become open to you._Nod_Chat_-
+37_If there is anything I can do for you, please tell me._Nod_Laugh_Blush
+37_When my own thoughts grow tiresome, I go fishing. You should join me sometime._Nod_Laugh_-
+37_Whatever happens, know I am proud to support you._Chat_Blush_-
+37_I put up a stiff front with people, due to my position. But that's not really me._Nod_Laugh_Blush
+38_I'm not much for conversation. I'll gladly leave if you're bored._Disagree_-_-
+38_Heh. You always have an interesting look on your face._Disagree_Siptea_Blush
+38_The Sword of the Creator... It's an interesting Relic._Nod_Chat_-
+38_As far as mercenaries go, I'd say I work for a fair price._Laugh_Commend_-
+38_I enjoy a lack of conversation. But how are you?_Nod_Siptea_-
+38_I look forward to the next battle. They seem to go smoothly under your command._Nod_Blush_-
+38_I apologize for what I said before. It was tactless to compare you to memories from my past._Disagree_Sigh_-
+38_This room... It suits you._Nod_Blush_-
+38_Dagda is far. It would take months to travel there by foot..._Admonish_Chat_Praise
+39_Everyone has their own reason to fight. At least I'm honest about mine._Commend_Praise_-
+39_Opera, art, literature, I love 'em. They always give you something to talk about._Commend_Chat_-
+39_You're always really stoic._Chat_Siptea_-
+39_I was thinking I should do some proper training sometime. Care to join me, Professor?_Siptea_Praise_-
+39_Sometimes, I'm surprised how warm the monastery is. I wish my parents' home was like this._Chat_Praise_-
+39_Somebody gave me some candy earlier. I should have brought some with me._Nod_Siptea_-
+39_I feel like you can see right through me._Disagree_Siptea_-
+39_I'm in a bit of trouble with a girl right now. Although, I can't think of a time when that hasn't been the case._Nod_Commend_Praise
+39_You are really curious, aren't you? Eh, I'm glad you're like that._Laugh_Blush_-
+40_If I established a monopoly on tea, I imagine I'd see no end to the gold... Ah, never mind me._Nod_Chat_Praise
+40_This cake is to die for! Just where did you get it? Don't tell me you made it yourself._Nod_Laugh_Blush
+40_I don't dislike dogs or cats by any stretch of the imagination… I'm just deathly allergic._Sigh_Chat_Praise
+40_The sunlight is cloying. I prefer hanging out in the shadows._Chat_Siptea_Praise
+40_You strike me as the naive type. Best be careful around someone like me._Nod_Disagree_Sigh
+40_My father? Never knew the guy. Don't have any interest in knowing him at this point either._Admonish_Chat_Praise
+40_I'm a bit more into parties than tea, but I suppose hanging out with you isn't half bad._Nod_Laugh_Blush
+40_If you ever need someone to help you out, I'm your guy. I'll make your problems vanish into thin air._Nod_Commend_Admonish
+40_I always repay my debts. I don't allow myself to be indebted to anyone. Ever._Laugh_Commend_Siptea
+10_$House Nuvelle is a noble house which exists mainly on paper. I harbor little hope that it may someday be rebuilt._Disagree_Sigh_Chat
+10_$Tea parties such as this were once so…commonplace for me. I am ashamed to have not appreciated them fully at the time._Disagree_Admonish_Praise
+10_$Will it not damage your reputation to sit with me? Shall I stay at a discreet distance?_Disagree_Admonish_Chat
+10_$Though my dream can never be achieved, I shall continue my futile efforts. I simply see no other course of action._Disagree_Chat_Praise
+10_$I dare not allow myself the luxury of sweets. When I do eat them, it is only with the utmost reluctance._Laugh_Disagree_Siptea
+10_$People often remark that I lack any opinions of my own. What do you think about that?_Disagree_Chat_Siptea
+10_$How cruel that House Nuvelle, with its long and storied history, should have no heirs left save but me._Sigh_Praise_-
+10_$The notion that I might be the only thing holding me back occurs to me regularly._Disagree_Admonish_Chat
+10_$My house was too accustomed to peace to be prepared for a war. Small wonder that they were eradicated._Disagree_Chat_Praise

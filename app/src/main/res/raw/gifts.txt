@@ -1,0 +1,298 @@
+1_Fishing Float_y_1
+1_Floral Adornment_y_1
+1_Ancient Coin_y_3
+1_Sunflower_y_3
+1_Owl Feather_y_3
+1_Monarch Studies Book_n_3
+1_Exotic Spices_n_4
+2_Goddess Statuette_y_3
+2_Forget-me-nots_y_3
+2_Landscape Painting_y_4
+2_Blue Cheese_y_4
+2_Coffee Beans_y_4
+2_Exotic Spices_y_4
+2_Owl Feather_y_3
+2_Fishing Float_n_1
+2_Smoked Meat_n_1
+3_Stylish Hair Clip_y_2
+3_Arithmetic Textbook_y_3
+3_Owl Feather_y_3
+3_Book of Sheet Music_y_3
+3_Hunting Dagger_n_2
+3_Coffee Beans_n_4
+3_Ceremonial Sword_n_4
+4_Tasty Baked Treat_y_1
+4_Owl Feather_y_3
+4_Ancient Coin_y_3
+4_Legends of Chivalry_y_3
+4_Violet_y_3
+4_Exotic Spices_y_4
+4_Arithmetic Textbook_n_3
+4_Monarch Studies Book_n_3
+4_Board Game_n_4
+5_Whetstone_y_2
+5_Ancient Coin_y_3
+5_Ceremonial Sword_y_4
+5_Blue Cheese_y_4
+5_Owl Feather_y_3
+5_Fishing Float_y_1
+5_Watering Can_n_2
+5_Armored Bear Stuffy_n_3
+6_Watering Can_y_2
+6_Dapper Handkerchief_y_2
+6_Armored Bear Stuffy_y_3
+6_Book of Sheet Music_y_3
+6_Owl Feather_y_3
+6_Pitcher Plant_y_3
+6_Hunting Dagger_n_2
+6_Training Weight_n_3
+6_Ceremonial Sword_n_4
+7_Smoked Meat_y_1
+7_Owl Feather_y_3
+7_Hunting Dagger_y_2
+7_Whetstone_y_2
+7_Training Weight_y_3
+7_Floral Adornment_n_1
+7_Fishing Float_n_1
+7_Stylish Hair Clip_n_2
+8_Whetstone_y_2
+8_Training Weight_y_3
+8_Legends of Chivalry_y_3
+8_Blue Cheese_y_4
+8_Owl Feather_y_3
+8_Gemstone Beads_n_1
+8_Armored Bear Stuffy_n_3
+8_Arithmetic Textbook_n_3
+9_Riding Boots_y_3
+9_Owl Feather_y_3
+9_Book of Crest Designs_y_4
+9_Exotic Spices_y_4
+9_Board Game_y_4
+9_Book of Sheet Music_n_3
+9_Blue Cheese_n_4
+10_Lily of the Valley_y_3
+10_Tea Leaves_y_3
+10_Arithmetic Textbook_y_3
+10_Book of Crests Designs_y_4
+10_Owl Feather_y_3
+10_Blue Cheese_n_4
+10_Exotic Spices_n_4
+11_Smoked Meat_y_1
+11_Hunting Dagger_y_2
+11_Watering Can_y_2
+11_Baby's Breath_y_3
+11_Owl Feather_y_3
+11_Monarch Studies Book_n_3
+11_Legends of Chivalry_n_3
+11_The History of Fódlan_n_3
+12_Floral Adornment_y_1
+12_Owl Feather_y_3
+12_Watering Can_y_2
+12_Exotic Spices_y_4
+12_Book of Sheet Music_n_3
+12_The History of Fódlan_n_3
+13_Whetstone_y_2
+13_Owl Feather_y_3
+13_Riding Boots_y_3
+13_Training Weight_y_3
+13_Ceremonial Sword_y_4
+13_Book of Sheet Music_n_3
+13_Armored Bear Stuffy_n_3
+13_Gemstone Beads_n_1
+14_Gemstone Beads_y_1
+14_Owl Feather_y_3
+14_Stylish Hair Clip_y_2
+14_Book of Sheet Music_y_3
+14_Floral Adornment_n_1
+14_Fishing Float_n_1
+14_Goddess Statuette_n_3
+15_Armored Bear Stuffy_y_3
+15_Owl Feather_y_3
+15_Board Game_y_4
+15_Carnation_y_3
+15_Goddess Statuette_n_3
+15_Ceremonial Sword_n_4
+16_Smoked Meat_y_1
+16_Owl Feather_y_3
+16_Hunting Dagger_y_2
+16_Training Weight_y_3
+16_Ceremonial Sword_y_4
+16_Tasty Baked Treat_n_1
+16_Armored Bear Stuffy_n_3
+16_Legends of Chivalry_n_3
+17_Whetstone_y_2
+17_Owl Feather_y_3
+17_Riding Boots_y_3
+17_Blue Cheese_n_4
+17_Coffee Beans_n_4
+18_Tasty Baked Treat_y_1
+18_Stylish Hair Clip_y_2
+18_Dapper Handkerchief_y_2
+18_Armored Bear Stuffy_y_3
+18_Forget-me-nots_y_3
+18_Owl Feather_y_3
+18_Whetstone_n_2
+18_Blue Cheese_n_4
+19_Fishing Float_y_1
+19_Goddess Statuette_y_3
+19_Ceremonial Sword_y_4
+19_Owl Feather_y_3
+19_Tasty Baked Treat_n_1
+19_Dapper Handkerchief_n_2
+20_Tea Leaves_y_3
+20_Dapper Handkerchief_y_2
+20_Arithmetic Textbook_y_3
+20_Book of Crest Designs_y_4
+20_Owl Feather_y_3
+20_Exotic Spices_n_4
+20_Blue Cheese_n_4
+21_Tasty Baked Treat_y_1
+21_Smoked Meat_y_1
+21_Hunting Dagger_y_2
+21_Pitcher Plant_y_3
+21_Exotic Spices_y_4
+21_Coffee Beans_y_4
+21_Owl Feather_y_3
+21_Training Weight_n_2
+21_Monarch Studies Book_n_3
+21_Legends of Chivalry_n_3
+22_Gemstone Beads_y_1
+22_Stylish Hair Clip_y_2
+22_Dapper Handkerchief_y_2
+22_Owl Feather_y_3
+22_Armored Bear Stuffy_y_3
+22_Book of Sheet Music_y_3
+22_Anemone_y_3
+22_Training Weight_n_2
+22_Legends of Chivalry_n_3
+22_Ancient Coin_n_3
+23_The History of Fódlan_y_3
+23_Owl Feather_y_3
+23_Board Game_y_4
+23_Coffee Beans_y_4
+23_Gemstone Beads_n_1
+23_Legends of Chivalry_n_3
+23_Landscape Painting_n_3
+24_Goddess Statuette_y_3
+24_Ancient Coin_y_3
+24_Owl Feather_y_3
+24_Forget-me-nots_y_3
+24_Ceremonial Sword_y_4
+24_Landscape Painting_y_4
+24_Training Weight_n_3
+24_Monarch Studies Book_n_4
+25_Smoked Meat_y_1
+25_Riding Boots_y_3
+25_Legends of Chivalry_y_3
+25_Owl Feather_y_3
+25_Gemstone Beads_n_1
+25_Stylish Hair Clip_n_2
+26_Tasty Baked Treat_y_1
+26_Whetstone_y_2
+26_Hunting Dagger_y_2
+26_Rose_y_3
+26_Owl Feather_y_3
+26_Monarch Studies Book_n_3
+26_Blue Cheese_n_4
+26_Book of Crest Designs_n_4
+27_Fishing Float_y_1
+27_Hunting Dagger_y_2
+27_Training Weight_y_3
+27_Owl Feather_y_3
+27_Stylish Hair Clip_n_2
+27_Book of Crest Designs_n_4
+28_Fishing Float_y_1
+28_Owl Feather_y_3
+28_Tasty Baked Treat_y_1
+28_Book of Crest Designs_y_4
+28_Hunting Dagger_n_2
+28_Training Weight_n_3
+29_Floral Adornment_y_1
+29_Rose_y_3
+29_Owl Feather_y_3
+29_Book of Sheet Music_y_3
+29_Tea Leaves_y_3
+29_Hunting Dagger_n_2
+29_Watering Can_n_2
+29_Armored Bear Stuffy_n_3
+30_Tasty Baked Treat_y_1
+30_Armored Bear Stuffy_y_3
+30_Owl Feather_y_3
+30_Arithmetic Textbook_y_3
+30_Lily_y_3
+30_Book of Crest Designs_y_4
+30_Training Weight_n_3
+30_Legends of Chivalry_n_3
+30_Coffee Beans_n_4
+31_Gemstone Beads_y_1
+31_Book of Sheet Music_y_3
+31_Goddess Statuette_y_3
+31_Blue Cheese_y_4
+31_Owl Feather_y_3
+31_Smoked Meat_n_1
+31_Riding Boots_n_3
+31_Board Game_n_4
+32_Floral Adornment_y_1
+32_Dapper Handkerchief_y_2
+32_Owl Feather_y_3
+32_Armored Bear Stuffy_y_3
+32_Lily of the Valley_y_3
+32_Smoked Meat_n_1
+32_Hunting Dagger_n_2
+33_Tasty Baked Treat_y_1
+33_Gemstone Beads_y_1
+33_Owl Feather_y_3
+33_Goddess Statuette_y_3
+33_Armored Bear Stuffy_y_3
+33_Lavender_y_3
+33_Whetstone_n_2
+33_Ancient Coin_n_3
+33_Riding Boots_n_3
+34_Smoked Meat_y_1
+34_Owl Feather_y_3
+34_Hunting Dagger_y_2
+34_Sunflower_y_3
+34_Exotic Spices_y_4
+34_Arithmetic Textbook_n_3
+34_Book of Crest Designs_n_4
+35_Tasty Baked Treat_y_1
+35_Smoked Meat_y_1
+35_Owl Feather_y_3
+35_Training Weight_y_3
+35_Blue Cheese_y_4
+35_Arithmetic Textbook_n_3
+35_Book of Crest Designs_n_4
+36_Goddess Statuette_y_3
+36_Ancient Coin_y_3
+36_Landscape Painting_y_4
+36_Owl Feather_y_3
+36_Exotic Spices_n_4
+37_Fishing Float_y_1
+37_Dapper Handkerchief_y_2
+37_The History of Fódlan_y_3
+37_Owl Feather_y_3
+37_Legends of Chivalry_n_3
+37_Book of Crest Designs_n_4
+38_Hunting Dagger_y_2
+38_Sunflower_y_3
+38_Book of Sheet Music_y_3
+38_Exotic Spices_y_4
+38_Coffee Beans_y_4
+38_Owl Feather_y_3
+38_Monarch Studies Book_n_3
+38_Blue Cheese_n_4
+38_Book of Crest Designs_n_4
+39_Dapper Handkerchief_y_2
+39_Owl Feather_y_3
+39_Landscape Painting_y_3
+39_Board Game_y_4
+39_Floral Adornment_n_1
+39_Watering Can_n_2
+39_Book of Crest Designs_n_4
+40_Tasty Baked Treat_y_1
+40_Goddess Statuette_y_3
+40_Arithmetic Textbook_y_3
+40_Board Game_y_4
+40_Owl Feather_y_3
+40_Book of Sheet Music_n_3
+40_Riding Boots_n_3

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".supports.SupportsFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/imageView_icon1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/content_description_icon"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2_icon2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/content_description_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_icon1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+        android:id="@+id/searchable_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:DoneSearchTintColor="@android:color/holo_purple"
+        app:RevealViewBackgroundColor="@android:color/holo_purple"
+        app:SearchHintText="@string/character_hint"
+        app:SearchViewBackgroundColor="@android:color/secondary_text_dark"
+        app:ShowBorders="false"
+        app:SpinnerExpandHeight="300dp"
+        app:StartSearchTintColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/searchable_spinner_2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchable_spinner_2" />
+
+    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+        android:id="@+id/searchable_spinner_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:DoneSearchTintColor="@android:color/holo_purple"
+        app:RevealViewBackgroundColor="@android:color/holo_purple"
+        app:SearchHintText="@string/character_hint"
+        app:SearchViewBackgroundColor="@android:color/secondary_text_dark"
+        app:ShowBorders="false"
+        app:SpinnerExpandHeight="300dp"
+        app:StartSearchTintColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2_icon2" />
+
+    <Button
+        android:id="@+id/button_see_supports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/show_supports"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchable_spinner_2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_support_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="@+id/searchable_spinner"
+        app:layout_constraintEnd_toEndOf="@+id/searchable_spinner_2"
+        app:layout_constraintTop_toBottomOf="@+id/button_see_supports" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_support0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/c_support"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchable_spinner" />
+
+            <Button
+                android:id="@+id/button_support1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchable_spinner" />
+
+            <Button
+                android:id="@+id/button_support2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchable_spinner" />
+
+            <Button
+                android:id="@+id/button_support3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchable_spinner" />
+
+            <Button
+                android:id="@+id/button_Ssupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchable_spinner" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

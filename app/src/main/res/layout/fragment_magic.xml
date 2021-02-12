@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".characters.profile.MagicFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="48dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="@string/skill_level" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="@string/reason" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="@string/faith" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="D" />
+
+                <TextView
+                    android:id="@+id/reason_D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="D+" />
+
+                <TextView
+                    android:id="@+id/reason_D_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_D_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="C" />
+
+                <TextView
+                    android:id="@+id/reason_C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="C+" />
+
+                <TextView
+                    android:id="@+id/reason_C_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_C_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="B" />
+
+                <TextView
+                    android:id="@+id/reason_B"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_B"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="B+" />
+
+                <TextView
+                    android:id="@+id/reason_B_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_B_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="A" />
+
+                <TextView
+                    android:id="@+id/reason_A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="A+" />
+
+                <TextView
+                    android:id="@+id/reason_A_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/faith_A_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="-" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">FE3H Guide</string>
+
+    <string name="nav_open_drawer">Open navigation drawer</string>
+    <string name="nav_close_drawer">Close navigation drawer</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_guide">Guide</string>
+    <string name="nav_characters">Characters</string>
+    <string name="nav_tea_time">Tea time</string>
+    <string name="nav_supports">Supports</string>
+
+    <string name="nav_secondary_group">Options</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_about">About</string>
+
+    <string name="content_description_icon">Icon of the selected character</string>
+    <string name="character_hint">Character</string>
+    <string name="have_tea">Have tea</string>
+    <string name="favourite_teas">Favorite teas</string>
+    <string name="liked_by_everyone">Liked by everyone</string>
+    <string name="liked_specifically_by">Liked specifically by</string>
+    <string name="teas_liked_by_everyone">Hresvelg Blend\nLeicester Cortania</string>
+    <string name="topics">Topics</string>
+    <string name="search_for_a_topic">Search for a topic</string>
+    <string name="final_conversation_title">Final Conversation</string>
+
+    <string name="show_supports">Show supports</string>
+    <string name="no_selection">Select a character</string>
+    <string name="c_support">C Support</string>
+    <string name="c_plus_support">C+ Support</string>
+    <string name="b_support">B Support</string>
+    <string name="b_plus_support">B+ Support</string>
+    <string name="a_support">A Support</string>
+    <string name="a_plus_support">A+ Support</string>
+    <string name="s_support">S Support</string>
+
+    <string name="byleth">Byleth</string>
+    <string name="church_of_seiros">Church of Seiros</string>
+    <string name="ashen_wolves">Ashen Wolves</string>
+    <string name="black_eagles">Black Eagles</string>
+    <string name="blue_lions">Blue Lions</string>
+    <string name="golden_deer">Golden Deer</string>
+
+    <string name="title_general_tab">General</string>
+    <string name="title_abilities_tab">Abilities</string>
+    <string name="title_magic_tab">Magic</string>
+    <string name="combat_arts_tab">Combat Arts</string>
+    <string name="likes_dislikes_tab">Likes</string>
+
+    <string name="pronouns">Pronouns</string>
+    <string name="faction">Faction</string>
+    <string name="birthday">Birthday</string>
+    <string name="fodlan_birthday">Fódlan Birthday</string>
+    <string name="crest">Crest</string>
+    <string name="recruitment">Recruitment</string>
+    <string name="spoiler_alert">May contain spoilers</string>
+
+    <string name="gifts">Gifts</string>
+    <string name="favourite">Favorite</string>
+    <string name="disliked">Disliked</string>
+    <string name="meals">Meals</string>
+    <string name="lost_items">Lost items</string>
+    <string name="skill_level">Skill level</string>
+    <string name="reason">Reason</string>
+    <string name="faith">Faith</string>
+    <string name="unique">Unique</string>
+    <string-array name="skills">
+        <item>Sword</item>
+        <item>Lance</item>
+        <item>Axe</item>
+        <item>Bow</item>
+        <item>Brawling</item>
+        <item>Reason</item>
+        <item>Faith</item>
+        <item>Authority</item>
+        <item>Heavy Armor</item>
+        <item>Riding</item>
+        <item>Flying</item>
+        <item>Class skills</item>
+    </string-array>
+    <string name="effect">Effect</string>
+    <string name="origin">Origin</string>
+
+</resources>

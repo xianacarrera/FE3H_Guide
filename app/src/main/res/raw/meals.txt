@@ -1,0 +1,772 @@
+1_Grilled Herring_y
+1_Saghert and Cream_y
+1_Fish and Bean Soup_y
+1_Onion Gratin Soup_y
+1_Sweet Bun Trio_y
+1_Fruit and Herring Tart_y
+1_Fisherman's Bounty_y
+1_Pheasant Roast with Berry Sauce_y
+1_Fish Sandwich_y
+1_Peach Sorbet_y
+1_Pickled Seafood and Vegetables_y
+1_Two-Fish Sauté_y
+1_Bourgeois Pike_y
+1_Sautéed Jerky_n
+1_Spicy Fish and Turnip Stew_n
+1_Super-Spicy Fish Dango_n
+1_Sautéed Pheasant and Eggs_n
+1_Vegetable Stir-Fry_n
+2_Beast Meat Teppanyaki_y
+2_Vegetable Pasta Salad_y
+2_Sautéed Jerky_y
+2_Spicy Fish and Turnip Stew_y
+2_Sweet and Salty Whitefish Sauté_y
+2_Pheasant Roast with Berry Sauce_y
+2_Pickled Rabbit Skewers_y
+2_Peach Sorbet_y
+2_Pickled Seafood and Vegetables_y
+2_Sautéed Pheasant and Eggs_y
+2_Bourgeois Pike_y
+2_Fried Crayfish_y
+2_Derdriu-Style Fried Pheasant_y
+2_Grilled Herring_n
+2_Fruit and Herring Tart_n
+2_Fish Sandwich_n
+2_Country-Style Red Turnip Plate_n
+2_Daphnel Stew_n
+2_Gautier Cheese Gratin_n
+2_Vegetable Stir-Fry_n
+3_Grilled Herring_y
+3_Saghert and Cream_y
+3_Fish and Bean Soup_y
+3_Vegetable Pasta Salad_y
+3_Spicy Fish and Turnip Stew_y
+3_Onion Gratin Soup_y
+3_Sweet and Salty Whitefish Sauté_y
+3_Sweet Bun Trio_y
+3_Fruit and Herring Tart_y
+3_Pheasant Roast with Berry Sauce_y
+3_Peach Sorbet_y
+3_Pickled Seafood and Vegetables_y
+3_Two-Fish Sauté_y
+3_Vegetable Stir-Fry_y
+3_Beast Meat Teppanyaki_n
+3_Pickled Rabbit Skewers_n
+3_Gautier Cheese Gratin_n
+4_Saghert and Cream_y
+4_Fish and Bean Soup_y
+4_Vegetable Pasta Salad_y
+4_Spicy Fish and Turnip Stew_y
+4_Sweet and Salty Whitefish Sauté_y
+4_Sweet Bun Trio_y
+4_Pheasant Roast with Berry Sauce_y
+4_Fish Sandwich_y
+4_Peach Sorbet_y
+4_Cheesy Verona Stew_n
+4_Gautier Cheese Gratin_n
+4_Fried Crayfish_n
+4_Derdriu-Style Fried Pheasant_n
+5_Beast Meat Teppanyaki_y
+5_Sautéed Jerky_y
+5_Spicy Fish and Turnip Stew_y
+5_Sweet and Salty Whitefish Sauté_y
+5_Garreg Mach Meat Pie_y
+5_Fisherman's Bounty_y
+5_Cheesy Verona Stew_y
+5_Pickled Rabbit Skewers_y
+5_Super-Spicy Fish Dango_y
+5_Daphnel Stew_y
+5_Gronder Meat Skewers_y
+5_Gautier Cheese Gratin_y
+5_Cabbage and Herring Stew_y
+5_Derdriu-Style Fried Pheasant_y
+5_Vegetable Pasta Salad_n
+5_Fish Sandwich_n
+5_Country-Style Red Turnip Plate_n
+5_Peach Sorbet_n
+5_Pickled Seafood and Vegetables_n
+5_Vegetable Stir-Fry_n
+5_Fried Crayfish_n
+6_Saghert and Cream_y
+6_Vegetable Pasta Salad_y
+6_Sweet Bun Trio_y
+6_Fruit and Herring Tart_y
+6_Cheesy Verona Stew_y
+6_Country-Style Red Turnip Plate_y
+6_Peach Sorbet_y
+6_Two-Fish Sauté_y
+6_Vegetable Stir-Fry_y
+6_Bourgeois Pike_y
+6_Derdriu-Style Fried Pheasant_y
+6_Beast Meat Teppanyaki_n
+6_Sautéed Jerky_n
+6_Spicy Fish and Turnip Stew_n
+6_Sweet and Salty Whitefish Sauté_n
+6_Fish Sandwich_n
+6_Pickled Rabbit Skewers_n
+6_Super-Spicy Fish Dango_n
+6_Gronder Meat Skewers_n
+6_Sautéed Pheasant and Eggs_n
+7_Beast Meat Teppanyaki_y
+7_Vegetable Pasta Salad_y
+7_Sautéed Jerky_y
+7_Sweet Bun Trio_y
+7_Garreg Mach Meat Pie_y
+7_Pickled Rabbit Skewers_y
+7_Country-Style Red Turnip Plate_y
+7_Daphnel Stew_y
+7_Gronder Meat Skewers_y
+7_Sautéed Pheasant and Eggs_y
+7_Vegetable Stir-Fry_y
+7_Derdriu-Style Fried Pheasant_y
+7_Grilled Herring_n
+7_Fish and Bean Soup_n
+7_Small Fish Skewers_n
+7_Spicy Fish and Turnip Stew_n
+7_Onion Gratin Soup_n
+7_Sweet and Salty Whitefish Sauté_n
+7_Fruit and Herring Tart_n
+7_Cheesy Verona Stew_n
+7_Fish Sandwich_n
+7_Super-Spicy Fish Dango_n
+7_Pickled Seafood and Vegetables_n
+7_Two-Fish Sauté_n
+7_Gautier Cheese Gratin_n
+7_Cabbage and Herring Stew_n
+7_Bourgeois Pike_n
+7_Fried Crayfish_n
+8_Beast Meat Teppanyaki_y
+8_Grilled Herring_y
+8_Onion Gratin Soup_y
+8_Fruit and Herring Tart_y
+8_Garreg Mach Meat Pie_y
+8_Fisherman's Bounty_y
+8_Cheesy Verona Stew_y
+8_Fish Sandwich_y
+8_Pickled Rabbit Skewers_y
+8_Country-Style Red Turnip Plate_y
+8_Super-Spicy Fish Dango_y
+8_Pickled Seafood and Vegetables_y
+8_Two-Fish Sauté_y
+8_Gronder Meat Skewers_y
+8_Gautier Cheese Gratin_y
+8_Cabbage and Herring Stew_y
+8_Bourgeois Pike_y
+8_Derdriu-Style Fried Pheasant_y
+8_Saghert and Cream_n
+8_Small Fish Skewers_n
+8_Pheasant Roast with Berry Sauce_n
+8_Peach Sorbet_n
+8_Fried Crayfish_n
+9_Beast Meat Teppanyaki_y
+9_Sautéed Jerky_y
+9_Onion Gratin Soup_y
+9_Garreg Mach Meat Pie_y
+9_Pheasant Roast with Berry Sauce_y
+9_Cheesy Verona Stew_y
+9_Pickled Rabbit Skewers_y
+9_Country-Style Red Turnip Plate_y
+9_Daphnel Stew_y
+9_Gronder Meat Skewers_y
+9_Sautéed Pheasant and Eggs_y
+9_Gautier Cheese Gratin_y
+9_Cabbage and Herring Stew_y
+9_Vegetable Stir-Fry_y
+9_Bourgeois Pike_y
+9_Derdriu-Style Fried Pheasant_y
+9_Saghert and Cream_n
+9_Sweet Bun Trio_n
+9_Fried Crayfish_n
+10_Saghert and Cream_y
+10_Vegetable Pasta Salad_y
+10_Sweet Bun Trio_y
+10_Fruit and Herring Tart_y
+10_Pheasant Roast with Berry Sauce_y
+10_Peach Sorbet_y
+10_Two-Fish Sauté_y
+10_Sautéed Pheasant and Eggs_y
+10_Bourgeois Pike_y
+10_Sautéed Jerky_n
+10_Spicy Fish and Turnip Stew_n
+10_Onion Gratin Soup_n
+10_Cheesy Verona Stew_n
+10_Pickled Rabbit Skewers_n
+10_Gautier Cheese Gratin_n
+10_Cabbage and Herring Stew_n
+11_Beast Meat Teppanyaki_y
+11_Fish and Bean Soup_y
+11_Vegetable Pasta Salad_y
+11_Sautéed Jerky_y
+11_Pheasant Roast with Berry Sauce_y
+11_Pickled Rabbit Skewers_y
+11_Two-Fish Sauté_y
+11_Daphnel Stew_y
+11_Gronder Meat Skewers_y
+11_Sautéed Pheasant and Eggs_y
+11_Vegetable Stir-Fry_y
+11_Derdiu-Style Fried Pheasant_y
+11_Small Fish Skewers_n
+11_Onion Gratin Soup_n
+11_Cheesy Verona Stew_n
+11_Pickled Seafood and Vegetables_n
+11_Cabbage and Herring Stew_n
+11_Fried Crayfish_n
+12_Grilled Herring_y
+12_Fish and Bean Soup_y
+12_Sautéed Jerky_y
+12_Spicy Fish and Turnip Stew_y
+12_Onion Gratin Soup_y
+12_Sweet and Salty Whitefish Sauté_y
+12_Fisherman's Bounty_y
+12_Fruit and Herring Tart_y
+12_Fish Sandwich_y
+12_Super-Spicy Fish Dango_y
+12_Pickled Seafood and Vegetables_y
+12_Two-Fish Sauté_y
+12_Daphnel Stew_y
+12_Vegetable Stir-Fry_y
+12_Bourgeois Pike_y
+12_Garreg Mach Meat Pie_n
+12_Gautier Cheese Gratin_n
+13_Saghert and Cream_y
+13_Sautéed Jerky_y
+13_Onion Gratin Soup_y
+13_Sweet Bun Trio_y
+13_Cheesy Verona Stew_y
+13_Gautier Cheese Gratin_y
+13_Peach Sorbet_n
+14_Saghert and Cream_y
+14_Vegetable Pasta Salad_y
+14_Onion Gratin Soup_y
+14_Garreg Mach Meat Pie_y
+14_Contry-Style Red Turnip Plate_y
+14_Peach Sorbet_y
+14_Gautier Cheese Gratin_y
+14_Vegetable Stir-Fry_y
+14_Grilled Herring_n
+14_Fish and Bean Soup_n
+14_Small Fish Skewers_n
+14_Spicy Fish and Turnip Stew_n
+14_Sweet and Salty Whitefish Sauté_n
+14_Fruit and Herring Tart_n
+14_Fisherman's Bounty_n
+14_Fish Sandwich_n
+14_Fried Crayfish_n
+15_Saghert and Cream_y
+15_Fish and Bean Soup_y
+15_Vegetable Pasta Salad_y
+15_Onion Gratin Soup_y
+15_Sweet Bun Trio_y
+15_Fish Sandwich_y
+15_Peach Sorbet_y
+15_Sautéed Pheasant and Eggs_y
+15_Vegetable Stir-Fry_y
+15_Beast Meat Teppanyaki_n
+15_Garreg Mach Meat Pie_n
+15_Pickled Rabbit Skewers_n
+15_Gronder Meat Skewers_n
+15_Gautier Cheese Gratin_n
+16_Beast Meat Teppanyaki_y
+16_Sautéed Jerky_y
+16_Spicy Fish and Turnip Stew_y
+16_Sweet and Salty Whitefish Sauté_y
+16_Garreg Mach Meat Pie_y
+16_Pickled Rabbit Skewers_y
+16_Super-Spicy Fish Dango_y
+16_Two-Fish Sauté_y
+16_Daphnel Stew_y
+16_Gronder Meat Skewers_y
+16_Sautéed Pheasant and Eggs_y
+16_Gautier Cheese Gratin_y
+16_Derdriu-Style Fried Pheasant_y
+16_Saghert and Cream_n
+16_Fish and Bean Soup_n
+16_Vegetable Pasta Salad_n
+16_Small Fish Skewers_n
+16_Sweet Bun Trio_n
+16_Country-Style Red Turnip Plate_n
+16_Peach Sorbet_n
+16_Vegetable Stir-Fry_n
+16_Fried Crayfish_n
+17_Grilled Herring_y
+17_Saghert and Cream_y
+17_Vegetable Pasta Salad_y
+17_Onion Gratin Soup_y
+17_Sweet Bun Trio_y
+17_Fruit and Herring Tart_y
+17_Fisherman's Bounty_y
+17_Pheasant Roast with Berry Sauce_y
+17_Fish Sandwich_y
+17_Daphnel Stew_y
+17_Sautéed Pheasant and Eggs_y
+17_Vegetable Stir-Fry_y
+17_Bourgeois Pike_y
+17_Garreg Mach Meat Pie_n
+17_Cheesy Verona Stew_n
+17_Pickled Seafood and Vegetables_n
+17_Gautier Cheese Gratin_n
+17_Cabbage and Herring Stew_n
+18_Grilled Herring_y
+18_Saghert and Cream_y
+18_Fish and Bean Soup_y
+18_Onion Gratin Soup_y
+18_Sweet Bun Trio_y
+18_Fruit and Herring Tart_y
+18_Fisherman's Bounty_y
+18_Pheasant Roast with Berry Sauce_y
+18_Cheesy Verona Stew_y
+18_Fish Sandwich_y
+18_Country-Style Red Turnip Plate_y
+18_Peach Sorbet_y
+18_Pickled Seafood and Vegetables_y
+18_Two-Fish Sauté_y
+18_Cabbage and Herring Stew_y
+18_Bourgeois Pike_y
+18_Sautéed Jerky_n
+18_Garreg Mach Meat Pie_n
+18_Super-Spicy Fish Dango_n
+18_Sautéed Pheasant and Eggs_n
+18_Gautier Cheese Gratin_n
+18_Vegetable Stir-Fry_n
+19_Beast Meat Teppanyaki_y
+19_Grilled Herring_y
+19_Vegetable Pasta Salad_y
+19_Spicy Fish and Turnip Stew_y
+19_Sweet and Salty Whitefish Sauté_y
+19_Garreg Mach Meat Pie_y
+19_Fisherman's Bounty_y
+19_Cheesy Verona Stew_y
+19_Fish Sandwich_y
+19_Pickled Rabbit Skewers_y
+19_Country-Style Red Turnip Plate_y
+19_Super-Spicy Fish Dango_y
+19_Pickled Seafood and Vegetables_y
+19_Gronder Meat Skewers_y
+19_Sautéed Pheasant and Eggs_y
+19_Cabbage and Herring Stew_y
+19_Vegetable Stir-Fry_y
+19_Derdriu-Style Fried Pheasant_y
+19_Saghert and Cream_n
+19_Peach Sorbet_n
+19_Fried Crayfish_n
+20_Vegetable Pasta Salad_y
+20_Garreg Mach Meat Pie_y
+20_Cheesy Verona Stew_y
+20_Super-Spicy Fish Dango_y
+20_Peach Sorbet_y
+20_Pickled Seafood and Vegetables_y
+20_Two-Fish Sauté_y
+20_Gautier Cheese Gratin_y
+20_Cabbage and Herring Stew_y
+20_Bourgeois Pike_y
+20_Derdriu-Style Fried Pheasant_y
+20_Beast Meat Teppanyaki_n
+20_Small Fish Skewers_n
+20_Spicy Fish and Turnip Stew_n
+20_Sweet and Salty Whitefish Sauté_n
+20_Fisherman's Bounty_n
+20_Pheasant Roast with Berry Sauce_n
+20_Fish Sandwich_n
+20_Pickled Rabbit Skewers_n
+20_Gronder Meat Skewers_n
+20_Vegetable Stir-Fry_n
+21_Beast Meat Teppanyaki_y
+21_Fish and Bean Soup_y
+21_Small Fish Skewers_y
+21_Sautéed Jerky_y
+21_Spicy Fish and Turnip Stew_y
+21_Onion Gratin Soup_y
+21_Sweet and Salty Whitefish Sauté_y
+21_Fisherman's Bounty_y
+21_Pheasant Roast with Berry Sauce_y
+21_Fish Sandwich_y
+21_Pickled Rabbit Skewers_y
+21_Country-Style Red Turnip Plate_y
+21_Super-Spicy Fish Dango_y
+21_Pickled Seafood and Vegetables_y
+21_Daphnel Stew_y
+21_Gronder Meat Skewers_y
+21_Sautéed Pheasant and Eggs_y
+21_Cabbage and Herring Stew_y
+21_Vegetable Stir-Fry_y
+21_Fried Crayfish_y
+21_Derdriu-Style Fried Pheasant_y
+21_Fruit and Herring Tart_n
+21_Two-Fish Sauté_n
+21_Bourgeois Pike_n
+22_Saghert and Cream_y
+22_Fish and Bean Soup_y
+22_Sweet Bun Trio_y
+22_Fisherman's Bounty_y
+22_Cheesy Verona Stew_y
+22_Country-Style Red Turnip Plate_y
+22_Peach Sorbet_y
+22_Two-Fish Sauté_y
+22_Gautier Cheese Gratin_y
+22_Derdriu-Style Fried Pheasant_y
+22_Garreg Mach Meat Pie_n
+22_Pickled Seafood and Vegetables_n
+22_Cabbage and Herring Stew_n
+23_Sautéed Jerky_y
+23_Spicy Fish and Turnip Stew_y
+23_Sweet and Salty Whitefish Sauté_y
+23_Garreg Mach Meat Pie_y
+23_Cheesy Verona Stew_y
+23_Super-Spicy Fish Dango_y
+23_Pickled Seafood and Vegetables_y
+23_Two-Fish Sauté_y
+23_Sautéed Pheasant and Eggs_y
+23_Gautier Cheese Gratin_y
+23_Cabbage and Herring Stew_y
+23_Beast Meat Teppanyaki_n
+23_Grilled Herring_n
+23_Saghert and Cream_n
+23_Fish and Bean Soup_n
+23_Vegetable Pasta Salad_n
+23_Small Fish Skewers_n
+23_Sweet Bun Trio_n
+23_Fisherman's Bounty_n
+23_Pheasant Roast with Berry Sauce_n
+23_Pickled Rabbit Skewers_n
+23_Peach Sorbet_n
+23_Daphnel Stew_n
+23_Gronder Meat Skewers_n
+23_Fried Crayfish_n
+23_Derdriu-Style Fried Pheasant_n
+24_Saghert and Cream_y
+24_Fish and Bean Soup_y
+24_Vegetable Pasta Salad_y
+24_Sweet Bun Trio_y
+24_Fruit and Herring Tart_y
+24_Garreg Mach Meat Pie_y
+24_Fisherman's Bounty_y
+24_Super-Spicy Fish Dango_y
+24_Two-Fish Sauté_y
+24_Sautéed Pheasant and Eggs_y
+24_Cabbage and Herring Stew_y
+24_Vegetable Stir-Fry_y
+24_Bourgeois Pike_y
+24_Spicy Fish and Turnip Stew_n
+24_Pickled Seafood and Vegetables_n
+24_Gautier Cheese Gratin_n
+25_Beast Meat Teppanyaki_y
+25_Grilled Herring_y
+25_Vegetable Pasta Salad_y
+25_Spicy Fish and Turnip Stew_y
+25_Sweet and Salty Whitefish Sauté_y
+25_Sweet Bun Trio_y
+25_Fruit and Herring Tart_y
+25_Fisherman's Bounty_y
+25_Pheasant Roast with Berry Sauce_y
+25_Fish Sandwich_y
+25_Pickled Rabbit Skewers_y
+25_Super-Spicy Fish Dango_y
+25_Daphnel Stew_y
+25_Gronder Meat Skewers_y
+25_Derdriu-Style Fried Pheasant_y
+25_Small Fish Skewers_n
+25_Pickled Seafood and Vegetables_n
+25_Derdriu-Style Fried Pheasant_n
+26_Grilled Herring_y
+26_Saghert and Cream_y
+26_Fish and Bean Soup_y
+26_Small Fish Skewers_y
+26_Onion Gratin Soup_y
+26_Sweet Bun Trio_y
+26_Fisherman's Bounty_y
+26_Pheasant Roast with Berry Sauce_y
+26_Peach Sorbet_y
+26_Two-Fish Sauté_y
+26_Gronder Meat Skewers_y
+26_Cabbage and Herring Stew_y
+26_Fried Crayfish_y
+26_Beast Meat Teppanyaki_n
+26_Vegetable Pasta Salad_n
+26_Sautéed Jerky_n
+26_Spicy Fish and Turnip Stew_n
+26_Sweet and Salty Whitefish Sauté_n
+26_Fish Sandwich_n
+26_Pickled Rabbit Skewers_n
+26_Super-Spicy Fish Dango_n
+26_Sautéed Pheasant and Eggs_n
+26_Vegetable Stir-Fry_n
+27_Beast Meat Teppanyaki_y
+27_Grilled Herring_y
+27_Fish and Bean Soup_y
+27_Spicy Fish and Turnip Stew_y
+27_Onion Gratin Soup_y
+27_Sweet and Salty Whitefish Sauté_y
+27_Fruit and Herring Tart_y
+27_Fisherman's Bounty_y
+27_Cheesy Verona Stew_y
+27_Fish Sandwich_y
+27_Super-Spicy Fish Dango_y
+27_Pickled Seafood and Vegetables_y
+27_Two-Fish Sauté_y
+27_Daphnel Stew_y
+27_Gronder Meat Skewers_y
+27_Cabbage and Herring Stew_y
+27_Vegetable Stir-Fry_y
+27_Bourgeois Pike_y
+27_Derdriu-Style Fried Pheasant_y
+27_Saghert and Cream_n
+27_Small Fish Skewers_n
+27_Sweet Bun Trio_n
+27_Peach Sorbet_n
+28_Saghert and Cream_y
+28_Fish and Bean Soup_y
+28_Onion Gratin Soup_y
+28_Sweet Bun Trio_y
+28_Garreg Mach Meat Pie_y
+28_Pheasant Roast with Berry Sauce_y
+28_Peach Sorbet_y
+28_Daphnel Stew_y
+28_Gautier Cheese Gratin_y
+28_Beast Meat Teppanyaki_n
+28_Grilled Herring_n
+28_Small Fish Skewers_n
+28_Sautéed Jerky_n
+28_Spicy Fish and Turnip Stew_n
+28_Sweet and Salty Whitefish Sauté_n
+28_Fisherman's Bounty_n
+28_Pickled Rabbit Skewers_n
+28_Gronder Meat Skewers_n
+28_Sautéed Pheasant and Eggs_n
+28_Vegetable Stir-Fry_n
+28_Fried Crayfish_n
+29_Saghart and Cream_y
+29_Fish and Bean Soup_y
+29_Onion Gratin Soup_y
+29_Fruit and Herring Tart_y
+29_Garreg Mach Meat Pie_y
+29_Two-Fish Sauté_y
+29_Daphnel Stew_y
+29_Cabbage and Herring Stew_y
+29_Bourgeois Pike_y
+29_Beast Meat Teppanyaki_n
+29_Small Fish Skewers_n
+29_Spicy Fish and Turnip Stew_n
+29_Sweet and Salty Whitefish Sauté_n
+29_Fisherman's Bounty_n
+29_Pickled Rabbit Skewers_n
+29_Gronder Meat Skewers_n
+29_Sautéed Pheasant and Eggs_n
+30_Saghert and Cream_y
+30_Sweet Bun Trio_y
+30_Pheasant Roast with Berry Sauce_y
+30_Pickled Rabbit Skewers_y
+30_Peach Sorbet_y
+30_Two-Fish Sauté_y
+30_Derdiu-Style Fried Pheasant_y
+30_Grilled Herring_n
+30_Fish and Bean Soup_n
+30_Vegetable Pasta Salad_n
+30_Small Fish Skewers_n
+30_Sautéed Jerky_n
+30_Spicy Fish and Turnip Stew_n
+30_Onion Gratin Soup_n
+30_Sweet and Salty Whitefish Sauté_n
+30_Fruit and Herring Tart_n
+30_Garreg Mach Meat Pie_n
+30_Cheesy Verona Stew_n
+30_Fish Sandwich_n
+30_Country-Style Red Turnip Plate_n
+30_Super-Spicy Fish Dango_n
+30_Pickled Seafood and Vegetables_n
+30_Sautéed Pheasant and Eggs_n
+30_Cabbage and Herring Stew_n
+30_Vegetable Stir-Fry_n
+30_Bourgeois Pike_n
+30_Fried Crayfish_n
+31_Beast Meat Teppanyaki_y
+31_Fish and Bean Soup_y
+31_Sautéed Jerky_y
+31_Spicy Fish and Turnip Stew_y
+31_Sweet and Salty Whitefish Sauté_y
+31_Garreg Mach Meat Pie_y
+31_Fisherman's Bounty_y
+31_Fish Sandwich_y
+31_Pickled Rabbit Skewers_y
+31_Super-Spicy Fish Dango_y
+31_Two-Fish Sauté_y
+31_Daphnel Stew_y
+31_Gronder Meat Skewers_y
+31_Sautéed Pheasant and Eggs_y
+31_Cabbage and Herring Stew_y
+31_Vegetable Stir-Fry_y
+31_Bourgeois Pike_y
+31_Derdriu-Style Fried Pheasant_y
+31_Saghert and Cream_n
+31_Small Fish Skewers_n
+31_Onion Gratin Soup_n
+31_Sweet Bun Trio_n
+31_Cheesy Verona Stew_n
+31_Country-Style Red Turnip Plate_n
+31_Peach Sorbet_n
+31_Pickled Seafood and Vegetables_n
+31_Gautier Cheese Gratin_n
+31_Fried Crayfish_n
+32_Saghert and Cream_y
+32_Fish and Bean Soup_y
+32_Vegetable Pasta Salad_y
+32_Onion Gratin Soup_y
+32_Sweet Bun Trio_y
+32_Fruit and Herring Tart_y
+32_Fisherman's Bounty_y
+32_Cheesy Verona Stew_y
+32_Super-Spicy Fish Dango_y
+32_Peach Sorbet_y
+32_Two-Fish Sauté_y
+32_Sautéed Pheasant and Eggs_y
+32_Cabbage and Herring Stew_y
+32_Vegetable Stir-Fry_y
+32_Burgeois Pike_y
+32_Beast Meat Teppanyaki_n
+32_Pickled Rabbit Skewers_n
+32_Gronder Meat Skewers_n
+32_Gautier Cheese Gratin_n
+33_Grilled Herring_y
+33_Saghert and Cream_y
+33_Fish and Bean Soup_y
+33_Vegetable Pasta Salad_y
+33_Onion Gratin Soup_y
+33_Sweet Bun Trio_y
+33_Fruit and Herring Tart_y
+33_Pheasant Roast with Berry Sauce_y
+33_Peach Sorbet_y
+33_Two-Fish Sauté_y
+33_Beast Meat Teppanyaki_n
+33_Sautéed Jerky_n
+33_Spicy Fish and Turnip Stew_n
+33_Sweet and Salty Whitefish Sauté_n
+33_Garreg Mach Meat Pie_n
+33_Fish Sandwich_n
+33_Pickled Rabbit Skewers_n
+33_Super-Spicy Fish Dango_n
+33_Daphnel Stew_n
+33_Gronder Meat Skewers_n
+33_Sautéed Pheasant and Eggs_n
+33_Gautier Cheese Gratin_n
+34_Beast Meat Teppanyaki_y
+34_Grilled Herring_y
+34_Sautéed Jerky_y
+34_Spicy Fish and Turnip Stew_y
+34_Fisherman's Bounty_y
+34_Cheesy Verona Stew_y
+34_Fish Sandwich_y
+34_Pickled Rabbit Skewers_y
+34_Country-Style Red Turnip Plate_y
+34_Super-Spicy Fish Dango_y
+34_Pickled Seafood and Vegetables_y
+34_Daphnel Stew_y
+34_Gronder Meat Skewers_y
+34_Vegetable Stir-Fry_y
+34_Saghert and Cream_n
+34_Fish and Bean Soup_n
+34_Small Fish Skewers_n
+34_Onion Gratin Soup_n
+34_Sweet and Salty Whitefish Sauté_n
+34_Sweet Bun Trio_n
+34_Garreg Mach Meat Pie_n
+34_Pheasant Roast with Berry Sauce_n
+34_Peach Sorbet_n
+34_Two-Fish Sauté_n
+34_Gautier Cheese Gratin_n
+34_Fried Crayfish_n
+34_Derdriu-Style Fried Pheasant_n
+35_Beast Meat Teppanyaki_y
+35_Fish and Bean Soup_y
+35_Sautéed Jerky_y
+35_Garreg Mach Meat Pie_y
+35_Fisherman's Bounty_y
+35_Pheasant Roast with Berry Sauce_y
+35_Cheesy Verona Stew_y
+35_Fish Sandwich_y
+35_Pickled Rabbit Skewers_y
+35_Country-Style Red Turnip Plate_y
+35_Pickled Seafood and Vegetables_y
+35_Daphnel Stew_y
+35_Gronder Meat Skewers_y
+35_Sautéed Pheasant and Eggs_y
+35_Gautier Cheese Gratin_y
+35_Derdriu-Style Fried Pheasant_y
+35_Vegetable Pasta Salad_n
+35_Vegetable Stir-Fry_n
+35_Fried Crayfish_n
+37_Grilled Herring_y
+37_Vegetable Pasta Salad_y
+37_Spicy Fish and Turnip Stew_y
+37_Sweet and Salty Whitefish Sauté_y
+37_Fruit and Herring Tart_y
+37_Cheesy Verona Stew_y
+37_Fish Sandwich_y
+37_Super-Spicy Fish Dango_y
+37_Pickled Seafood and Vegetables_y
+37_Daphnel Stew_y
+37_Sautéed Pheasant and Eggs_y
+37_Bourgeois Pike_y
+37_Derdriu-Style Fried Pheasant_y
+37_Saghert and Cream_n
+37_Peach Sorbet_n
+37_Fried Crayfish_n
+38_Beast Meat Teppanyaki_y
+38_Vegetable Pasta Salad_y
+38_Sautéed Jerky_y
+38_Pheasant Roast with Berry Sauce_y
+38_Pickled Rabbit Skewers_y
+38_Country-Style Red Turnip Plate_y
+38_Super-Spicy Fish Dango_y
+38_Peach Sorbet_y
+38_Daphnel Stew_y
+38_Gronder Meat Skewers_y
+38_Sautéed Pheasant and Eggs_y
+38_Vegetable Stir-Fry_y
+38_Grilled Herring_n
+38_Saghert and Cream_n
+38_Small Fish Skewers_n
+38_Onion Gratin Soup_n
+38_Sweet Bun Trio_n
+38_Fruit and Herring Tart_n
+38_Garreg Mach Meat Pie_n
+38_Cheesy Verona Stew_n
+38_Two-Fish Sauté_n
+38_Gautier Cheese Gratin_n
+38_Bourgeois Pike_n
+38_Fried Crayfish_n
+38_Derdriu-Style Fried Pheasant_n
+39_Fish and Bean Soup_y
+39_Spicy Fish and Turnip Stew_y
+39_Sweet and Salty Whitefish Sauté_y
+39_Sweet Bun Trio_y
+39_Fruit and Herring Tart_y
+39_Garreg Mach Meat Pie_y
+39_Pheasant Roast with Berry Sauce_y
+39_Cheesy Verona Stew_y
+39_Fish Sandwich_y
+39_Super-Spicy Fish Dango_y
+39_Two-Fish Sauté_y
+39_Sautéed Pheasant and Eggs_y
+39_Beast Meat Teppanyaki_n
+39_Small Fish Skewers_n
+39_Fisherman's Bounty_n
+39_Fried Crayfish_n
+40_Grilled Herring_y
+40_Saghert and Cream_y
+40_Fish and Bean Soup_y
+40_Sautéed Jerky_y
+40_Onion Gratin Soup_y
+40_Sweet Bun Trio_y
+40_Fisherman's Bounty_y
+40_Pheasant Roast with Berry Sauce_y
+40_Fish Sandwich_y
+40_Pickled Rabbit Skewers_y
+40_Country-Style Red Turnip Plate_y
+40_Peach Sorbet_y
+40_Two-Fish Sauté_y
+40_Daphnel Stew_y
+40_Vegetable Stir-Fry_y
+40_Spicy Fish and Turnip Stew_n
+40_Super-Spicy Fish Dango_n
+40_Sautéed Pheasant and Eggs_n
+40_Gautier Cheese Gratin_n
+40_Bourgeois Pike_n
