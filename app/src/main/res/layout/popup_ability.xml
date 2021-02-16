@@ -25,6 +25,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textview_title_ability_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Test"
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:src="@drawable/abc_vector_test" />
+            android:src="@drawable/missing_number" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,15 +53,17 @@
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/textview_ability_effect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa"
+            android:text="@string/error"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
+            android:id="@+id/textview_ability_origin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -74,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa"
+            android:text="@string/error"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />

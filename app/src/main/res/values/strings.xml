@@ -56,6 +56,7 @@
     <string name="recruitment">Recruitment</string>
     <string name="spoiler_alert">May contain spoilers</string>
 
+    <string name="error">Error</string>
     <string name="gifts">Gifts</string>
     <string name="favourite">Favorite</string>
     <string name="disliked">Disliked</string>
@@ -65,19 +66,12 @@
     <string name="reason">Reason</string>
     <string name="faith">Faith</string>
     <string name="unique">Unique</string>
-    <string-array name="skills">
-        <item>Sword</item>
-        <item>Lance</item>
-        <item>Axe</item>
-        <item>Bow</item>
-        <item>Brawling</item>
-        <item>Reason</item>
-        <item>Faith</item>
-        <item>Authority</item>
-        <item>Heavy Armor</item>
-        <item>Riding</item>
-        <item>Flying</item>
-        <item>Class skills</item>
+    <string-array name="abilities_types">
+        <item>All abilities</item>
+        <item>Skill level abilities</item>
+        <item>Class abilities</item>
+        <item>Class mastery abilities</item>
+        <item>Other abilities</item>
     </string-array>
     <string name="effect">Effect</string>
     <string name="origin">Origin</string>

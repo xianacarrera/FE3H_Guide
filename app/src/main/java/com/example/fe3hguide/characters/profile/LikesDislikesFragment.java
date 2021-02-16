@@ -23,10 +23,11 @@ import java.util.ArrayList;
 public class LikesDislikesFragment extends Fragment {
 
     private final String character;
-    private SQLiteDatabase db;
+    private final SQLiteDatabase db;
 
-    public LikesDislikesFragment(String character){
+    public LikesDislikesFragment(String character, SQLiteDatabase db){
         this.character = character;
+        this.db = db;
     }
 
     @Override
@@ -35,11 +36,6 @@ public class LikesDislikesFragment extends Fragment {
         // Inflate the layout for this fragment
         ConstraintLayout layout = (ConstraintLayout)
                 inflater.inflate(R.layout.fragment_likes_dislikes, container, false);
-
-        // Get access to the database
-        SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(getActivity());
-        // TODO: TRY-CATCH?
-        db = fe3hDatabaseHelper.getReadableDatabase();
 
         prepareRecyclerViewsGifts(layout);
         prepareRecyclerViewsMeals(layout);

@@ -466,7 +466,6 @@
 25_Derdriu-Style Fried Pheasant_y
 25_Small Fish Skewers_n
 25_Pickled Seafood and Vegetables_n
-25_Derdriu-Style Fried Pheasant_n
 26_Grilled Herring_y
 26_Saghert and Cream_y
 26_Fish and Bean Soup_y

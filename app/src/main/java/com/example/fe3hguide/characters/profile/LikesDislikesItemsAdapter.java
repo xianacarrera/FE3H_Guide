@@ -35,7 +35,7 @@ public class LikesDislikesItemsAdapter extends
     @Override
     public void onBindViewHolder(ViewHolderLikes holder, int position){
         CardView cardView = holder.cardView;
-        TextView textView = (TextView) cardView.findViewById(R.id.textView_card_likes_item);
+        TextView textView = (TextView) cardView.findViewById(R.id.textView_standard_card_item);
         textView.setText(items.get(position));
     }
 

@@ -9,19 +9,27 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
+import com.example.fe3hguide.FE3HDatabaseHelper;
 import com.example.fe3hguide.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private String character;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        // Get access to the database
+        SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(this);
+        // TODO: TRY-CATCH?
+        db = fe3hDatabaseHelper.getReadableDatabase();
 
         // Get the name of the character that defines the profile
         Intent intent = getIntent();
@@ -59,13 +67,13 @@ public class ProfileActivity extends AppCompatActivity {
                 case 0:
                     return new GeneralFragment();
                 case 1:
-                    return new AbilitiesFragment();
+                    return new AbilitiesFragment(character, db);
                 case 2:
-                    return new MagicFragment(character);
+                    return new MagicFragment(character, db);
                 case 3:
                     return new CombatArtsFragment();
                 case 4:
-                    return new LikesDislikesFragment(character);
+                    return new LikesDislikesFragment(character, db);
             }
             return null;
         }

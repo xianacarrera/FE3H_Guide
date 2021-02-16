@@ -7,7 +7,7 @@
     app:cardCornerRadius="12dp">
 
     <TextView
-        android:id="@+id/textView_card_likes_item"
+        android:id="@+id/textView_standard_card_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

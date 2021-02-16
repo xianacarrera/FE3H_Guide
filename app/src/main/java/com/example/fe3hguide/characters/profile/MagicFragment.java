@@ -22,9 +22,11 @@ import java.util.List;
 public class MagicFragment extends Fragment {
 
     private final String character;
+    private final SQLiteDatabase db;
 
-    public MagicFragment(String character){
+    public MagicFragment(String character, SQLiteDatabase db){
         this.character = character;
+        this.db = db;
     }
 
     @Override
@@ -32,11 +34,6 @@ public class MagicFragment extends Fragment {
                              Bundle savedInstanceState) {
         ConstraintLayout layout = (ConstraintLayout)
                 inflater.inflate(R.layout.fragment_magic, container, false);
-
-        // Get access to the database
-        SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(getActivity());
-        // TODO: TRY-CATCH?
-        SQLiteDatabase db = fe3hDatabaseHelper.getReadableDatabase();
 
         // Get the information about the character's magic spells
         Cursor cursor = db.rawQuery("SELECT m.REASON, m.FAITH " +

@@ -6,8 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -40,7 +38,7 @@ public class AbilitiesAdapter extends
     @Override
     public void onBindViewHolder(ViewHolderAbilities holder, int position){
         CardView cardView = holder.cardView;
-        TextView textView = (TextView) cardView.findViewById(R.id.textView_card_likes_item);
+        TextView textView = (TextView) cardView.findViewById(R.id.textView_standard_card_item);
         textView.setText(abilitiesNames.get(position));
     }
 
@@ -57,7 +55,9 @@ public class AbilitiesAdapter extends
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    fragment.shopPopup();
+                    TextView abilityName = (TextView)
+                            cardView.findViewById(R.id.textView_standard_card_item);
+                    fragment.shopPopup(abilityName.getText().toString());
                 }
             });
         }
