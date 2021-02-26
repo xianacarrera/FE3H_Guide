@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.example.fe3hguide.R;
 
@@ -29,6 +30,7 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
     private CardView supportOptions;
     private SearchableSpinner character2;
     private Button buttonSeeSupports;
+    private Button button0, button1, button2, button3, button4;
     private SimpleListAdapter searchableSpinnerAdapter1, searchableSpinnerAdapter2;
     private String name1, name2;
     private String cSupport, bSupport, aSupport, interSupport, interRank, sSupport;
@@ -67,7 +69,7 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                         // Hide its portrait in case there was a previous selection
                         icon2.setVisibility(View.INVISIBLE);
 
-                        // Hide the buttons until the second selection is made
+                        // Hide the buttonsOn until the second selection is made
                         buttonSeeSupports.setVisibility(View.INVISIBLE);
                         supportOptions.setVisibility(View.INVISIBLE);
 
@@ -171,7 +173,7 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ConstraintLayout layout = (ConstraintLayout)
+        ScrollView layout = (ScrollView)
                 inflater.inflate(R.layout.fragment_supports, container, false);
 
         // Populate the first AutoCompleteTextView with options for all the characters
@@ -218,16 +220,16 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
         supportOptions = layout.findViewById(R.id.card_support_options);
         supportOptions.setVisibility(View.GONE);
 
-        // Set listeners for the supports buttons
-        Button button0 = (Button) layout.findViewById(R.id.button_support0);
+        // Set listeners for the supports buttonsOn
+        button0 = (Button) layout.findViewById(R.id.button_support0);
         button0.setOnClickListener(this);
-        Button button1button2 = (Button) layout.findViewById(R.id.button_support1);
-        button1button2.setOnClickListener(this);
-        Button button2 = (Button) layout.findViewById(R.id.button_support2);
+        button1 = (Button) layout.findViewById(R.id.button_support1);
+        button1.setOnClickListener(this);
+        button2 = (Button) layout.findViewById(R.id.button_support2);
         button2.setOnClickListener(this);
-        Button button3 = (Button) layout.findViewById(R.id.button_support3);
+        button3 = (Button) layout.findViewById(R.id.button_support3);
         button3.setOnClickListener(this);
-        Button button4 = (Button) layout.findViewById(R.id.button_Ssupport);
+        button4 = (Button) layout.findViewById(R.id.button_Ssupport);
         button4.setOnClickListener(this);
 
         return layout;
@@ -257,18 +259,15 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                 if (cursor.moveToFirst()) {
                     cSupport = cursor.getString(0);
                     bSupport = cursor.getString(1);
-                    aSupport = cursor.getString(2);
-                    interSupport = cursor.getString(3);
-                    interRank = cursor.getString(4);
-                    sSupport = cursor.getString(5);
+                    aSupport = cursor.getString(2).equals("null")? null : cursor.getString(2);
+                    interSupport = cursor.getString(3).equals("null")? null : cursor.getString(3);
+                    interRank = cursor.getString(4).equals("null")? null : cursor.getString(4);
+                    sSupport = cursor.getString(5).equals("null")? null : cursor.getString(5);
 
                     supportOptions.setVisibility(View.VISIBLE);
 
                     // There's always at least a C-Support and a B-Support
                     // The C-Support button already has text
-                    Button button1 = (Button) getView().findViewById(R.id.button_support1);
-                    Button button2 = (Button) getView().findViewById(R.id.button_support2);
-                    Button button3 = (Button) getView().findViewById(R.id.button_support3);
 
                     if (interRank != null) {
                         switch (interRank) {
@@ -278,8 +277,10 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                                 // Because there's always a B Support and the intermediate
                                 // has already been placed, the 3º button must be for B
                                 button2.setText(R.string.b_support);
+                                button2.setVisibility(View.VISIBLE);
                                 if (aSupport != null) {
                                     button3.setText(R.string.a_support);
+                                    button3.setVisibility(View.VISIBLE);
                                 } else {
                                     button3.setVisibility(View.GONE);
                                 }
@@ -289,8 +290,10 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                                 // 2º button -> B support, 3º button -> B+
                                 button1.setText(R.string.b_support);
                                 button2.setText(R.string.b_plus_support);
+                                button2.setVisibility(View.VISIBLE);
                                 if (aSupport != null) {
                                     button3.setText(R.string.a_support);
+                                    button3.setVisibility(View.VISIBLE);
                                 } else {
                                     button3.setVisibility(View.GONE);
                                 }
@@ -300,24 +303,26 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                                 // 2º button -> B, 3º button -> A, 4º button -> A+
                                 button1.setText(R.string.b_support);
                                 button2.setText(R.string.a_support);
+                                button2.setVisibility(View.VISIBLE);
                                 button3.setText(R.string.a_plus_support);
+                                button3.setVisibility(View.VISIBLE);
                         }
                     } else {            // There's no intermediate support
                         button1.setText(R.string.b_support);
                         if (aSupport != null) {
                             button2.setText(R.string.a_support);
+                            button2.setVisibility(View.VISIBLE);
                         } else {
                             button2.setVisibility(View.GONE);
                         }
                         button3.setVisibility(View.GONE);
                     }
 
-                    Button sSupportButton = (Button)
-                            getView().findViewById(R.id.button_Ssupport);
                     if (sSupport != null) {
-                        sSupportButton.setText(R.string.s_support);
+                        button4.setText(R.string.s_support);
+                        button4.setVisibility(View.VISIBLE);
                     } else {
-                        sSupportButton.setVisibility(View.GONE);
+                        button4.setVisibility(View.GONE);
                     }
                 }
                 break;

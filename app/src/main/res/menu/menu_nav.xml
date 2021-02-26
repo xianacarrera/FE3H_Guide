@@ -21,7 +21,7 @@
             android:title="@string/nav_tea_time" />
         <item
             android:id="@+id/nav_supports"
-            android:icon="@drawable/ic_menu_supports"
+            android:icon="@drawable/ic_supports"
             android:title="@string/nav_supports" />
 
         <item android:title="@string/nav_secondary_group">

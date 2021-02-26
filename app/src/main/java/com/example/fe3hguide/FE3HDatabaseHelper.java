@@ -687,7 +687,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "Master the Myrmidon class", "Master");
         insertAbility(db, "Pomp & Circumstance", R.drawable.pomp__circumstance,
                 "Grants Lck & Cha +4.",
-                "Master the Armored Lord, the High Lord or the Wyvern Master class", "Master");
+                "Master the Armored Lord, the Wyvern Master or the High Lord class", "Master");
         insertAbility(db, "Defense +2", R.drawable.defense_2,
                 "Increases Def by 2.",
                 "Master the Soldier class", "Master");
@@ -928,7 +928,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         abilityValues.put("ICON", icon);
         abilityValues.put("EFFECT", effect);
         abilityValues.put("ORIGIN", origin);
-        abilityValues.put("TYPE", origin);
+        abilityValues.put("TYPE", type);
         db.insert("ABILITIES", null, abilityValues);
     }
 

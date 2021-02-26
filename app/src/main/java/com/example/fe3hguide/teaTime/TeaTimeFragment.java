@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -35,9 +37,11 @@ public class TeaTimeFragment extends Fragment
     private final SQLiteDatabase db;
     private ImageView icon;
     private AutoCompleteTextView searchCharacter;
-    private ConstraintLayout infoTeas;
+    private ConstraintLayout layoutTeas, layoutTopics, layoutFinalConvos;
+    private Button buttonFavouriteTeas, buttonTopics, buttonFinalConvos;
+    private LinearLayout bottomTab;
 
-    public TeaTimeFragment(SQLiteDatabase db){
+    public TeaTimeFragment(SQLiteDatabase db) {
         this.db = db;
     }
 
@@ -49,8 +53,8 @@ public class TeaTimeFragment extends Fragment
 
         // Get all the names
         ArrayList<String> names = new ArrayList<>();
-        Cursor cursor = db.query("CHARACTERS", new String[] {"NAME"},
-                "NAME NOT LIKE ?", new String[] {"Byleth%"},
+        Cursor cursor = db.query("CHARACTERS", new String[]{"NAME"},
+                "NAME NOT LIKE ?", new String[]{"Byleth%"},
                 null, null, null);
         if (cursor.moveToFirst()) {
             do {
@@ -78,93 +82,174 @@ public class TeaTimeFragment extends Fragment
         buttonHaveTea.setOnClickListener(this);     // Button that displays information
 
         // Hide all elements with information about a specific character (nobody was selected yet)
-        infoTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
-        infoTeas.setVisibility(View.GONE);          // No information is shown yet
+        layoutTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
+        layoutTeas.setVisibility(View.GONE);          // No information is shown yet
+
+        // Get references to all info related to the different tabs
+        layoutTopics = (ConstraintLayout)
+                scrollView.findViewById(R.id.contraint_layout_info_topics);
+        layoutFinalConvos = (ConstraintLayout)
+                scrollView.findViewById(R.id.constraintLayout_info_final_convos);
+
+        // Hide bottom tab until the button "have tea" is clicked
+        bottomTab = (LinearLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
+        bottomTab.setVisibility(View.INVISIBLE);
+
+        // Prepare listeners for the bottom tab buttons
+        buttonFavouriteTeas = (Button) scrollView.findViewById(R.id.button_favorite_teas);
+        buttonTopics = (Button) scrollView.findViewById(R.id.button_topics);
+        buttonFinalConvos = (Button) scrollView.findViewById(R.id.button_final_convos);
+        buttonFavouriteTeas.setOnClickListener(this);
+        buttonTopics.setOnClickListener(this);
+        buttonFinalConvos.setOnClickListener(this);
 
         return scrollView;
     }
 
     @Override
     public void onClick(View view) {
-        /*
-         * When the button is clicked, if the name that was introduced corresponds to a
-         * character, their information is displayed.
-         */
+        switch (view.getId()) {
+            case R.id.button_have_tea:
+                /*
+                 * When the button is clicked, if the name that was introduced corresponds to a
+                 * character, their information is displayed.
+                 */
 
-        String character = searchCharacter.getText().toString();
-        // Search for the id of a character with the name that was introduced
-        Cursor cursor = db.query("CHARACTERS", new String[] {"_id"},
-                "NAME = ? AND NAME NOT LIKE ?", new String[] {character, "Byleth%"},
-                null, null, null);
+                String character = searchCharacter.getText().toString();
+                // Search for the id of a character with the name that was introduced
+                Cursor cursor = db.query("CHARACTERS", new String[]{"_id"},
+                        "NAME = ? AND NAME NOT LIKE ?", new String[]{character, "Byleth%"},
+                        null, null, null);
 
-        // If there are no characters with that name, the cursor returns 0 rows of the table
-        if (cursor.moveToFirst()){
-            int id = cursor.getInt(0);
+                // If there are no characters with that name, the cursor returns 0 rows of the table
+                if (cursor.moveToFirst()) {
+                    int id = cursor.getInt(0);
 
-            // Retrieve the favourite teas of the character
-            cursor = db.query("FAVOURITE_TEAS", new String[] {"TEA"}, "_id = ?",
-                    new String[] {Integer.toString(id)}, null, null, null);
-            ArrayList<String> teas = new ArrayList<>();
-            if (cursor.moveToFirst()) {
-                do {
-                    teas.add(cursor.getString(0));
-                } while (cursor.moveToNext());
-            }
-
-            // Retrieve the character's liked topics
-            cursor = db.query("TOPICS", new String[] {"TOPIC"}, "_id = ?",
-                    new String[] {Integer.toString(id)}, null, null, null);
-            ArrayList<String> topics = new ArrayList<>();
-            if (cursor.moveToFirst()) {
-                do {
-                    topics.add(cursor.getString(0));
-                } while (cursor.moveToNext());
-            }
-
-            // Retrieve the final conversations that can pop up and their valid answers
-            cursor = db.query("FINAL_CONVERSATIONS",
-                    new String[] {"CONVERSATION", "OPTION_1", "OPTION_2", "OPTION_3"},
-                    "_id = ?", new String[] {Integer.toString(id)},
-                    null, null, null);
-            ArrayList<String> finalConversations = new ArrayList<>();
-            ArrayList<ArrayList<String>> options = new ArrayList<>();
-            for (int i = 0; i < 3; i++){
-                options.add(new ArrayList<String>());
-            }
-            if (cursor.moveToFirst()) {
-                do {
-                    finalConversations.add(cursor.getString(0));
-                    for (int i = 0; i < 3; i++) {
-                        options.get(i).add(cursor.getString(i + 1));
+                    // Retrieve the favourite teas of the character
+                    cursor = db.query("FAVOURITE_TEAS", new String[]{"TEA"},
+                            "_id = ?",
+                            new String[]{Integer.toString(id)}, null, null,
+                            null);
+                    ArrayList<String> teas = new ArrayList<>();
+                    if (cursor.moveToFirst()) {
+                        do {
+                            teas.add(cursor.getString(0));
+                        } while (cursor.moveToNext());
                     }
-                } while (cursor.moveToNext());
-            }
 
-            // The information is shown to the user
-            showInfo(character, teas, topics, finalConversations, options);
+                    // Retrieve the character's liked topics
+                    cursor = db.query("TOPICS", new String[]{"TOPIC"}, "_id = ?",
+                            new String[]{Integer.toString(id)}, null, null,
+                            null);
+                    ArrayList<String> topics = new ArrayList<>();
+                    if (cursor.moveToFirst()) {
+                        do {
+                            topics.add(cursor.getString(0));
+                        } while (cursor.moveToNext());
+                    }
 
-            cursor.close();
+                    // Retrieve the final conversations that can pop up and their valid answers
+                    cursor = db.query("FINAL_CONVERSATIONS",
+                            new String[]{"CONVERSATION", "OPTION_1", "OPTION_2", "OPTION_3"},
+                            "_id = ?", new String[]{Integer.toString(id)},
+                            null, null, null);
+                    ArrayList<String> finalConversations = new ArrayList<>();
+                    ArrayList<ArrayList<String>> options = new ArrayList<>();
+                    for (int i = 0; i < 3; i++) {
+                        options.add(new ArrayList<String>());
+                    }
+                    if (cursor.moveToFirst()) {
+                        do {
+                            finalConversations.add(cursor.getString(0));
+                            for (int i = 0; i < 3; i++) {
+                                options.get(i).add(cursor.getString(i + 1));
+                            }
+                        } while (cursor.moveToNext());
+                    }
+
+                    // The information is shown to the user
+                    changeTab(0);
+                    showInfo(character, teas, topics, finalConversations, options);
+
+                    // The bottom tab is now visible
+                    bottomTab.setVisibility(View.VISIBLE);
+
+                    cursor.close();
+                }
+                break;
+            case R.id.button_favorite_teas:
+                buttonFavouriteTeas.setBackgroundResource(R.drawable.buttons_on);
+                buttonTopics.setBackgroundResource(R.drawable.buttons_off);
+                buttonFinalConvos.setBackgroundResource(R.drawable.buttons_off);
+
+                // Show views related to the character's favourite teas and hide the rest
+                changeTab(0);
+
+                break;
+            case R.id.button_topics:
+                buttonFavouriteTeas.setBackgroundResource(R.drawable.buttons_off);
+                buttonTopics.setBackgroundResource(R.drawable.buttons_on);
+                buttonFinalConvos.setBackgroundResource(R.drawable.buttons_off);
+
+                // Show views related to the topics and hide the rest
+                changeTab(1);
+
+                break;
+            case R.id.button_final_convos:
+                buttonFavouriteTeas.setBackgroundResource(R.drawable.buttons_off);
+                buttonTopics.setBackgroundResource(R.drawable.buttons_off);
+                buttonFinalConvos.setBackgroundResource(R.drawable.buttons_on);
+
+                // Show views related to the character's final conversations and hide the rest
+                changeTab(2);
+        }
+
+
+    }
+
+    // Method that displays the information regarding teas, topics or final convos depending on
+    // which button was clicked
+    private void changeTab(int button) {
+        switch (button) {
+            case 0:
+                layoutTeas.setVisibility(View.VISIBLE);
+                layoutTopics.setVisibility(View.GONE);
+                layoutFinalConvos.setVisibility(View.GONE);
+                break;
+            case 1:
+                layoutTeas.setVisibility(View.GONE);
+                layoutTopics.setVisibility(View.VISIBLE);
+                layoutFinalConvos.setVisibility(View.GONE);
+                break;
+            case 2:
+                layoutTeas.setVisibility(View.GONE);
+                layoutTopics.setVisibility(View.GONE);
+                layoutFinalConvos.setVisibility(View.VISIBLE);
         }
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Change the portrait to the icon of the selected character
         String name = (String) parent.getItemAtPosition(position);
-        Cursor cursor = db.query("CHARACTERS", new String[] {"PORTRAIT"},
-                "name = ?", new String[] {name},
+        Cursor cursor = db.query("CHARACTERS", new String[]{"PORTRAIT"},
+                "name = ?", new String[]{name},
                 null, null, null);
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             icon.setImageResource(cursor.getInt(0));
             icon.setVisibility(View.VISIBLE);
             // In case information for another character was on screen, it is hidden
-            infoTeas.setVisibility(View.GONE);
+            layoutTeas.setVisibility(View.GONE);
+            layoutTopics.setVisibility(View.GONE);
+            layoutFinalConvos.setVisibility(View.GONE);
+            bottomTab.setVisibility(View.INVISIBLE);
         }
         cursor.close();
     }
 
     private void showInfo(String character, List<String> teas, List<String> topics,
-                          List<String> finalConversations, List<ArrayList<String>> options){
+                          List<String> finalConversations, List<ArrayList<String>> options) {
 
         // Show information about the character's preferred teas
         TextView likedSpecifically = (TextView)
@@ -173,7 +258,8 @@ public class TeaTimeFragment extends Fragment
         TextView teasLikedSpecifically = (TextView)
                 getView().findViewById(R.id.textView_teas_liked_specifically);
         // Teas are shown in different lines. After the last line there's no new line
-        for (int i = 0; i < teas.size() - 1; i++){
+        teasLikedSpecifically.setText("");
+        for (int i = 0; i < teas.size() - 1; i++) {
             teasLikedSpecifically.append(teas.get(i) + "\n");
         }
         teasLikedSpecifically.append(teas.get(teas.size() - 1));
@@ -212,7 +298,7 @@ public class TeaTimeFragment extends Fragment
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerFinalConversations.setLayoutManager(layoutManager);
 
-        infoTeas.setVisibility(View.VISIBLE);
+        layoutTeas.setVisibility(View.VISIBLE);
     }
 
 

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.fe3hguide.R;
 
+import java.util.regex.Pattern;
+
 public class SupportsTextActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +26,18 @@ public class SupportsTextActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getStringExtra("supportRank");
         String text = intent.getStringExtra("supportText");
+
+        /*
+         * The text contains "\n" characters, but they are interpreted as string literals.
+         * I want to replace each one of those with 2 newlines. To find all instances of it,
+         * I used replaceAll. However, "\n" must be escaped *twice* ("\\\\n"). Using "\n", the
+         * regex engine would localize the new lines. Using "\\n", the compiler would escape
+         * the backlash and send "\n" to the regex (same result). Using "\\\n", the regex would
+         * search for a backlash followed by a newline. With "\\\\n", the compiler deletes two
+         * backlashes and the regex receives "\\n", so it translates it to the literal "\n", which
+         * gives the desired result.
+         */
+        text = text.replaceAll("\\\\n", "\n\n");
 
         TextView titleTextView = (TextView) findViewById(R.id.textView_support_rank);
         TextView textTextView = (TextView) findViewById(R.id.textView_support_text);

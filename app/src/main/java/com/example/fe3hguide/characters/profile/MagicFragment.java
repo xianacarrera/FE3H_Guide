@@ -54,7 +54,6 @@ public class MagicFragment extends Fragment {
 
         // Close cursor and database
         cursor.close();
-        db.close();
 
         return layout;
     }
