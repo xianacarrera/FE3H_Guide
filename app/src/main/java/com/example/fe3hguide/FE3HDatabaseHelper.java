@@ -69,6 +69,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         createCharactersTable(db);
         createAbilitiesTable(db);
+        createCombatArtsTables(db);
         createMagicTable(db);
         createCharacterGiftsTable(db);
         createCharacterMealsTable(db);
@@ -932,6 +933,176 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.insert("ABILITIES", null, abilityValues);
     }
 
+    private void createCombatArtsTables(SQLiteDatabase db){
+        db.execSQL("CREATE TABLE COMBAT_ARTS_ALL_WEAPON_PROFICIENT ( "
+                + "ART TEXT PRIMARY KEY, "
+                + "EFFECT TEXT, "
+                + "WEAPON TEXT, "
+                + "SKILL_LEVEL TEXT, "
+                + "DUR INTEGER, "
+                + "MT INTEGER, "
+                + "HIT INTEGER, "
+                + "AVO INTEGER, "
+                + "CRIT INTEGER, "
+                + "RANGE INTEGER);");
+
+        db.execSQL("CREATE TABLE COMBAT_ARTS_CHARACTERS_WEAPON_PROFICIENT ( "
+                + "ART TEXT PRIMARY KEY, "
+                + "EFFECT TEXT, "
+                + "WEAPON TEXT, "
+                + "SKILL_LEVEL TEXT, "
+                + "DUR INTEGER, "
+                + "MT INTEGER, "
+                + "HIT INTEGER, "
+                + "AVO INTEGER, "
+                + "CRIT INTEGER, "
+                + "RANGE INTEGER);");
+
+        db.execSQL("CREATE TABLE CHARACTER_HAS_COMBAT_ART_WEAPON_PROFICIENCY ( "
+                + "ART TEXT, "
+                + "CHARACTER TEXT, "
+                + "SPECIFIC_SKILL_LEVEL TEXT, "
+                + "PRIMARY KEY(ART, CHARACTER), "
+                + "CONSTRAINT FK_ART_HAS_COMBAT_ART_PROF FOREIGN KEY (ART) "
+                + "REFERENCES COMBAT_ARTS_CHARACTERS_WEAPON_PROFICIENT(ART) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE, "
+                + "CONSTRAINT FK_CHARAC_HAS_COMBAT_ART_PROF FOREIGN KEY (CHARACTER) "
+                + "REFERENCES CHARACTERS(NAME) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE);");
+
+        db.execSQL("CREATE TABLE COMBAT_ARTS_WEAPON_EXCLUSIVE ( "
+                + "ART TEXT PRIMARY KEY, "
+                + "EFFECT TEXT, "
+                + "WEAPON TEXT, "
+                + "CREST TEXT, "
+                + "DUR INTEGER, "
+                + "MT INTEGER, "
+                + "HIT INTEGER, "
+                + "AVO INTEGER, "
+                + "CRIT INTEGER, "
+                + "RANGE INTEGER);");
+
+        db.execSQL("CREATE TABLE COMBAT_ARTS_CLASS_MASTERY ( "
+                + "ART TEXT PRIMARY KEY, "
+                + "EFFECT TEXT, "
+                + "WEAPON TEXT, "
+                + "CLASS TEXT, "
+                + "DUR INTEGER, "
+                + "MT INTEGER, "
+                + "HIT INTEGER, "
+                + "AVO INTEGER, "
+                + "CRIT INTEGER, "
+                + "RANGE INTEGER);");
+
+        db.execSQL("CREATE TABLE COMBAT_ARTS_BUDDING_TALENTS ( "
+                + "ART TEXT, "
+                + "EFFECT TEXT, "
+                + "TALENT TEXT, "
+                + "CHARACTER TEXT, "
+                + "DUR INTEGER, "
+                + "MT INTEGER, "
+                + "HIT INTEGER, "
+                + "AVO INTEGER, "
+                + "CRIT INTEGER, "
+                + "RANGE INTEGER, "
+                + "PRIMARY KEY (ART, CHARACTER), "
+                + "CONSTRAINT FK_CA_BUDDING_TALENTS FOREIGN KEY (CHARACTER) "
+                + "REFERENCES CHARACTERS(NAME) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE);");
+
+        db.execSQL("CREATE TABLE COMBAT_ARTS_OTHER ( "
+                + "ART TEXT PRIMARY KEY, "
+                + "EFFECT TEXT, "
+                + "WEAPON TEXT, "
+                + "ORIGIN TEXT, "
+                + "DUR INTEGER, "
+                + "MT INTEGER, "
+                + "HIT INTEGER, "
+                + "AVO INTEGER, "
+                + "CRIT INTEGER, "
+                + "RANGE INTEGER);");
+
+        insertCombatArtsWeaponProf(db);
+    }
+
+    private void insertCombatArtsWeaponProf(SQLiteDatabase db){
+        String line = null;
+        InputStream is = context.getResources().openRawResource(R.raw.combat_arts_weapon_prof_char);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCAWeaponProfChar(db, parts[0], parts[1], parts[2], parts[3], parts[4],
+                        parts[5], parts[6], parts[7], parts[8], parts[9]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
+        InputStream is2 = context.getResources().openRawResource(R.raw.combat_arts_weapon_prof_all);
+        BufferedReader reader2 = new BufferedReader(new InputStreamReader(is2));
+        try {
+            while ((line = reader2.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCAWeaponProfAll(db, parts[0], parts[1], parts[2], parts[3], parts[4],
+                        parts[5], parts[6], parts[7], parts[8], parts[9]);
+            }
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader2.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertCAWeaponProfAll(SQLiteDatabase db, String art, String effect, String weapon,
+                                       String skillLevel, String dur, String mt, String hit,
+                                       String avo, String crit, String range) {
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("ART", art);
+        combatArtValues.put("EFFECT", effect);
+        combatArtValues.put("WEAPON", weapon);
+        combatArtValues.put("SKILL_LEVEL", skillLevel);
+        combatArtValues.put("DUR", Integer.valueOf(dur));
+        combatArtValues.put("MT", Integer.valueOf(mt));
+        combatArtValues.put("HIT", Integer.valueOf(hit);
+        combatArtValues.put("AVO", Integer.valueOf(avo));
+        combatArtValues.put("CRIT", Integer.valueOf(crit));
+        combatArtValues.put("RANGE", Integer.valueOf(range));
+        db.insert("COMBAT_ARTS_ALL_WEAPON_PROFICIENT", null,
+                combatArtValues);
+    }
+
+    private void insertCAWeaponProfChar(SQLiteDatabase db, String art, String effect, String weapon,
+                                        String skillLevel, String dur, String mt, String hit,
+                                        String avo, String crit, String range) {
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("ART", art);
+        combatArtValues.put("EFFECT", effect);
+        combatArtValues.put("WEAPON", weapon);
+        combatArtValues.put("SKILL_LEVEL", skillLevel);
+        combatArtValues.put("DUR", Integer.valueOf(dur));
+        combatArtValues.put("MT", Integer.valueOf(mt));
+        combatArtValues.put("HIT", Integer.valueOf(hit);
+        combatArtValues.put("AVO", Integer.valueOf(avo));
+        combatArtValues.put("CRIT", Integer.valueOf(crit));
+        combatArtValues.put("RANGE", Integer.valueOf(range));
+        db.insert("COMBAT_ARTS_CHARACTERS_WEAPON_PROFICIENT", null,
+                combatArtValues);
+    }
+
+    private void insert
+
     private void createMagicTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE MAGIC ( "
                 + "_id INTEGER, "
@@ -950,9 +1121,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split(Pattern.quote("$"));
                 insertMagic(db, parts[0], parts[1], parts[2], parts[3]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -984,9 +1160,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split("_");
                 insertCharacterGift(db, parts[0], parts[1], parts[2], parts[3]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1017,9 +1198,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split("_");
                 insertCharacterMeal(db, parts[0], parts[1], parts[2]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1047,9 +1233,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split("_");
                 insertCharacterLostItem(db, parts[0], parts[1]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1076,9 +1267,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split(Pattern.quote("_"));
                 insertFavouriteTea(db, parts[0], parts[1]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1105,9 +1301,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split(Pattern.quote("_"));
                 insertTopic(db, parts[0], parts[1]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1137,9 +1338,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split(Pattern.quote("_"));
                 insertFinalConversation(db, parts[0], parts[1], parts[2], parts[3], parts[4]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1236,9 +1442,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1252,9 +1463,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1268,9 +1484,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1284,9 +1505,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1300,9 +1526,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1316,9 +1547,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1332,9 +1568,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1348,9 +1589,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1364,9 +1610,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1380,9 +1631,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1396,9 +1652,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1412,9 +1673,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1428,9 +1694,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1444,9 +1715,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1460,9 +1736,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1476,9 +1757,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1492,9 +1778,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1508,9 +1799,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1524,9 +1820,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1540,9 +1841,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1556,9 +1862,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1572,9 +1883,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1588,9 +1904,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1604,9 +1925,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1620,9 +1946,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1636,9 +1967,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1652,9 +1988,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1668,9 +2009,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1684,9 +2030,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1700,9 +2051,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1716,9 +2072,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1732,9 +2093,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1748,9 +2114,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1764,9 +2135,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1780,9 +2156,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1796,9 +2177,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1812,9 +2198,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1828,9 +2219,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1844,9 +2240,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 insertSupport(db, parts[0], parts[1], parts[2], parts[3], parts[4],
                         parts[5], parts[6], parts[7]);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 }

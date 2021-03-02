@@ -1,0 +1,16 @@
+Astra_5 consecutive hits at 30% Mt_Sword_Master Swordmaster_-9_-_-10_-_-_1
+Assassinate_Can kill enemies instantly_Sword_Master Assassin_-5_-_+15_-_+15_1
+Hunter's Volley_2 consecutive hits_Bow_Master Sniper_-5_+1_+15_-_+10_2-3
+Fierce Iron Fist_3 consecutive hits_Brawl_Master Grappler_-5_+1_-_+10_-_1
+Foul Play_Unit swaps positions with an ally in range_None_Master Trickster_-_-_-_-_-_1-5
+Pneuma Gale_Magic attack_Brawl_Master War Monk or War Cleric_-3_+7_+10_-_-_1-2
+War Master's Strike_Effective against all foes_Axe_Master War Master_-5_+3_+30_-_-_1
+Flickering Flower_After combat, prevents foe from moving for 1 turn_Axe_Master Emperor_-3_+10_+10_+10_-_1
+Paraselene_After combat, user moves 1 space backwards_Lance_Master Great Lord_-3_+10_-_-_+10_1
+Wind God_-_Bow_Master Barbarossa_-3_+5_+20_-_-_2-5
+Swap_User swaps places with an ally_None_Master Myrmidon_-_-_-_-_-_1
+Shove_User pushes ally forward 1 space_None_Master Fighter_-_-_-_-_-_1
+Reposition_User moves ally to the space behind the user_None_Master Soldier_-_-_-_-_-_1
+Draw Back_User moves 1 space backwards and ally is moved to where the user was previously_Master Monk_-_-_-_-_-_1
+Subdue_Leaves foe with at least 1 HP_Sword_Master Lord_-3_-_+20_-_-_1
+Triangle Attack_Can only be triggered when 3 allied Flying units (including the user) are adjacent to the same enemy. Only user needs to know Triangle Attack_Any weapon_-3_+8_+30_-_+40_1

@@ -1,0 +1,121 @@
+Bane of Monsters_Byleth_-
+Bane of Monsters_Petra_-
+Bane of Monsters_Claude_-
+Bane of Monsters_Catherine_-
+Bane of Monsters_Balthus_-
+Haze Slice_Edelgard_-
+Haze Slice_Ignatz_-
+Haze Slice_Seteth_-
+Haze Slice_Jeritza_-
+Hexblade_Edelgard_A
+Hexblade_Dorothea_C+
+Hexblade_Ingrid_A
+Hexblade_Manuela_C+
+Hexblade_Anna_A
+Hexblade_Constance_A
+Sunder_Ferdinand_-
+Sunder_Dimitri_-
+Sunder_Felix_-
+Soulblade_Marianne_-
+Soulblade_Anna_-
+Soulblade_Constance_-
+Windsweep_Byleth_A
+Windsweep_Dimitri_A
+Windsweep_Jeritza_A
+Windsweep_Yuri_C+
+Finesse Blade_Petra_-
+Finesse Blade_Felix_-
+Finesse Blade_Claude_-
+Finesse Blade_Catherine_-
+Finesse Blade_Yuri_-
+Shatter Slash_Ferdinand_-
+Shatter Slash_Hilda_-
+Shatter Slash_Gilbert_-
+Shatter Slash_Jeritza_-
+Vengeance_Bernadetta_-
+Vengeance_Dedue_-
+Vengeance_Cyril_-
+Monster Piercer_Dimitri_-
+Monster Piercer_Sylvain_-
+Monster Piercer_Leonie_-
+Monster Piercer_Seteth_-
+Hit and Run_Ingrid_-
+Hit and Run_Flayn_-
+Hit and Run_Shamir_-
+Frozen Lance_Ingrid_A
+Frozen Lance_Lorenz_C+
+Frozen Lance_Flayn_A
+Swift Strikes_Ferdinand_-
+Swift Strikes_Sylvain_-
+Swift Strikes_Seteth_-
+Glowing Ember_Dimitri_-
+Glowing Ember_Gilbert_-
+Glowing Ember_Jeritza_-
+Lance Jab_Leonie_-
+Lance Jab_Cyril_-
+Lance Jab_Shamir_-
+Monster Breaker_Edelgard_-
+Monster Breaker_Dedue_-
+Monster Breaker_Cyril_-
+Focused Strike_Ferdinand_-
+Focused Strike_Ashe_-
+Focused Strike_Seteth_-
+Wild Abandon_Caspar_-
+Wild Abandon_Petra_-
+Wild Abandon_Raphael_-
+Lightning Axe_Edelgard_A
+Lightning Axe_Annette_C+
+Lightning Axe_Sylvain_A
+Spike_Sylvain_-
+Spike_Hilda_-
+Spike_Alois_-
+Spike_Gilbert_-
+Spike_Anna_-
+Diamond Axe_Petra_A
+Diamond Axe_Hilda_A
+Diamond Axe_Seteth_A
+Diamond Axe_Balthus_C+
+Armored Strike_Ferdinand_-
+Armored Strike_Dedue_-
+Armored Strike_Cyril_-
+Armored Strike_Anna_-
+Armored Strike_Balthus_-
+Exhaustive Strike_Caspar_-
+Exhaustive Strike_Alois_-
+Heavy Draw_Hubert_-
+Heavy Draw_Felix_-
+Heavy Draw_Shamir_-
+Deadeye_Bernadetta_-
+Deadeye_Ashe_-
+Waning Shot_Petra_C+
+Waning Shot_Ashe_A
+Monster Blast_Claude_C+
+Monster Blast_Shamir_A
+Break Shot_Ignatz_-
+Break Shot_Leonie_-
+Break Shot_Anna_-
+Schism Shot_Hubert_A
+Schism Shot_Hanneman_C+
+Point-Blank Volley_Leonie_A
+Point-Blank Volley_Cyril_C+
+Encloser_Claude_-
+Encloser_Bernadetta_-
+Ward Arrow_Ignatz_-
+Ward Arrow_Hanneman_-
+Draining Blow_Byleth_C+
+Draining Blow_Raphael_A
+Draining Blow_Balthus_C+
+Bombard_Caspar_C+
+Bombard_Catherine_A
+One-Two Punch_Dedue_-
+One-Two Punch_Alois_-
+Nimble Combo_Felix_-
+Nimble Combo_Catherine_-
+Nimble Combo_Jeritza_-
+Monster Crusher_Raphael_-
+Mystic Blow_Byleth_-
+Mystic Blow_Felix_-
+Mighty Blow_Caspar_-
+Mighty Blow_Dedue_-
+Mighty Blow_Alois_-
+Mighty Blow_Balthus_-

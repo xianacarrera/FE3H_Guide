@@ -1,0 +1,10 @@
+Wrath Strike_-_Sword_D_-3_+5_+10_-_-_1
+Grounder_Effective against Flying enemies_Sword_C_-4_+3_+20_-_+5_1
+Tempest Lance_-_Lance_D_-5_+8_+10_-_-_1
+Knightkneeler_Effective against Cavalry enemies_Lance_C_-4_+5_+15_-_-_1
+Smash_-_Axe_D_-5_+3_+20_-_+20_1
+Helm Splitter_Effective against Armored enemies_Axe_C_-5_+7_-_-_+5_1
+Curved Shot_-_Bow_D_-3_+1_+30_-_-_2-3
+Fading Blow_After combat, user moves 1 space backwards_Brawl_D_-3_+6_+10_+30_-_1
+Rushing Blow_After combat, user moves 1 space in front of the enemy_Brawl_C_-3_+7_+20_+10_-_1
+Healing Focus_Restores 50% of the user's HP_Brawl_B_-_-_-_-_-_-

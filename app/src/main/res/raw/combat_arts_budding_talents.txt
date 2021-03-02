@@ -1,0 +1,9 @@
+Soulblade_Deals magic-based damage. Might increases based on user's Resistance_Sword_Lysithea_-4_+2_+10_-_-_1
+Frozen Lance_Deals magic-based damage. Might increases based on user's Dexterity_Lance_Hubert_-4_+3_+5_-_-_1
+Frozen Lance_Deals magic-based damage. Might increases based on user's Dexterity_Lance_Marianne_-4_+3_+5_-_-_1
+Shatter Slash_Foes hit by this attack suffer -5 Def for 1 turn_Lance_Ashe_-3_+4_+10_-_-_1
+Diamond Axe_-_Axe_Claude_-7_+14_-20_-_-_1
+Exhaustive Strike_Depletes all of the weapon's remaining durability and adds 30% of that value to Might_Axe_Hapi_-1_+3_+10_-_-_1
+Waning Shot_Foes hit by this attack suffer -5 Str for 1 turn_Bow_Mercedes_-3_+4_+10_-_-_2-3
+Deadeye_-_Bow_Yuri_-5_+6_-_-_-_3-5
+Mystic Blow_Deals magic-based damage_Brawl_Constance_-3_+10_+10_-_-_1

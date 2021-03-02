@@ -94,8 +94,10 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
 
                         // Populate character2 with characters with whom the selected one has supports
                         cursor = db.rawQuery("SELECT C.NAME FROM SUPPORTS AS S JOIN CHARACTERS " +
-                                        "AS C ON S.CHARACTER_2 = C._id WHERE S.CHARACTER_1 = ?",
-                                new String[]{Integer.toString(_id)});
+                                        "AS C ON S.CHARACTER_2 = C._id WHERE S.CHARACTER_1 = ? " +
+                                        "UNION SELECT C.NAME FROM SUPPORTS AS S JOIN CHARACTERS " +
+                                        "AS C ON S.CHARACTER_1 = C._id WHERE S.CHARACTER_2 = ?",
+                                new String[]{Integer.toString(_id), Integer.toString(_id)});
                         ArrayList<String> namesCharacters2 = new ArrayList<>();
                         if (cursor.moveToFirst()) {
                             do {
@@ -131,8 +133,8 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                  */
                 @Override
                 public void onItemSelected(View view, int position, long id) {
-                    if (searchableSpinnerAdapter1.getItem(position) == null ||
-                            !(searchableSpinnerAdapter1.getItem(position) instanceof String)) {
+                    if (searchableSpinnerAdapter2.getItem(position) == null ||
+                            !(searchableSpinnerAdapter2.getItem(position) instanceof String)) {
                         /*
                          * Among the options displayed, there's one line that says "select a
                          * character". Without this check, clicking on it would cause an exception

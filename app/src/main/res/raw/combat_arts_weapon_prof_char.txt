@@ -1,0 +1,39 @@
+Bane of Monsters_Effective against Monsters_Sword_C+_-4_+6_-_-_+10_1
+Haze Slice_-_Sword_C+_-5_+2_-_+30_-_1
+Hexblade_Deals magic-based damage_Sword_C+/A_-3_+7_+10_-_-_1
+Sunder_-_Sword_C+_-3_+4_-_-_+15_1
+Soulblade_Deals magic-based damage, Might increases based on user's Resistance_Sword_C+_-4_+2_+10_-_-_1
+Windsweep_Prevents enemy counterattack_Sword_C+/A_-5_+3_+20_-_+10_1
+Finesse Blade_Might increases based on user's Dexterity_Sword_A_-4_+2_-_+10_-_1
+Shatter Slash_After combat, inflicts Def -5 on foe for 1 turn_Lance_C+_-3_+4_+10_-_-_1
+Vengeance_Damage increases in relation to the user's missing HP_Lance_C+_-4_+2_-_-_+10_1
+Monster Piercer_Effective against Monsters_Lance_C+_-4_+7_-_-_-_1
+Hit and Run_After combat, user moves 1 space backwards_Lance_C+_-4_+4_+10_+20_-_1
+Frozen Lance_Deals magic-based damage. Might increases based on user's Dexterity_Lance_C+/A_-4_+3_+5_-_-_1
+Swift Strikes_Triggers 2 consecutive hits_Lance_A_-4_+2_-_-_-_1
+Glowing Ember_Might increases based on user's Defense_Lance_A_-4_+2_-_+10_-_1
+Lance Jab_Might increases based on user's Speed_Lance_A_-5_+3_-_-_+10_1
+Monster Breaker_Effective against Monsters_Axe_C+_-5_+9_-_-_-_1
+Focused Strike_-_Axe_C+_-3_-_+30_-_-_1
+Wild Abandon_-_Axe_C+_-5_+10_-30_-_+30_1
+Lightning Axe_Deals magic-based damage. Might increases based on user's Resistance_Axe_C+/A_-3_+4_-_-_-_1
+Spike_-_Axe_C+_-5_+5_+15_-_+10_1
+Diamond Axe_-_Axe_C+/A_-7_+14_-20_-_-_1
+Armored Strike_Might increases based on user's Defense_Axe_A_-3_+4_-_-_-_1
+Exhaustive Strike_Depletes all of the weapon's remaining durability and adds 30% of that value to Might_Axe_A_-1_+3_+10_-_-_1
+Heavy Draw_-_Bow_C+_-5_+8_+10_-_-_2
+Deadeye_-_Bow_C+_-5_+6_-_-_-_3-5
+Waning Shot_After combat, inflicts Str -5 on foe for 1 turn_Bow_C+/A_-3_+4_+10_-_-_2-3
+Monster Blast_Effective against Monsters_Bow_C+/A_-4_+5_-_-_+10_2
+Break Shot_After combat, inflicts Def -5 on foe for 1 turn_Bow_C+_-3_+4_+5_-_-_2-3
+Schism Shot_After combat, inflicts Res -5 on foe for 1 turn_Bow_C+/A_-3_+4_+15_-_-_2-3
+Point-Blank Volley_2 consecutive hits_Bow_C+/A_-4_+3_+10_+10_-_1
+Encloser_Prevents foe from moving for 1 turn_Bow_A_-3_+4_+15_-_-_2
+Ward Arrow_Prevents foe from using magic for 1 turn_Bow_A_-3_+4_+15_-_-_2
+Draining Blow_Restores HP equal to 50% of the damage inflicted to the enemy_Brawl_C+/A_-3_+5_+20_-_-_1
+Bombard_Triggers 2 consecutive hits_Brawl_C+/A_-3_+3_-_-_+10_1
+One-Two Punch_Triggers a follow-up attack_Brawl_C+_-4_+8_+20_-_-_1
+Nimble Combo_2 consecutive hits_Brawl_C+_-3_+4_-_+20_-_1
+Monster Crusher_Effective against Monsters_Brawl_C+_-4_+13_+10_-_+10_1
+Mystic Blow_Deals magic-based magic_Brawl_A_-3_+10_+10_-_-_1
+Mighty Blow_-_Brawl_A_-3_+10_-5_-_+20_1
