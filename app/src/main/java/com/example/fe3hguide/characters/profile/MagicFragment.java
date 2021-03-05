@@ -36,9 +36,9 @@ public class MagicFragment extends Fragment {
                 inflater.inflate(R.layout.fragment_magic, container, false);
 
         // Get the information about the character's magic spells
-        Cursor cursor = db.rawQuery("SELECT m.REASON, m.FAITH " +
-                "FROM CHARACTERS AS c NATURAL JOIN MAGIC AS m " +
-                "WHERE c.NAME = ?", new String[] {character});
+        Cursor cursor = db.rawQuery("SELECT m.reason, m.faith " +
+                "FROM Characters AS c NATURAL JOIN Magic AS m " +
+                "WHERE c.name = ?", new String[] {character});
 
         ArrayList<String> reasonSpells = new ArrayList<>(8);
         ArrayList<String> faithSpells = new ArrayList<>(8);

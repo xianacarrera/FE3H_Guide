@@ -2,6 +2,7 @@ package com.example.fe3hguide.characters.navigation;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,10 @@ public class CharactersFragment extends Fragment {
                              Bundle savedInstanceState) {
         LinearLayout layout = (LinearLayout)
                 inflater.inflate(R.layout.fragment_characters, container, false);
+
+        // Set "Characters" as the text in the toolbar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().
+                setTitle(getString(R.string.nav_characters));
 
         // Create an ArrayList with the names of the factions
         ArrayList<String> factionsNames = createFactionsNames();

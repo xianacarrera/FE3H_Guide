@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -51,10 +53,14 @@ public class TeaTimeFragment extends Fragment
         ScrollView scrollView = (ScrollView) inflater.inflate(
                 R.layout.fragment_tea_time, container, false);
 
+        // Set "Tea time" as the text in the toolbar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().
+                setTitle(getString(R.string.nav_tea_time));
+
         // Get all the names
         ArrayList<String> names = new ArrayList<>();
-        Cursor cursor = db.query("CHARACTERS", new String[]{"NAME"},
-                "NAME NOT LIKE ?", new String[]{"Byleth%"},
+        Cursor cursor = db.query("Characters", new String[]{"name"},
+                "name not like ?", new String[]{"Byleth%"},
                 null, null, null);
         if (cursor.moveToFirst()) {
             do {
@@ -117,8 +123,8 @@ public class TeaTimeFragment extends Fragment
 
                 String character = searchCharacter.getText().toString();
                 // Search for the id of a character with the name that was introduced
-                Cursor cursor = db.query("CHARACTERS", new String[]{"_id"},
-                        "NAME = ? AND NAME NOT LIKE ?", new String[]{character, "Byleth%"},
+                Cursor cursor = db.query("Characters", new String[]{"_id"},
+                        "name = ? and name not like ?", new String[]{character, "Byleth%"},
                         null, null, null);
 
                 // If there are no characters with that name, the cursor returns 0 rows of the table
@@ -126,7 +132,7 @@ public class TeaTimeFragment extends Fragment
                     int id = cursor.getInt(0);
 
                     // Retrieve the favourite teas of the character
-                    cursor = db.query("FAVOURITE_TEAS", new String[]{"TEA"},
+                    cursor = db.query("FavouriteTeas", new String[]{"tea"},
                             "_id = ?",
                             new String[]{Integer.toString(id)}, null, null,
                             null);
@@ -138,7 +144,7 @@ public class TeaTimeFragment extends Fragment
                     }
 
                     // Retrieve the character's liked topics
-                    cursor = db.query("TOPICS", new String[]{"TOPIC"}, "_id = ?",
+                    cursor = db.query("Topics", new String[]{"topic"}, "_id = ?",
                             new String[]{Integer.toString(id)}, null, null,
                             null);
                     ArrayList<String> topics = new ArrayList<>();
@@ -149,8 +155,8 @@ public class TeaTimeFragment extends Fragment
                     }
 
                     // Retrieve the final conversations that can pop up and their valid answers
-                    cursor = db.query("FINAL_CONVERSATIONS",
-                            new String[]{"CONVERSATION", "OPTION_1", "OPTION_2", "OPTION_3"},
+                    cursor = db.query("FinalConversations",
+                            new String[]{"conversation", "option1", "option2", "option3"},
                             "_id = ?", new String[]{Integer.toString(id)},
                             null, null, null);
                     ArrayList<String> finalConversations = new ArrayList<>();
@@ -233,7 +239,7 @@ public class TeaTimeFragment extends Fragment
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Change the portrait to the icon of the selected character
         String name = (String) parent.getItemAtPosition(position);
-        Cursor cursor = db.query("CHARACTERS", new String[]{"PORTRAIT"},
+        Cursor cursor = db.query("Characters", new String[]{"portrait"},
                 "name = ?", new String[]{name},
                 null, null, null);
         if (cursor.moveToFirst()) {

@@ -12,40 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/tea_time_heading"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/content_description_heading"
-                android:scaleType="fitXY"
-                android:src="@drawable/heading_tea_time" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="28dp"
-                android:text="@string/nav_tea_time"
-                android:textAppearance="@style/tea_time_title" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="24dp"
-                android:src="@drawable/tea_cup_icon" />
-        </FrameLayout>
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contraint_search_tea_character"
             android:layout_width="match_parent"
@@ -54,7 +20,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/rectangle"
-            app:layout_constraintTop_toBottomOf="@+id/tea_time_heading">
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <AutoCompleteTextView

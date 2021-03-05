@@ -3,7 +3,6 @@ package com.example.fe3hguide.characters.profile;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.fe3hguide.FE3HDatabaseHelper;
 import com.example.fe3hguide.R;
 
 import java.util.ArrayList;
@@ -29,6 +27,7 @@ public class AbilitiesFragment extends Fragment {
     private Dialog myDialog;
     private final String character;
     private final SQLiteDatabase db;
+    private final AbilitiesFragment fragment;
 
     public AbilitiesFragment(String character, SQLiteDatabase db){
         if (character.equals("BylethM") || character.equals("BylethF")){
@@ -38,6 +37,7 @@ public class AbilitiesFragment extends Fragment {
         }
 
         this.db = db;
+        this.fragment = this;
     }
 
     @Override
@@ -52,8 +52,8 @@ public class AbilitiesFragment extends Fragment {
          * ability, the learned abilities not common to all the characters and those ones
          * coming from budding talents.
          */
-        Cursor cursor = db.rawQuery("SELECT ABILITY " +
-                "FROM ABILITIES WHERE ORIGIN LIKE ?", new String[] {"%" + character + "%"});
+        Cursor cursor = db.rawQuery("SELECT ability " +
+                "FROM Abilities WHERE origin LIKE ?", new String[] {"%" + character + "%"});
 
         ArrayList<String> uniqueAbilities = new ArrayList<>();
         if (cursor.moveToFirst()){
@@ -64,7 +64,7 @@ public class AbilitiesFragment extends Fragment {
 
         // Create adapter for the unique abilities recycler view and link them
         AbilitiesAdapter uniqueAdapter = new AbilitiesAdapter(uniqueAbilities, this);
-        RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_abilities_1);
+        RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
         uniqueRecycler.setAdapter(uniqueAdapter);
 
         // Display the abilities stacked vertically
@@ -78,9 +78,8 @@ public class AbilitiesFragment extends Fragment {
          */
 
         // By default, prepare the second recycler view to show all the abilities (not unique)
-        cursor = db.rawQuery("SELECT ABILITY " +
-                "FROM ABILITIES WHERE TYPE NOT LIKE ?",
-                new String[] {"%Unique%"});
+        cursor = db.rawQuery("SELECT ability " +
+                "FROM Abilities WHERE type NOT LIKE ?", new String[] {"%Unique%"});
 
         ArrayList<String> defaultAbilities = new ArrayList();
         if (cursor.moveToFirst()){
@@ -92,7 +91,7 @@ public class AbilitiesFragment extends Fragment {
         // Prepare the adapter
         AbilitiesAdapter defaultAdapter = new AbilitiesAdapter(defaultAbilities, this);
         final RecyclerView allAbilitiesRecycler = (RecyclerView)
-                layout.findViewById(R.id.recycler_abilities_2);
+                layout.findViewById(R.id.recycler_combat_arts_2);
         allAbilitiesRecycler.setAdapter(defaultAdapter);
 
         // Display the abilities stacked vertically
@@ -102,7 +101,7 @@ public class AbilitiesFragment extends Fragment {
         cursor.close();
 
         // Attach a listener to the spinner
-        final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_abilities);
+        final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -112,26 +111,26 @@ public class AbilitiesFragment extends Fragment {
                 Cursor cursor = null;
                 switch (selection){
                     case "All abilities":
-                        cursor = db.rawQuery("SELECT ABILITY " +
-                                        "FROM ABILITIES WHERE TYPE NOT LIKE ?",
+                        cursor = db.rawQuery("SELECT ability " +
+                                        "FROM Abilities WHERE type NOT LIKE ?",
                                 new String[] {"%Unique%"});
                         break;
                     case "Skill level abilities":
-                        cursor = db.rawQuery("SELECT ABILITY " +
-                                        "FROM ABILITIES WHERE TYPE LIKE ? AND TYPE NOT LIKE ?",
+                        cursor = db.rawQuery("SELECT ability " +
+                                        "FROM Abilities WHERE type LIKE ? AND type NOT LIKE ?",
                                 new String[] {"%Learned%", "%Unique%"});
                         break;
                     case "Class abilities":
-                        cursor = db.rawQuery("SELECT ABILITY " +
-                                "FROM ABILITIES WHERE TYPE LIKE ?", new String[] {"%Class%"});
+                        cursor = db.rawQuery("SELECT ability " +
+                                "FROM Abilities WHERE type LIKE ?", new String[] {"%Class%"});
                         break;
                     case "Class mastery abilities":
-                        cursor = db.rawQuery("SELECT ABILITY " +
-                                "FROM ABILITIES WHERE TYPE LIKE ?", new String[] {"%Master%"});
+                        cursor = db.rawQuery("SELECT ability " +
+                                "FROM abilities WHERE type LIKE ?", new String[] {"%Master%"});
                         break;
                     case "Other abilities":
-                        cursor = db.rawQuery("SELECT ABILITY " +
-                                "FROM ABILITIES WHERE TYPE LIKE ?", new String[] {"%Other%"});
+                        cursor = db.rawQuery("SELECT ability " +
+                                "FROM Abilities WHERE type LIKE ?", new String[] {"%Other%"});
                 }
 
                 ArrayList abilities = new ArrayList();
@@ -144,8 +143,7 @@ public class AbilitiesFragment extends Fragment {
                 cursor.close();
 
                 // Create a new adapter and link it to the recycler view
-                AbilitiesAdapter abilitiesAdapter = new AbilitiesAdapter(abilities,
-                        (AbilitiesFragment) getParentFragment());
+                AbilitiesAdapter abilitiesAdapter = new AbilitiesAdapter(abilities, fragment);
                 allAbilitiesRecycler.setAdapter(abilitiesAdapter);
 
                 // TODO: is it necessary to add another LayoutManager to the recycler view?
@@ -178,9 +176,9 @@ public class AbilitiesFragment extends Fragment {
         titleAbilityName.setText(ability);
 
         // Search in the database for the icon, effect and origin of the ability
-        Cursor cursor = db.rawQuery("SELECT ICON, EFFECT, ORIGIN " +
-                "FROM ABILITIES " +
-                "WHERE ABILITY = ?", new String[] {ability});
+        Cursor cursor = db.rawQuery("SELECT icon, effect, origin " +
+                "FROM Abilities " +
+                "WHERE ability = ?", new String[] {ability});
 
         if (cursor.moveToFirst()) {
             // Show the icon of the ability

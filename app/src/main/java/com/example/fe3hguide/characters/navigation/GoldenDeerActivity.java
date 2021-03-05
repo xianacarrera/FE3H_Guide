@@ -18,9 +18,13 @@ public class GoldenDeerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters_navigation);
+
         // Set up the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Set "Characters" as the text in the toolbar
+        toolbar.setTitle(getString(R.string.nav_characters));
 
         // Create an ArrayList with the names of the Golden Deer members
         ArrayList<String> goldenDeerNames = createGoldenDeerNames();

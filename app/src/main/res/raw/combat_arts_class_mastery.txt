@@ -11,6 +11,6 @@ Wind God_-_Bow_Master Barbarossa_-3_+5_+20_-_-_2-5
 Swap_User swaps places with an ally_None_Master Myrmidon_-_-_-_-_-_1
 Shove_User pushes ally forward 1 space_None_Master Fighter_-_-_-_-_-_1
 Reposition_User moves ally to the space behind the user_None_Master Soldier_-_-_-_-_-_1
-Draw Back_User moves 1 space backwards and ally is moved to where the user was previously_Master Monk_-_-_-_-_-_1
+Draw Back_User moves 1 space backwards and ally is moved to where the user was previously_None_Master Monk_-_-_-_-_-_1
 Subdue_Leaves foe with at least 1 HP_Sword_Master Lord_-3_-_+20_-_-_1
-Triangle Attack_Can only be triggered when 3 allied Flying units (including the user) are adjacent to the same enemy. Only user needs to know Triangle Attack_Any weapon_-3_+8_+30_-_+40_1
+Triangle Attack_Can only be triggered when 3 allied Flying units (including the user) are adjacent to the same enemy. Only user needs to know Triangle Attack_Any weapon_Master Pegasus Knight_-3_+8_+30_-_+40_1

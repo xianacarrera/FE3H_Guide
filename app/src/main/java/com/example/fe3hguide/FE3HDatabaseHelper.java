@@ -85,10 +85,10 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void createCharactersTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE CHARACTERS ( "
+        db.execSQL("CREATE TABLE Characters ( "
                 + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "NAME TEXT, "
-                + "PORTRAIT INTEGER);");
+                + "name TEXT, "
+                + "portrait INTEGER);");
 
         insertCharacters(db);
     }
@@ -140,19 +140,18 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
 
     public static void insertCharacter(SQLiteDatabase db, String name, int portraitId) {
         ContentValues characterValues = new ContentValues();
-        characterValues.put("NAME", name);
-        characterValues.put("PORTRAIT", portraitId);
-        db.insert("CHARACTERS", null, characterValues);
+        characterValues.put("name", name);
+        characterValues.put("portrait", portraitId);
+        db.insert("Characters", null, characterValues);
     }
 
     private void createAbilitiesTable(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE ABILITIES ( " +
-                "ABILITY TEXT, " +
-                "ICON INTEGER, " +
-                "EFFECT TEXT, " +
-                "ORIGIN TEXT, " +
-                "TYPE TEXT, " +
-                "PRIMARY KEY (ABILITY));");
+        db.execSQL("CREATE TABLE Abilities ( " +
+                "ability TEXT PRIMARY KEY, " +
+                "icon INTEGER, " +
+                "effect TEXT, " +
+                "origin TEXT, " +
+                "type TEXT);");
 
         insertLearnedAbilities(db);
         insertPersonalAbilities(db);
@@ -925,107 +924,112 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     private void insertAbility(SQLiteDatabase db, String ability, int icon, String effect,
                                String origin, String type){
         ContentValues abilityValues = new ContentValues();
-        abilityValues.put("ABILITY", ability);
-        abilityValues.put("ICON", icon);
-        abilityValues.put("EFFECT", effect);
-        abilityValues.put("ORIGIN", origin);
-        abilityValues.put("TYPE", type);
-        db.insert("ABILITIES", null, abilityValues);
+        abilityValues.put("ability", ability);
+        abilityValues.put("icon", icon);
+        abilityValues.put("effect", effect);
+        abilityValues.put("origin", origin);
+        abilityValues.put("type", type);
+        db.insert("Abilities", null, abilityValues);
     }
 
     private void createCombatArtsTables(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE COMBAT_ARTS_ALL_WEAPON_PROFICIENT ( "
-                + "ART TEXT PRIMARY KEY, "
-                + "EFFECT TEXT, "
-                + "WEAPON TEXT, "
-                + "SKILL_LEVEL TEXT, "
-                + "DUR INTEGER, "
-                + "MT INTEGER, "
-                + "HIT INTEGER, "
-                + "AVO INTEGER, "
-                + "CRIT INTEGER, "
-                + "RANGE INTEGER);");
+        db.execSQL("CREATE TABLE CombatArtsAllWeaponProficient ( "
+                + "art TEXT PRIMARY KEY, "
+                + "effect TEXT, "
+                + "weapon TEXT, "
+                + "skillLevel TEXT, "
+                + "dur TEXT, "
+                + "mt TEXT, "
+                + "hit TEXT, "
+                + "avo TEXT, "
+                + "crit TEXT, "
+                + "range TEXT);");
 
-        db.execSQL("CREATE TABLE COMBAT_ARTS_CHARACTERS_WEAPON_PROFICIENT ( "
-                + "ART TEXT PRIMARY KEY, "
-                + "EFFECT TEXT, "
-                + "WEAPON TEXT, "
-                + "SKILL_LEVEL TEXT, "
-                + "DUR INTEGER, "
-                + "MT INTEGER, "
-                + "HIT INTEGER, "
-                + "AVO INTEGER, "
-                + "CRIT INTEGER, "
-                + "RANGE INTEGER);");
+        db.execSQL("CREATE TABLE CombatArtsCharactersWeaponProficient ( "
+                + "art TEXT PRIMARY KEY, "
+                + "effect TEXT, "
+                + "weapon TEXT, "
+                + "skillLevel TEXT, "
+                + "dur TEXT, "
+                + "mt TEXT, "
+                + "hit TEXT, "
+                + "avo TEXT, "
+                + "crit TEXT, "
+                + "range TEXT);");
 
-        db.execSQL("CREATE TABLE CHARACTER_HAS_COMBAT_ART_WEAPON_PROFICIENCY ( "
-                + "ART TEXT, "
-                + "CHARACTER TEXT, "
-                + "SPECIFIC_SKILL_LEVEL TEXT, "
-                + "PRIMARY KEY(ART, CHARACTER), "
-                + "CONSTRAINT FK_ART_HAS_COMBAT_ART_PROF FOREIGN KEY (ART) "
-                + "REFERENCES COMBAT_ARTS_CHARACTERS_WEAPON_PROFICIENT(ART) "
+        db.execSQL("CREATE TABLE CharacterHasCombatArtWeaponProficiency ( "
+                + "art TEXT, "
+                + "character TEXT, "
+                + "specificSkillLevel TEXT, "
+                + "PRIMARY KEY(art, character), "
+                + "CONSTRAINT fkArtHasCombatArtProf FOREIGN KEY (art) "
+                + "REFERENCES CombatArtsAllWeaponProficient(art) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE, "
-                + "CONSTRAINT FK_CHARAC_HAS_COMBAT_ART_PROF FOREIGN KEY (CHARACTER) "
-                + "REFERENCES CHARACTERS(NAME) "
+                + "CONSTRAINT fkCharacHasCombatArtProf FOREIGN KEY (character) "
+                + "REFERENCES Characters(name) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
-        db.execSQL("CREATE TABLE COMBAT_ARTS_WEAPON_EXCLUSIVE ( "
-                + "ART TEXT PRIMARY KEY, "
-                + "EFFECT TEXT, "
-                + "WEAPON TEXT, "
-                + "CREST TEXT, "
-                + "DUR INTEGER, "
-                + "MT INTEGER, "
-                + "HIT INTEGER, "
-                + "AVO INTEGER, "
-                + "CRIT INTEGER, "
-                + "RANGE INTEGER);");
+        db.execSQL("CREATE TABLE CombatArtsWeaponExclusive ( "
+                + "art TEXT PRIMARY KEY, "
+                + "effect TEXT, "
+                + "weapon TEXT, "
+                + "crest TEXT, "
+                + "dur TEXT, "
+                + "mt TEXT, "
+                + "hit TEXT, "
+                + "avo TEXT, "
+                + "crit TEXT, "
+                + "range TEXT);");
 
-        db.execSQL("CREATE TABLE COMBAT_ARTS_CLASS_MASTERY ( "
-                + "ART TEXT PRIMARY KEY, "
-                + "EFFECT TEXT, "
-                + "WEAPON TEXT, "
-                + "CLASS TEXT, "
-                + "DUR INTEGER, "
-                + "MT INTEGER, "
-                + "HIT INTEGER, "
-                + "AVO INTEGER, "
-                + "CRIT INTEGER, "
-                + "RANGE INTEGER);");
+        db.execSQL("CREATE TABLE CombatArtsClassMastery ( "
+                + "art TEXT PRIMARY KEY, "
+                + "effect TEXT, "
+                + "weapon TEXT, "
+                + "class TEXT, "
+                + "dur TEXT, "
+                + "mt TEXT, "
+                + "hit TEXT, "
+                + "avo TEXT, "
+                + "crit TEXT, "
+                + "range TEXT);");
 
-        db.execSQL("CREATE TABLE COMBAT_ARTS_BUDDING_TALENTS ( "
-                + "ART TEXT, "
-                + "EFFECT TEXT, "
-                + "TALENT TEXT, "
-                + "CHARACTER TEXT, "
-                + "DUR INTEGER, "
-                + "MT INTEGER, "
-                + "HIT INTEGER, "
-                + "AVO INTEGER, "
-                + "CRIT INTEGER, "
-                + "RANGE INTEGER, "
-                + "PRIMARY KEY (ART, CHARACTER), "
-                + "CONSTRAINT FK_CA_BUDDING_TALENTS FOREIGN KEY (CHARACTER) "
-                + "REFERENCES CHARACTERS(NAME) "
+        db.execSQL("CREATE TABLE CombatArtsBuddingTalents ( "
+                + "art TEXT, "
+                + "effect TEXT, "
+                + "talent TEXT, "
+                + "character TEXT, "
+                + "dur TEXT, "
+                + "mt TEXT, "
+                + "hit TEXT, "
+                + "avo TEXT, "
+                + "crit TEXT, "
+                + "range TEXT, "
+                + "PRIMARY KEY (art, character), "
+                + "CONSTRAINT fkCombatArtsBuddingTalents FOREIGN KEY (character) "
+                + "REFERENCES Characters(name) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
-        db.execSQL("CREATE TABLE COMBAT_ARTS_OTHER ( "
-                + "ART TEXT PRIMARY KEY, "
-                + "EFFECT TEXT, "
-                + "WEAPON TEXT, "
-                + "ORIGIN TEXT, "
-                + "DUR INTEGER, "
-                + "MT INTEGER, "
-                + "HIT INTEGER, "
-                + "AVO INTEGER, "
-                + "CRIT INTEGER, "
-                + "RANGE INTEGER);");
+        db.execSQL("CREATE TABLE CombatArtsOther ( "
+                + "art TEXT PRIMARY KEY, "
+                + "effect TEXT, "
+                + "weapon TEXT, "
+                + "origin TEXT, "
+                + "dur INTEGER, "
+                + "mt INTEGER, "
+                + "hit INTEGER, "
+                + "avo INTEGER, "
+                + "crit INTEGER, "
+                + "range TEXT);");
 
-        insertCombatArtsWeaponProf(db);
+        insertDataCombatArtsWeaponProficiency(db);
+        insertDataCharacterHasCombatArtWeaponProficiency(db);
+        insertDataCombatArtsWeaponExclusive(db);
+        insertDataCombatArtsClassMastery(db);
+        insertDataCombatArtsBuddingTalents(db);
+        insertDataCombatArtsOther(db);
     }
 
-    private void insertCombatArtsWeaponProf(SQLiteDatabase db){
+    private void insertDataCombatArtsWeaponProficiency(SQLiteDatabase db){
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.combat_arts_weapon_prof_char);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1069,17 +1073,17 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                                        String skillLevel, String dur, String mt, String hit,
                                        String avo, String crit, String range) {
         ContentValues combatArtValues = new ContentValues();
-        combatArtValues.put("ART", art);
-        combatArtValues.put("EFFECT", effect);
-        combatArtValues.put("WEAPON", weapon);
-        combatArtValues.put("SKILL_LEVEL", skillLevel);
-        combatArtValues.put("DUR", Integer.valueOf(dur));
-        combatArtValues.put("MT", Integer.valueOf(mt));
-        combatArtValues.put("HIT", Integer.valueOf(hit);
-        combatArtValues.put("AVO", Integer.valueOf(avo));
-        combatArtValues.put("CRIT", Integer.valueOf(crit));
-        combatArtValues.put("RANGE", Integer.valueOf(range));
-        db.insert("COMBAT_ARTS_ALL_WEAPON_PROFICIENT", null,
+        combatArtValues.put("art", art);
+        combatArtValues.put("effect", effect);
+        combatArtValues.put("weapon", weapon);
+        combatArtValues.put("skillLevel", skillLevel);
+        combatArtValues.put("dur", dur);
+        combatArtValues.put("mt", mt);
+        combatArtValues.put("hit", hit);
+        combatArtValues.put("avo", avo);
+        combatArtValues.put("crit", crit);
+        combatArtValues.put("range", range);
+        db.insert("CombatArtsAllWeaponProficient", null,
                 combatArtValues);
     }
 
@@ -1087,30 +1091,224 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                                         String skillLevel, String dur, String mt, String hit,
                                         String avo, String crit, String range) {
         ContentValues combatArtValues = new ContentValues();
-        combatArtValues.put("ART", art);
-        combatArtValues.put("EFFECT", effect);
-        combatArtValues.put("WEAPON", weapon);
-        combatArtValues.put("SKILL_LEVEL", skillLevel);
-        combatArtValues.put("DUR", Integer.valueOf(dur));
-        combatArtValues.put("MT", Integer.valueOf(mt));
-        combatArtValues.put("HIT", Integer.valueOf(hit);
-        combatArtValues.put("AVO", Integer.valueOf(avo));
-        combatArtValues.put("CRIT", Integer.valueOf(crit));
-        combatArtValues.put("RANGE", Integer.valueOf(range));
-        db.insert("COMBAT_ARTS_CHARACTERS_WEAPON_PROFICIENT", null,
+        combatArtValues.put("art", art);
+        combatArtValues.put("effect", effect);
+        combatArtValues.put("weapon", weapon);
+        combatArtValues.put("skillLevel", skillLevel);
+        combatArtValues.put("dur", dur);
+        combatArtValues.put("mt", mt);
+        combatArtValues.put("hit", hit);
+        combatArtValues.put("avo", avo);
+        combatArtValues.put("crit", crit);
+        combatArtValues.put("range", range);
+        db.insert("CombatArtsCharactersWeaponProficient", null,
                 combatArtValues);
     }
 
-    private void insert
+    private void insertDataCharacterHasCombatArtWeaponProficiency(SQLiteDatabase db){
+        String line = null;
+        InputStream is = context.getResources().
+                openRawResource(R.raw.char_has_combat_art_weapon_prof);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCharacterHasCombatArtWeaponProficiency(db, parts[0], parts[1], parts[2]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertCharacterHasCombatArtWeaponProficiency(SQLiteDatabase db, String art,
+                                                              String characterName,
+                                                              String skillLevel){
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("art", art);
+        combatArtValues.put("character", characterName);
+        combatArtValues.put("specificSkillLevel", skillLevel);
+        db.insert("CharacterHasCombatArtWeaponProficiency", null,
+                combatArtValues);
+    }
+
+    private void insertDataCombatArtsWeaponExclusive(SQLiteDatabase db){
+        String line = null;
+        InputStream is = context.getResources().
+                openRawResource(R.raw.combat_arts_weapon_exclusive);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCombatArtWeaponExclusive(db, parts[0], parts[1], parts[2], parts[3],
+                        parts[4], parts[5], parts[6], parts[7], parts[8], parts[9]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertCombatArtWeaponExclusive(SQLiteDatabase db, String art, String effect,
+                                                    String weapon, String crest, String dur,
+                                                    String mt, String hit, String avo, String crit,
+                                                    String range){
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("art", art);
+        combatArtValues.put("effect", effect);
+        combatArtValues.put("weapon", weapon);
+        combatArtValues.put("crest", crest);
+        combatArtValues.put("dur", dur);
+        combatArtValues.put("mt", mt);
+        combatArtValues.put("hit", hit);
+        combatArtValues.put("avo", avo);
+        combatArtValues.put("crit", crit);
+        combatArtValues.put("range", range);
+        db.insert("CombatArtsWeaponExclusive", null,
+                combatArtValues);
+    }
+
+    private void insertDataCombatArtsClassMastery(SQLiteDatabase db){
+        String line = null;
+        InputStream is = context.getResources().
+                openRawResource(R.raw.combat_arts_class_mastery);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCombatArtClassMastery(db, parts[0], parts[1], parts[2], parts[3],
+                        parts[4], parts[5], parts[6], parts[7], parts[8], parts[9]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertCombatArtClassMastery(SQLiteDatabase db, String art, String effect,
+                                             String weapon, String gameClass, String dur,
+                                             String mt, String hit, String avo, String crit,
+                                             String range){
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("art", art);
+        combatArtValues.put("effect", effect);
+        combatArtValues.put("weapon", weapon);
+        combatArtValues.put("class", gameClass);
+        combatArtValues.put("dur", dur);
+        combatArtValues.put("mt", mt);
+        combatArtValues.put("hit", hit);
+        combatArtValues.put("avo", avo);
+        combatArtValues.put("crit", crit);
+        combatArtValues.put("range", range);
+        db.insert("CombatArtsClassMastery", null,
+                combatArtValues);
+    }
+
+    private void insertDataCombatArtsBuddingTalents(SQLiteDatabase db){
+        String line = null;
+        InputStream is = context.getResources().
+                openRawResource(R.raw.combat_arts_budding_talents);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCombatArtBuddingTalent(db, parts[0], parts[1], parts[2], parts[3],
+                        parts[4], parts[5], parts[6], parts[7], parts[8], parts[9]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertCombatArtBuddingTalent(SQLiteDatabase db, String art, String effect,
+                                              String talent, String character, String dur,
+                                              String mt, String hit, String avo, String crit,
+                                              String range) {
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("art", art);
+        combatArtValues.put("effect", effect);
+        combatArtValues.put("talent", talent);
+        combatArtValues.put("character", character);
+        combatArtValues.put("dur", dur);
+        combatArtValues.put("mt", mt);
+        combatArtValues.put("hit", hit);
+        combatArtValues.put("avo", avo);
+        combatArtValues.put("crit", crit);
+        combatArtValues.put("range", range);
+        db.insert("CombatArtsBuddingTalent", null,
+                combatArtValues);
+    }
+
+    private void insertDataCombatArtsOther(SQLiteDatabase db){
+        String line = null;
+        InputStream is = context.getResources().
+                openRawResource(R.raw.combat_arts_other);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertCombatArtOther(db, parts[0], parts[1], parts[2], parts[3],
+                        parts[4], parts[5], parts[6], parts[7], parts[8], parts[9]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertCombatArtOther(SQLiteDatabase db, String art, String effect,
+                                              String talent, String character, String dur,
+                                              String mt, String hit, String avo, String crit,
+                                              String range) {
+        ContentValues combatArtValues = new ContentValues();
+        combatArtValues.put("art", art);
+        combatArtValues.put("effect", effect);
+        combatArtValues.put("weapon", talent);
+        combatArtValues.put("origin", character);
+        combatArtValues.put("dur", dur);
+        combatArtValues.put("mt", mt);
+        combatArtValues.put("hit", hit);
+        combatArtValues.put("avo", avo);
+        combatArtValues.put("crit", crit);
+        combatArtValues.put("range", range);
+        db.insert("CombatArtsOther", null,
+                combatArtValues);
+    }
 
     private void createMagicTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE MAGIC ( "
+        db.execSQL("CREATE TABLE Magic ( "
                 + "_id INTEGER, "
-                + "SKILL_LEVEL TEXT, "
-                + "REASON TEXT, "
-                + "FAITH TEXT, "
-                + "PRIMARY KEY (_id, SKILL_LEVEL),"
-                + "CONSTRAINT FK_MAGIC FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "skillLevel TEXT, "
+                + "reason TEXT, "
+                + "faith TEXT, "
+                + "PRIMARY KEY (_id, skillLevel),"
+                + "CONSTRAINT fkMagic FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1136,20 +1334,20 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                              String faith) {
         ContentValues magicValues = new ContentValues();
         magicValues.put("_id", Integer.valueOf(id));
-        magicValues.put("SKILL_LEVEL", skillLevel);
-        magicValues.put("REASON", reason);
-        magicValues.put("FAITH", faith);
-        db.insert("MAGIC", null, magicValues);
+        magicValues.put("skillLevel", skillLevel);
+        magicValues.put("reason", reason);
+        magicValues.put("faith", faith);
+        db.insert("Magic", null, magicValues);
     }
 
     private void createCharacterGiftsTable(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE CHARACTER_GIFTS ( "
+        db.execSQL("CREATE TABLE CharacterGifts ( "
                 + "_id INTEGER, "
-                + "GIFT TEXT, "
-                + "LIKED INTEGER, "
-                + "RANK INTEGER, "
-                + "PRIMARY KEY (_id, GIFT),"
-                + "CONSTRAINT FK_CHARACTER_GIFTS FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "gift TEXT, "
+                + "liked INTEGER, "
+                + "rank INTEGER, "
+                + "PRIMARY KEY (_id, gift),"
+                + "CONSTRAINT fkCharacterGifts FOREIGN KEY (_id) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1175,19 +1373,19 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                             String rank){
         ContentValues giftsValues = new ContentValues();
         giftsValues.put("_id", Integer.valueOf(id));
-        giftsValues.put("GIFT", gift);
-        giftsValues.put("LIKED", liked.equals("y") ? 1 : 0);
-        giftsValues.put("RANK", Integer.valueOf(rank));
-        db.insert("CHARACTER_GIFTS", null, giftsValues);
+        giftsValues.put("gift", gift);
+        giftsValues.put("liked", liked.equals("y") ? 1 : 0);
+        giftsValues.put("rank", Integer.valueOf(rank));
+        db.insert("CharacterGifts", null, giftsValues);
     }
 
     private void createCharacterMealsTable(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE CHARACTER_MEALS ( "
+        db.execSQL("CREATE TABLE CharacterMeals ( "
                 + "_id INTEGER, "
-                + "MEAL TEXT, "
-                + "LIKED INTEGER, "
-                + "PRIMARY KEY (_id, MEAL),"
-                + "CONSTRAINT FK_CHARACTER_MEALS FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "meal TEXT, "
+                + "liked INTEGER, "
+                + "PRIMARY KEY (_id, meal),"
+                + "CONSTRAINT fkCharacterMeals FOREIGN KEY (_id) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1212,17 +1410,17 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     private void insertCharacterMeal(SQLiteDatabase db, String id, String meal, String liked){
         ContentValues mealValues = new ContentValues();
         mealValues.put("_id", Integer.valueOf(id));
-        mealValues.put("MEAL", meal);
-        mealValues.put("LIKED", liked.equals("y") ? 1 : 0);
-        db.insert("CHARACTER_MEALS", null, mealValues);
+        mealValues.put("meal", meal);
+        mealValues.put("liked", liked.equals("y") ? 1 : 0);
+        db.insert("CharacterMeals", null, mealValues);
     }
 
     private void createCharacterLostItemsTable(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE CHARACTER_LOST_ITEMS ( "
+        db.execSQL("CREATE TABLE CharacterLostItems ( "
                 + "_id INTEGER, "
-                + "ITEM TEXT, "
-                + "PRIMARY KEY (_id, ITEM),"
-                + "CONSTRAINT FK_CHARACTER_LOST_ITEMS FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "item TEXT, "
+                + "PRIMARY KEY (_id, item),"
+                + "CONSTRAINT fkCharacterLostItems FOREIGN KEY (_id) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1247,16 +1445,16 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     private void insertCharacterLostItem(SQLiteDatabase db, String id, String item){
         ContentValues lostItemValues = new ContentValues();
         lostItemValues.put("_id", Integer.valueOf(id));
-        lostItemValues.put("ITEM", item);
-        db.insert("CHARACTER_LOST_ITEMS", null, lostItemValues);
+        lostItemValues.put("item", item);
+        db.insert("CharacterLostItems", null, lostItemValues);
     }
 
     private void createFavouriteTeasTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE FAVOURITE_TEAS ( "
+        db.execSQL("CREATE TABLE FavouriteTeas ( "
                 + "_id INTEGER, "
-                + "TEA TEXT, "
-                + "PRIMARY KEY (_id, TEA),"
-                + "CONSTRAINT FK_FAVOURITE_TEAS FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "tea TEXT, "
+                + "PRIMARY KEY (_id, tea),"
+                + "CONSTRAINT fkFavouriteTeas FOREIGN KEY (_id) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1281,16 +1479,16 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     private void insertFavouriteTea(SQLiteDatabase db, String id, String tea) {
         ContentValues favouriteTeaValues = new ContentValues();
         favouriteTeaValues.put("_id", Integer.valueOf(id));
-        favouriteTeaValues.put("TEA", tea);
-        db.insert("FAVOURITE_TEAS", null, favouriteTeaValues);
+        favouriteTeaValues.put("tea", tea);
+        db.insert("FavouriteTeas", null, favouriteTeaValues);
     }
 
     private void createTopicsTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE TOPICS ( "
+        db.execSQL("CREATE TABLE Topics ( "
                 + "_id INTEGER, "
-                + "TOPIC TEXT, "
-                + "PRIMARY KEY (_id, TOPIC),"
-                + "CONSTRAINT FK_TOPICS FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "topic TEXT, "
+                + "PRIMARY KEY (_id, topic),"
+                + "CONSTRAINT fkTopics FOREIGN KEY (_id) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1315,19 +1513,19 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     private void insertTopic(SQLiteDatabase db, String id, String topic) {
         ContentValues topicValues = new ContentValues();
         topicValues.put("_id", Integer.valueOf(id));
-        topicValues.put("TOPIC", topic);
-        db.insert("TOPICS", null, topicValues);
+        topicValues.put("topic", topic);
+        db.insert("Topics", null, topicValues);
     }
 
     private void createFinalConversationsTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE FINAL_CONVERSATIONS ( "
+        db.execSQL("CREATE TABLE FinalConversations ( "
                 + "_id INTEGER, "
-                + "CONVERSATION TEXT, "
-                + "OPTION_1 TEXT, "
-                + "OPTION_2 TEXT, "
-                + "OPTION_3 TEXT, "
-                + "PRIMARY KEY (_id, CONVERSATION),"
-                + "CONSTRAINT FK_FINAL_CONVERSATIONS FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "conversation TEXT, "
+                + "option1 TEXT, "
+                + "option2 TEXT, "
+                + "option3 TEXT, "
+                + "PRIMARY KEY (_id, conversation),"
+                + "CONSTRAINT fkFinalConversations FOREIGN KEY (_id) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1353,27 +1551,27 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                                                String option1, String option2, String option3) {
         ContentValues conversationValues = new ContentValues();
         conversationValues.put("_id", Integer.valueOf(id));
-        conversationValues.put("CONVERSATION", conversation);
-        conversationValues.put("OPTION_1", option1);
-        conversationValues.put("OPTION_2", option2);
-        conversationValues.put("OPTION_3", option3);
-        db.insert("FINAL_CONVERSATIONS", null, conversationValues);
+        conversationValues.put("conversation", conversation);
+        conversationValues.put("option1", option1);
+        conversationValues.put("option2", option2);
+        conversationValues.put("option3", option3);
+        db.insert("FinalConversations", null, conversationValues);
     }
 
     private void createSupportsTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE SUPPORTS ( "
-                + "CHARACTER_1 INTEGER, "
-                + "CHARACTER_2 INTEGER, "
-                + "C_SUPPORT TEXT, "
-                + "B_SUPPORT TEXT, "
-                + "A_SUPPORT TEXT, "
-                + "INTER_SUPPORT TEXT, "
-                + "INTER_RANK TEXT, "
-                + "S_SUPPORT TEXT, "
-                + "PRIMARY KEY (CHARACTER_1, CHARACTER_2),"
-                + "CONSTRAINT FK_SUPPORTS_1 FOREIGN KEY (CHARACTER_1) REFERENCES CHARACTERS(_id) "
+        db.execSQL("CREATE TABLE Supports ( "
+                + "character1 INTEGER, "
+                + "character2 INTEGER, "
+                + "cSupport TEXT, "
+                + "bSupport TEXT, "
+                + "aSupport TEXT, "
+                + "interSupport TEXT, "
+                + "interRank TEXT, "
+                + "sSupport TEXT, "
+                + "PRIMARY KEY (character1, character2),"
+                + "CONSTRAINT fkSupports1 FOREIGN KEY (character1) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE, "
-                + "CONSTRAINT FK_SUPPORTS_2 FOREIGN KEY (CHARACTER_2) REFERENCES CHARACTERS(_id) "
+                + "CONSTRAINT fkSupports2 FOREIGN KEY (character2) REFERENCES Characters(_id) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         insertAloisSupports(db);
@@ -1421,15 +1619,15 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                                      String cSupport, String bSupport, String aSupport, String interSup,
                                      String interRank, String sSupport) {
         ContentValues supportValues = new ContentValues();
-        supportValues.put("CHARACTER_1", Integer.valueOf(character1));
-        supportValues.put("CHARACTER_2", Integer.valueOf(character2));
-        supportValues.put("C_SUPPORT", cSupport);
-        supportValues.put("B_SUPPORT", bSupport);
-        supportValues.put("A_SUPPORT", aSupport);
-        supportValues.put("INTER_SUPPORT", interSup);
-        supportValues.put("INTER_RANK", interRank);
-        supportValues.put("S_SUPPORT", sSupport);
-        db.insert("SUPPORTS", null, supportValues);
+        supportValues.put("character1", Integer.valueOf(character1));
+        supportValues.put("character2", Integer.valueOf(character2));
+        supportValues.put("cSupport", cSupport);
+        supportValues.put("bSupport", bSupport);
+        supportValues.put("aSupport", aSupport);
+        supportValues.put("interSupport", interSup);
+        supportValues.put("interRank", interRank);
+        supportValues.put("sSupport", sSupport);
+        db.insert("Supports", null, supportValues);
     }
 
     private void insertAloisSupports(SQLiteDatabase db){

@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -54,8 +55,8 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                     }
                     // Get the name and save the information
                     name1 = (String) searchableSpinnerAdapter1.getItem(position);
-                    Cursor cursor = db.query("CHARACTERS", new String[]{"PORTRAIT"},
-                            "NAME = ?", new String[]{name1}, null, null,
+                    Cursor cursor = db.query("Characters", new String[]{"portrait"},
+                            "name = ?", new String[]{name1}, null, null,
                             null);
                     if (cursor.moveToFirst()) {     // A valid name was introduced
                         // Show the portrait of the selected character
@@ -82,8 +83,8 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                         sSupport = null;
 
                         // Get the id of the character
-                        cursor = db.query("CHARACTERS", new String[]{"_id"},
-                                "NAME = ?", new String[]{name1},
+                        cursor = db.query("Characters", new String[]{"_id"},
+                                "name = ?", new String[]{name1},
                                 null, null, null);
                         int _id;
                         if (cursor.moveToFirst()) {
@@ -93,10 +94,10 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                         }
 
                         // Populate character2 with characters with whom the selected one has supports
-                        cursor = db.rawQuery("SELECT C.NAME FROM SUPPORTS AS S JOIN CHARACTERS " +
-                                        "AS C ON S.CHARACTER_2 = C._id WHERE S.CHARACTER_1 = ? " +
-                                        "UNION SELECT C.NAME FROM SUPPORTS AS S JOIN CHARACTERS " +
-                                        "AS C ON S.CHARACTER_1 = C._id WHERE S.CHARACTER_2 = ?",
+                        cursor = db.rawQuery("SELECT c.name FROM Supports AS s JOIN Characters"
+                                        + " AS c ON s.character2 = c._id WHERE s.character1 = ? " +
+                                        "UNION SELECT c.name FROM Supports AS s JOIN Characters " +
+                                        "AS c ON s.character1 = c._id WHERE s.character2 = ?",
                                 new String[]{Integer.toString(_id), Integer.toString(_id)});
                         ArrayList<String> namesCharacters2 = new ArrayList<>();
                         if (cursor.moveToFirst()) {
@@ -143,8 +144,8 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                     }
                     name2 = (String) searchableSpinnerAdapter2.getItem(position);
                     if (name2 != null) {
-                        Cursor cursor = db.query("CHARACTERS", new String[]{"PORTRAIT"},
-                                "NAME = ?", new String[]{name2}, null,
+                        Cursor cursor = db.query("Characters", new String[]{"portrait"},
+                                "name = ?", new String[]{name2}, null,
                                 null, null);
                         if (cursor.moveToFirst()) {     // A valid name was introduced
                             // Show the portrait of the selected character
@@ -178,9 +179,13 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
         ScrollView layout = (ScrollView)
                 inflater.inflate(R.layout.fragment_supports, container, false);
 
+        // Set "Supports" as the text in the toolbar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().
+                setTitle(getString(R.string.nav_supports));
+
         // Populate the first AutoCompleteTextView with options for all the characters
         // Get all the names
-        Cursor cursor = db.query("CHARACTERS", new String[]{"NAME"},
+        Cursor cursor = db.query("Characters", new String[]{"name"},
                 null, null, null, null, null);
         ArrayList<String> names = new ArrayList<>();
         if (cursor.moveToFirst()) {
@@ -252,19 +257,23 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                     name1 = name2;
                     name2 = temp;
                 }
-                Cursor cursor = db.rawQuery("SELECT sup.C_SUPPORT, sup.B_SUPPORT, " +
-                        "sup.A_support, sup.INTER_SUPPORT, sup.INTER_RANK, sup.S_SUPPORT " +
-                        "FROM CHARACTERS AS c1, SUPPORTS AS sup, CHARACTERS AS c2 " +
-                        "WHERE sup.CHARACTER_1 = c1._id AND sup.CHARACTER_2 = c2._id AND " +
+                Cursor cursor = db.rawQuery("SELECT sup.cSupport, sup.bSupport, " +
+                        "sup.aSupport, sup.interSupport, sup.interRank, sup.sSupport " +
+                        "FROM Characters AS c1, Supports AS sup, Characters AS c2 " +
+                        "WHERE sup.character1 = c1._id AND sup.character2 = c2._id AND " +
                         "c1.name = ? AND c2.name = ?", new String[]{name1, name2});
                 // There should be only 1 result
                 if (cursor.moveToFirst()) {
                     cSupport = cursor.getString(0);
                     bSupport = cursor.getString(1);
-                    aSupport = cursor.getString(2).equals("null")? null : cursor.getString(2);
-                    interSupport = cursor.getString(3).equals("null")? null : cursor.getString(3);
-                    interRank = cursor.getString(4).equals("null")? null : cursor.getString(4);
-                    sSupport = cursor.getString(5).equals("null")? null : cursor.getString(5);
+                    aSupport =
+                            cursor.getString(2).equals("null")? null : cursor.getString(2);
+                    interSupport =
+                            cursor.getString(3).equals("null")? null : cursor.getString(3);
+                    interRank =
+                            cursor.getString(4).equals("null")? null : cursor.getString(4);
+                    sSupport =
+                            cursor.getString(5).equals("null")? null : cursor.getString(5);
 
                     supportOptions.setVisibility(View.VISIBLE);
 

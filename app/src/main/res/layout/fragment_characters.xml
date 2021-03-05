@@ -6,20 +6,11 @@
     android:orientation="vertical"
     tools:context=".characters.navigation.CharactersFragment">
 
-    <TextView
-        android:id="@+id/title_factions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nav_characters"
-        android:layout_marginTop="48dp"
-        android:layout_gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginBottom="36dp"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/characters_factions_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
         android:layout_marginStart="8dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="8dp"/>

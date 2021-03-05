@@ -74,6 +74,13 @@
         <item>Class mastery abilities</item>
         <item>Other abilities</item>
     </string-array>
+    <string-array name="combat_arts_types">
+        <item>All combat arts</item>
+        <item>Skill level combat arts</item>
+        <item>Weapon exclusive combat arts</item>
+        <item>Class mastery combat arts</item>
+        <item>Other combat arts</item>
+    </string-array>
     <string name="effect">Effect</string>
     <string name="origin">Origin</string>
 

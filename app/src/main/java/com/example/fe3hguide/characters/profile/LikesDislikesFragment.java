@@ -46,9 +46,9 @@ public class LikesDislikesFragment extends Fragment {
 
     private void prepareRecyclerViewsGifts(ConstraintLayout layout){
         // Get the information about the character's liked and disliked gifts
-        Cursor cursor = db.rawQuery("SELECT g.GIFT, g.LIKED " +
-                "FROM CHARACTERS AS c NATURAL JOIN CHARACTER_GIFTS AS g " +
-                "WHERE c.NAME = ?", new String[] {character});
+        Cursor cursor = db.rawQuery("SELECT g.gift, g.liked " +
+                "FROM Characters AS c NATURAL JOIN CharacterGifts AS g " +
+                "WHERE c.name = ?", new String[] {character});
 
         // Divide the info between the gifts liked and disliked by the character
         ArrayList<String> favouriteGifts = new ArrayList<>();
@@ -89,9 +89,9 @@ public class LikesDislikesFragment extends Fragment {
 
     private void prepareRecyclerViewsMeals(ConstraintLayout layout){
         // Get the information about the character's liked and disliked meals
-        Cursor cursor = db.rawQuery("SELECT m.MEAL, m.LIKED " +
-                "FROM CHARACTERS AS c NATURAL JOIN CHARACTER_MEALS AS m " +
-                "WHERE c.NAME = ?", new String[] {character});
+        Cursor cursor = db.rawQuery("SELECT m.meal, m.liked " +
+                "FROM Characters AS c NATURAL JOIN CharacterMeals AS m " +
+                "WHERE c.name = ?", new String[] {character});
 
         // Divide the info between the meals liked and disliked by the character
         ArrayList<String> favouriteMeals = new ArrayList<>();
@@ -132,9 +132,9 @@ public class LikesDislikesFragment extends Fragment {
 
     private void prepareRecyclerLostItems(ConstraintLayout layout){
         // Get the information about the character's lost items
-        Cursor cursor = db.rawQuery("SELECT l.ITEM " +
-                "FROM CHARACTERS AS c NATURAL JOIN CHARACTER_LOST_ITEMS AS l " +
-                "WHERE c.NAME = ?", new String[] {character});
+        Cursor cursor = db.rawQuery("SELECT l.item " +
+                "FROM Characters AS c NATURAL JOIN CharacterLostItems AS l " +
+                "WHERE c.name = ?", new String[] {character});
 
         // Store the lost items
         ArrayList<String> lostItems = new ArrayList<>();
