@@ -45,7 +45,7 @@ public class CombatArtsFragment extends Fragment {
                              Bundle savedInstanceState) {
         myDialog = new Dialog(getActivity());
         ConstraintLayout layout = (ConstraintLayout)
-                inflater.inflate(R.layout.fragment_abilities, container, false);
+                inflater.inflate(R.layout.fragment_combat_arts, container, false);
 
         /*
          * Add all unique combat arts for the character, which are considered to be the ones
@@ -73,7 +73,7 @@ public class CombatArtsFragment extends Fragment {
         }
 
         // Create adapter for the unique abilities recycler view and link them
-        AbilitiesAdapter uniqueAdapter = new AbilitiesAdapter(uniqueCombatArts, this);
+        CombatArtsAdapter uniqueAdapter = new CombatArtsAdapter(uniqueCombatArts, this);
         RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
         uniqueRecycler.setAdapter(uniqueAdapter);
 
