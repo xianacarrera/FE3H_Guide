@@ -963,7 +963,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 + "specificSkillLevel TEXT, "
                 + "PRIMARY KEY(art, character), "
                 + "CONSTRAINT fkArtHasCombatArtProf FOREIGN KEY (art) "
-                + "REFERENCES CombatArtsAllWeaponProficient(art) "
+                + "REFERENCES CombatArtsCharactersWeaponProficient(art) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE, "
                 + "CONSTRAINT fkCharacHasCombatArtProf FOREIGN KEY (character) "
                 + "REFERENCES Characters(name) "
@@ -996,7 +996,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE CombatArtsBuddingTalents ( "
                 + "art TEXT, "
                 + "effect TEXT, "
-                + "talent TEXT, "
+                + "weapon TEXT, "
                 + "character TEXT, "
                 + "dur TEXT, "
                 + "mt TEXT, "
@@ -1242,13 +1242,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertCombatArtBuddingTalent(SQLiteDatabase db, String art, String effect,
-                                              String talent, String character, String dur,
+                                              String weapon, String character, String dur,
                                               String mt, String hit, String avo, String crit,
                                               String range) {
         ContentValues combatArtValues = new ContentValues();
         combatArtValues.put("art", art);
         combatArtValues.put("effect", effect);
-        combatArtValues.put("talent", talent);
+        combatArtValues.put("weapon", weapon);
         combatArtValues.put("character", character);
         combatArtValues.put("dur", dur);
         combatArtValues.put("mt", mt);

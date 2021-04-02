@@ -2,10 +2,10 @@ package com.example.fe3hguide.teaTime;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -22,26 +22,34 @@ import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.supports.SimpleListAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+
+import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
+import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 
 //TODO: CONSTANCE
 
 public class TeaTimeFragment extends Fragment
-        implements View.OnClickListener, AdapterView.OnItemClickListener {
+        implements View.OnClickListener {
 
     private final SQLiteDatabase db;
     private ImageView icon;
-    private AutoCompleteTextView searchCharacter;
+    private SearchableSpinner searchCharacter;
+    private SimpleListAdapter searchableSpinnerAdapter;
+    private CardView cardInfoTeas;
     private ConstraintLayout layoutTeas, layoutTopics, layoutFinalConvos;
-    private Button buttonFavouriteTeas, buttonTopics, buttonFinalConvos;
-    private LinearLayout bottomTab;
+    private ImageView imageFavouriteTeas, imageTopics, iamgeFinalConvos;
+    private ConstraintLayout bottomTab;
+    private String selectedCharacter;
 
     public TeaTimeFragment(SQLiteDatabase db) {
         this.db = db;
@@ -70,14 +78,40 @@ public class TeaTimeFragment extends Fragment
         cursor.close();
 
         // Populate the AutoCompleteTextView with the list of characters
-        searchCharacter = (AutoCompleteTextView) scrollView.findViewById(
-                R.id.autoCompleteTextView_search_character);
-        // Store the data
-        ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, names);
-        searchCharacter.setAdapter(namesAdapter);
+        searchCharacter = (SearchableSpinner) scrollView.findViewById(
+                R.id.searchable_spinner);
+        searchableSpinnerAdapter = new SimpleListAdapter(getActivity(), names);
+        searchCharacter.setAdapter(searchableSpinnerAdapter);
+        searchCharacter.setSelectedItem(0);
         // Declare the class as a listener for the autoCompleteTextView
-        searchCharacter.setOnItemClickListener(this);
+        searchCharacter.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(View view, int position, long id) {
+                if (searchableSpinnerAdapter.getItem(position) != null) {
+                    selectedCharacter = (String) searchableSpinnerAdapter.getItem(position);
+
+                    // Change the portrait to the icon of the selected character
+                    Cursor cursor = db.query("Characters", new String[]{"portrait"},
+                            "name = ?", new String[]{selectedCharacter},
+                            null, null, null);
+                    if (cursor.moveToFirst()) {
+                        icon.setImageResource(cursor.getInt(0));
+                        icon.setVisibility(View.VISIBLE);
+                        // In case information for another character was on screen, it is hidden
+                        cardInfoTeas.setVisibility(View.GONE);
+                        bottomTab.setVisibility(View.INVISIBLE);
+                    }
+                    cursor.close();
+                } else {
+                    selectedCharacter = null;
+                }
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
 
         // Store reference to what will be the ImageView of the character and set it invisible
         icon = (ImageView) scrollView.findViewById(R.id.imageView_icon);
@@ -88,26 +122,27 @@ public class TeaTimeFragment extends Fragment
         buttonHaveTea.setOnClickListener(this);     // Button that displays information
 
         // Hide all elements with information about a specific character (nobody was selected yet)
-        layoutTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
-        layoutTeas.setVisibility(View.GONE);          // No information is shown yet
+        cardInfoTeas = (CardView) scrollView.findViewById(R.id.cardView_info_teas);
+        cardInfoTeas.setVisibility(View.GONE);          // No information is shown yet
 
         // Get references to all info related to the different tabs
+        layoutTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
         layoutTopics = (ConstraintLayout)
                 scrollView.findViewById(R.id.contraint_layout_info_topics);
         layoutFinalConvos = (ConstraintLayout)
                 scrollView.findViewById(R.id.constraintLayout_info_final_convos);
 
         // Hide bottom tab until the button "have tea" is clicked
-        bottomTab = (LinearLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
+        bottomTab = (ConstraintLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
         bottomTab.setVisibility(View.INVISIBLE);
 
         // Prepare listeners for the bottom tab buttons
-        buttonFavouriteTeas = (Button) scrollView.findViewById(R.id.button_favorite_teas);
-        buttonTopics = (Button) scrollView.findViewById(R.id.button_topics);
-        buttonFinalConvos = (Button) scrollView.findViewById(R.id.button_final_convos);
-        buttonFavouriteTeas.setOnClickListener(this);
-        buttonTopics.setOnClickListener(this);
-        buttonFinalConvos.setOnClickListener(this);
+        imageFavouriteTeas = (ImageView) scrollView.findViewById(R.id.imageView_tea_cup);
+        imageTopics = (ImageView) scrollView.findViewById(R.id.imageView_topics);
+        iamgeFinalConvos = (ImageView) scrollView.findViewById(R.id.imageView_final_convo);
+        imageFavouriteTeas.setOnClickListener(this);
+        imageTopics.setOnClickListener(this);
+        iamgeFinalConvos.setOnClickListener(this);
 
         return scrollView;
     }
@@ -121,10 +156,14 @@ public class TeaTimeFragment extends Fragment
                  * character, their information is displayed.
                  */
 
-                String character = searchCharacter.getText().toString();
+                if (selectedCharacter == null){
+                    return;
+                }
+
                 // Search for the id of a character with the name that was introduced
                 Cursor cursor = db.query("Characters", new String[]{"_id"},
-                        "name = ? and name not like ?", new String[]{character, "Byleth%"},
+                        "name = ? and name not like ?",
+                        new String[]{selectedCharacter, "Byleth%"},
                         null, null, null);
 
                 // If there are no characters with that name, the cursor returns 0 rows of the table
@@ -175,7 +214,7 @@ public class TeaTimeFragment extends Fragment
 
                     // The information is shown to the user
                     changeTab(0);
-                    showInfo(character, teas, topics, finalConversations, options);
+                    showInfo(selectedCharacter, teas, topics, finalConversations, options);
 
                     // The bottom tab is now visible
                     bottomTab.setVisibility(View.VISIBLE);
@@ -183,29 +222,15 @@ public class TeaTimeFragment extends Fragment
                     cursor.close();
                 }
                 break;
-            case R.id.button_favorite_teas:
-                buttonFavouriteTeas.setBackgroundResource(R.drawable.buttons_on);
-                buttonTopics.setBackgroundResource(R.drawable.buttons_off);
-                buttonFinalConvos.setBackgroundResource(R.drawable.buttons_off);
-
+            case R.id.imageView_tea_cup:
                 // Show views related to the character's favourite teas and hide the rest
                 changeTab(0);
-
                 break;
-            case R.id.button_topics:
-                buttonFavouriteTeas.setBackgroundResource(R.drawable.buttons_off);
-                buttonTopics.setBackgroundResource(R.drawable.buttons_on);
-                buttonFinalConvos.setBackgroundResource(R.drawable.buttons_off);
-
+            case R.id.imageView_topics:
                 // Show views related to the topics and hide the rest
                 changeTab(1);
-
                 break;
-            case R.id.button_final_convos:
-                buttonFavouriteTeas.setBackgroundResource(R.drawable.buttons_off);
-                buttonTopics.setBackgroundResource(R.drawable.buttons_off);
-                buttonFinalConvos.setBackgroundResource(R.drawable.buttons_on);
-
+            case R.id.imageView_final_convo:
                 // Show views related to the character's final conversations and hide the rest
                 changeTab(2);
         }
@@ -215,8 +240,8 @@ public class TeaTimeFragment extends Fragment
 
     // Method that displays the information regarding teas, topics or final convos depending on
     // which button was clicked
-    private void changeTab(int button) {
-        switch (button) {
+    private void changeTab(int tab) {
+        switch (tab) {
             case 0:
                 layoutTeas.setVisibility(View.VISIBLE);
                 layoutTopics.setVisibility(View.GONE);
@@ -232,26 +257,6 @@ public class TeaTimeFragment extends Fragment
                 layoutTopics.setVisibility(View.GONE);
                 layoutFinalConvos.setVisibility(View.VISIBLE);
         }
-    }
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // Change the portrait to the icon of the selected character
-        String name = (String) parent.getItemAtPosition(position);
-        Cursor cursor = db.query("Characters", new String[]{"portrait"},
-                "name = ?", new String[]{name},
-                null, null, null);
-        if (cursor.moveToFirst()) {
-            icon.setImageResource(cursor.getInt(0));
-            icon.setVisibility(View.VISIBLE);
-            // In case information for another character was on screen, it is hidden
-            layoutTeas.setVisibility(View.GONE);
-            layoutTopics.setVisibility(View.GONE);
-            layoutFinalConvos.setVisibility(View.GONE);
-            bottomTab.setVisibility(View.INVISIBLE);
-        }
-        cursor.close();
     }
 
     private void showInfo(String character, List<String> teas, List<String> topics,
@@ -276,6 +281,7 @@ public class TeaTimeFragment extends Fragment
         ArrayAdapter<String> topicsAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, topics);
         autoCompleteTextViewTopics.setAdapter(topicsAdapter);
+
 
         // Set the adapter for the expandable list view with the topics
         ExpandableListAdapter expandableListAdapter = new TopicsExpandableListAdapter(getContext(),
@@ -304,7 +310,7 @@ public class TeaTimeFragment extends Fragment
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerFinalConversations.setLayoutManager(layoutManager);
 
-        layoutTeas.setVisibility(View.VISIBLE);
+        cardInfoTeas.setVisibility(View.VISIBLE);
     }
 
 
@@ -342,5 +348,6 @@ public class TeaTimeFragment extends Fragment
         params.height = height;
         listView.setLayoutParams(params);
         listView.requestLayout();
+
     }
 }

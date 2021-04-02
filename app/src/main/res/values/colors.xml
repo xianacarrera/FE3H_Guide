@@ -4,9 +4,22 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
-    <color name="light_gray">#E5E5E5</color>
+    <color name="light_gray">#EDEDED</color>
     <color name="green_tea">#96EAB9</color>
     <color name="dark_gray">#658A8A8A</color>
     <color name="black">#000000</color>
     <color name="red_support">#D5FF5656</color>
+
+    <!-- Accent -->
+    <color name="purple_accent">#8950ED</color>
+    <color name="purple_accent_2">#A57EE8</color>
+
+    <!-- Backgrounds -->
+    <color name="purple_background">#C0A8EC</color>
+    <color name="blue_background">#81C7FF</color>
+    <color name="red_background">#FF9999</color>
+    <color name="green_background">#A5FDA9</color>
+    <color name="yellow_background">#FFF7B5</color>
+    <color name="pink_background">#F488E6</color>
+    <color name="orange_background">#FDA880</color>
 </resources>

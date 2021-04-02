@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_guide:
                 fragment = new GuideFragment();
                 break;
+            case R.id.nav_calculator:
+                fragment = new CalculatorFragment();
+                break;
             case R.id.nav_characters:
                 fragment = new CharactersFragment();
                 break;

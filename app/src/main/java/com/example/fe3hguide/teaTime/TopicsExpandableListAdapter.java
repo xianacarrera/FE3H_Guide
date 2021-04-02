@@ -83,9 +83,9 @@ public class TopicsExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    // Each group is identified an id. In this case, it's always 0
+    // Each group is identified with an id
     public long getGroupId(int listPosition) {
-        return 0;
+        return listPosition;
     }
 
     @Override

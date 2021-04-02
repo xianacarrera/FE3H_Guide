@@ -73,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                 case 2:
                     return new MagicFragment(character, db);
                 case 3:
-                    return new CombatArtsFragment();
+                    return new CombatArtsFragment(character, db);
                 case 4:
                     return new LikesDislikesFragment(character, db);
             }

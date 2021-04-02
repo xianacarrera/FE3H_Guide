@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -52,29 +51,52 @@ public class CombatArtsFragment extends Fragment {
          * obtained as a budding talent, and the combat arts related to weapon proficiency
          * which are exclusive to some characters.
          */
-        Cursor cursor = db.rawQuery("SELECT art " +
-                "FROM CombatArtsBuddingTalents WHERE character = ?", new String[] {character});
 
-        ArrayList<String> uniqueCombatArts = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT art, effect, weapon, dur, mt, hit, avo, crit, " +
+                "range  FROM CombatArtsBuddingTalents WHERE character = ?",
+                new String[] {character});
+
+        ArrayList<CombatArt> uniqueCombatArts = new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
-                uniqueCombatArts.add(cursor.getString(0));
+                uniqueCombatArts.add(new CombatArt(cursor.getString(0),
+                        CombatArtsType.buddingTalent, cursor.getString(1),
+                        cursor.getString(2), null, cursor.getString(3),
+                        cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                        cursor.getString(7), cursor.getString(8)));
             } while (cursor.moveToNext());
         }
 
-        cursor = db.rawQuery("SELECT art " +
+        cursor = db.rawQuery("SELECT art, specificSkillLevel " +
                 "FROM CharacterHasCombatArtWeaponProficiency " +
                 "WHERE character = ?", new String[]{character});
 
+        Cursor cursor2 = null;
         if (cursor.moveToFirst()){
             do {
-                uniqueCombatArts.add(cursor.getString(0));
+                cursor2 = db.rawQuery("SELECT art, effect, weapon, skillLevel, dur, " +
+                        "mt, hit, avo, crit, range FROM CombatArtsCharactersWeaponProficient " +
+                        "WHERE art = ?", new String[] {cursor.getString(0)});
+                if (cursor2.moveToFirst()){
+                    uniqueCombatArts.add(new CombatArt(cursor.getString(0),
+                            CombatArtsType.uniqueWeaponProficiency, cursor2.getString(1),
+                            cursor2.getString(2), cursor2.getString(3),
+                            cursor2.getString(4), cursor2.getString(5),
+                            cursor2.getString(6), cursor2.getString(7),
+                            cursor2.getString(8), cursor2.getString(9)));
+                }
             } while (cursor.moveToNext());
         }
 
+        if (cursor2 != null) {
+            cursor2.close();
+        }
+        cursor.close();
+
         // Create adapter for the unique abilities recycler view and link them
         CombatArtsAdapter uniqueAdapter = new CombatArtsAdapter(uniqueCombatArts, this);
-        RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
+        RecyclerView uniqueRecycler =
+                (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
         uniqueRecycler.setAdapter(uniqueAdapter);
 
         // Display the abilities stacked vertically
@@ -88,21 +110,11 @@ public class CombatArtsFragment extends Fragment {
          */
 
         // By default, prepare the second recycler view to show all the abilities (not unique)
-        cursor = db.rawQuery("SELECT ability " +
-                "FROM Abilities WHERE type NOT LIKE ?", new String[] {"%Unique%"});
-
-        ArrayList<String> defaultAbilities = new ArrayList();
-        if (cursor.moveToFirst()){
-            do {
-                defaultAbilities.add(cursor.getString(0));
-            } while(cursor.moveToNext());
-        }
-
-        /************************ ME QUEDÉ AQUÍ ********************************/
-
+        ArrayList<CombatArt> combatArts = searchNotUniqueCombatArts(db, true,
+                true, true, true);
 
         // Prepare the adapter
-        CombatArtsAdapter defaultAdapter = new CombatArtsAdapter(defaultAbilities, this);
+        CombatArtsAdapter defaultAdapter = new CombatArtsAdapter(combatArts, this);
         final RecyclerView allCombatArtsRecycler = (RecyclerView)
                 layout.findViewById(R.id.recycler_combat_arts_2);
         allCombatArtsRecycler.setAdapter(defaultAdapter);
@@ -110,8 +122,6 @@ public class CombatArtsFragment extends Fragment {
         // Display the abilities stacked vertically
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
         allCombatArtsRecycler.setLayoutManager(layoutManager2);
-
-        cursor.close();
 
         // Attach a listener to the spinner
         final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
@@ -122,43 +132,31 @@ public class CombatArtsFragment extends Fragment {
 
                 // The recycler view gets populated with the abilities of the selected type
                 Cursor cursor = null;
+                ArrayList<CombatArt> combatArts = new ArrayList();
                 switch (selection){
                     case "All combat arts":
-                        cursor = db.rawQuery("SELECT art FROM CombatArtsAllWeaponProficient "
-                                        + "UNION SELECT art FROM CombatArtsWeaponExclusive "
-                                        + "UNION SELECT art FROM CombatArtsClassMastery "
-                                        + "UNION SELECT art FROM CombatArtsOther",
-                                new String[] {});
+                        combatArts = searchNotUniqueCombatArts(db, true,
+                                true, true, true);
                         break;
                     case "Skill level combat arts":
-                        cursor = db.rawQuery("SELECT ability " +
-                                        "FROM Abilities WHERE type LIKE ? AND type NOT LIKE ?",
-                                new String[] {"%Learned%", "%Unique%"});
+                        combatArts = searchNotUniqueCombatArts(db, true,
+                                false, false, false);
                         break;
                     case "Weapon exclusive combat arts":
-                        cursor = db.rawQuery("SELECT ability " +
-                                "FROM Abilities WHERE type LIKE ?", new String[] {"%Class%"});
+                        combatArts = searchNotUniqueCombatArts(db, false,
+                                true, false, false);
                         break;
                     case "Class mastery combat arts":
-                        cursor = db.rawQuery("SELECT ability " +
-                                "FROM abilities WHERE type LIKE ?", new String[] {"%Master%"});
+                        combatArts = searchNotUniqueCombatArts(db, false,
+                                false, true, false);
                         break;
                     case "Other combat arts":
-                        cursor = db.rawQuery("SELECT ability " +
-                                "FROM Abilities WHERE type LIKE ?", new String[] {"%Other%"});
+                        combatArts = searchNotUniqueCombatArts(db, false,
+                                false, false, true);
                 }
-
-                ArrayList combatArts = new ArrayList();
-                if (cursor.moveToFirst()){
-                    do {
-                        combatArts.add(cursor.getString(0));
-                    } while (cursor.moveToNext());
-                }
-
-                cursor.close();
 
                 // Create a new adapter and link it to the recycler view
-                CombatArtsAdapter combatArtsAdapter = new AbilitiesAdapter(combatArts, fragment);
+                CombatArtsAdapter combatArtsAdapter = new CombatArtsAdapter(combatArts, fragment);
                 allCombatArtsRecycler.setAdapter(combatArtsAdapter);
 
                 // TODO: is it necessary to add another LayoutManager to the recycler view?
@@ -173,8 +171,87 @@ public class CombatArtsFragment extends Fragment {
         return layout;
     }
 
-    public void shopPopup(String ability){
-        myDialog.setContentView(R.layout.popup_ability);
+    public ArrayList<CombatArt> searchNotUniqueCombatArts(SQLiteDatabase db, boolean prof,
+                                                     boolean exclusive, boolean classMastery,
+                                                     boolean other){
+        Cursor cursor = null;
+        ArrayList<CombatArt> combatArts = new ArrayList<>();
+        if (prof){
+            cursor = db.rawQuery("SELECT art, effect, weapon, skillLevel, dur, " +
+                            "mt, hit, avo, crit, range " +
+                            "FROM CombatArtsAllWeaponProficient ",
+                    new String[] {});
+
+            if (cursor.moveToFirst()){
+                do {
+                    combatArts.add(new CombatArt(cursor.getString(0),
+                            CombatArtsType.allWeaponProficiency,
+                            cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4),
+                            cursor.getString(5), cursor.getString(6),
+                            cursor.getString(7), cursor.getString(8),
+                            cursor.getString(9)));
+                } while (cursor.moveToNext());
+            }
+        }
+        if (exclusive){
+            cursor = db.rawQuery("SELECT art, effect, weapon, crest, dur, " +
+                    "mt, hit, avo, crit, range " +
+                    "FROM CombatArtsWeaponExclusive", new String[] {});
+
+            if (cursor.moveToFirst()){
+                do {
+                    combatArts.add(new CombatArt(cursor.getString(0),
+                            CombatArtsType.weaponExclusive,
+                            cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4),
+                            cursor.getString(5), cursor.getString(6),
+                            cursor.getString(7), cursor.getString(8),
+                            cursor.getString(9)));
+                } while (cursor.moveToNext());
+            }
+        }
+        if (classMastery){
+            cursor = db.rawQuery("SELECT art, effect, weapon, class, dur, " +
+                    "mt, hit, avo, crit, range " +
+                    "FROM CombatArtsClassMastery", new String[] {});
+
+            if (cursor.moveToFirst()){
+                do {
+                    combatArts.add(new CombatArt(cursor.getString(0),
+                            CombatArtsType.classMastery,
+                            cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4),
+                            cursor.getString(5), cursor.getString(6),
+                            cursor.getString(7), cursor.getString(8),
+                            cursor.getString(9)));
+                } while (cursor.moveToNext());
+            }
+        }
+        if (other){
+            cursor = db.rawQuery("SELECT art, effect, weapon, origin, dur, " +
+                    "mt, hit, avo, crit, range " +
+                    "FROM CombatArtsOther", new String[] {});
+
+            if (cursor.moveToFirst()){
+                do {
+                    combatArts.add(new CombatArt(cursor.getString(0),
+                            CombatArtsType.other,
+                            cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4),
+                            cursor.getString(5), cursor.getString(6),
+                            cursor.getString(7), cursor.getString(8),
+                            cursor.getString(9)));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        return combatArts;
+    }
+
+    public void shopPopup(CombatArt cArt){
+        myDialog.setContentView(R.layout.popup_combat_art);
 
         // Set listener for the button that closes the popup
         TextView textclose = (TextView) myDialog.findViewById(R.id.text_close);
@@ -185,31 +262,49 @@ public class CombatArtsFragment extends Fragment {
             }
         });
 
-        // Set the name of the ability as the title for the popup
-        TextView titleAbilityName = (TextView)
-                myDialog.findViewById(R.id.textview_title_ability_name);
-        titleAbilityName.setText(ability);
+        // Set the name of the combat art as the title for the popup
+        TextView titleCombatArtName = (TextView)
+                myDialog.findViewById(R.id.textview_title_combat_art_name);
+        titleCombatArtName.setText(cArt.getArt());
 
-        // Search in the database for the icon, effect and origin of the ability
-        Cursor cursor = db.rawQuery("SELECT icon, effect, origin " +
-                "FROM Abilities " +
-                "WHERE ability = ?", new String[] {ability});
+        // Show the effect of the combat art
+        TextView textEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
+        textEffect.setText(cArt.getEffect());
 
-        if (cursor.moveToFirst()) {
-            // Show the icon of the ability
-            ImageView iconAbility = (ImageView) myDialog.findViewById(R.id.ability_icon);
-            iconAbility.setImageResource(cursor.getInt(0));
+        // Show the weapon associated with the combat art
+        TextView textWeapon = (TextView) myDialog.findViewById(R.id.text_weapon);
+        textWeapon.setText(cArt.getWeapon());
 
-            // Show the effect of the ability
-            TextView abilityEffect = (TextView) myDialog.findViewById(R.id.textview_ability_effect);
-            abilityEffect.setText(cursor.getString(1));
-
-            // Show the origin of the ability
-            TextView abilityOrigin = (TextView) myDialog.findViewById(R.id.textview_ability_origin);
-            abilityOrigin.setText(cursor.getString(2));
+        // The second attribute depends on the type of the combat art
+        TextView text2 = (TextView) myDialog.findViewById(R.id.text2_combat_art_popup);
+        switch (cArt.getType()){
+            case allWeaponProficiency:
+            case uniqueWeaponProficiency:
+                text2.setText(getResources().getString(R.string.skill_level));
+                break;
+            case weaponExclusive:
+                text2.setText(getResources().getString(R.string.crest));
+                break;
+            case classMastery:
+                text2.setText(getResources().getString(R.string.class_ingame));
+                break;
+            case other:
+                text2.setText(getResources().getString(R.string.origin));
         }
 
-        cursor.close();
+        // Set the answer to the previous text field
+        TextView text2Answer = (TextView) myDialog.findViewById(R.id.text2_answer);
+        text2Answer.setText(cArt.getText2());
+
+        // Set all 6 stats to the table (dur, mt, hit, avo, crit, range)
+        ConstraintLayout table = (ConstraintLayout)
+                myDialog.findViewById(R.id.constraint_layout_combat_art_table);
+        for (int i = 6; i < table.getChildCount(); i++){
+            TextView textViewStat = (TextView) table.getChildAt(i);
+            // Stats are stored ordered in an ArrayList in cArt
+            textViewStat.setText(cArt.getStats().get(i - 6));
+        }
+
         myDialog.show();
     }
 }

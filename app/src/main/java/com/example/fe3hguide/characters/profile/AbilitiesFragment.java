@@ -64,7 +64,7 @@ public class AbilitiesFragment extends Fragment {
 
         // Create adapter for the unique abilities recycler view and link them
         AbilitiesAdapter uniqueAdapter = new AbilitiesAdapter(uniqueAbilities, this);
-        RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
+        RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_abilities_1);
         uniqueRecycler.setAdapter(uniqueAdapter);
 
         // Display the abilities stacked vertically
@@ -91,7 +91,7 @@ public class AbilitiesFragment extends Fragment {
         // Prepare the adapter
         AbilitiesAdapter defaultAdapter = new AbilitiesAdapter(defaultAbilities, this);
         final RecyclerView allAbilitiesRecycler = (RecyclerView)
-                layout.findViewById(R.id.recycler_combat_arts_2);
+                layout.findViewById(R.id.recycler_abilities_2);
         allAbilitiesRecycler.setAdapter(defaultAdapter);
 
         // Display the abilities stacked vertically
@@ -101,7 +101,7 @@ public class AbilitiesFragment extends Fragment {
         cursor.close();
 
         // Attach a listener to the spinner
-        final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
+        final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_abilities);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -172,7 +172,7 @@ public class AbilitiesFragment extends Fragment {
 
         // Set the name of the ability as the title for the popup
         TextView titleAbilityName = (TextView)
-                myDialog.findViewById(R.id.textview_title_ability_name);
+                myDialog.findViewById(R.id.textview_title_combat_art_name);
         titleAbilityName.setText(ability);
 
         // Search in the database for the icon, effect and origin of the ability
@@ -182,11 +182,11 @@ public class AbilitiesFragment extends Fragment {
 
         if (cursor.moveToFirst()) {
             // Show the icon of the ability
-            ImageView iconAbility = (ImageView) myDialog.findViewById(R.id.ability_icon);
+            ImageView iconAbility = (ImageView) myDialog.findViewById(R.id.combat_art_icon);
             iconAbility.setImageResource(cursor.getInt(0));
 
             // Show the effect of the ability
-            TextView abilityEffect = (TextView) myDialog.findViewById(R.id.textview_ability_effect);
+            TextView abilityEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
             abilityEffect.setText(cursor.getString(1));
 
             // Show the origin of the ability

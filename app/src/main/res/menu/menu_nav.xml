@@ -12,6 +12,10 @@
             android:icon="@drawable/ic_menu_guide"
             android:title="@string/nav_guide" />
         <item
+            android:id="@+id/nav_calculator"
+            android:icon="@drawable/ic_menu_calculator"
+            android:title="@string/calculator"/>
+        <item
             android:id="@+id/nav_characters"
             android:icon="@drawable/ic_menu_characters"
             android:title="@string/nav_characters" />

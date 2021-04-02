@@ -183,7 +183,7 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
         ((AppCompatActivity) getActivity()).getSupportActionBar().
                 setTitle(getString(R.string.nav_supports));
 
-        // Populate the first AutoCompleteTextView with options for all the characters
+        // Populate the first SearchableSpinner with options for all the characters
         // Get all the names
         Cursor cursor = db.query("Characters", new String[]{"name"},
                 null, null, null, null, null);
@@ -194,7 +194,7 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
             } while (cursor.moveToNext());
         }
         cursor.close();
-        // Insert the information for the AutoCompleteTextView
+        // Insert the information for the SearchableSpinner
         SearchableSpinner character1 = (SearchableSpinner) layout.findViewById(
                 R.id.searchable_spinner);
         searchableSpinnerAdapter1 =
@@ -202,11 +202,11 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
         character1.setAdapter(searchableSpinnerAdapter1);
         character1.setSelectedItem(0);
 
-        // At first, the spinner is not enabled (the AutoCompleteTextView goes first)
+        // At first, the spinner is not enabled (the SearchableSpinner goes first)
         character2 = (SearchableSpinner) layout.findViewById(R.id.searchable_spinner_2);
         character2.setVisibility(View.INVISIBLE);
 
-        // Set a listener for both AutoCompleteTextViews
+        // Set a listener for both SearchableSpinners
         character1.setOnItemSelectedListener(searchableSpinnerListener);
         character2.setOnItemSelectedListener(searchableSpinnerListener2);
 

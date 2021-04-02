@@ -6,6 +6,7 @@
 
     <string name="nav_home">Home</string>
     <string name="nav_guide">Guide</string>
+    <string name="calculator">Calculator</string>
     <string name="nav_characters">Characters</string>
     <string name="nav_tea_time">Tea time</string>
     <string name="nav_supports">Supports</string>
@@ -81,7 +82,21 @@
         <item>Class mastery combat arts</item>
         <item>Other combat arts</item>
     </string-array>
+    <string name="class_ingame">Class</string>
+    <string name="weapon">Weapon:</string>
     <string name="effect">Effect</string>
     <string name="origin">Origin</string>
+    <string name="dur">Dur</string>
+    <string name="mt">Mt</string>
+    <string name="hit">Hit</string>
+    <string name="avo">Avo</string>
+    <string name="crit">Crit</string>
+    <string name="range">Range</string>
+
+    <string name="calculate">Calculate</string>
+    <string name="displayed_hit_input">Choose a Displayed Hit:</string>
+    <string name="true_hit_probability">True Hit Probability:</string>
+    <string name="displayed_hit">Displayed Hit</string>
+    <string name="true_hit">True Hit</string>
 
 </resources>
