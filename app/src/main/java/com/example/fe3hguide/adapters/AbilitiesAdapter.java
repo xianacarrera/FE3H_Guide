@@ -1,4 +1,4 @@
-package com.example.fe3hguide.characters.profile;
+package com.example.fe3hguide.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.characters.profile.AbilitiesFragment;
 
 public class AbilitiesAdapter extends
         RecyclerView.Adapter<AbilitiesAdapter.ViewHolderAbilities> {

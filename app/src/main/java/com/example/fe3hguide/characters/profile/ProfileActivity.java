@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
-import com.example.fe3hguide.FE3HDatabaseHelper;
+import com.example.fe3hguide.database.FE3HDatabaseHelper;
 import com.example.fe3hguide.R;
 import com.google.android.material.tabs.TabLayout;
 

@@ -1,4 +1,4 @@
-package com.example.fe3hguide.characters.navigation;
+package com.example.fe3hguide.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.characters.navigation.AshenWolvesActivity;
+import com.example.fe3hguide.characters.navigation.BlackEaglesActivity;
+import com.example.fe3hguide.characters.navigation.BlueLionsActivity;
+import com.example.fe3hguide.characters.navigation.ChurchOfSeirosActivity;
+import com.example.fe3hguide.characters.navigation.GoldenDeerActivity;
 import com.example.fe3hguide.characters.profile.ProfileActivity;
 
 import java.util.List;

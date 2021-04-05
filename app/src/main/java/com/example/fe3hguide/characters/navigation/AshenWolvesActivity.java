@@ -8,34 +8,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.FactionsCardsAdapter;
 
 import java.util.ArrayList;
 
 public class AshenWolvesActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private FactionsCardsAdapter adapter;
+    private RecyclerView factionsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters_navigation);
 
-        // Set up the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initComponents();
+        setupComponents();
+    }
 
-        // Set "Characters" as the text in the toolbar
-        toolbar.setTitle(getString(R.string.nav_characters));
+    private void initComponents(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Create an ArrayList with the names of the Ashen Wolves members
         ArrayList<String> ashenWolvesNames = createAshenWolvesNames();
-
         // Create an ArrayList with their pictures
         ArrayList<Integer> ashenWolvesImages = createAshenWolvesImages();
 
+        adapter = new FactionsCardsAdapter(ashenWolvesNames, ashenWolvesImages, this);
+        factionsRecycler = (RecyclerView) findViewById(R.id.characters_factions_recycler);
+    }
+
+    private void setupComponents(){
+        setSupportActionBar(toolbar);
+        // Set "Characters" as the text in the toolbar
+        toolbar.setTitle(getString(R.string.nav_characters));
+
         // Set adapter for the recycler view
-        FactionsCardsAdapter adapter =
-                new FactionsCardsAdapter(ashenWolvesNames, ashenWolvesImages, this);
-        RecyclerView factionsRecycler = (RecyclerView)
-                findViewById(R.id.characters_factions_recycler);
         factionsRecycler.setAdapter(adapter);
 
         // The recycler should put the cards in a grid layout of size 2x2
@@ -44,7 +53,7 @@ public class AshenWolvesActivity extends AppCompatActivity {
     }
 
     private ArrayList<String> createAshenWolvesNames(){
-        // For simplicity, the names are hardcoded
+        // For simplicity and speed purposes, the names are hardcoded
         ArrayList<String> ashenWolvesNames = new ArrayList<>();
         ashenWolvesNames.add("Yuri");
         ashenWolvesNames.add("Balthus");
@@ -54,6 +63,7 @@ public class AshenWolvesActivity extends AppCompatActivity {
     }
 
     private ArrayList<Integer> createAshenWolvesImages(){
+        // For simplicity, the images are hardcoded
         ArrayList<Integer> ashenWolvesImages = new ArrayList<>();
         ashenWolvesImages.add(R.drawable.ic_yuri);
         ashenWolvesImages.add(R.drawable.ic_balthus);

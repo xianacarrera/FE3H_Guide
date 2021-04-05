@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.SimpleListAdapter;
 
 import java.util.ArrayList;
 

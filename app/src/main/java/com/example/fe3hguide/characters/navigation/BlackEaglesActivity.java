@@ -8,34 +8,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.FactionsCardsAdapter;
 
 import java.util.ArrayList;
 
 public class BlackEaglesActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private FactionsCardsAdapter adapter;
+    private RecyclerView factionsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters_navigation);
 
-        // Set up the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initComponents();
+        setupComponents();
+    }
 
-        // Set "Characters" as the text in the toolbar
-        toolbar.setTitle(getString(R.string.nav_characters));
+    private void initComponents(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Create an ArrayList with the names of the Black Eagles members
         ArrayList<String> blackEaglesNames = createBlackEaglesNames();
-
         // Create an ArrayList with their pictures
         ArrayList<Integer> blackEaglesImages = createBlackEaglesImages();
+        adapter = new FactionsCardsAdapter(blackEaglesNames, blackEaglesImages, this);
+
+        factionsRecycler = (RecyclerView) findViewById(R.id.characters_factions_recycler);
+    }
+
+    private void setupComponents(){
+        setSupportActionBar(toolbar);
+        // Set "Characters" as the text in the toolbar
+        toolbar.setTitle(getString(R.string.nav_characters));
 
         // Set adapter for the recycler view
-        FactionsCardsAdapter adapter =
-                new FactionsCardsAdapter(blackEaglesNames, blackEaglesImages, this);
-        RecyclerView factionsRecycler = (RecyclerView)
-                findViewById(R.id.characters_factions_recycler);
         factionsRecycler.setAdapter(adapter);
 
         // The recycler should put the cards in a grid layout of size 4x2
@@ -44,7 +53,7 @@ public class BlackEaglesActivity extends AppCompatActivity {
     }
 
     private ArrayList<String> createBlackEaglesNames(){
-        // For simplicity, the names are hardcoded
+        // For simplicity and speed purposes, the names are hardcoded
         ArrayList<String> blackEaglesNames = new ArrayList<>();
         blackEaglesNames.add("Edelgard");
         blackEaglesNames.add("Hubert");
@@ -58,6 +67,7 @@ public class BlackEaglesActivity extends AppCompatActivity {
     }
 
     private ArrayList<Integer> createBlackEaglesImages(){
+        // For simplicity and speed purposes, the images are hardcoded
         ArrayList<Integer> blackEaglesImages = new ArrayList<>();
         blackEaglesImages.add(R.drawable.ic_edelgard);
         blackEaglesImages.add(R.drawable.ic_hubert);

@@ -1,0 +1,37 @@
+Agnea's Arrow_Black Magic_The most powerful form of black magic. A sweltering flame that reduces all to ash._A_2_16_70_5_1-2_13
+Blizzard_Black Magic_Basic ice magic._E_5_3_70_15_1-2_4
+Bolganone_Black Magic_Advanced fire magic._C_5_8_85_0_1-2_6
+Bolting_Black Magic_The highest tier of lightning magic. Cannot trigger follow-up attacks._B_2_12_65_15_3-10_18
+Cutting Gale_Black Magic_Advanced wind magic._C_6_7_95_10_1-2_5
+Excalibur_Black Magic_The highest tier of wind magic. Effective against Flying foes._B_4_11_100_15_1-2_8
+Fimbulvetr_Black Magic_Advanced ice magic._B_3_12_65_25_1-2_10
+Fire_Black Magic_Basic fire magic._E_10_3_90_0_1-2_3
+Meteor_Black Magic_Magic that also hits targets adjacent to the point of impact. Cannot make follow-up attacks._B_1_10_80_0_3-10_19
+Ragnarok_Black Magic_The highest tier of fire magic._B_3_15_80_5_1-2_9
+Sagittae_Black Magic_Magic arrows with a high Hit._C_10_7_90_5_1-2_6
+Thoron_Black Magic_Advanced lightning magic._C_4_9_75_10_1-3_7
+Thunder_Black Magic_Basic lightning magic._E_8_4_80_5_1-2_4
+Wind_Black Magic_Basic wind magic._E_6_2_100_10_1-2_2
+Banshee Θ_Dark Magic_Intermediate dark magic. Foes hit suffer reduced Mv for 1 turn._C_5_9_75_5_1-2_9
+Bohr X_Dark Magic_The highest tier of dark magic. Foes hit are left with 1 HP._B_3_10_60_0_3-10_20
+Dark Spikes T_Dark Magic_Advanced dark magic. Effective against cavalry._B_3_13_80_0_1-2_11
+Death Γ_Dark Magic_Intermediate dark magic. Has a high Crit rate._C_4_6_70_20_1-3_8
+Hades Ω_Dark Magic_Advanced dark magic. Calls on the morbid might of the underworld._A_2_18_65_10_1-2_16
+Luna Λ_Dark Magic_Intermediate dark magic. Ignores enemy Res. Cannot make follow-up attacks._C_2_1_65_0_1-2_7
+Miasma Δ_Dark Magic_Basic dark magic._E_10_5_80_0_1-2_5
+Mire B_Dark Magic_Basic dark magic. Fores hit suffer Def -5 for 1 turn._E_8_3_70_0_1-3_5
+Quake Σ_Dark Magic_The highest tier of dark magic. Attacks the entire battlefield, except fliers._B_1_8_50_0_All_20
+Swarm Z_Dark Magic_Basic dark magic. Foes hit suffer Spd -5 for 1 turn._E_8_4_70_0_1-2_4
+Abraxas_Damaging White Magic_Advanced light attack magic. Calls light from the heavens down on foes._A_2_14_90_5_1-2_13
+Aura_Damaging White Magic_Advanced light attack magic. Assails foes with rings of light._B_3_12_70_20_1-2_12
+Nosferatu_Damaging White Magic_Basic light attack magic. Recovers HP equal to 50% of the damage dealt._E_12_1_80_0_1-2_8
+Seraphim_Damaging White Magic_Intermediate light attack magic. Effective against monsters._C_8_8_75_5_1-2_10
+Fortify_Non-Damaging White Magic_Advanced light magic. Heals all allies within a range based on Mag._A_2_15_100_0_1-Mag/4_0
+Heal_Non-Damaging White Magic_Basic light magic. Heals an adjacent ally._E_10_8_100_0_1_0
+Physic_Non-Damaging White Magic_Intermediate light magic. Heals an ally within a range based on Mag._C_5_8_100_0_1-Mag/2_0
+Recover_Non-Damaging White Magic_Intermediate light magic. Greatly heals an adjacent ally._C_5_30_100_0_1_0
+Rescue_Non-Damaging White Magic_Moves an ally to a space near the user._B_3_-_100_-_1-Mag/4_0
+Restore_Non-Damaging White Magic_Cures status effects on all allies within a range based on Mag._C_10_-_100_-_1-Mag/4_0
+Silence_Non-Damaging White Magic_Foes hit are unable to use magic for 1 turn._B_3_-_100_-3-10_0
+Ward_Non-Damaging White Magic_Grant an ally Res+7. The effect decreases by 1 each turn._C_5_-_100_-_1_0
+Warp_Non-Damaging White Magic_Moves an ally to a targeted space within a range based on Mag._B_1_-_100_-_1-Magic/4_0

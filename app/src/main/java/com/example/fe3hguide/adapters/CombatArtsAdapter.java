@@ -1,4 +1,4 @@
-package com.example.fe3hguide.characters.profile;
+package com.example.fe3hguide.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.characters.profile.CombatArtsFragment;
+import com.example.fe3hguide.model.CombatArt;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +26,7 @@ public class CombatArtsAdapter
         this.combatArts = abilities;
         positions = new HashMap<>();
         for (int i = 0; i < combatArts.size(); i++){
-            positions.put(combatArts.get(i).getArt(), i);
+            positions.put(combatArts.get(i).getName(), i);
         }
         this.fragment = fragment;
     }
@@ -46,7 +48,7 @@ public class CombatArtsAdapter
     public void onBindViewHolder(CombatArtsAdapter.ViewHolderCombatArts holder, int position){
         CardView cardView = holder.cardView;
         TextView textView = (TextView) cardView.findViewById(R.id.textView_standard_card_item);
-        textView.setText(combatArts.get(position).getArt());
+        textView.setText(combatArts.get(position).getName());
     }
 
     public CombatArt getCombatArt(String name){

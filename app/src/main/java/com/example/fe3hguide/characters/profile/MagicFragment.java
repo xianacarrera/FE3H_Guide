@@ -2,7 +2,6 @@ package com.example.fe3hguide.characters.profile;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.fe3hguide.FE3HDatabaseHelper;
 import com.example.fe3hguide.R;
 
 import java.util.ArrayList;

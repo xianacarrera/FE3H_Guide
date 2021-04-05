@@ -18,6 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.CombatArtsAdapter;
+import com.example.fe3hguide.model.CombatArt;
+import com.example.fe3hguide.model.CombatArtsType;
 
 import java.util.ArrayList;
 
@@ -265,7 +268,7 @@ public class CombatArtsFragment extends Fragment {
         // Set the name of the combat art as the title for the popup
         TextView titleCombatArtName = (TextView)
                 myDialog.findViewById(R.id.textview_title_combat_art_name);
-        titleCombatArtName.setText(cArt.getArt());
+        titleCombatArtName.setText(cArt.getName());
 
         // Show the effect of the combat art
         TextView textEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);

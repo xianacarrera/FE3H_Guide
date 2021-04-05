@@ -1,4 +1,4 @@
-package com.example.fe3hguide.characters.profile;
+package com.example.fe3hguide.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

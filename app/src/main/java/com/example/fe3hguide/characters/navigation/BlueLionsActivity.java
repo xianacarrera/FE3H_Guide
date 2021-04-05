@@ -8,34 +8,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.FactionsCardsAdapter;
 
 import java.util.ArrayList;
 
 public class BlueLionsActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private FactionsCardsAdapter adapter;
+    private RecyclerView factionsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters_navigation);
 
-        // Set up the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initComponents();
+        setupComponents();
+    }
 
-        // Set "Characters" as the text in the toolbar
-        toolbar.setTitle(getString(R.string.nav_characters));
+    private void initComponents(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Create an ArrayList with the names of the Blue Lions members
         ArrayList<String> blueLionsNames = createBlueLionsNames();
-
         // Create an ArrayList with their pictures
         ArrayList<Integer> blueLionsImages = createBlueLionsImages();
+        adapter = new FactionsCardsAdapter(blueLionsNames, blueLionsImages, this);
+
+        factionsRecycler = (RecyclerView) findViewById(R.id.characters_factions_recycler);
+    }
+
+    private void setupComponents(){
+        setSupportActionBar(toolbar);
+        // Set "Characters" as the text in the toolbar
+        toolbar.setTitle(getString(R.string.nav_characters));
 
         // Set adapter for the recycler view
-        FactionsCardsAdapter adapter =
-                new FactionsCardsAdapter(blueLionsNames, blueLionsImages, this);
-        RecyclerView factionsRecycler = (RecyclerView)
-                findViewById(R.id.characters_factions_recycler);
         factionsRecycler.setAdapter(adapter);
 
         // The recycler should put the cards in a grid layout of size 4x2
@@ -44,7 +53,7 @@ public class BlueLionsActivity extends AppCompatActivity {
     }
 
     private ArrayList<String> createBlueLionsNames(){
-        // For simplicity, the names are hardcoded
+        // For simplicity and speed purposes, the names are hardcoded
         ArrayList<String> blueLionsNames = new ArrayList<>();
         blueLionsNames.add("Dimitri");
         blueLionsNames.add("Dedue");
@@ -58,6 +67,7 @@ public class BlueLionsActivity extends AppCompatActivity {
     }
 
     private ArrayList<Integer> createBlueLionsImages(){
+        // For simplicity and speed purposes, the images are hardcoded
         ArrayList<Integer> blueLionsImages = new ArrayList<>();
         blueLionsImages.add(R.drawable.ic_dimitri);
         blueLionsImages.add(R.drawable.ic_dedue);

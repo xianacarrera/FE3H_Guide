@@ -1,4 +1,4 @@
-package com.example.fe3hguide.supports;
+package com.example.fe3hguide.adapters;
 
 import android.content.Context;
 import android.graphics.Color;

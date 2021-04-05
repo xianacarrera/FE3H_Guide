@@ -1,4 +1,4 @@
-package com.example.fe3hguide.teaTime;
+package com.example.fe3hguide.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

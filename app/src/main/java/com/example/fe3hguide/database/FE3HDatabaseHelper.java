@@ -1,57 +1,17 @@
-package com.example.fe3hguide;
+package com.example.fe3hguide.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.fe3hguide.R;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.regex.Pattern;
-
-
-/**
- * DATABASE SCHEMA:
- * <p>
- * CHARACTERS(_id, NAME, PORTRAIT)
- * PK: _id
- * <p>
- * FAVOURITE_TEAS(_id, TEA)
- * PK: _id, TEA
- * FK: _id references CHARACTERS(_id)
- * <p>
- * TOPICS(_id, TOPIC)
- * PK: _id, TOPIC
- * FK: _id references CHARACTERS(_id)
- * <p>
- * FINAL_CONVERSATIONS(_id, CONVERSATION, OPTION_1, OPTION_2, OPTION_3)
- * PK : _id, CONVERSATION
- * FK: _id references CHARACTERS(_id)
- * <p>
- * SUPPORTS(CHARACTER_1, CHARACTER_2, C_SUPPORT, B_SUPPORT, A_SUPPORT, INTER_SUPPORT,
- * INTER_RANK, S_SUPPORT)
- * PK: CHARACTER_1, CHARACTER_2
- * FK: CHARACTER_1 references CHARACTERS(_id)
- * FK: CHARACTER_2 references CHARACTERS(_id)
- * <p>
- * MAGIC(_id, SKILL_LEVEL, REASON, FAITH)
- * PK: _id, SKILL_LEVEL
- * FK: _id references CHARACTERS(_id)
- *
- * CHARACTER_GIFTS(_id, gift, liked, rank)
- *      PK: _id, gift
- *      FK: _id references CHARACTERS(_id)
- *
- * CHARACTER_MEALS(_id, meal, liked)
- *      PK: _id, meal
- *      FK: _id references CHARACTERS(_id)
- *
- * CHARACTER_LOST_ITEMS(_id, item)
- *      PK: _id, item
- *      FK: _id references CHARACTERS(_id)
- */
 
 
 public class FE3HDatabaseHelper extends SQLiteOpenHelper {
@@ -70,7 +30,9 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         createCharactersTable(db);
         createAbilitiesTable(db);
         createCombatArtsTables(db);
+        createSpellsTable(db);
         createMagicTable(db);
+        createClassesTable(db);
         createCharacterGiftsTable(db);
         createCharacterMealsTable(db);
         createCharacterLostItemsTable(db);
@@ -88,64 +50,150 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE Characters ( "
                 + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "name TEXT, "
-                + "portrait INTEGER);");
+                + "portrait INTEGER, "
+                + "pronouns TEXT, "
+                + "faction TEXT, "
+                + "age INTEGER, "
+                + "birthday TEXT, "
+                + "fodlanBirthday TEXT, "
+                + "crest TEXT, "
+                + "baseStatsHP TEXT, "
+                + "baseStatsStr TEXT, "
+                + "baseStatsMag TEXT, "
+                + "baseStatsDex TEXT, "
+                + "baseStatsSpd TEXT, "
+                + "baseStatsLck TEXT, "
+                + "baseStatsDef TEXT, "
+                + "baseStatsRes TEXT, "
+                + "baseStatsCha TEXT, "
+                + "baseLevel TEXT, "
+                + "growthRatesHP TEXT, "
+                + "growthRatesStr TEXT, "
+                + "growthRatesMag TEXT, "
+                + "growthRatesDex TEXT, "
+                + "growthRatesSpd TEXT, "
+                + "growthRatessLck TEXT, "
+                + "growthRatesDef TEXT, "
+                + "growthRatesRes TEXT, "
+                + "growthRatesCha TEXT, "
+                + "skillSword TEXT, "
+                + "skillLance TEXT, "
+                + "skillAxe TEXT, "
+                + "skillBow TEXT, "
+                + "skillBrawling TEXT, "
+                + "skillReason TEXT, "
+                + "skillFaith TEXT, "
+                + "skillAuthority TEXT, "
+                + "skillHeavyArmor TEXT, "
+                + "skillRiding TEXT, "
+                + "skillFlying TEXT);");
 
         insertCharacters(db);
     }
 
-    public static void insertCharacters(SQLiteDatabase db){
-        insertCharacter(db, "Alois", R.drawable.ic_alois);
-        insertCharacter(db, "Anna", R.drawable.ic_anna);
-        insertCharacter(db, "Annette", R.drawable.ic_annette);
-        insertCharacter(db, "Ashe", R.drawable.ic_ashe);
-        insertCharacter(db, "Balthus", R.drawable.ic_balthus);
-        insertCharacter(db, "Bernadetta", R.drawable.ic_bernadetta);
-        insertCharacter(db, "Caspar", R.drawable.ic_caspar);
-        insertCharacter(db, "Catherine", R.drawable.ic_catherine);
-        insertCharacter(db, "Claude", R.drawable.ic_claude);
-        insertCharacter(db, "Constance", R.drawable.ic_constance);
-        insertCharacter(db, "Cyril", R.drawable.ic_cyril);
-        insertCharacter(db, "Dedue", R.drawable.ic_dedue);
-        insertCharacter(db, "Dimitri", R.drawable.ic_dimitri);
-        insertCharacter(db, "Dorothea", R.drawable.ic_dorothea);
-        insertCharacter(db, "Edelgard", R.drawable.ic_edelgard);
-        insertCharacter(db, "Felix", R.drawable.ic_felix);
-        insertCharacter(db, "Ferdinand", R.drawable.ic_ferdinand);
-        insertCharacter(db, "Flayn", R.drawable.ic_flayn);
-        insertCharacter(db, "Gilbert", R.drawable.ic_gilbert);
-        insertCharacter(db, "Hanneman", R.drawable.ic_hanneman);
-        insertCharacter(db, "Hapi", R.drawable.ic_hapi);
-        insertCharacter(db, "Hilda", R.drawable.ic_hilda);
-        insertCharacter(db, "Hubert", R.drawable.ic_hubert);
-        insertCharacter(db, "Ignatz", R.drawable.ic_ignatz);
-        insertCharacter(db, "Ingrid", R.drawable.ic_ingrid);
-        insertCharacter(db, "Jeritza", R.drawable.ic_jeritza);
-        insertCharacter(db, "Leonie", R.drawable.ic_leonie);
-        insertCharacter(db, "Linhardt", R.drawable.ic_linhardt);
-        insertCharacter(db, "Lorenz", R.drawable.ic_lorenz);
-        insertCharacter(db, "Lysithea", R.drawable.ic_lysithea);
-        insertCharacter(db, "Manuela", R.drawable.ic_manuela);
-        insertCharacter(db, "Marianne", R.drawable.ic_marianne);
-        insertCharacter(db, "Mercedes", R.drawable.ic_mercedes);
-        insertCharacter(db, "Petra", R.drawable.ic_petra);
-        insertCharacter(db, "Raphael", R.drawable.ic_raphael);
-        insertCharacter(db, "Rhea", R.drawable.ic_rhea);
-        insertCharacter(db, "Seteth", R.drawable.ic_seteth);
-        insertCharacter(db, "Shamir", R.drawable.ic_shamir);
-        insertCharacter(db, "Sylvain", R.drawable.ic_sylvain);
-        insertCharacter(db, "Yuri", R.drawable.ic_yuri);
-        insertCharacter(db, "BylethM", R.drawable.ic_bylethm);
-        insertCharacter(db, "BylethF", R.drawable.ic_bylethf);
+    public static void insertCharacters(SQLiteDatabase db) {
+        insertCharacter(db, "Alois", R.drawable.ic_alois, "he/him", "Knights of Seiros", 44, "December 1", "Ethereal 1_Imperial Year 1135", "None", 47, 24, 8, 12, 14, 11, 17, 8, 16, "45%", "45%", "20%", "35%", "40%", "30%", "40%", "20%", "40%", "E", "E", "A_UP", "E", "B_UP", "E_DOWN", "E", "C", "C_UP", "E", "E_DOWN");
+        insertCharacter(db, "Anna", R.drawable.ic_anna, "she/her", "Knights of Seiros", 25, "June 9", "Garland Moon 9_Imperial Year 1155", "Major Crest of Ernest", 28, 8, 8, 9, 11, 14, 6, 8, 9, "35%", "35%", "35%", "45%", "55%", "45%", "30%", "40%", "50%", "D_UP", "E", "E+_UP", "E+_UP", "E", "E_DOWN", "E+_UP", "E_DOWN", "E", "E$Pass", "E");
+        insertCharacter(db, "Annette", R.drawable.ic_annette, "she/her", "Blue Lions", 16, "May 9", "Harpstring Moon 9_Imperial Year 1163", "Minor Crest of Dominic", 23, 6, 11, 7, 7, 6, 5, 4, 6, "25%", "30%", "50%", "50%", "35%", "35%", "20%", "30%", "35%", "E", "E", "E+_UP", "E_DOWN", "E", "D+_UP", "E", "E+_UP", "E_DOWN", "E", "E");
+        insertCharacter(db, "Ashe", R.drawable.ic_ashe, "he/him", "Blue Lions", 16, "October 17", "Wyvern Moon 17_Imperial Year 1163", "None", 23, 8, 5, 8, 9, 6, 5, 6, 5, "35%", "35%", "25%", "55%", "50%", "40%", "20%", "35%", "25%", "E", "E$Shatter Slash", "E+_UP", "D_UP", "E", "E_DOWN", "E", "E", "E", "E", "E");
+        insertCharacter(db, "Balthus", R.drawable.ic_balthus, "he/him", "Ashen Wolves", 26, "July 9", "Blue Sea Moon 9_Imperial Year 1153", "Major Crest of Chevalier", 29, 12, 6, 5, 8, 3, 8, 5, 5, "50%", "50%", "30%", "25%", "30%", "20%", "45%", "30%", "30%", "E+_UP", "E_DOWN", "D+_UP", "E_DOWN", "D+_UP", "E_DOWN$Black Magic Crit +10", "E_UP", "E+", "E_UP", "E", "E_DOWN");
+        insertCharacter(db, "Bernadetta", R.drawable.ic_bernadetta, "she/her", "Black Eagles", 17, "December 12", "Ethereal Moon 12_Imperial Year 1162", "Minor Crest of Indech", 25, 8, 5, 7, 7, 5, 4, 2, 6, "35%", "35%", "20%", "55%", "50%", "25%", "20%", "30%", "35%", "E_DOWN", "E+_UP", "E_DOWN", "D_UP", "E_DOWN", "E", "E", "E", "E_DOWN", "E$Pass", "E");
+        insertCharacter(db, "Caspar", R.drawable.ic_caspar, "he/him", "Black Eagles", 16, "July 1", "Blue Sea Moon 1_Imperial Year 1163", "None", 26, 9, 3, 5, 6, 8, 6, 2, 4, "55%", "45%", "25%", "45%", "45%", "40%", "30%", "20%", "25%", "E", "E", "D_UP", "E_DOWN", "E+_UP", "E_DOWN", "E", "E_DOWN", "E", "E", "E");
+        insertCharacter(db, "Catherine", R.drawable.ic_catherine, "she/her", "Knights of Seiros", 27, "September 15", "Horsebow Moon 15_Imperial Year 1152", "Major Crest of Charon", 36, 17, 8, 12, 16, 10, 12, 8, 7, "50%", "50%", "25%", "40%", "55%", "30%", "30%", "20%", "25%", "A_UP", "E", "E", "E", "C+_UP", "E_DOWN", "E", "E", "E", "E", "E");
+        insertCharacter(db, "Claude", R.drawable.ic_claude, "he/him", "Golden Deer", 17, "July 24", "Blue Sea Moon 24_Imperial Year 1162", "Minor Crest of Riegan", 26, 11, 5, 8, 8, 7, 6, 4, 8, "35%", "40%", "25%", "60%", "55%", "45%", "30%", "25%", "55%", "E+_UP", "E_DOWN", "E$Diamond Axe", "D_UP", "E", "E", "E_DOWN", "D_UP", "E", "E+_UP", "E+_UP");
+        insertCharacter(db, "Constance", R.drawable.ic_constance, "she/her", "Ashen Wolves", 18, "March 20", "Lone Moon 20_Imperial Year 1161", "Major Crest of Noa", 23, 5, 12, 7, 7, 4, 3, 5, 7, "20%", "20%", "60%", "30%", "35%", "15%", "15%", "30%", "25%", "E+_UP", "E", "E_DOWN", "E", "E$Mystic Blow", "D+_UP", "E_UP", "D_UP", "E_DOWN", "E", "D_UP");
+        insertCharacter(db, "Cyril", R.drawable.ic_cyril, "he/him", "Knights of Seiros", 14, "October 25", "Wyvern Moon 25_Imperial Year 1165", "None", 24, 7, 4, 6, 6, 6, 5, 2, 4, "35%", "20%", "15%", "40%", "40%", "30%", "10%", "10%", "15%", "E", "E_UP", "D+_UP", "D_UP", "E", "E_DOWN", "E_DOWN", "E", "E", "E_UP", "E_UP");
+        insertCharacter(db, "Dedue", R.drawable.ic_dedue, "he/him", "Blue Lions", 18, "August 31", "Verdant Rain Moon_Imperial Year 1161", "None", 30, 12, 2, 5, 7, 5, 8, 1, 4, "60%", "50%", "15%", "30%", "20%", "25%", "50%", "10%", "30%", "E", "E+_UP", "D+_UP", "E", "E+_UP", "E", "E_DOWN", "E", "D_UP", "E_DOWN", "E_DOWN");
+        insertCharacter(db, "Dimitri", R.drawable.ic_dimitri, "he/him", "Blue Lions", 17, "December 20", "Ethereal Moon 20_Imperial Year 1162", "Minor Crest of Blaiddyd", 28, 12, 4, 7, 7, 5, 7, 4, 9, "55%", "60%", "20%", "50%", "50%", "25%", "40%", "20%", "55%", "E+_UP", "D+_UP", "E_DOWN", "E", "E", "E_DOWN", "E", "D_UP", "E", "D$Seal Movement", "E");
+        insertCharacter(db, "Dorothea", R.drawable.ic_dorothea, "she/her", "Black Eagles", 18, "September 29", "Horsebow Moon 29_Imperial Year 1161", "None", 24, 5, 11, 6, 7, 6, 4, 7, 8, "40%", "20%", "40%", "45%", "40%", "35%", "15%", "35%", "40%", "E+_UP", "E", "E", "E", "E", "D_UP", "E_DOWN$White Magic Avo +20", "E", "E", "E_DOWN", "E_DOWN");
+        insertCharacter(db, "Edelgard", R.drawable.ic_edelgard, "she/her", "Black Eagles", 17, "June 22", "Garland Moon 22_Imperial Year 1162", "Minor Crest of Seiros_Major Crest of Flames", 29, 13, 6, 5, 8, 5, 6, 4, 10, "40%", "55%", "45%", "45%", "40%", "30%", "35%", "35%", "60%", "E+_UP", "E", "D_UP", "E_DOWN", "E", "E$Black Magic Crit +10", "E_DOWN", "D_UP", "D_UP", "E", "E");
+        insertCharacter(db, "Felix", R.drawable.ic_felix, "he/him", "Blue Lions", 17, "February 20", "Pegasus Moon 20_Imperial Year 1163", "Major Crest of Fraldarius", 26, 10, 5, 6, 9, 5, 5, 3, 5, "45%", "55%", "30%", "45%", "55%", "40%", "30%", "20%", "30%", "D_UP", "E", "E", "E+_UP", "E+_UP", "E_DOWN$Black Magic Crit +10", "E", "E_DOWN", "E", "E", "E");
+        insertCharacter(db, "Ferdinand", R.drawable.ic_ferdinand, "he/him", "Black Eagles", 17, "April 30", "Great Tree Moon 30_Imperial Year 1162", "Minor Crest of Cichol", 28, 8, 5, 6, 8, 6, 6, 2, 7, "50%", "45%", "20%", "40%", "50%", "40%", "35%", "20%", "40%", "E+_UP", "D_UP", "E+_UP", "E", "E", "E", "E", "E", "E$Seal Speed", "D_UP", "E");
+        insertCharacter(db, "Flayn", R.drawable.ic_flayn, "she/her", "Knights of Seiros", 0, "July 12", "Blue Sea Moon 12", "Major Crest of Cethleann", 28, 8, 15, 11, 9, 8, 7, 16, 15, "25%", "25%", "55%", "45%", "35%", "15%", "25%", "50%", "45%", "E", "C+_UP", "E", "E", "E", "E$Seal Magic", "C+_UP", "E", "E_DOWN", "E_DOWN", "D");
+        insertCharacter(db, "Gilbert", R.drawable.ic_gilbert, "he/him", "Knights of Seiros", 56, "January 26", "Guardian Moon 26_Imperial Year 1124", "None", 56, 26, 9, 22, 8, 10, 19, 7, 20, "55%", "45%", "20%", "45%", "30%", "15%", "45%", "10%", "35%", "E", "B+_UP", "B+_UP", "E", "E", "E", "E", "D+", "B_UP", "C_UP", "E");
+        insertCharacter(db, "Hanneman", R.drawable.ic_hanneman, "he/him", "Knights of Seiros", 51, "February 8", "Pegasus Moon 8_Imperial Year 1129", "Minor Crest of Indech", 32, 10, 19, 12, 9, 9, 7, 15, 11, "40%", "30%", "55%", "45%", "20%", "35%", "25%", "40%", "35%", "E", "E", "E", "C+_UP", "E", "B_UP", "E", "D", "E_DOWN", "D_UP", "E_DOWN");
+        insertCharacter(db, "Hapi", R.drawable.ic_hapi, "she/her", "Ashen Wolves", 20, "January 15", "Guardian Moon 15_Imperial Year 1159", "Major Crest of Timotheos", 27, 7, 12, 9, 7, 4, 4, 8, 5, "35%", "35%", "45%", "45%", "40%", "20%", "15%", "45%", "25%", "E", "D", "E$Exhaustive Strike", "E", "E_DOWN", "D+_UP", "E", "E_DOWN", "E_DOWN", "D_UP", "E_UP");
+        insertCharacter(db, "Hilda", R.drawable.ic_hilda, "she/her", "Golden Deer", 18, "February 3", "Pegasus Moon 3_Imperial Year 1162", "Minor Crest of Goneril", 29, 10, 5, 5, 8, 6, 6, 3, 7, "50%", "45%", "25%", "30%", "50%", "35%", "35%", "20%", "50%", "E", "E+_UP", "D_UP", "E", "E", "E", "E_DOWN", "E_DOWN", "E$Seal Speed", "E", "E");
+        insertCharacter(db, "Hubert", R.drawable.ic_hubert, "he/him", "Black Eagles", 20, "April 17", "Great Tree Moon 17_Imperial Year 1160", "None", 22, 6, 12, 6, 7, 6, 4, 7, 6, "35%", "30%", "55%", "45%", "45%", "35%", "25%", "40%", "35%", "E", "E$Frozen Lance", "E_DOWN", "E+_UP", "E", "D_UP", "E_DOWN", "E+_UP", "E", "E", "E_DOWN");
+        insertCharacter(db, "Ignatz", R.drawable.ic_ignatz, "he/him", "Golden Deer", 17, "March 14", "Lone Moon 14_Imperial Year 1163", "None", 25, 8, 5, 7, 8, 8, 4, 6, 4, "35%", "35%", "30%", "50%", "50%", "55%", "25%", "35%", "25%", "E+_UP", "E", "E", "D_UP", "E", "E$Seal Strength", "E", "E+_UP", "E", "E", "E_DOWN");
+        insertCharacter(db, "Ingrid", R.drawable.ic_ingrid, "she/her", "Blue Lions", 17, "January 4", "Guardian Moon 4_Imperial Year 1163", "Minor Crest of Daphnel", 27, 8, 6, 6, 8, 6, 6, 8, 8, "40%", "35%", "35%", "40%", "60%", "45%", "30%", "40%", "45%", "E+_UP", "D_UP", "E", "E", "E", "E", "E", "E", "E", "D_UP", "D_UP");
+        insertCharacter(db, "Jeritza", R.drawable.ic_jeritza, "he/him", "Knights of Seiros", 21, "March 4", "Lone Moon 4_Imperial Year 1158", "Minor Crest of Lamine", 48, 29, 18, 15, 25, 12, 23, 15, 10, "50%", "50%", "35%", "35%", "60%", "30%", "40%", "25%", "25%", "B+_UP", "A+_UP", "C+", "D", "C+_UP", "D", "E_DOWN", "B_DOWN", "E", "A_UP", "E$Darting Blow");
+        insertCharacter(db, "Leonie", R.drawable.ic_leonie, "she/her", "Golden Deer", 19, "August 21", "Vendant Rain Moon 21_Imperial Year 1160", "None", 26, 9, 5, 8, 9, 6, 7, 2, 7, "40%", "40%", "20%", "55%", "60%", "40%", "40%", "15%", "40%", "E", "D+_UP", "E", "E+_UP", "E", "E", "E", "E", "E", "E+_UP", "E");
+        insertCharacter(db, "Linhardt", R.drawable.ic_linhardt, "he/him", "Black Eagles", 16, "November 7", "Red Wolf Moon 7_Imperial Year 1163", "Minor Crest of Cethleann", 24, 5, 10, 6, 5, 7, 5, 9, 3, "30%", "30%", "45%", "40%", "40%", "45%", "30%", "45%", "20%", "E", "E", "E_DOWN", "E", "E_DOWN", "E+_UP", "D+_UP", "E", "E", "E", "E");
+        insertCharacter(db, "Lorenz", R.drawable.ic_lorenz, "he/him", "Golden Deer", 18, "June 13", "Garland Moon 13_Imperial Year 1161", "Minor Crest of Gloucester", 28, 8, 7, 6, 7, 5, 6, 6, 3, "55%", "40%", "40%", "45%", "40%", "25%", "30%", "40%", "35%", "E", "D_UP", "E", "E", "E_DOWN", "E+_UP", "E", "E", "E", "D_UP", "E");
+        insertCharacter(db, "Lysithea", R.drawable.ic_lysithea, "she/her", "Golden Deer", 15, "February 28", "Pegasus Moon 28_Imperial Year 1165", "Major Crest of Gloucester_Minor Crest of Charon", 22, 4, 11, 7, 7, 4, 3, 4, 5, "20%", "15%", "60%", "60%", "50%", "15%", "10%", "25%", "25%", "E_DOWN$Soulblade", "E_DOWN", "E_DOWN", "E", "E", "D_UP", "E+_UP", "E+_UP", "E_DOWN", "E", "E");
+        insertCharacter(db, "Manuela", R.drawable.ic_manuela, "she/her", "Knights of Seiros", 0, "August 3", "Verdant Rain Moon 3", "None", 34, 14, 14, 12, 16, 12, 8, 12, 15, "50%", "35%", "35%", "40%", "60%", "35%", "30%", "25%", "50%", "C+_UP", "E", "E", "E", "E", "E_DOWN", "B_UP", "E", "E", "E", "D_UP");
+        insertCharacter(db, "Marianne", R.drawable.ic_marianne, "she/her", "Golden Deer", 17, "November 23", "Red Wold Moon 23_Imperial Year 1162", "Minor Crest of The Beast", 23, 5, 11, 6, 7, 6, 4, 8, 7, "35%", "20%", "50%", "40%", "40%", "35%", "15%", "45%", "40%", "E+_UP", "E$Frozen Lance", "E", "E", "E_DOWN", "E", "D+_UP", "E", "E_DOWN", "E_UP", "E_UP");
+        insertCharacter(db, "Mercedes", R.drawable.ic_mercedes, "she/her", "Blue Lions", 22, "May 27", "Harpstring Moon 27_Imperial Year 1157", "Minor Crest of Lamine", 25, 6, 10, 6, 8, 5, 5, 9, 8, "30%", "25%", "50%", "45%", "40%", "30%", "25%", "45%", "40%", "E_DOWN", "E_DOWN", "E_DOWN", "E$Waning Shot", "E", "E+_UP", "D_UP", "E", "E_DOWN", "E", "E");
+        insertCharacter(db, "Petra", R.drawable.ic_petra, "she/her", "Black Eagles", 15, "September 7", "Horsebow Moon 7_Imperial Year 1164", "None", 25, 9, 3, 7, 10, 7, 5, 2, 6, "45%", "40%", "25%", "50%", "60%", "45%", "30%", "15%", "35%", "D+_UP", "E", "E+_UP", "E+_UP", "E", "E_DOWN", "E_DOWN", "E", "E", "E", "D_UP");
+        insertCharacter(db, "Raphael", R.drawable.ic_raphael, "he/him", "Golden Deer", 18, "May 18", "Harpstring Moon 18_Imperial Year 1162", "None", 30, 11, 3, 5, 6, 6, 7, 1, 4, "65%", "50%", "15%", "35%", "15%", "35%", "45%", "10%", "25%", "E", "E", "E+_UP", "E_DOWN", "D_UP", "E_DOWN", "E", "E", "D_UP", "E_DOWN", "E");
+        insertCharacter(db, "Rhea", R.drawable.ic_rhea, "she/her", "Knights of Seiros", 0, "January 11", "Guardian Moon 11", "Major Crest of Seiros", 46, 17, 19, 13, 14, 13, 14, 19, 37, "45%", "35%", "45%", "40%", "40%", "40%", "30%", "40%", "70%", "A", "D", "E", "E", "B", "A", "A", "A", "E", "E", "E");
+        insertCharacter(db, "Seteth", R.drawable.ic_seteth, "he/him", "Knights of Seiros", 0, "December 27", "Ethereal Moon 27", "Major Crest of Cichol", 47, 24, 15, 19, 16, 12, 19, 8, 20, "50%", "45%", "35%", "50%", "50%", "25%", "30%", "25%", "45%", "D+_UP", "B_UP", "B_UP", "E", "E", "E", "E", "B_UP", "E", "E_DOWN", "C_UP");
+        insertCharacter(db, "Shamir", R.drawable.ic_shamir, "she/her", "Knights of Seiros", 25, "March 27", "Lone Moon 27_Imperial Year 1154", "None", 33, 17, 8, 16, 14, 14, 12, 8, 10, "35%", "40%", "20%", "55%", "40%", "55%", "20%", "15%", "30%", "E", "C+_UP", "E", "A_UP", "E", "E", "E_DOWN", "D", "E", "E", "E");
+        insertCharacter(db, "Sylvain", R.drawable.ic_sylvain, "he/him", "Blue Lions", 19, "June 5", "Garland Moon 5_Imperial Year 1160", "Minor Crest of Gautier", 27, 9, 5, 5, 8, 6, 6, 2, 7, "55%", "45%", "30%", "35%", "50%", "35%", "40%", "25%", "40%", "E", "D_UP", "D_UP", "E_DOWN", "E", "E$Black Magic Avo +20", "E", "E", "E", "D_UP", "E");
+        insertCharacter(db, "Yuri", R.drawable.ic_yuri, "he/him", "Ashen Wolves", 20, "August 12", "Verdant Rain Moon 12_Imperial Year 1160", "Major Crest of Aubin", 25, 11, 7, 8, 10, 8, 6, 8, 9, "30%", "40%", "35%", "40%", "65%", "45%", "30%", "35%", "50%", "D+_UP", "E_DOWN", "E_DOWN", "E$Deadeye", "E", "E+_UP", "D_UP", "D+_UP", "E", "E_DOWN", "E_DOWN");
+        insertCharacter(db, "BylethM", R.drawable.ic_bylethm, "Chosen by the player", null, 20, "Chosen by the player", "Chosen by the player_Imperial Year 1159", "Major Crest of Flames", 27, 13, 6, 9, 8, 8, 6, 6, 7, "45%", "45%", "35%", "45%", "45%", "45%", "35%", "30%", "45%", "D+_UP", "E", "E", "E", "E+_UP", "E", "E$White Magic Avo +20", "D_UP", "E", "E", "E");
+        insertCharacter(db, "BylethF", R.drawable.ic_bylethf, "Chosen by the player", null, 20, "Chosen by the player", "Chosen by the player_Imperial Year 1159", "Major Crest of Flames", 27, 13, 6, 9, 8, 8, 6, 6, 7, "45%", "45%", "35%", "45%", "45%", "45%", "35%", "30%", "45%", "D+_UP", "E", "E", "E", "E+_UP", "E", "E$White Magic Avo +20", "D_UP", "E", "E", "E");
     }
 
-    public static void insertCharacter(SQLiteDatabase db, String name, int portraitId) {
+    public static void insertCharacter(SQLiteDatabase db, String name, int portraitId,
+                                       String pronouns, String faction, int age,
+                                       String birthday, String fodlanBirthday, String crest,
+                                       int baseStatsHP, int baseStatsStr, int baseStatsMag,
+                                       int baseStatsDex, int baseStatsSpd, int baseStatsLck,
+                                       int baseStatsDef, int baseStatsRes, int baseStatsCha,
+                                       String baseLevel,
+                                       String growthRHP, String growthRStr, String growthRMag,
+                                       String growthRDex, String growthRSpd, String growthRLck,
+                                       String growthRDef, String growthRRes, String growthRCha,
+                                       String skillSword, String skillLance, String skillAxe,
+                                       String skillBow, String skillBrawling, String skillReason,
+                                       String skillFaith, String skillAuthority,
+                                       String skillHeavyArmor, String skillRiding,
+                                       String skillFlying) {
         ContentValues characterValues = new ContentValues();
         characterValues.put("name", name);
         characterValues.put("portrait", portraitId);
+        characterValues.put("pronouns", pronouns);
+        characterValues.put("faction", faction);
+        characterValues.put("age", age);
+        characterValues.put("birthday", birthday);
+        characterValues.put("fodlanBirthday", fodlanBirthday);
+        characterValues.put("crest", crest);
+        characterValues.put("baseStatsHP", baseStatsHP);
+        characterValues.put("baseStatsStr", baseStatsStr);
+        characterValues.put("baseStatsMag", baseStatsMag);
+        characterValues.put("baseStatsDex", baseStatsDex);
+        characterValues.put("baseStatsSpd", baseStatsSpd);
+        characterValues.put("baseStatsLck", baseStatsLck);
+        characterValues.put("baseStatsDef", baseStatsDef);
+        characterValues.put("baseStatsRes", baseStatsRes);
+        characterValues.put("baseStatsCha", baseStatsCha);
+        characterValues.put("baseLevel", baseLevel);
+        characterValues.put("growthRatesHP", growthRHP);
+        characterValues.put("growthRatesStr", growthRStr);
+        characterValues.put("growthRatesMag", growthRMag);
+        characterValues.put("growthRatesDex", growthRDex);
+        characterValues.put("growthRatesSpd", growthRSpd);
+        characterValues.put("growthRatesLck", growthRLck);
+        characterValues.put("growthRatesDef", growthRDef);
+        characterValues.put("growthRatesRes", growthRRes);
+        characterValues.put("growthRatesCha", growthRCha);
+        characterValues.put("skillSword", skillSword);
+        characterValues.put("skillLance", skillLance);
+        characterValues.put("skillAxe", skillAxe);
+        characterValues.put("skillBow", skillBow);
+        characterValues.put("skillBrawling", skillBrawling);
+        characterValues.put("skillReason", skillReason);
+        characterValues.put("skillFaith", skillFaith);
+        characterValues.put("skillAuthority", skillAuthority);
+        characterValues.put("skillHeavyArmor", skillHeavyArmor);
+        characterValues.put("skillRiding", skillRiding);
+        characterValues.put("skillFlying", skillFlying);
         db.insert("Characters", null, characterValues);
     }
 
-    private void createAbilitiesTable(SQLiteDatabase db){
+    private void createAbilitiesTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Abilities ( " +
                 "ability TEXT PRIMARY KEY, " +
                 "icon INTEGER, " +
@@ -162,7 +210,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         insertEnemiesAbilities(db);
     }
 
-    private void insertPersonalAbilities(SQLiteDatabase db){
+    private void insertPersonalAbilities(SQLiteDatabase db) {
         insertAbility(db, "Professor's Guidance", R.drawable.professors_guidance,
                 "Multiplies this unit's and adjacent allies' experience earned by 1.2.",
                 "Byleth's personal ability", "Personal");
@@ -303,7 +351,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "Rhea's personal ability\nMaster the Enlightened One class", "Personal Master");
     }
 
-    private void insertLearnedAbilities(SQLiteDatabase db){
+    private void insertLearnedAbilities(SQLiteDatabase db) {
         insertAbility(db, "Sword Progress Lv. 1", R.drawable.sword_prowess_lv_1,
                 "Grants Hit +5, Avo +7 and Crit Avo +5 when using a sword.",
                 "Increase sword skill level to E+", "Learned");
@@ -561,7 +609,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "Increase flying skill level to S+", "Learned");
     }
 
-    private void insertBuddingTalentAbilities(SQLiteDatabase db){
+    private void insertBuddingTalentAbilities(SQLiteDatabase db) {
         insertAbility(db, "Black Magic Crit +10", R.drawable.black_magic_crit_10,
                 "Grants Crit +10 when using black magic.",
                 "Balthus, Felix and Edelgard's budding talent in reason", "Talent");
@@ -591,7 +639,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "Bernadetta and Anna's budding talent in riding", "Talent");
     }
 
-    private void insertClassAbilities(SQLiteDatabase db){
+    private void insertClassAbilities(SQLiteDatabase db) {
         insertAbility(db, "Avo +10", R.drawable.avo_10,
                 "Increases Avo by 10.",
                 "Class ability for Pegasus Knight, Falcon Knight and Wyvern Lord", "Class");
@@ -669,7 +717,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "Class ability for Dark Flier\nMaster the Dark Flier class", "Class Master");
     }
 
-    private void insertMasteringAbilities(SQLiteDatabase db){
+    private void insertMasteringAbilities(SQLiteDatabase db) {
         insertAbility(db, "Brawl Avo +20", R.drawable.brawl_avo_20,
                 "Grants Avo +20 when brawling.",
                 "Master the War Monk or the War Cleric class", "Master");
@@ -783,7 +831,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "Master the Valyrie class", "Master");
     }
 
-    private void insertOtherAbilities(SQLiteDatabase db){
+    private void insertOtherAbilities(SQLiteDatabase db) {
         insertAbility(db, "Sword Avo +20", R.drawable.sword_avo_20,
                 "Grants Avo +20 when using a sword.",
                 "Win the White Heron Cup", "Other");
@@ -792,7 +840,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 "This ability does not exist", "Other");
     }
 
-    private void insertEnemiesAbilities(SQLiteDatabase db){
+    private void insertEnemiesAbilities(SQLiteDatabase db) {
         insertAbility(db, "White Magic Crit +10", R.drawable.white_magic_crit_10,
                 "Grants Crit +10 when using white magic.",
                 "Enemy only", "Enemy");
@@ -922,7 +970,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertAbility(SQLiteDatabase db, String ability, int icon, String effect,
-                               String origin, String type){
+                               String origin, String type) {
         ContentValues abilityValues = new ContentValues();
         abilityValues.put("ability", ability);
         abilityValues.put("icon", icon);
@@ -932,7 +980,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.insert("Abilities", null, abilityValues);
     }
 
-    private void createCombatArtsTables(SQLiteDatabase db){
+    private void createCombatArtsTables(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE CombatArtsAllWeaponProficient ( "
                 + "art TEXT PRIMARY KEY, "
                 + "effect TEXT, "
@@ -1029,7 +1077,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         insertDataCombatArtsOther(db);
     }
 
-    private void insertDataCombatArtsWeaponProficiency(SQLiteDatabase db){
+    private void insertDataCombatArtsWeaponProficiency(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.combat_arts_weapon_prof_char);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1044,7 +1092,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1063,7 +1111,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader2.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1105,7 +1153,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 combatArtValues);
     }
 
-    private void insertDataCharacterHasCombatArtWeaponProficiency(SQLiteDatabase db){
+    private void insertDataCharacterHasCombatArtWeaponProficiency(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().
                 openRawResource(R.raw.char_has_combat_art_weapon_prof);
@@ -1120,7 +1168,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1128,7 +1176,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
 
     private void insertCharacterHasCombatArtWeaponProficiency(SQLiteDatabase db, String art,
                                                               String characterName,
-                                                              String skillLevel){
+                                                              String skillLevel) {
         ContentValues combatArtValues = new ContentValues();
         combatArtValues.put("art", art);
         combatArtValues.put("character", characterName);
@@ -1137,7 +1185,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 combatArtValues);
     }
 
-    private void insertDataCombatArtsWeaponExclusive(SQLiteDatabase db){
+    private void insertDataCombatArtsWeaponExclusive(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().
                 openRawResource(R.raw.combat_arts_weapon_exclusive);
@@ -1153,16 +1201,16 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void insertCombatArtWeaponExclusive(SQLiteDatabase db, String art, String effect,
-                                                    String weapon, String crest, String dur,
-                                                    String mt, String hit, String avo, String crit,
-                                                    String range){
+                                                String weapon, String crest, String dur,
+                                                String mt, String hit, String avo, String crit,
+                                                String range) {
         ContentValues combatArtValues = new ContentValues();
         combatArtValues.put("art", art);
         combatArtValues.put("effect", effect);
@@ -1178,7 +1226,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 combatArtValues);
     }
 
-    private void insertDataCombatArtsClassMastery(SQLiteDatabase db){
+    private void insertDataCombatArtsClassMastery(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().
                 openRawResource(R.raw.combat_arts_class_mastery);
@@ -1194,7 +1242,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1203,7 +1251,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     private void insertCombatArtClassMastery(SQLiteDatabase db, String art, String effect,
                                              String weapon, String gameClass, String dur,
                                              String mt, String hit, String avo, String crit,
-                                             String range){
+                                             String range) {
         ContentValues combatArtValues = new ContentValues();
         combatArtValues.put("art", art);
         combatArtValues.put("effect", effect);
@@ -1219,7 +1267,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 combatArtValues);
     }
 
-    private void insertDataCombatArtsBuddingTalents(SQLiteDatabase db){
+    private void insertDataCombatArtsBuddingTalents(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().
                 openRawResource(R.raw.combat_arts_budding_talents);
@@ -1235,7 +1283,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1260,7 +1308,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 combatArtValues);
     }
 
-    private void insertDataCombatArtsOther(SQLiteDatabase db){
+    private void insertDataCombatArtsOther(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().
                 openRawResource(R.raw.combat_arts_other);
@@ -1276,16 +1324,16 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void insertCombatArtOther(SQLiteDatabase db, String art, String effect,
-                                              String talent, String character, String dur,
-                                              String mt, String hit, String avo, String crit,
-                                              String range) {
+                                      String talent, String character, String dur,
+                                      String mt, String hit, String avo, String crit,
+                                      String range) {
         ContentValues combatArtValues = new ContentValues();
         combatArtValues.put("art", art);
         combatArtValues.put("effect", effect);
@@ -1301,6 +1349,56 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 combatArtValues);
     }
 
+    private void createSpellsTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE Spells ( "
+                + "spell TEXT PRIMARY KEY, "
+                + "magicType TEXT, "
+                + "description TEXT, "
+                + "rank TEXT, "
+                + "uses TEXT, "
+                + "mt TEXT, "
+                + "hit TEXT, "
+                + "range TEXT, "
+                + "crit TEXT, "
+                + "weight TEXT);");
+
+        String line = null;
+        InputStream is = context.getResources().openRawResource(R.raw.spells);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(Pattern.quote("_"));
+                insertSpell(db, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
+                        parts[6], parts[7], parts[8], parts[9]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertSpell(SQLiteDatabase db, String spell, String magicType, String desc,
+                             String rank, String uses, String mt, String hit, String range,
+                             String crit, String weight) {
+        ContentValues spellValues = new ContentValues();
+        spellValues.put("spell", spell);
+        spellValues.put("magicType", magicType);
+        spellValues.put("desc", desc);
+        spellValues.put("rank", rank);
+        spellValues.put("uses", uses);
+        spellValues.put("mt", mt);
+        spellValues.put("hit", hit);
+        spellValues.put("range", range);
+        spellValues.put("crit", crit);
+        spellValues.put("weight", weight);
+        db.insert("Spells", null, spellValues);
+    }
+
     private void createMagicTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Magic ( "
                 + "_id INTEGER, "
@@ -1308,7 +1406,11 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 + "reason TEXT, "
                 + "faith TEXT, "
                 + "PRIMARY KEY (_id, skillLevel),"
-                + "CONSTRAINT fkMagic FOREIGN KEY (_id) REFERENCES CHARACTERS(_id) "
+                + "CONSTRAINT fkMagicChar FOREIGN KEY (_id) REFERENCES Characters(_id) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE, "
+                + "CONSTRAINT fkMagicReason FOREIGN KEY (reason) REFERENCES Spells(spell) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE, "
+                + "CONSTRAINT fkMagicFaith FOREIGN KEY (faith) REFERENCES Spells(spell) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE);");
 
         String line = null;
@@ -1324,7 +1426,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1340,7 +1442,78 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.insert("Magic", null, magicValues);
     }
 
-    private void createCharacterGiftsTable(SQLiteDatabase db){
+    private void createClassesTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE Classes ( "
+                + "name TEXT PRIMARY KEY, "
+                + "classLevel TEXT, "
+                + "proficiencies TEXT, "
+                + "ability1 TEXT, "
+                + "ability2 TEXT, "
+                + "ability3 TEXT, "
+                + "mastery_ability TEXT, "
+                + "mastery_combat_art TEXT, "
+                + "canUse TEXT, "
+                + "restrictions TEXT, "
+                + "certification_requirement TEXT, "
+                + "seal TEXT, "
+                + "experience INTEGER, "
+                + "CONSTRAINT fkClassesAb1 FOREIGN KEY (ability1) REFERENCES Abilities(ability) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE,"
+                + "CONSTRAINT fkClassesAb2 FOREIGN KEY (ability2) REFERENCES Abilities(ability) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE,"
+                + "CONSTRAINT fkClassesAb3 FOREIGN KEY (ability3) REFERENCES Abilities(ability) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE,"
+                + "CONSTRAINT fkClassesMAb1 FOREIGN KEY (mastery_ability) " +
+                " REFERENCES Abilities(ability) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE,"
+                + "CONSTRAINT fkClassesMAb2 FOREIGN KEY (mastery_combat_art) " +
+                " REFERENCES CombatArtsClassMastery(art) "
+                + "ON DELETE NO ACTION ON UPDATE CASCADE);");
+
+        String line = null;
+        InputStream is = context.getResources().openRawResource(R.raw.classes);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("_");
+                insertClass(db, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
+                        parts[6], parts[7], parts[8], parts[9], parts[10], parts[11],
+                        parts[12]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void insertClass(SQLiteDatabase db, String name, String classLevel,
+                             String proficiencies, String ability1, String ability2,
+                             String ability3, String masteryAbility, String masteryCArt,
+                             String canUse, String restrictions,
+                             String certReq, String seal, String experience) {
+        ContentValues classesValues = new ContentValues();
+        classesValues.put("name", name);
+        classesValues.put("classLevel", classLevel);
+        classesValues.put("proficiencies", proficiencies);
+        classesValues.put("ability1", ability1);
+        classesValues.put("ability2", ability2);
+        classesValues.put("ability3", ability3);
+        classesValues.put("mastery_ability", masteryAbility);
+        classesValues.put("mastery_combat_art", masteryCArt);
+        classesValues.put("canUse", canUse);
+        classesValues.put("restrictions", restrictions);
+        classesValues.put("certReq", certReq);
+        classesValues.put("seal", seal);
+        classesValues.put("experience", Integer.valueOf(experience));
+        db.insert("Classes", null, classesValues);
+    }
+
+    private void createCharacterGiftsTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE CharacterGifts ( "
                 + "_id INTEGER, "
                 + "gift TEXT, "
@@ -1363,14 +1536,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void insertCharacterGift(SQLiteDatabase db, String id, String gift, String liked,
-                            String rank){
+                                     String rank) {
         ContentValues giftsValues = new ContentValues();
         giftsValues.put("_id", Integer.valueOf(id));
         giftsValues.put("gift", gift);
@@ -1379,7 +1552,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.insert("CharacterGifts", null, giftsValues);
     }
 
-    private void createCharacterMealsTable(SQLiteDatabase db){
+    private void createCharacterMealsTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE CharacterMeals ( "
                 + "_id INTEGER, "
                 + "meal TEXT, "
@@ -1401,13 +1574,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertCharacterMeal(SQLiteDatabase db, String id, String meal, String liked){
+    private void insertCharacterMeal(SQLiteDatabase db, String id, String meal, String liked) {
         ContentValues mealValues = new ContentValues();
         mealValues.put("_id", Integer.valueOf(id));
         mealValues.put("meal", meal);
@@ -1415,7 +1588,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.insert("CharacterMeals", null, mealValues);
     }
 
-    private void createCharacterLostItemsTable(SQLiteDatabase db){
+    private void createCharacterLostItemsTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE CharacterLostItems ( "
                 + "_id INTEGER, "
                 + "item TEXT, "
@@ -1436,13 +1609,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertCharacterLostItem(SQLiteDatabase db, String id, String item){
+    private void insertCharacterLostItem(SQLiteDatabase db, String id, String item) {
         ContentValues lostItemValues = new ContentValues();
         lostItemValues.put("_id", Integer.valueOf(id));
         lostItemValues.put("item", item);
@@ -1470,7 +1643,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1504,7 +1677,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1541,14 +1714,14 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void insertFinalConversation(SQLiteDatabase db, String id, String conversation,
-                                               String option1, String option2, String option3) {
+                                         String option1, String option2, String option3) {
         ContentValues conversationValues = new ContentValues();
         conversationValues.put("_id", Integer.valueOf(id));
         conversationValues.put("conversation", conversation);
@@ -1616,8 +1789,8 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertSupport(SQLiteDatabase db, String character1, String character2,
-                                     String cSupport, String bSupport, String aSupport, String interSup,
-                                     String interRank, String sSupport) {
+                               String cSupport, String bSupport, String aSupport, String interSup,
+                               String interRank, String sSupport) {
         ContentValues supportValues = new ContentValues();
         supportValues.put("character1", Integer.valueOf(character1));
         supportValues.put("character2", Integer.valueOf(character2));
@@ -1630,7 +1803,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         db.insert("Supports", null, supportValues);
     }
 
-    private void insertAloisSupports(SQLiteDatabase db){
+    private void insertAloisSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.alois_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1645,13 +1818,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertAnnetteSupports(SQLiteDatabase db){
+    private void insertAnnetteSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.annette_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1666,13 +1839,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertAsheSupports(SQLiteDatabase db){
+    private void insertAsheSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.ashe_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1687,13 +1860,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertBalthusSupports(SQLiteDatabase db){
+    private void insertBalthusSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.balthus_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1708,13 +1881,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertBernadettaSupports(SQLiteDatabase db){
+    private void insertBernadettaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.bernadetta_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1729,13 +1902,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertCasparSupports(SQLiteDatabase db){
+    private void insertCasparSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.caspar_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1750,13 +1923,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertCatherineSupports(SQLiteDatabase db){
+    private void insertCatherineSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.catherine_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1771,13 +1944,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertClaudeSupports(SQLiteDatabase db){
+    private void insertClaudeSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.claude_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1792,13 +1965,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertConstanceSupports(SQLiteDatabase db){
+    private void insertConstanceSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.constance_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1813,13 +1986,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertCyrilSupports(SQLiteDatabase db){
+    private void insertCyrilSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.cyril_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1834,13 +2007,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertDedueSupports(SQLiteDatabase db){
+    private void insertDedueSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.dedue_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1855,13 +2028,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertDimitriSupports(SQLiteDatabase db){
+    private void insertDimitriSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.dimitri_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1876,13 +2049,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertDorotheaSupports(SQLiteDatabase db){
+    private void insertDorotheaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.dorothea_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1897,13 +2070,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertEdelgardSupports(SQLiteDatabase db){
+    private void insertEdelgardSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.edelgard_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1918,13 +2091,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertFelixSupports(SQLiteDatabase db){
+    private void insertFelixSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.felix_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1939,13 +2112,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertFerdinandSupports(SQLiteDatabase db){
+    private void insertFerdinandSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.ferdinand_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1960,13 +2133,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertFlaynSupports(SQLiteDatabase db){
+    private void insertFlaynSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.flayn_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -1981,13 +2154,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertGilbertSupports(SQLiteDatabase db){
+    private void insertGilbertSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.gilbert_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2002,13 +2175,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertHannemanSupports(SQLiteDatabase db){
+    private void insertHannemanSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.hanneman_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2023,13 +2196,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertHapiSupports(SQLiteDatabase db){
+    private void insertHapiSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.hapi_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2044,13 +2217,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertHildaSupports(SQLiteDatabase db){
+    private void insertHildaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.hilda_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2065,13 +2238,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertHubertSupports(SQLiteDatabase db){
+    private void insertHubertSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.hubert_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2086,13 +2259,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertIgnatzSupports(SQLiteDatabase db){
+    private void insertIgnatzSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.ignatz_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2107,13 +2280,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertIngridSupports(SQLiteDatabase db){
+    private void insertIngridSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.ingrid_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2128,13 +2301,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertJeritzaSupports(SQLiteDatabase db){
+    private void insertJeritzaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.jeritza_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2149,13 +2322,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertLeonieSupports(SQLiteDatabase db){
+    private void insertLeonieSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.leonie_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2170,13 +2343,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertLinhardtSupports(SQLiteDatabase db){
+    private void insertLinhardtSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.linhardt_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2191,13 +2364,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertLorenzSupports(SQLiteDatabase db){
+    private void insertLorenzSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.lorenz_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2212,13 +2385,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertLysitheaSupports(SQLiteDatabase db){
+    private void insertLysitheaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.lysithea_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2233,13 +2406,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertManuelaSupports(SQLiteDatabase db){
+    private void insertManuelaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.manuela_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2254,13 +2427,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertMarianneSupports(SQLiteDatabase db){
+    private void insertMarianneSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.marianne_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2275,13 +2448,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertMercedesSupports(SQLiteDatabase db){
+    private void insertMercedesSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.mercedes_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2296,13 +2469,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertPetraSupports(SQLiteDatabase db){
+    private void insertPetraSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.petra_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2317,13 +2490,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertRaphaelSupports(SQLiteDatabase db){
+    private void insertRaphaelSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.raphael_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2338,13 +2511,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertRheaSupports(SQLiteDatabase db){
+    private void insertRheaSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.rhea_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2359,13 +2532,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertSetethSupports(SQLiteDatabase db){
+    private void insertSetethSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.seteth_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2380,13 +2553,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertShamirSupports(SQLiteDatabase db){
+    private void insertShamirSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.shamir_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2401,13 +2574,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertSylvainSupports(SQLiteDatabase db){
+    private void insertSylvainSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.sylvain_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2422,13 +2595,13 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void insertYuriSupports(SQLiteDatabase db){
+    private void insertYuriSupports(SQLiteDatabase db) {
         String line = null;
         InputStream is = context.getResources().openRawResource(R.raw.yuri_supports);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -2443,7 +2616,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         } finally {
             try {
                 reader.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

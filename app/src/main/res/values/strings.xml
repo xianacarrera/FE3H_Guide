@@ -50,6 +50,30 @@
     <string name="combat_arts_tab">Combat Arts</string>
     <string name="likes_dislikes_tab">Likes</string>
 
+    <string name="stats">Stats</string>
+    <string name="base_stats">Base stats</string>
+    <string name="hp">HP</string>
+    <string name="str">Str</string>
+    <string name="mag">Mag</string>
+    <string name="dex">Dex</string>
+    <string name="spd">Spd</string>
+    <string name="lck">Lck</string>
+    <string name="def">Def</string>
+    <string name="res">Res</string>
+    <string name="cha">Cha</string>
+    <string name="growth_rates">Growth rates</string>
+    <string name="skills">Skills</string>
+    <string name="sword">Sword</string>
+    <string name="lance">Lance</string>
+    <string name="axe">Axe</string>
+    <string name="bow">Bow</string>
+    <string name="brawling">Brawling</string>
+    <string name="authority">Authority</string>
+    <string name="heavy_armor">Heavy Armor</string>
+    <string name="riding">Riding</string>
+    <string name="flying">Flying</string>
+    <string name="up_down">Up Down</string>
+    <string name="budding_talent">Budding talent</string>
     <string name="pronouns">Pronouns</string>
     <string name="faction">Faction</string>
     <string name="birthday">Birthday</string>
@@ -98,5 +122,8 @@
     <string name="true_hit_probability">True Hit Probability:</string>
     <string name="displayed_hit">Displayed Hit</string>
     <string name="true_hit">True Hit</string>
+
+    <string name="class_name">Class name</string>
+    <string name="class_icon">Class icon</string>
 
 </resources>

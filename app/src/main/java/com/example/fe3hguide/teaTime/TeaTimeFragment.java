@@ -1,8 +1,6 @@
 package com.example.fe3hguide.teaTime;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -26,11 +23,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
-import com.example.fe3hguide.supports.SimpleListAdapter;
+import com.example.fe3hguide.adapters.FinalConversationsAdapter;
+import com.example.fe3hguide.adapters.TopicsExpandableListAdapter;
+import com.example.fe3hguide.database.Facade;
+import com.example.fe3hguide.adapters.SimpleListAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
@@ -41,18 +39,19 @@ import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListe
 public class TeaTimeFragment extends Fragment
         implements View.OnClickListener {
 
-    private final SQLiteDatabase db;
+    private final Facade fc;
     private ImageView icon;
     private SearchableSpinner searchCharacter;
     private SimpleListAdapter searchableSpinnerAdapter;
+    private Button buttonHaveTea;
     private CardView cardInfoTeas;
     private ConstraintLayout layoutTeas, layoutTopics, layoutFinalConvos;
     private ImageView imageFavouriteTeas, imageTopics, iamgeFinalConvos;
     private ConstraintLayout bottomTab;
     private String selectedCharacter;
 
-    public TeaTimeFragment(SQLiteDatabase db) {
-        this.db = db;
+    public TeaTimeFragment(Facade fc) {
+        this.fc = fc;
     }
 
     @Override
@@ -61,6 +60,31 @@ public class TeaTimeFragment extends Fragment
         ScrollView scrollView = (ScrollView) inflater.inflate(
                 R.layout.fragment_tea_time, container, false);
 
+        initComponents(scrollView);
+        setupComponents();
+        addListeners();
+
+        return scrollView;
+    }
+
+    private void initComponents(ScrollView scrollView){
+        searchCharacter = (SearchableSpinner) scrollView.findViewById(
+                R.id.searchable_spinner);
+        icon = (ImageView) scrollView.findViewById(R.id.imageView_icon);
+        buttonHaveTea = (Button) scrollView.findViewById(R.id.button_have_tea);
+        cardInfoTeas = (CardView) scrollView.findViewById(R.id.cardView_info_teas);
+        layoutTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
+        layoutTopics = (ConstraintLayout)
+                scrollView.findViewById(R.id.contraint_layout_info_topics);
+        layoutFinalConvos = (ConstraintLayout)
+                scrollView.findViewById(R.id.constraintLayout_info_final_convos);
+        bottomTab = (ConstraintLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
+        imageFavouriteTeas = (ImageView) scrollView.findViewById(R.id.imageView_tea_cup);
+        imageTopics = (ImageView) scrollView.findViewById(R.id.imageView_topics);
+        iamgeFinalConvos = (ImageView) scrollView.findViewById(R.id.imageView_final_convo);
+    }
+
+    private void setupComponents(){
         // Set "Tea time" as the text in the toolbar
         ((AppCompatActivity) getActivity()).getSupportActionBar().
                 setTitle(getString(R.string.nav_tea_time));
@@ -77,13 +101,23 @@ public class TeaTimeFragment extends Fragment
         }
         cursor.close();
 
-        // Populate the AutoCompleteTextView with the list of characters
-        searchCharacter = (SearchableSpinner) scrollView.findViewById(
-                R.id.searchable_spinner);
+        // Populate the SearchableSpinner with the list of characters
         searchableSpinnerAdapter = new SimpleListAdapter(getActivity(), names);
         searchCharacter.setAdapter(searchableSpinnerAdapter);
         searchCharacter.setSelectedItem(0);
-        // Declare the class as a listener for the autoCompleteTextView
+
+        // Store reference to what will be the ImageView of the character and set it invisible
+        icon.setVisibility(View.INVISIBLE);         // No character has been selected yet
+
+        // Hide all elements with information about a specific character (nobody was selected yet)
+        cardInfoTeas.setVisibility(View.GONE);          // No information is shown yet
+
+        // Hide bottom tab until the button "have tea" is clicked
+        bottomTab.setVisibility(View.INVISIBLE);
+    }
+
+    private void addListeners(){
+        // Declare the class as a listener for the SearchableSpinner
         searchCharacter.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(View view, int position, long id) {
@@ -113,38 +147,13 @@ public class TeaTimeFragment extends Fragment
             }
         });
 
-        // Store reference to what will be the ImageView of the character and set it invisible
-        icon = (ImageView) scrollView.findViewById(R.id.imageView_icon);
-        icon.setVisibility(View.INVISIBLE);         // No character has been selected yet
-
         // Prepare listener for the "Have tea" button
-        Button buttonHaveTea = (Button) scrollView.findViewById(R.id.button_have_tea);
         buttonHaveTea.setOnClickListener(this);     // Button that displays information
 
-        // Hide all elements with information about a specific character (nobody was selected yet)
-        cardInfoTeas = (CardView) scrollView.findViewById(R.id.cardView_info_teas);
-        cardInfoTeas.setVisibility(View.GONE);          // No information is shown yet
-
-        // Get references to all info related to the different tabs
-        layoutTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
-        layoutTopics = (ConstraintLayout)
-                scrollView.findViewById(R.id.contraint_layout_info_topics);
-        layoutFinalConvos = (ConstraintLayout)
-                scrollView.findViewById(R.id.constraintLayout_info_final_convos);
-
-        // Hide bottom tab until the button "have tea" is clicked
-        bottomTab = (ConstraintLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
-        bottomTab.setVisibility(View.INVISIBLE);
-
         // Prepare listeners for the bottom tab buttons
-        imageFavouriteTeas = (ImageView) scrollView.findViewById(R.id.imageView_tea_cup);
-        imageTopics = (ImageView) scrollView.findViewById(R.id.imageView_topics);
-        iamgeFinalConvos = (ImageView) scrollView.findViewById(R.id.imageView_final_convo);
         imageFavouriteTeas.setOnClickListener(this);
         imageTopics.setOnClickListener(this);
         iamgeFinalConvos.setOnClickListener(this);
-
-        return scrollView;
     }
 
     @Override

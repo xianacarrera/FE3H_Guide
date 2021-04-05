@@ -14,6 +14,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.fe3hguide.characters.navigation.CharactersFragment;
+import com.example.fe3hguide.database.DAOCharacters;
+import com.example.fe3hguide.database.FE3HDatabaseHelper;
+import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.supports.SupportsFragment;
 import com.example.fe3hguide.teaTime.TeaTimeFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -21,32 +24,20 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private SQLiteDatabase db;
+    private Facade fc;
+    private Toolbar toolbar;
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle toggle;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Get access to the database
-        SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(this);
-        // TODO: TRY-CATCH?
-        db = fe3hDatabaseHelper.getReadableDatabase();
-
-        // Set up the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        // Add a drawer toggle
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.nav_open_drawer, R.string.nav_close_drawer);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        // Register the class as a listener for the navigation menu options
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        setupDBConnection();
+        setupComponents();
+        addListeners();
 
         // By default, desplay the home fragment
         Fragment fragment = new HomeFragment();
@@ -55,8 +46,30 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
+    private void setupDBConnection(){
+        fc = new Facade(this);
+    }
+
+    private void initComponents(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.nav_open_drawer, R.string.nav_close_drawer);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+    }
+
+    private void setupComponents(){
+        setSupportActionBar(toolbar);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    private void addListeners(){
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
     @Override
-    /** Manages the clicks on the options of the navigation menu **/
+    // Manages the clicks on the options of the navigation menu
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         Fragment fragment = null;
@@ -72,10 +85,10 @@ public class MainActivity extends AppCompatActivity
                 fragment = new CharactersFragment();
                 break;
             case R.id.nav_tea_time:
-                fragment = new TeaTimeFragment(db);
+                fragment = new TeaTimeFragment(fc);
                 break;
             case R.id.nav_supports:
-                fragment = new SupportsFragment(db);
+                fragment = new SupportsFragment(fc);
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
@@ -93,7 +106,6 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
 
         // Close the drawer
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
@@ -102,7 +114,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     /** If the navigation drawer is open, the back button closes it **/
     public void onBackPressed(){
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -113,6 +124,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        db.close();
+        fc.closeDatabase();
     }
 }

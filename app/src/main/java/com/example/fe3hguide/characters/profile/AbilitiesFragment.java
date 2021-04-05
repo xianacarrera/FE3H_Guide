@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.AbilitiesAdapter;
 
 import java.util.ArrayList;
 

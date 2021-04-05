@@ -22,4 +22,12 @@
     <color name="yellow_background">#FFF7B5</color>
     <color name="pink_background">#F488E6</color>
     <color name="orange_background">#FDA880</color>
+    <color name="brown_background">#B59570</color>
+    <color name="light_blue_background">#ACFAF7</color>
+    <color name="dark_green_background">#7F9E81</color>
+    <color name="dark_blue_background">#99A5E6</color>
+    <color name="dark_gray_background">#818181</color>
+    <color name="gray_background">#AEAEAE</color>
+    <color name="purple_2_background">#8B70AF</color>
+    <color name="aqua_background">#95C8B8</color>
 </resources>

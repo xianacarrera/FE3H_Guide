@@ -8,34 +8,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.FactionsCardsAdapter;
 
 import java.util.ArrayList;
 
 public class ChurchOfSeirosActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private FactionsCardsAdapter adapter;
+    private RecyclerView factionsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters_navigation);
 
-        // Set up the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initComponents();
+        setupComponents();
+    }
 
-        // Set "Characters" as the text in the toolbar
-        toolbar.setTitle(getString(R.string.nav_characters));
+    private void initComponents(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Create an ArrayList with the names of the Church of Seiros members
         ArrayList<String> churchOfSeirosNames = createChurchOfSeirosNames();
-
         // Create an ArrayList with their pictures
         ArrayList<Integer> churchOfSeirosImages = createChurchOfSeirosImages();
+        adapter = new FactionsCardsAdapter(churchOfSeirosNames, churchOfSeirosImages, this);
+
+        factionsRecycler = (RecyclerView) findViewById(R.id.characters_factions_recycler);
+    }
+
+    private void setupComponents(){
+        setSupportActionBar(toolbar);
+        // Set "Characters" as the text in the toolbar
+        toolbar.setTitle(getString(R.string.nav_characters));
 
         // Set adapter for the recycler view
-        FactionsCardsAdapter adapter =
-                new FactionsCardsAdapter(churchOfSeirosNames, churchOfSeirosImages, this);
-        RecyclerView factionsRecycler = (RecyclerView)
-                findViewById(R.id.characters_factions_recycler);
         factionsRecycler.setAdapter(adapter);
 
         // The recycler should put the cards in a grid layout of size 5x2 + 1
@@ -44,7 +53,7 @@ public class ChurchOfSeirosActivity extends AppCompatActivity {
     }
 
     private ArrayList<String> createChurchOfSeirosNames(){
-        // For simplicity, the names are hardcoded
+        // For simplicity and speed purposes, the names are hardcoded
         ArrayList<String> churchOfSeirosNames = new ArrayList<>();
         churchOfSeirosNames.add("Seteth");
         churchOfSeirosNames.add("Flayn");
@@ -61,6 +70,7 @@ public class ChurchOfSeirosActivity extends AppCompatActivity {
     }
 
     private ArrayList<Integer> createChurchOfSeirosImages(){
+        // For simplicity and speed purposes, the images are hardcoded
         ArrayList<Integer> churchOfSeirosImages = new ArrayList<>();
         churchOfSeirosImages.add(R.drawable.ic_seteth);
         churchOfSeirosImages.add(R.drawable.ic_flayn);
