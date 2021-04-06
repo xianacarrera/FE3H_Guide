@@ -1,6 +1,5 @@
 package com.example.fe3hguide.teaTime;
 
-import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,9 +82,9 @@ public class TeaTimeFragment extends Fragment
     private void initComponents(ScrollView scrollView){
         searchCharacter = (SearchableSpinner) scrollView.findViewById(
                 R.id.searchable_spinner);
-        icon = (ImageView) scrollView.findViewById(R.id.imageView_icon);
+        icon = (ImageView) scrollView.findViewById(R.id.imageview_icon);
         buttonHaveTea = (Button) scrollView.findViewById(R.id.button_have_tea);
-        cardInfoTeas = (CardView) scrollView.findViewById(R.id.cardView_info_teas);
+        cardInfoTeas = (CardView) scrollView.findViewById(R.id.cardview_info_teas);
         layoutTeas = (ConstraintLayout) scrollView.findViewById(R.id.constraintLayout_infoTeas);
         layoutTopics = (ConstraintLayout)
                 scrollView.findViewById(R.id.contraint_layout_info_topics);
@@ -139,14 +138,15 @@ public class TeaTimeFragment extends Fragment
                     selectedCharacter = (String) searchableSpinnerAdapter.getItem(position);
 
                     // Change the portrait to the icon of the selected character
-                    try {
-                        icon.setImageResource(fc.getPortrait(selectedCharacter));
+                    Integer iconID = null;
+                    if ((iconID = fc.getPortrait(selectedCharacter)) != null) {
+                        icon.setImageResource(iconID);
                         icon.setVisibility(View.VISIBLE);
 
                         // In case information for another character was on screen, it is hidden
                         cardInfoTeas.setVisibility(View.GONE);
                         bottomTab.setVisibility(View.INVISIBLE);
-                    } catch (Exception e) {
+                    } else {
                         // If there was no character with that name in the database, no error
                         // is shown. However, the icon does not change.
 

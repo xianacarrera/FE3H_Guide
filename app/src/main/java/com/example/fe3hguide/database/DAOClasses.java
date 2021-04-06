@@ -73,7 +73,7 @@ public class DAOClasses extends DAO {
                     withRestrictions(cursor.getString(9)).
                     withCertificationRequirement(cursor.getString(10)).
                     withSeal(cursor.getString(11)).
-                    withExperience(cursor.getInt(12)).build()
+                    withExperience(cursor.getInt(12)).build();
         }
 
         cursor.close();

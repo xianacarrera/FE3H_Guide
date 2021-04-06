@@ -36,21 +36,6 @@ public class DAOTeaTime extends DAO {
         return names;
     }
 
-    public int getPortrait(String character) throws Exception {
-        Cursor cursor = db.query("Characters", new String[]{"portrait"},
-                "name = ?", new String[]{character},
-                null, null, null);
-
-        if (cursor.moveToFirst()){
-            int portrait = cursor.getInt(0);
-            cursor.close();
-            return portrait;
-        }
-
-        cursor.close();
-        throw new Exception();
-    }
-
     /**
      *
      * @param character Name of the character whose information is going to be searched

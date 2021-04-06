@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="Test"
+            android:textSize="34sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
 
 
                 <TextView
+                    android:id="@+id/textview_pronouns"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -110,6 +112,7 @@
 
 
                 <TextView
+                    android:id="@+id/textview_faction"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -160,6 +163,7 @@
                     android:background="?android:attr/listDivider" />
 
                 <TextView
+                    android:id="@+id/textview_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -210,6 +214,7 @@
                     android:background="?android:attr/listDivider" />
 
                 <TextView
+                    android:id="@+id/textview_fodlan_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

@@ -27,6 +27,6 @@ public class ClassDetailActivity extends AppCompatActivity {
         Intent previousIntent = getIntent();
         String className = previousIntent.getStringExtra("className");
 
-        inGameClass = fc.getInGameClass(className);
+        return fc.getInGameClass(className);
     }
 }
