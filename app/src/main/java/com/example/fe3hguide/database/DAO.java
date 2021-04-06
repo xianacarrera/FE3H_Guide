@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public abstract class DAO {
 
-    private SQLiteDatabase db;
+    protected SQLiteDatabase db;
 
     protected DAO(SQLiteDatabase db){
         this.db = db;

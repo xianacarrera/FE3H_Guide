@@ -27,6 +27,7 @@ import com.example.fe3hguide.adapters.FinalConversationsAdapter;
 import com.example.fe3hguide.adapters.TopicsExpandableListAdapter;
 import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.adapters.SimpleListAdapter;
+import com.example.fe3hguide.model.TeaTimeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,15 +41,27 @@ public class TeaTimeFragment extends Fragment
         implements View.OnClickListener {
 
     private final Facade fc;
+
+    // First cardView (selection)
     private ImageView icon;
     private SearchableSpinner searchCharacter;
     private SimpleListAdapter searchableSpinnerAdapter;
     private Button buttonHaveTea;
+
+    // Second half of the screen
     private CardView cardInfoTeas;
     private ConstraintLayout layoutTeas, layoutTopics, layoutFinalConvos;
     private ImageView imageFavouriteTeas, imageTopics, iamgeFinalConvos;
     private ConstraintLayout bottomTab;
     private String selectedCharacter;
+
+    // Information shown as a result
+    private TextView likedSpecifically, teasLikedSpecifically;
+    private AutoCompleteTextView autoCompleteTextViewTopics;
+    private ExpandableListView expandableTopics;
+    private RecyclerView recyclerFinalConversations;
+
+
 
     public TeaTimeFragment(Facade fc) {
         this.fc = fc;
@@ -82,6 +95,16 @@ public class TeaTimeFragment extends Fragment
         imageFavouriteTeas = (ImageView) scrollView.findViewById(R.id.imageView_tea_cup);
         imageTopics = (ImageView) scrollView.findViewById(R.id.imageView_topics);
         iamgeFinalConvos = (ImageView) scrollView.findViewById(R.id.imageView_final_convo);
+
+        // Search result
+        likedSpecifically = (TextView) getView().findViewById(R.id.textView_liked_especifically_by);
+        teasLikedSpecifically = (TextView)
+                getView().findViewById(R.id.textView_teas_liked_specifically);
+        autoCompleteTextViewTopics =
+                (AutoCompleteTextView) getView().findViewById(R.id.autoCompleteTextView_topics);
+        expandableTopics = (ExpandableListView) getView().findViewById(R.id.expandable_topics);
+        recyclerFinalConversations = (RecyclerView)
+                getView().findViewById(R.id.recycler_final_conversations);
     }
 
     private void setupComponents(){
@@ -89,17 +112,8 @@ public class TeaTimeFragment extends Fragment
         ((AppCompatActivity) getActivity()).getSupportActionBar().
                 setTitle(getString(R.string.nav_tea_time));
 
-        // Get all the names
-        ArrayList<String> names = new ArrayList<>();
-        Cursor cursor = db.query("Characters", new String[]{"name"},
-                "name not like ?", new String[]{"Byleth%"},
-                null, null, null);
-        if (cursor.moveToFirst()) {
-            do {
-                names.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
+        // Get all the character names, excluding BylethM and BylethF.
+        ArrayList<String> names = fc.getAllNamesButByleth();
 
         // Populate the SearchableSpinner with the list of characters
         searchableSpinnerAdapter = new SimpleListAdapter(getActivity(), names);
@@ -125,17 +139,23 @@ public class TeaTimeFragment extends Fragment
                     selectedCharacter = (String) searchableSpinnerAdapter.getItem(position);
 
                     // Change the portrait to the icon of the selected character
-                    Cursor cursor = db.query("Characters", new String[]{"portrait"},
-                            "name = ?", new String[]{selectedCharacter},
-                            null, null, null);
-                    if (cursor.moveToFirst()) {
-                        icon.setImageResource(cursor.getInt(0));
+                    try {
+                        icon.setImageResource(fc.getPortrait(selectedCharacter));
                         icon.setVisibility(View.VISIBLE);
+
                         // In case information for another character was on screen, it is hidden
                         cardInfoTeas.setVisibility(View.GONE);
                         bottomTab.setVisibility(View.INVISIBLE);
+                    } catch (Exception e) {
+                        // If there was no character with that name in the database, no error
+                        // is shown. However, the icon does not change.
+
+                        // If info about another character was being shown, it does not disappear
+                        // neither.
+
+                        // The selectedCharacter is invalid, so it is set to null.
+                        selectedCharacter = null;
                     }
-                    cursor.close();
                 } else {
                     selectedCharacter = null;
                 }
@@ -165,71 +185,27 @@ public class TeaTimeFragment extends Fragment
                  * character, their information is displayed.
                  */
 
-                if (selectedCharacter == null){
+                if (selectedCharacter == null){         // Invalid character
                     return;
                 }
 
-                // Search for the id of a character with the name that was introduced
-                Cursor cursor = db.query("Characters", new String[]{"_id"},
-                        "name = ? and name not like ?",
-                        new String[]{selectedCharacter, "Byleth%"},
-                        null, null, null);
+                // Look up the character's info (favourite teas, topics and final conversations)
+                TeaTimeInfo teaTimeInfo = fc.getTeaTimeInfo(selectedCharacter);
 
-                // If there are no characters with that name, the cursor returns 0 rows of the table
-                if (cursor.moveToFirst()) {
-                    int id = cursor.getInt(0);
-
-                    // Retrieve the favourite teas of the character
-                    cursor = db.query("FavouriteTeas", new String[]{"tea"},
-                            "_id = ?",
-                            new String[]{Integer.toString(id)}, null, null,
-                            null);
-                    ArrayList<String> teas = new ArrayList<>();
-                    if (cursor.moveToFirst()) {
-                        do {
-                            teas.add(cursor.getString(0));
-                        } while (cursor.moveToNext());
-                    }
-
-                    // Retrieve the character's liked topics
-                    cursor = db.query("Topics", new String[]{"topic"}, "_id = ?",
-                            new String[]{Integer.toString(id)}, null, null,
-                            null);
-                    ArrayList<String> topics = new ArrayList<>();
-                    if (cursor.moveToFirst()) {
-                        do {
-                            topics.add(cursor.getString(0));
-                        } while (cursor.moveToNext());
-                    }
-
-                    // Retrieve the final conversations that can pop up and their valid answers
-                    cursor = db.query("FinalConversations",
-                            new String[]{"conversation", "option1", "option2", "option3"},
-                            "_id = ?", new String[]{Integer.toString(id)},
-                            null, null, null);
-                    ArrayList<String> finalConversations = new ArrayList<>();
-                    ArrayList<ArrayList<String>> options = new ArrayList<>();
-                    for (int i = 0; i < 3; i++) {
-                        options.add(new ArrayList<String>());
-                    }
-                    if (cursor.moveToFirst()) {
-                        do {
-                            finalConversations.add(cursor.getString(0));
-                            for (int i = 0; i < 3; i++) {
-                                options.get(i).add(cursor.getString(i + 1));
-                            }
-                        } while (cursor.moveToNext());
-                    }
-
-                    // The information is shown to the user
-                    changeTab(0);
-                    showInfo(selectedCharacter, teas, topics, finalConversations, options);
-
-                    // The bottom tab is now visible
-                    bottomTab.setVisibility(View.VISIBLE);
-
-                    cursor.close();
+                if (teaTimeInfo.getFavouriteTeas() == null) {
+                    // The character was not valid
+                    return;
                 }
+
+                // The information is shown to the user
+                changeTab(0);
+                showInfo(selectedCharacter, teaTimeInfo.getFavouriteTeas(),
+                        teaTimeInfo.getTopics(), teaTimeInfo.getFinalConversations(),
+                        teaTimeInfo.getOptions());
+
+                // The bottom tab is now visible
+                bottomTab.setVisibility(View.VISIBLE);
+
                 break;
             case R.id.imageView_tea_cup:
                 // Show views related to the character's favourite teas and hide the rest
@@ -270,13 +246,8 @@ public class TeaTimeFragment extends Fragment
 
     private void showInfo(String character, List<String> teas, List<String> topics,
                           List<String> finalConversations, List<ArrayList<String>> options) {
-
         // Show information about the character's preferred teas
-        TextView likedSpecifically = (TextView)
-                getView().findViewById(R.id.textView_liked_especifically_by);
         likedSpecifically.setText(getString(R.string.liked_specifically_by) + " " + character);
-        TextView teasLikedSpecifically = (TextView)
-                getView().findViewById(R.id.textView_teas_liked_specifically);
         // Teas are shown in different lines. After the last line there's no new line
         teasLikedSpecifically.setText("");
         for (int i = 0; i < teas.size() - 1; i++) {
@@ -284,9 +255,8 @@ public class TeaTimeFragment extends Fragment
         }
         teasLikedSpecifically.append(teas.get(teas.size() - 1));
 
+
         // Populate the second AutoCompleTextView with the corresponding topics
-        AutoCompleteTextView autoCompleteTextViewTopics =
-                (AutoCompleteTextView) getView().findViewById(R.id.autoCompleteTextView_topics);
         ArrayAdapter<String> topicsAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, topics);
         autoCompleteTextViewTopics.setAdapter(topicsAdapter);
@@ -295,8 +265,6 @@ public class TeaTimeFragment extends Fragment
         // Set the adapter for the expandable list view with the topics
         ExpandableListAdapter expandableListAdapter = new TopicsExpandableListAdapter(getContext(),
                 "Topics", topics);
-        ExpandableListView expandableTopics = (ExpandableListView)
-                getView().findViewById(R.id.expandable_topics);
         expandableTopics.setAdapter(expandableListAdapter);
         // Heck if I know how this works, but IT WORKS
         expandableTopics.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
@@ -311,8 +279,6 @@ public class TeaTimeFragment extends Fragment
         // Set the adapter for the recycler view with the cards of the final conversations
         FinalConversationsAdapter finalConversationsAdapter = new FinalConversationsAdapter(
                 finalConversations, options.get(0), options.get(1), options.get(2));
-        RecyclerView recyclerFinalConversations = (RecyclerView)
-                getView().findViewById(R.id.recycler_final_conversations);
         recyclerFinalConversations.setAdapter(finalConversationsAdapter);
 
         // Display the cards stacked vertically

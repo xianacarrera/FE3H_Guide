@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
         setupComponents();
         addListeners();
 
-        // By default, desplay the home fragment
+        // By default, display the home fragment
         Fragment fragment = new HomeFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.content_frame, fragment);
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    /** If the navigation drawer is open, the back button closes it **/
+    // If the navigation drawer is open, the back button closes it
     public void onBackPressed(){
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
