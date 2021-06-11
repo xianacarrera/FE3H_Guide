@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".classes.ClassDetailActivity"></activity>
+        <activity android:name=".classes.InGameClassActivity"></activity>
         <activity android:name=".characters.profile.ProfileActivity" />
         <activity android:name=".characters.navigation.ChurchOfSeirosActivity" />
         <activity android:name=".characters.navigation.AshenWolvesActivity" />

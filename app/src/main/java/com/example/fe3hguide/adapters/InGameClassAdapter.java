@@ -15,6 +15,11 @@ import com.example.fe3hguide.model.InGameClass;
 
 import java.util.List;
 
+/*
+ * This class is an adapter for the cells in the ListView of the ClassesFragment and the in game
+ * classes.
+ */
+
 public class InGameClassAdapter extends ArrayAdapter<InGameClass> {
 
 
@@ -25,13 +30,15 @@ public class InGameClassAdapter extends ArrayAdapter<InGameClass> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        InGameClass inGameClass = getItem(position);
+        InGameClass inGameClass = getItem(position);            // Requested class
 
         if (convertView == null){
+            // A new cell with the corresponding class is created
             convertView = LayoutInflater.from(getContext()).
                     inflate(R.layout.cell_class, parent, false);
         }
 
+        // Information in the cell
         TextView className = (TextView) convertView.findViewById(R.id.textView_class_name);
         ImageView classIcon = (ImageView) convertView.findViewById(R.id.imageView_class_icon);
 

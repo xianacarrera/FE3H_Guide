@@ -23,14 +23,14 @@ public class GeneralFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ScrollView layout =
-                inflater.inflate(R.layout.fragment_general, container, false);
+//        ScrollView layout =
+//                inflater.inflate(R.layout.fragment_general, container, false);
+//
+//        initComponents(layout);
+//        setupComponents();
+//        addListeners();
 
-        initComponents(layout);
-        setupComponents();
-        addListeners();
-
-        return layout;
+        return inflater.inflate(R.layout.fragment_general, container, false);
     }
 
     private void initComponents(ScrollView layout){

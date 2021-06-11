@@ -66,7 +66,6 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 + "baseStatsDef TEXT, "
                 + "baseStatsRes TEXT, "
                 + "baseStatsCha TEXT, "
-                + "baseLevel TEXT, "
                 + "growthRatesHP TEXT, "
                 + "growthRatesStr TEXT, "
                 + "growthRatesMag TEXT, "
@@ -142,7 +141,6 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                                        int baseStatsHP, int baseStatsStr, int baseStatsMag,
                                        int baseStatsDex, int baseStatsSpd, int baseStatsLck,
                                        int baseStatsDef, int baseStatsRes, int baseStatsCha,
-                                       String baseLevel,
                                        String growthRHP, String growthRStr, String growthRMag,
                                        String growthRDex, String growthRSpd, String growthRLck,
                                        String growthRDef, String growthRRes, String growthRCha,
@@ -169,7 +167,6 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         characterValues.put("baseStatsDef", baseStatsDef);
         characterValues.put("baseStatsRes", baseStatsRes);
         characterValues.put("baseStatsCha", baseStatsCha);
-        characterValues.put("baseLevel", baseLevel);
         characterValues.put("growthRatesHP", growthRHP);
         characterValues.put("growthRatesStr", growthRStr);
         characterValues.put("growthRatesMag", growthRMag);

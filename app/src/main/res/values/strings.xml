@@ -125,5 +125,10 @@
 
     <string name="class_name">Class name</string>
     <string name="class_icon">Class icon</string>
+    <string name="all">All</string>
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="advanced">Advanced</string>
+    <string name="master">Master</string>
 
 </resources>

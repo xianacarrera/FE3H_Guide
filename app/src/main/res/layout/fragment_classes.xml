@@ -1,10 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- This layout corresponds to the ClassesFragment class. Its main content
+is a ListView with all the classes in the game.
+
+There's also a SearchView that allows the user to filter the ListView.
+
+Each class is contained in a cell_class.xml cell-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".classes.ClassesFragment"
     android:orientation="vertical">
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/classesListSearchView"
+        app:iconifiedByDefault="false"
+        app:queryHint="Class name"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/all"
+            android:id="@+id/classesAllButton"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/unique"
+            android:id="@+id/classesUniqueButton"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/beginner"
+            android:id="@+id/classesBeginnerButton"
+            android:background="@color/colorAccent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/intermediate"
+            android:id="@+id/classesIntermediateButton"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/advanced"
+            android:id="@+id/classesAdvancedButton"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/master"
+            android:id="@+id/classesMasterButton"
+            android:background="@color/colorAccent"/>
+
+    </LinearLayout>
+
 
     <ListView
         android:layout_width="match_parent"

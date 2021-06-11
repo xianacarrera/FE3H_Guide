@@ -31,6 +31,19 @@ public class CombatArtsFragment extends Fragment {
     private final SQLiteDatabase db;
     private final CombatArtsFragment fragment;
 
+    private Spinner spinner;
+    private RecyclerView allCombatArtsRecycler;
+    private RecyclerView uniqueRecycler;
+
+    // Dialog components
+    private TextView textClose;
+    private TextView titleCombatArtName;
+    private TextView textEffect;
+    private TextView textWeapon;
+    private TextView text2;
+    private TextView text2Answer;
+    private ConstraintLayout table;
+
     public CombatArtsFragment(String character, SQLiteDatabase db){
         if (character.equals("BylethM") || character.equals("BylethF")){
             this.character = "Byleth";
@@ -45,18 +58,81 @@ public class CombatArtsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myDialog = new Dialog(getActivity());
         ConstraintLayout layout = (ConstraintLayout)
                 inflater.inflate(R.layout.fragment_combat_arts, container, false);
 
+        // Popup that displays detailed info about a combat art
+        myDialog = new Dialog(getActivity());
+        myDialog.setContentView(R.layout.popup_combat_art);
+
+        initComponents(layout);         // Components of the CombatArtsFragment and the dialog
+
+        // Search and display combat arts unique to the character
+        prepareUniqueCombatArts(layout);
+        // Search and display combat arts common to all characters
+        prepareNotUniqueCombatArts(layout);
+
+        addListeners();                 // Listeners for both the CombatArtsFragment and the dialog
+
+        return layout;
+    }
+
+    private void initComponents(ConstraintLayout layout){
+        uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
+        allCombatArtsRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_2);
+        spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
+
+        // Dialog components
+        textClose = (TextView) myDialog.findViewById(R.id.text_close);
+        titleCombatArtName = (TextView) myDialog.findViewById(R.id.textview_title_combat_art_name);
+        textEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
+        textWeapon = (TextView) myDialog.findViewById(R.id.text_weapon);
+        text2 = (TextView) myDialog.findViewById(R.id.text2_combat_art_popup);
+        text2Answer = (TextView) myDialog.findViewById(R.id.text2_answer);
+        table = (ConstraintLayout) myDialog.findViewById(R.id.constraint_layout_combat_art_table);
+    }
+
+    private void prepareUniqueCombatArts(ConstraintLayout layout){
         /*
          * Add all unique combat arts for the character, which are considered to be the ones
          * obtained as a budding talent, and the combat arts related to weapon proficiency
          * which are exclusive to some characters.
          */
 
+        ArrayList<CombatArt> uniqueCombatArts = searchForUniqueCombatArts();
+
+        // Create adapter for the unique abilities recycler view and link them
+        CombatArtsAdapter uniqueAdapter = new CombatArtsAdapter(uniqueCombatArts, this);
+        uniqueRecycler.setAdapter(uniqueAdapter);
+
+        // Display the abilities stacked vertically
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        uniqueRecycler.setLayoutManager(layoutManager);
+    }
+
+    private void prepareNotUniqueCombatArts(ConstraintLayout layout){
+        /*
+         * The second recycler view is the same for every character.
+         * There is a spinner with several categories (learned, master...) so that the abilities
+         * can be organized and more easily searched.
+         */
+
+        // By default, prepare the second recycler view to show all the abilities (not unique)
+        ArrayList<CombatArt> combatArts = searchForNotUniqueCombatArts(db, true,
+                true, true, true);
+
+        // Prepare the adapter
+        CombatArtsAdapter defaultAdapter = new CombatArtsAdapter(combatArts, this);
+        allCombatArtsRecycler.setAdapter(defaultAdapter);
+
+        // Display the abilities stacked vertically
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
+        allCombatArtsRecycler.setLayoutManager(layoutManager2);
+    }
+
+    private ArrayList<CombatArt> searchForUniqueCombatArts(){
         Cursor cursor = db.rawQuery("SELECT art, effect, weapon, dur, mt, hit, avo, crit, " +
-                "range  FROM CombatArtsBuddingTalents WHERE character = ?",
+                        "range  FROM CombatArtsBuddingTalents WHERE character = ?",
                 new String[] {character});
 
         ArrayList<CombatArt> uniqueCombatArts = new ArrayList<>();
@@ -96,87 +172,12 @@ public class CombatArtsFragment extends Fragment {
         }
         cursor.close();
 
-        // Create adapter for the unique abilities recycler view and link them
-        CombatArtsAdapter uniqueAdapter = new CombatArtsAdapter(uniqueCombatArts, this);
-        RecyclerView uniqueRecycler =
-                (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
-        uniqueRecycler.setAdapter(uniqueAdapter);
-
-        // Display the abilities stacked vertically
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        uniqueRecycler.setLayoutManager(layoutManager);
-
-        /*
-         * The second recycler view is the same for every character.
-         * There is a spinner with several categories (learned, master...) so that the abilities
-         * can be organized and more easily searched.
-         */
-
-        // By default, prepare the second recycler view to show all the abilities (not unique)
-        ArrayList<CombatArt> combatArts = searchNotUniqueCombatArts(db, true,
-                true, true, true);
-
-        // Prepare the adapter
-        CombatArtsAdapter defaultAdapter = new CombatArtsAdapter(combatArts, this);
-        final RecyclerView allCombatArtsRecycler = (RecyclerView)
-                layout.findViewById(R.id.recycler_combat_arts_2);
-        allCombatArtsRecycler.setAdapter(defaultAdapter);
-
-        // Display the abilities stacked vertically
-        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
-        allCombatArtsRecycler.setLayoutManager(layoutManager2);
-
-        // Attach a listener to the spinner
-        final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selection = spinner.getSelectedItem().toString();
-
-                // The recycler view gets populated with the abilities of the selected type
-                Cursor cursor = null;
-                ArrayList<CombatArt> combatArts = new ArrayList();
-                switch (selection){
-                    case "All combat arts":
-                        combatArts = searchNotUniqueCombatArts(db, true,
-                                true, true, true);
-                        break;
-                    case "Skill level combat arts":
-                        combatArts = searchNotUniqueCombatArts(db, true,
-                                false, false, false);
-                        break;
-                    case "Weapon exclusive combat arts":
-                        combatArts = searchNotUniqueCombatArts(db, false,
-                                true, false, false);
-                        break;
-                    case "Class mastery combat arts":
-                        combatArts = searchNotUniqueCombatArts(db, false,
-                                false, true, false);
-                        break;
-                    case "Other combat arts":
-                        combatArts = searchNotUniqueCombatArts(db, false,
-                                false, false, true);
-                }
-
-                // Create a new adapter and link it to the recycler view
-                CombatArtsAdapter combatArtsAdapter = new CombatArtsAdapter(combatArts, fragment);
-                allCombatArtsRecycler.setAdapter(combatArtsAdapter);
-
-                // TODO: is it necessary to add another LayoutManager to the recycler view?
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        return layout;
+        return uniqueCombatArts;
     }
 
-    public ArrayList<CombatArt> searchNotUniqueCombatArts(SQLiteDatabase db, boolean prof,
-                                                     boolean exclusive, boolean classMastery,
-                                                     boolean other){
+    private ArrayList<CombatArt> searchForNotUniqueCombatArts(SQLiteDatabase db, boolean prof,
+                                                              boolean exclusive,
+                                                              boolean classMastery, boolean other){
         Cursor cursor = null;
         ArrayList<CombatArt> combatArts = new ArrayList<>();
         if (prof){
@@ -253,33 +254,71 @@ public class CombatArtsFragment extends Fragment {
         return combatArts;
     }
 
-    public void shopPopup(CombatArt cArt){
-        myDialog.setContentView(R.layout.popup_combat_art);
+    private void addListeners(){
+        // Attach a listener to the spinner
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selection = spinner.getSelectedItem().toString();
+
+                // The recycler view gets populated with the abilities of the selected type
+                Cursor cursor = null;
+                ArrayList<CombatArt> combatArts = new ArrayList();
+                switch (selection){
+                    case "All combat arts":
+                        combatArts = searchForNotUniqueCombatArts(db, true,
+                                true, true, true);
+                        break;
+                    case "Skill level combat arts":
+                        combatArts = searchForNotUniqueCombatArts(db, true,
+                                false, false, false);
+                        break;
+                    case "Weapon exclusive combat arts":
+                        combatArts = searchForNotUniqueCombatArts(db, false,
+                                true, false, false);
+                        break;
+                    case "Class mastery combat arts":
+                        combatArts = searchForNotUniqueCombatArts(db, false,
+                                false, true, false);
+                        break;
+                    case "Other combat arts":
+                        combatArts = searchForNotUniqueCombatArts(db, false,
+                                false, false, true);
+                }
+
+                // Create a new adapter and link it to the recycler view
+                CombatArtsAdapter combatArtsAdapter = new CombatArtsAdapter(combatArts, fragment);
+                allCombatArtsRecycler.setAdapter(combatArtsAdapter);
+
+                // TODO: is it necessary to add another LayoutManager to the recycler view?
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         // Set listener for the button that closes the popup
-        TextView textclose = (TextView) myDialog.findViewById(R.id.text_close);
-        textclose.setOnClickListener(new View.OnClickListener() {
+        textClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 myDialog.dismiss();
             }
         });
+    }
 
+    public void shopPopup(CombatArt cArt){
         // Set the name of the combat art as the title for the popup
-        TextView titleCombatArtName = (TextView)
-                myDialog.findViewById(R.id.textview_title_combat_art_name);
         titleCombatArtName.setText(cArt.getName());
 
         // Show the effect of the combat art
-        TextView textEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
         textEffect.setText(cArt.getEffect());
 
         // Show the weapon associated with the combat art
-        TextView textWeapon = (TextView) myDialog.findViewById(R.id.text_weapon);
         textWeapon.setText(cArt.getWeapon());
 
         // The second attribute depends on the type of the combat art
-        TextView text2 = (TextView) myDialog.findViewById(R.id.text2_combat_art_popup);
         switch (cArt.getType()){
             case allWeaponProficiency:
             case uniqueWeaponProficiency:
@@ -296,12 +335,9 @@ public class CombatArtsFragment extends Fragment {
         }
 
         // Set the answer to the previous text field
-        TextView text2Answer = (TextView) myDialog.findViewById(R.id.text2_answer);
         text2Answer.setText(cArt.getText2());
 
         // Set all 6 stats to the table (dur, mt, hit, avo, crit, range)
-        ConstraintLayout table = (ConstraintLayout)
-                myDialog.findViewById(R.id.constraint_layout_combat_art_table);
         for (int i = 6; i < table.getChildCount(); i++){
             TextView textViewStat = (TextView) table.getChildAt(i);
             // Stats are stored ordered in an ArrayList in cArt

@@ -1,0 +1,53 @@
+Commoner_Unique_-_-_-_-_HP +5_-_Can use magic at half uses_Available to Byleth, Dorothea, Petra, Dedue, Mercedes, Ashe, Raphael, Ignatz, Leonie, Cyril, Yuri, Hapi, Rhea, Alois, Catherine, Anna, Flayn, Gilbert, Hanneman, Jeritza, Manuela, Seteth, Shamir_-_-_20
+Noble_Unique_-_-_-_-_HP +5_-_Can use magic at half uses_Available to Edelgard, Hubert, Bernadetta, Linhardt, Ferdinand, Caspar, Dimitri, Felix, Annette, Sylvain, Ingrid, Claude, Lorenz, Hilda, Lysithea, Marianne, Balthus, Constance, Rhea, Alois, Catherine, Anna, Flayn, Gilbert, Hanneman, Jeritza, Manuela, Seteth, Shamir_-_-_20
+Dancer_Unique_Sword (+2)$Authority (+2)_Dance_-_-_Special Dance_-_Can use magic_No character restriction_Win the White Heron Cup_-_150
+Enlightened One_Unique_Sword (+3)$Brawling (+2)$Faith (+3)$Authority (+3)_Swordfaire_Terrain Resistance_-_Sacred Power_-_Can use magic_Byleth only_Automatically gained at the start of Chapter 11_-_200
+Armored Lord_Unique_Axe (+3)$Authority (+3)$Heavy Armor (+3)_Charm_Axefaire_-_Pomp & Circumstance_-_-_Edelgard only_Automatically gained at the start of Chapter 13_-_150
+High Lord_Unique_Sword (+3)$Lance (+3)$Authority (+3)_Charm_Lancefaire_-_Pomp & Circumstance_-_-_Dimitri only_Automatically gained at the start of Chapter 13_-_150
+Wyvern Master_Unique_Bow (+3)$Authority (+3)$Flying (+3)_Charm_Bowfaire_Canto_Pomp & Circumstance_-_-_Claude only_Automatically gained at the start of Chapter 13_-_150
+Death Knight_Unique_Lance (+3)$Reason (+3)$Riding (+3)_Canto_Lancefaire_-_Counterattack_-_Can use magic_Jeritza only_Automatically gained at the start of Chapter 13_-_200
+Emperor_Unique_Axe (+3)$Authority (+3)$Heavy Armor (+3)_Charm_Axefaire_-_-_Flickering Flower_-_Edelgard only_Automatically gained at the start of Chapter 16_-_200
+Great Lord_Unique_Sword (+3)$Lance (+3)$Authority (+3)_Charm_Lancefaire_-_-_Paraselene_-_Dimitry only_Automatically gained at the start of Chapter 16_-_200
+Barbarossa_Unique_Bow (+3)$Authority (+3)$Flying (+3)_Charm_Bowfaire_Canto_-_Wind God_-_Claude only_Automatically gained at the start of Chapter 17_-_200
+Myrmidon_Beginner (level 5)_Sword (+1)_-_-_-_Speed +2_Swap_-_No character restriction_Sword D_Beginner Seal_60
+Soldier_Beginner (level 5)_Lance (+1)_-_-_-_Defense +2_Reposition_-_No character restriction_Lance D_Beginner Seal_60
+Fighter_Beginner (level 5)_Axe (+1)$Bow (+1)$Brawl (+1)_-_-_-_Strength +2_Shove_-_No character restriction_Axe D, Bow D or Brawl D_Beginner Seal_60
+Monk_Beginner (level 5)_Reason (+1)$Faith (+1)_-_-_-_Magic +2_Draw Back_Can use magic_No character restriction_Reason D or Faith D_Beginner Seal_60
+Lord_Intermediate (level 10)_Sword (+2)$Lance (+1)$Authority (+2)_Charm_-_-_Resistance +2_Subdue_-_Edelgard, Dimitri and Claude only_Sword D+, Authority C_Intermediate Seal_100
+Mercenary_Intermediate (level 10)_Sword (+2)$Axe (+1)_-_-_-_Vantage_-_-_No character restriction_Sword C_Intermediate Seal_100
+Thief_Intermediate (level 10)_Sword (+2)$Bow (+1)_Steal_Locktouch_-_Steal_-_-_No character restriction_Sword C_Intermediate Seal_100
+Cavalier_Intermediate (level 10)_Sword (+1)$Lance (+2)$Riding (+2)_Canto_-_-_Desperation_-_-_No character restriction_Lance C, Riding D_Intermediate Seal_100
+Pegasus Knight_Intermediate (level 10)_Sword (+1)$Lance (+2)$Flying (+2)_Canto_Avoid +10_-_Darting Blow_Triangle Attack_-_Female only_Lance C, Flying D_Intermediate Seal_100
+Brigand_Intermediate (level 10)_Axe (+2)$Brawl (+1)_-_-_-_Death Blow_-_-_No character restriction_Axe C_Intermediate Seal_100
+Armored Knight_Intermediate (level 10)_Lance (+1)$Axe (+2)$Heavy Armor (+2)_-_-_-_Armored Blow_-_-_No character restriction_Axe C, Heavy Armor D_Intermediate Seal_100
+Archer_Intermediate (level 10)_Sword (+1)$Bow (+2)_Bowrange +1_-_-_Hit +20_-_-_No character restriction_Bow C_Intermediate Seal_100
+Brawler_Intermediate (level 10)_Axe (+1)$Brawl (+2)_Unarmed Combat_-_-_Unarmed Combat_-_-_Male only_Brawl C_Intermediate Seal_100
+Mage_Intermediate (level 10)_Reason (+2)$Faith (+1)_Fire_-_-_Fiendish Blow_-_Can use magic_No character restriction_Reason C_Intermediate Seal_100
+Dark Mage_Intermediate (level 10)_Reason (+2)$Faith (+1)_Miasma Δ_Heartseeker_-_Poison Strike_-_Can use magic_Male only_Reason C_Dark Seal_100
+Priest_Intermediate (level 10)_Reason (+1)$Faith (+2)_Heal_White Magic Heal +5_-_Miracle_-_Can use magic_No character restriction_Faith C_Intermediate Seal_100
+Swordmaster_Advanced (level 20)_Sword (+3)_Swordfaire_Sword Crit +10_-_-_Astra_-_No character restriction_Sword A_Advanced Seal_150
+Hero_Advanced (level 20)_Sword (+3)$Axe (+2)_Swordfaire_Vantage_-_Defiant Str_-_-_Male only_Sword B, Axe C_Advanced Seal_150
+Assassin_Advanced (level 20)_Sword (+3)$Bow (+2)_Swordfaire_Locktouch_Stealth_Lethality_Assassinate_-_No character restriction_Sword B, Bow C_Advanced Seal_150
+Paladin_Advanced (level 20)_Sword (+2)$Lance (+3)$Riding (+3)_Canto_Lancefaire_Terrain Resistance_Aegis_-_-_No character restriction_Lance B, Riding B_Advanced Seal_150
+Warrior_Advanced (level 20)_Axe (+3)_Axefaire_Axe Crit +10_-_Wrath_-_-_No character restriction_Axe A_Advanced Seal_150
+Fortress Knight_Advanced (level 20)_Lance (+2)$Axe (+3)$Heavy Armor (+3)_Axefaire_Weight -5_-_Pavise_-_-_No character restriction_Axe B, Heavy Armor B_Advanced Seal_150
+Wyvern Rider_Advanced (level 20)_Lance (+2)$Axe (+3)$Flying (+3)_Canto_Axefaire_-_Seal Defense_-_-_No character restriction_Axe B, Flying C_Advanced Seal_150
+Sniper_Advanced (level 20)_Bow (+3)_Bowrange +1_Bowfaire_-_-_Hunter's Volley_-_No character restriction_Bow A_Advanced Seal_150
+Grappler_Advanced (level 20)_Brawl (+3)_Fistfaire_Unarmed Combat_-_Tomebreaker_Fierce Iron Fist_-_Male only_Brawl A_Advanced Seal_150
+Warlock_Advanced (level 20)_Reason (+3)$Faith (+2)_Black Tomefaire_Black Magic Uses x2_-_Bowbreaker_-_Can use magic_No character restriction_Reason A_Advanced Seal_150
+Dark Bishop_Advanced (level 20)_Reason (+3)$Faith (+2)_Miasma Δ_Heartseeker_Fiendish Blow_Lifetaker_-_Can use magic_Male only_Reason A, Dark Mage qualification_Dark Seal_150
+Bishop_Advanced (level 20)_Reason (+2)$Faith (+3)_White Magic Uses x2_White Magic Heal +10_Terrain Resistance_Renewal_-_Can use magic_No character restriction_Faith A_Advanced Seal_150
+Trickster_DLC (level 20)_Sword (+3)$Reason (+1)$Faith (+2)_Locktouch_Stealth_Lucky Seven_Duelist's Blow_Foul Play_Can use magic at half uses_No character restriction_Sword B, Faith B, Thief qualification_Abyssian Exam Pass_150
+War Monk_DLC (level 20)_Axe (+1)$Brawl (+3)$Faith (+1)_Fistfaire_Unarmed Combat_Heal_Brawl Avoid +20_Pneuma Gale_Can use magic at half uses_Male only_Brawl B+, Faith C+_Abyssian Exam Pass_150
+War Cleric_DLC (level 20)_Axe (+1)$Brawl (+3)$Faith (+1)_Fistfaire_Unarmed Combat_Heal_Brawl Avoid +20_Pneuma Gale_Can use magic at half uses_Female only_Brawl B+, Faith C+_Abyssian Exam Pass_150
+Dark Flier_DLC (level 20)_Sword (+2)$Reason (+3)$Flying (+3)_Canto_Black Tomefaire_Transmute_Transmute_-_Can use magic_Female only_Reason B+, Flying C_Abyssian Exam Pass_150
+Valkyrie_DLC (level 20)_Reason (+3)$Faith (+1)$Riding (+3)_Canto_Black Magic Range +1_Dark Magic Range +1_Uncanny Blow_-_Can use magic_Female only_Reason B, Riding B_Abyssian Exam Pass_150
+Falcon Knight_Master (level 30)_Sword (+3)$Lance (+3)$Flying (+3)_Canto_Lancefaire_Avoid +10_Defiant Avo_-_-_Female only_Sword C, Lance A, Flying B+_Master Seal_200
+Wyvern Lord_Master (level 30)_Lance (+3)$Axe (+3)$Flying (+3)_Canto_Axefaire_Avoid +10_Defiant Crit_-_-_No character restriction_Lance C, Axe A, Flying A_Master Seal_200
+Mortal Savant_Master (level 30)_Sword (+3)$Reason (+3)_Swordfaire_Black Tomefaire_-_Warding Blow_-_Can use magic_No character restriction_Sword A, Reason B+_Master Seal_200
+Great Knight_Master (level 30)_Lance (+3)$Axe (+3)$Heavy Armor (+3)_Canto_Lancefaire_Axefaire_Defiant Def_-_-_No character restriction_Axe B+, Heavy Armor A, Riding B+_Master Seal_200
+Bow Knight_Master (level 30)_Lance (+3)$Bow (+3)$Riding (+3)_Canto_Bowfaire_Bowrange +2_Defiant Spd_-_-_No character restriction_Lance C, Bow A, Riding A_Master Seal_200
+Dark Knight_Master (level 30)_Lance (+3)$Reason (+3)$Riding (+3)_Canto_Black Tomefaire_Dark Tomefaire_Seal Resistance_-_Can use magic_No character restriction_Lance C, Reason B+, Riding A_Master Seal_200
+Holy Knight_Master (level 30)_Lance (+3)$Faith (+3)$Riding (+3)_Canto_White Tomefaire_Terrain Resistance_Defiant Res_-_Can use magic_No character restriction_Lance C, Faith B+, Riding A_Master Seal_200
+War Master_Master (level 30)_Axe (+3)$Brawl (+3)_Axefaire_Fistfaire_Crit +20_Quick Reposte_War Master's Strike_-_Male only_Axe A, Brawl A_Master Seal_200
+Gremory_Master (level 30)_Reason (+3)$Faith (+3)_Black Magic Uses x2_Dark Magic Uses x2_White Magic Uses x2_Defiant Mag_-_Can use magic_Female only_Reason A, Faith A_Master Seal_200
