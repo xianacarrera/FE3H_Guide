@@ -20,7 +20,11 @@ import android.widget.TextView;
 import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.CombatArtsAdapter;
 import com.example.fe3hguide.model.CombatArt;
-import com.example.fe3hguide.model.CombatArtsType;
+import com.example.fe3hguide.model.CombatArtBuddingTalent;
+import com.example.fe3hguide.model.CombatArtClassMastery;
+import com.example.fe3hguide.model.CombatArtOther;
+import com.example.fe3hguide.model.CombatArtWeaponExclusive;
+import com.example.fe3hguide.model.CombatArtWeaponProficient;
 
 import java.util.ArrayList;
 
@@ -138,11 +142,14 @@ public class CombatArtsFragment extends Fragment {
         ArrayList<CombatArt> uniqueCombatArts = new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
-                uniqueCombatArts.add(new CombatArt(cursor.getString(0),
-                        CombatArtsType.buddingTalent, cursor.getString(1),
-                        cursor.getString(2), null, cursor.getString(3),
-                        cursor.getString(4), cursor.getString(5), cursor.getString(6),
-                        cursor.getString(7), cursor.getString(8)));
+                uniqueCombatArts.add(new CombatArtBuddingTalent.Builder(cursor.getString(0))
+                        .withEffect(cursor.getString(1))
+                        .withWeapon(cursor.getString(2))
+                        .withAssociatedCharacter(character)
+                        .withStats(cursor.getString(3), cursor.getString(4),
+                                cursor.getString(5), cursor.getString(6),
+                                cursor.getString(7), cursor.getString(8))
+                        .build());
             } while (cursor.moveToNext());
         }
 
@@ -157,12 +164,15 @@ public class CombatArtsFragment extends Fragment {
                         "mt, hit, avo, crit, range FROM CombatArtsCharactersWeaponProficient " +
                         "WHERE art = ?", new String[] {cursor.getString(0)});
                 if (cursor2.moveToFirst()){
-                    uniqueCombatArts.add(new CombatArt(cursor.getString(0),
-                            CombatArtsType.uniqueWeaponProficiency, cursor2.getString(1),
-                            cursor2.getString(2), cursor2.getString(3),
-                            cursor2.getString(4), cursor2.getString(5),
-                            cursor2.getString(6), cursor2.getString(7),
-                            cursor2.getString(8), cursor2.getString(9)));
+                    uniqueCombatArts.add(new CombatArtWeaponProficient.Builder(
+                                    cursor.getString(0)
+                            ).withEffect(cursor2.getString(1))
+                            .withWeapon(cursor2.getString(2))
+                            .withSkillLevel(cursor2.getString(3))
+                            .withStats(cursor2.getString(4), cursor2.getString(5),
+                                    cursor2.getString(6), cursor2.getString(7),
+                                    cursor2.getString(8), cursor2.getString(9))
+                            .build());
                 }
             } while (cursor.moveToNext());
         }
@@ -188,13 +198,15 @@ public class CombatArtsFragment extends Fragment {
 
             if (cursor.moveToFirst()){
                 do {
-                    combatArts.add(new CombatArt(cursor.getString(0),
-                            CombatArtsType.allWeaponProficiency,
-                            cursor.getString(1), cursor.getString(2),
-                            cursor.getString(3), cursor.getString(4),
-                            cursor.getString(5), cursor.getString(6),
-                            cursor.getString(7), cursor.getString(8),
-                            cursor.getString(9)));
+                    combatArts.add(new CombatArtWeaponProficient.Builder(cursor.getString(0))
+                            .withEffect(cursor.getString(1))
+                            .withWeapon(cursor.getString(2))
+                            .withSkillLevel(cursor.getString(3))
+                            .withStats(cursor.getString(4),
+                                    cursor.getString(5), cursor.getString(6),
+                                    cursor.getString(7), cursor.getString(8),
+                                    cursor.getString(9))
+                            .build());
                 } while (cursor.moveToNext());
             }
         }
@@ -205,13 +217,15 @@ public class CombatArtsFragment extends Fragment {
 
             if (cursor.moveToFirst()){
                 do {
-                    combatArts.add(new CombatArt(cursor.getString(0),
-                            CombatArtsType.weaponExclusive,
-                            cursor.getString(1), cursor.getString(2),
-                            cursor.getString(3), cursor.getString(4),
-                            cursor.getString(5), cursor.getString(6),
-                            cursor.getString(7), cursor.getString(8),
-                            cursor.getString(9)));
+                    combatArts.add(new CombatArtWeaponExclusive.Builder(cursor.getString(0))
+                            .withEffect(cursor.getString(1))
+                            .withWeapon(cursor.getString(2))
+                            .withCrest(cursor.getString(3))
+                            .withStats(cursor.getString(4),
+                                    cursor.getString(5), cursor.getString(6),
+                                    cursor.getString(7), cursor.getString(8),
+                                    cursor.getString(9))
+                            .build());
                 } while (cursor.moveToNext());
             }
         }
@@ -222,13 +236,15 @@ public class CombatArtsFragment extends Fragment {
 
             if (cursor.moveToFirst()){
                 do {
-                    combatArts.add(new CombatArt(cursor.getString(0),
-                            CombatArtsType.classMastery,
-                            cursor.getString(1), cursor.getString(2),
-                            cursor.getString(3), cursor.getString(4),
-                            cursor.getString(5), cursor.getString(6),
-                            cursor.getString(7), cursor.getString(8),
-                            cursor.getString(9)));
+                    combatArts.add(new CombatArtClassMastery.Builder(cursor.getString(0))
+                            .withEffect(cursor.getString(1))
+                            .withWeapon(cursor.getString(2))
+                            .withClass(cursor.getString(3))
+                            .withStats(cursor.getString(4),
+                                    cursor.getString(5), cursor.getString(6),
+                                    cursor.getString(7), cursor.getString(8),
+                                    cursor.getString(9))
+                            .build());
                 } while (cursor.moveToNext());
             }
         }
@@ -239,13 +255,15 @@ public class CombatArtsFragment extends Fragment {
 
             if (cursor.moveToFirst()){
                 do {
-                    combatArts.add(new CombatArt(cursor.getString(0),
-                            CombatArtsType.other,
-                            cursor.getString(1), cursor.getString(2),
-                            cursor.getString(3), cursor.getString(4),
-                            cursor.getString(5), cursor.getString(6),
-                            cursor.getString(7), cursor.getString(8),
-                            cursor.getString(9)));
+                    combatArts.add(new CombatArtOther.Builder(cursor.getString(0))
+                            .withEffect(cursor.getString(1))
+                            .withWeapon(cursor.getString(2))
+                            .withOrigin(cursor.getString(3))
+                            .withStats(cursor.getString(4),
+                                    cursor.getString(5), cursor.getString(6),
+                                    cursor.getString(7), cursor.getString(8),
+                                    cursor.getString(9))
+                            .build());
                 } while (cursor.moveToNext());
             }
         }
@@ -319,23 +337,10 @@ public class CombatArtsFragment extends Fragment {
         textWeapon.setText(cArt.getWeapon());
 
         // The second attribute depends on the type of the combat art
-        switch (cArt.getType()){
-            case allWeaponProficiency:
-            case uniqueWeaponProficiency:
-                text2.setText(getResources().getString(R.string.skill_level));
-                break;
-            case weaponExclusive:
-                text2.setText(getResources().getString(R.string.crest));
-                break;
-            case classMastery:
-                text2.setText(getResources().getString(R.string.class_ingame));
-                break;
-            case other:
-                text2.setText(getResources().getString(R.string.origin));
-        }
+        text2.setText(cArt.saySpecificTextMeaning());
 
         // Set the answer to the previous text field
-        text2Answer.setText(cArt.getText2());
+        text2Answer.setText(cArt.getSpecificText());
 
         // Set all 6 stats to the table (dur, mt, hit, avo, crit, range)
         for (int i = 6; i < table.getChildCount(); i++){
