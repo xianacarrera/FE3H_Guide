@@ -20,6 +20,10 @@
             android:icon="@drawable/ic_menu_characters"
             android:title="@string/nav_characters" />
         <item
+            android:id="@+id/nav_classes"
+            android:icon="@drawable/ic_menu_classes"
+            android:title="@string/nav_classes" />
+        <item
             android:id="@+id/nav_tea_time"
             android:icon="@drawable/ic_menu_teatime"
             android:title="@string/nav_tea_time" />

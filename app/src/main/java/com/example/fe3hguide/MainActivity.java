@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.fe3hguide.characters.navigation.CharactersFragment;
+import com.example.fe3hguide.classes.ClassesFragment;
 import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.supports.SupportsFragment;
 import com.example.fe3hguide.teaTime.TeaTimeFragment;
@@ -110,6 +111,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_characters:
                 fragment = new CharactersFragment();
+                break;
+            case R.id.nav_classes:
+                fragment = new ClassesFragment(fc);
                 break;
             case R.id.nav_tea_time:
                 fragment = new TeaTimeFragment(fc);

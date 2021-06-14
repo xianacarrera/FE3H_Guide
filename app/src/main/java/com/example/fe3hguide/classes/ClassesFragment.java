@@ -44,7 +44,8 @@ public class ClassesFragment extends Fragment {
     private Button advancedButton;
     private Button masterButton;
 
-    private String selectedFilter;          // Filter tab currently selected
+    private String selectedFilter = "All";          // Filter tab currently selected
+    private String searchFilter = "";            // Current search filter
 
     public ClassesFragment(Facade fc){
         this.fc = fc;
@@ -110,7 +111,8 @@ public class ClassesFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filterList(newText);
+                searchFilter = newText.toLowerCase();       // Save the search condition
+                filterList();
                 return false;
             }
         });
@@ -119,57 +121,70 @@ public class ClassesFragment extends Fragment {
     }
 
     private void addButtonListeners(){
-        uniqueButton.setOnClickListener(new View.OnClickListener() {
+        allButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterList(allButton.getText().toString());
+                // Clean the search
+                searchView.setQuery("", false);
+                searchView.clearFocus();
+
+                // All classes are selected, with no exceptions
+                selectedFilter = allButton.getText().toString().toLowerCase();
+                filterList();
             }
         });
 
         uniqueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterList(uniqueButton.getText().toString());
+                selectedFilter = uniqueButton.getText().toString().toLowerCase();
+                filterList();
             }
         });
 
         beginnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterList(beginnerButton.getText().toString());
+                selectedFilter = beginnerButton.getText().toString().toLowerCase();
+                filterList();
             }
         });
 
         intermediateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterList(intermediateButton.getText().toString());
+                selectedFilter = intermediateButton.getText().toString().toLowerCase();
+                filterList();
             }
         });
 
         advancedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterList(advancedButton.getText().toString());
+                selectedFilter = advancedButton.getText().toString().toLowerCase();
+                filterList();
             }
         });
 
         masterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterList(masterButton.getText().toString());
+                selectedFilter = masterButton.getText().toString().toLowerCase();
+                filterList();
             }
         });
     }
 
-    private void filterList(String condition){
-        selectedFilter = condition;
-
+    public void filterList(){
         List<InGameClass> filteredClasses = new ArrayList<>();
-        for (InGameClass inGameClass : classes){
-            if (inGameClass.getClassLevel().toLowerCase().contains(condition)){
-                // The class satisfies the search condition
-                filteredClasses.add(inGameClass);
+        for (InGameClass inGameClass : classes) {
+            if (searchFilter.equals("") || inGameClass.getName().toLowerCase().contains(searchFilter)) {
+                // No search condition was specified or the class's name satisfies the condition
+                if (selectedFilter.equals("All") ||
+                        inGameClass.getClassLevel().toLowerCase().contains(selectedFilter)) {
+                    // All class types are accepted or the class's type satisfies the filter
+                    filteredClasses.add(inGameClass);
+                }
             }
         }
 

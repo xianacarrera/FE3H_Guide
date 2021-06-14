@@ -119,11 +119,11 @@ public class CombatArtsFragment extends Fragment {
 
         ArrayList<CombatArt> uniqueCombatArts = searchForUniqueCombatArts();
 
-        // Create adapter for the unique abilities recycler view and link them
+        // Create adapter for the unique combat arts recycler view and link them
         CombatArtsAdapter uniqueAdapter = new CombatArtsAdapter(uniqueCombatArts, this);
         uniqueRecycler.setAdapter(uniqueAdapter);
 
-        // Display the abilities stacked vertically
+        // Display the combat arts stacked vertically
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         uniqueRecycler.setLayoutManager(layoutManager);
     }
