@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new GeneralFragment();
+                    return new GeneralFragment(character, db);
                 case 1:
                     return new AbilitiesFragment(character, db);
                 case 2:

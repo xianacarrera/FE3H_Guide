@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fe3hguide.model.Ability;
 import com.example.fe3hguide.model.CombatArt;
+import com.example.fe3hguide.model.CombatArtClassMastery;
 import com.example.fe3hguide.model.InGameClass;
 
 import java.util.ArrayList;
@@ -35,7 +36,8 @@ public class DAOClasses extends DAO {
                         cursor.getString(1)).withProficiencies(cursor.getString(2)).
                         withAbilities(abilities).withMasteryAbility(
                                 new Ability.Builder(cursor.getString(6)).build()).
-                        withMasteryCombatArt(new CombatArt.Builder(cursor.getString(7)).build()).
+                        withMasteryCombatArt(new CombatArtClassMastery
+                                            .Builder(cursor.getString(7)).build()).
                         withCanUse(cursor.getString(8)).
                         withRestrictions(cursor.getString(9)).
                         withCertificationRequirement(cursor.getString(10)).
@@ -68,7 +70,8 @@ public class DAOClasses extends DAO {
                     cursor.getString(1)).withProficiencies(cursor.getString(2)).
                     withAbilities(abilities).withMasteryAbility(
                     new Ability.Builder(cursor.getString(6)).build()).
-                    withMasteryCombatArt(new CombatArt.Builder(cursor.getString(7)).build()).
+                    withMasteryCombatArt(new CombatArtClassMastery
+                                        .Builder(cursor.getString(7)).build()).
                     withCanUse(cursor.getString(8)).
                     withRestrictions(cursor.getString(9)).
                     withCertificationRequirement(cursor.getString(10)).

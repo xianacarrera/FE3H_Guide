@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,22 +26,26 @@ import com.example.fe3hguide.model.CombatArtClassMastery;
 import com.example.fe3hguide.model.CombatArtOther;
 import com.example.fe3hguide.model.CombatArtWeaponExclusive;
 import com.example.fe3hguide.model.CombatArtWeaponProficient;
+import com.mingle.sweetpick.CustomDelegate;
+import com.mingle.sweetpick.DimEffect;
+import com.mingle.sweetpick.SweetSheet;
 
 import java.util.ArrayList;
 
 public class CombatArtsFragment extends Fragment {
 
-    private Dialog myDialog;
+    //private Dialog myDialog;
     private final String character;
     private final SQLiteDatabase db;
     private final CombatArtsFragment fragment;
+    private SweetSheet sweetSheet;
+    private View popUpLayout;
 
     private Spinner spinner;
     private RecyclerView allCombatArtsRecycler;
     private RecyclerView uniqueRecycler;
 
     // Dialog components
-    private TextView textClose;
     private TextView titleCombatArtName;
     private TextView textEffect;
     private TextView textWeapon;
@@ -62,41 +67,50 @@ public class CombatArtsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ConstraintLayout layout = (ConstraintLayout)
+        RelativeLayout layout = (RelativeLayout)
                 inflater.inflate(R.layout.fragment_combat_arts, container, false);
 
-        // Popup that displays detailed info about a combat art
-        myDialog = new Dialog(getActivity());
-        myDialog.setContentView(R.layout.popup_combat_art);
-
+        preparePopUp(layout);
         initComponents(layout);         // Components of the CombatArtsFragment and the dialog
 
         // Search and display combat arts unique to the character
-        prepareUniqueCombatArts(layout);
+        prepareUniqueCombatArts();
         // Search and display combat arts common to all characters
-        prepareNotUniqueCombatArts(layout);
+        prepareNotUniqueCombatArts();
 
         addListeners();                 // Listeners for both the CombatArtsFragment and the dialog
 
         return layout;
     }
 
-    private void initComponents(ConstraintLayout layout){
-        uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_combat_arts_1);
+    private void initComponents(RelativeLayout layout){
+        uniqueRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_1);
         allCombatArtsRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_2);
         spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
 
-        // Dialog components
-        textClose = (TextView) myDialog.findViewById(R.id.text_close);
-        titleCombatArtName = (TextView) myDialog.findViewById(R.id.textview_title_combat_art_name);
-        textEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
-        textWeapon = (TextView) myDialog.findViewById(R.id.text_weapon);
-        text2 = (TextView) myDialog.findViewById(R.id.text2_combat_art_popup);
-        text2Answer = (TextView) myDialog.findViewById(R.id.text2_answer);
-        table = (ConstraintLayout) myDialog.findViewById(R.id.constraint_layout_combat_art_table);
+        // PopUp components
+        titleCombatArtName = (TextView)
+                popUpLayout.findViewById(R.id.textview_title_combat_art_name);
+        textEffect = (TextView) popUpLayout.findViewById(R.id.textview_combat_art_effect);
+        textWeapon = (TextView) popUpLayout.findViewById(R.id.text_weapon);
+        text2 = (TextView) popUpLayout.findViewById(R.id.text2_combat_art_popup);
+        text2Answer = (TextView) popUpLayout.findViewById(R.id.text2_answer);
+        table = (ConstraintLayout)
+                popUpLayout.findViewById(R.id.constraint_layout_combat_art_table);
     }
 
-    private void prepareUniqueCombatArts(ConstraintLayout layout){
+    private void preparePopUp(RelativeLayout layout){
+        sweetSheet = new SweetSheet(layout);
+        CustomDelegate customDelegate = new CustomDelegate(true,
+                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
+        popUpLayout = LayoutInflater.from(getContext()).inflate(R.layout.popup_combat_art,
+                null, false);
+        customDelegate.setCustomView(popUpLayout);
+        sweetSheet.setDelegate(customDelegate);
+        sweetSheet.setBackgroundEffect(new DimEffect(0.5f));
+    }
+
+    private void prepareUniqueCombatArts(){
         /*
          * Add all unique combat arts for the character, which are considered to be the ones
          * obtained as a budding talent, and the combat arts related to weapon proficiency
@@ -114,7 +128,7 @@ public class CombatArtsFragment extends Fragment {
         uniqueRecycler.setLayoutManager(layoutManager);
     }
 
-    private void prepareNotUniqueCombatArts(ConstraintLayout layout){
+    private void prepareNotUniqueCombatArts(){
         /*
          * The second recycler view is the same for every character.
          * There is a spinner with several categories (learned, master...) so that the abilities
@@ -316,14 +330,6 @@ public class CombatArtsFragment extends Fragment {
 
             }
         });
-
-        // Set listener for the button that closes the popup
-        textClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myDialog.dismiss();
-            }
-        });
     }
 
     public void shopPopup(CombatArt cArt){
@@ -343,12 +349,13 @@ public class CombatArtsFragment extends Fragment {
         text2Answer.setText(cArt.getSpecificText());
 
         // Set all 6 stats to the table (dur, mt, hit, avo, crit, range)
-        for (int i = 6; i < table.getChildCount(); i++){
+        int i = 6;
+        for (String stat : cArt.getStats().values()){
             TextView textViewStat = (TextView) table.getChildAt(i);
-            // Stats are stored ordered in an ArrayList in cArt
-            textViewStat.setText(cArt.getStats().get(i - 6));
+            textViewStat.setText(stat);
+            i++;
         }
 
-        myDialog.show();
+        sweetSheet.show();
     }
 }

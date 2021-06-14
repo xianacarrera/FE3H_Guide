@@ -44,9 +44,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="6dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/pronouns"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -60,7 +60,7 @@
 
 
                 <TextView
-                    android:id="@+id/textview_pronouns"
+                    android:id="@+id/textView_pronouns"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -83,6 +83,7 @@
             app:cardBackgroundColor="@color/blue_background"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="@id/fodlan_birtday_card"
             app:layout_constraintLeft_toRightOf="@id/gender_card"
             app:layout_constraintTop_toTopOf="@+id/gender_card">
 
@@ -112,7 +113,7 @@
 
 
                 <TextView
-                    android:id="@+id/textview_faction"
+                    android:id="@+id/textView_faction"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -131,27 +132,28 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/birthday_card"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="@color/blue_background"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:layout_constraintLeft_toLeftOf="@+id/gender_card"
             app:layout_constraintRight_toRightOf="@+id/gender_card"
-            app:layout_constraintTop_toBottomOf="@id/gender_card">
+            app:layout_constraintTop_toBottomOf="@id/gender_card"
+            app:layout_constraintBottom_toBottomOf="@id/fodlan_birtday_card">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="6dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/birthday"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -163,14 +165,14 @@
                     android:background="?android:attr/listDivider" />
 
                 <TextView
-                    android:id="@+id/textview_birthday"
+                    android:id="@+id/textView_birthday"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="6dp"
-                    android:gravity="center_horizontal"
+                    android:gravity="center"
                     android:text="test"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -186,14 +188,14 @@
             app:cardBackgroundColor="@color/purple_background"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/faction_card"
             app:layout_constraintLeft_toRightOf="@+id/birthday_card"
             app:layout_constraintStart_toStartOf="@+id/faction_card"
             app:layout_constraintTop_toTopOf="@+id/birthday_card">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -214,12 +216,13 @@
                     android:background="?android:attr/listDivider" />
 
                 <TextView
-                    android:id="@+id/textview_fodlan_birthday"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView_fodlan_birthday"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
                     android:layout_marginBottom="6dp"
                     android:text="test"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
@@ -229,11 +232,11 @@
         </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_portrait"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="12dp"
             android:background="@color/white"
             android:contentDescription="@string/content_description_icon"
             android:src="@drawable/ic_edelgard"
@@ -282,6 +285,7 @@
 
 
                 <TextView
+                    android:id="@+id/textView_crest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -334,6 +338,7 @@
 
 
                 <TextView
+                    android:id="@+id/textView_recruitment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

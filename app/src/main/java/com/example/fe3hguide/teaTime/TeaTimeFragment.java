@@ -96,20 +96,19 @@ public class TeaTimeFragment extends Fragment
         iamgeFinalConvos = (ImageView) scrollView.findViewById(R.id.imageView_final_convo);
 
         // Search result
-        likedSpecifically = (TextView) getView().findViewById(R.id.textView_liked_especifically_by);
+        likedSpecifically = (TextView) scrollView.findViewById(R.id.textView_liked_especifically_by);
         teasLikedSpecifically = (TextView)
-                getView().findViewById(R.id.textView_teas_liked_specifically);
+                scrollView.findViewById(R.id.textView_teas_liked_specifically);
         autoCompleteTextViewTopics =
-                (AutoCompleteTextView) getView().findViewById(R.id.autoCompleteTextView_topics);
-        expandableTopics = (ExpandableListView) getView().findViewById(R.id.expandable_topics);
+                (AutoCompleteTextView) scrollView.findViewById(R.id.autoCompleteTextView_topics);
+        expandableTopics = (ExpandableListView) scrollView.findViewById(R.id.expandable_topics);
         recyclerFinalConversations = (RecyclerView)
-                getView().findViewById(R.id.recycler_final_conversations);
+                scrollView.findViewById(R.id.recycler_final_conversations);
     }
 
     private void setupComponents(){
         // Set "Tea time" as the text in the toolbar
-        ((AppCompatActivity) getActivity()).getSupportActionBar().
-                setTitle(getString(R.string.nav_tea_time));
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.nav_tea_time));
 
         // Get all the character names, excluding BylethM and BylethF.
         ArrayList<String> names = fc.getAllNamesButByleth();

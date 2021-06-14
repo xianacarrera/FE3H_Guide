@@ -13,11 +13,11 @@ public class Character {
     private String birthday;
     private String fodlanBirthday;
     private String crest;
-    private HashMap<String, Integer> baseStats;     // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
+    private HashMap<String, String> baseStats;     // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
     private int baseLevel;
     private HashMap<String, String> growthRates;    // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
     private HashMap<String, String> skills;
-    // Sword, Lance, Axe, Bow, Brawling, Reason, Faith, Authority, HeavyArmor, Riding, Flying
+    // Sword, Lance, Axe, Bow, Brawling, Reason, Faith, Authority, Heavy_Armor, Riding, Flying
 
     private Character(){}
 
@@ -93,11 +93,11 @@ public class Character {
         this.crest = crest;
     }
 
-    public HashMap<String, Integer> getBaseStats() {
+    public HashMap<String, String> getBaseStats() {
         return baseStats;
     }
 
-    public void setBaseStats(HashMap<String, Integer> baseStats) {
+    public void setBaseStats(HashMap<String, String> baseStats) {
         this.baseStats = baseStats;
     }
 
@@ -163,17 +163,27 @@ public class Character {
         }
 
         public Builder withFodlanBirthday(String fodlanBirthday){
-            character.fodlanBirthday = fodlanBirthday;
+            String[] dividedBirthday = fodlanBirthday.split("_");
+            StringBuilder sb = new StringBuilder(dividedBirthday[0]);
+            for (int i = 1; i < dividedBirthday.length; i++){
+                sb.append("\n").append(dividedBirthday[i]);
+            }
+            character.fodlanBirthday = sb.toString();
             return this;
         }
 
         public Builder withCrest(String crest){
-            character.crest = crest;
+            String[] dividedCrests = crest.split("_");
+            StringBuilder sb = new StringBuilder(dividedCrests[0]);
+            for (int i = 1; i < dividedCrests.length; i++){
+                sb.append("\n").append(dividedCrests[i]);
+            }
+            character.crest = sb.toString();
             return this;
         }
 
-        public Builder withBaseStats(int hp, int str, int mag, int dex, int spd, int lck,
-                                     int def, int res, int cha){
+        public Builder withBaseStats(String hp, String str, String mag, String dex, String spd,
+                                     String lck, String def, String res, String cha){
             character.baseStats = new HashMap<>();
             character.baseStats.put("HP", hp);
             character.baseStats.put("Str", str);
@@ -187,7 +197,7 @@ public class Character {
             return this;
         }
 
-        public Builder withBaseStats(HashMap<String, Integer> baseStats){
+        public Builder withBaseStats(HashMap<String, String> baseStats){
             character.baseStats = baseStats;
             return this;
         }
@@ -217,6 +227,29 @@ public class Character {
             return this;
         }
 
-        private Character build(){ return character; }
+        public Builder withSkills(String sword, String lance, String axe, String bow,
+                                  String brawling, String reason, String faith, String authority,
+                                  String heavyArmor, String riding, String flying){
+            character.skills = new HashMap<>();
+            character.skills.put("Sword", sword);
+            character.skills.put("Lance", lance);
+            character.skills.put("Axe", axe);
+            character.skills.put("Bow", bow);
+            character.skills.put("Brawling", brawling);
+            character.skills.put("Reason", reason);
+            character.skills.put("Faith", faith);
+            character.skills.put("Authority", authority);
+            character.skills.put("Heavy_Armor", heavyArmor);
+            character.skills.put("Riding", riding);
+            character.skills.put("Flying", flying);
+            return this;
+        }
+
+        public Builder withSkills(HashMap<String, String> skills){
+            character.skills = skills;
+            return this;
+        }
+
+        public Character build(){ return character; }
     }
 }

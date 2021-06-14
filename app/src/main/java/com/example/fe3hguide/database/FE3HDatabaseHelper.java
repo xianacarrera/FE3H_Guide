@@ -71,7 +71,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 + "growthRatesMag TEXT, "
                 + "growthRatesDex TEXT, "
                 + "growthRatesSpd TEXT, "
-                + "growthRatessLck TEXT, "
+                + "growthRatesLck TEXT, "
                 + "growthRatesDef TEXT, "
                 + "growthRatesRes TEXT, "
                 + "growthRatesCha TEXT, "
@@ -1301,7 +1301,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         combatArtValues.put("avo", avo);
         combatArtValues.put("crit", crit);
         combatArtValues.put("range", range);
-        db.insert("CombatArtsBuddingTalent", null,
+        db.insert("CombatArtsBuddingTalents", null,
                 combatArtValues);
     }
 
@@ -1385,7 +1385,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         ContentValues spellValues = new ContentValues();
         spellValues.put("spell", spell);
         spellValues.put("magicType", magicType);
-        spellValues.put("desc", desc);
+        spellValues.put("description", desc);
         spellValues.put("rank", rank);
         spellValues.put("uses", uses);
         spellValues.put("mt", mt);
@@ -1504,7 +1504,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         classesValues.put("mastery_combat_art", masteryCArt);
         classesValues.put("canUse", canUse);
         classesValues.put("restrictions", restrictions);
-        classesValues.put("certReq", certReq);
+        classesValues.put("certification_requirement", certReq);
         classesValues.put("seal", seal);
         classesValues.put("experience", Integer.valueOf(experience));
         db.insert("Classes", null, classesValues);

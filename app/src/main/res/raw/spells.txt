@@ -32,6 +32,6 @@ Physic_Non-Damaging White Magic_Intermediate light magic. Heals an ally within a
 Recover_Non-Damaging White Magic_Intermediate light magic. Greatly heals an adjacent ally._C_5_30_100_0_1_0
 Rescue_Non-Damaging White Magic_Moves an ally to a space near the user._B_3_-_100_-_1-Mag/4_0
 Restore_Non-Damaging White Magic_Cures status effects on all allies within a range based on Mag._C_10_-_100_-_1-Mag/4_0
-Silence_Non-Damaging White Magic_Foes hit are unable to use magic for 1 turn._B_3_-_100_-3-10_0
+Silence_Non-Damaging White Magic_Foes hit are unable to use magic for 1 turn._B_3_-_100_-_3-10_0
 Ward_Non-Damaging White Magic_Grant an ally Res+7. The effect decreases by 1 each turn._C_5_-_100_-_1_0
 Warp_Non-Damaging White Magic_Moves an ally to a targeted space within a range based on Mag._B_1_-_100_-_1-Magic/4_0
