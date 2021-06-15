@@ -1454,6 +1454,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 + "certification_requirement TEXT, "
                 + "seal TEXT, "
                 + "experience INTEGER, "
+                + "icon INTEGER, "
                 + "CONSTRAINT fkClassesAb1 FOREIGN KEY (ability1) REFERENCES Abilities(ability) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE,"
                 + "CONSTRAINT fkClassesAb2 FOREIGN KEY (ability2) REFERENCES Abilities(ability) "
@@ -1475,7 +1476,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split("_");
                 insertClass(db, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
                         parts[6], parts[7], parts[8], parts[9], parts[10], parts[11],
-                        parts[12]);
+                        parts[12], getClassIcon(parts[0]));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -1488,11 +1489,78 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    /** Given the name of a certain class, returns the id of its icon.
+     * This method is only used to insert the classes data in the database. Later on, the icons
+     * are looked up using queries.
+     *
+     * @param className
+     * @return Icon of the class
+     */
+    public static int getClassIcon(String className){
+        switch (className){
+            case "Commoner": return R.drawable.class_commoner;
+            case "Noble": return R.drawable.class_noble;
+            case "Dancer": return R.drawable.class_dancer;
+            case "Enlightened One": return R.drawable.class_enlightened;
+            case "Armored Lord": return R.drawable.class_armored_lord;
+            case "High Lord": return R.drawable.class_high_lord;
+            case "Wyvern Master": return R.drawable.class_wyvern_master;
+            case "Death Knight": return R.drawable.class_death_knight;
+            case "Emperor": return R.drawable.class_emperor;
+            case "Great Lord": return R.drawable.class_great_lord;
+            case "Barbarossa": return R.drawable.class_barbarossa;
+            case "Myrmidon": return R.drawable.class_myrmidon;
+            case "Soldier": return R.drawable.class_soldier;
+            case "Fighter": return R.drawable.class_fighter;
+            case "Monk": return R.drawable.class_monk;
+            case "Lord": return R.drawable.class_lord;
+            case "Mercenary": return R.drawable.class_mercenary;
+            case "Thief": return R.drawable.class_thief;
+            case "Cavalier": return R.drawable.class_cavalier;
+            case "Pegasus Knight": return R.drawable.class_pegasus;
+            case "Brigand": return R.drawable.class_brigand;
+            case "Armored Knight": return R.drawable.class_armored_knight;
+            case "Archer": return R.drawable.class_archer;
+            case "Brawler": return R.drawable.class_brawler;
+            case "Mage": return R.drawable.class_mage;
+            case "Dark Mage": return R.drawable.class_dark_mage;
+            case "Priest": return R.drawable.class_priest;
+            case "Swordmaster": return R.drawable.class_swordmaster;
+            case "Hero": return R.drawable.class_hero;
+            case "Assassin": return R.drawable.class_assassin;
+            case "Paladin": return R.drawable.class_paladin;
+            case "Warrior": return R.drawable.class_warrior;
+            case "Fortress Knight": return R.drawable.class_fortress_knight;
+            case "Wyvern Rider": return R.drawable.class_wyvern_rider;
+            case "Sniper": return R.drawable.class_sniper;
+            case "Grappler": return R.drawable.class_grappler;
+            case "Warlock": return R.drawable.class_warlock;
+            case "Dark Bishop": return R.drawable.class_dark_bishop;
+            case "Bishop": return R.drawable.class_bishop;
+            case "Trickster": return R.drawable.class_trickster;
+            case "War Monk":
+            case "War Cleric": return R.drawable.class_war_monk;
+            case "Dark Flier": return R.drawable.class_dark_flier;
+            case "Valkyrie": return R.drawable.class_valkyrie;
+            case "Falcon Knight": return R.drawable.class_falcon_knight;
+            case "Wyvern Lord": return R.drawable.class_wyvern_lord;
+            case "Mortal Savant": return R.drawable.class_mortal_savant;
+            case "Great Knight": return R.drawable.class_great_knight;
+            case "Bow Knight": return R.drawable.class_bow_knight;
+            case "Dark Knight": return R.drawable.class_dark_knight;
+            case "Holy Knight": return R.drawable.class_holy_knight;
+            case "War Master": return R.drawable.class_war_master;
+            case "Gremory": return R.drawable.class_gremory;
+            default: return R.drawable.missing_number;
+        }
+    }
+
     private void insertClass(SQLiteDatabase db, String name, String classLevel,
                              String proficiencies, String ability1, String ability2,
                              String ability3, String masteryAbility, String masteryCArt,
                              String canUse, String restrictions,
-                             String certReq, String seal, String experience) {
+                             String certReq, String seal, String experience, int icon) {
         ContentValues classesValues = new ContentValues();
         classesValues.put("name", name);
         classesValues.put("classLevel", classLevel);
@@ -1507,6 +1575,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         classesValues.put("certification_requirement", certReq);
         classesValues.put("seal", seal);
         classesValues.put("experience", Integer.valueOf(experience));
+        classesValues.put("icon", icon);
         db.insert("Classes", null, classesValues);
     }
 

@@ -1,5 +1,7 @@
 package com.example.fe3hguide.model;
 
+import com.example.fe3hguide.R;
+
 import java.util.List;
 
 public class InGameClass {
@@ -182,5 +184,4 @@ public class InGameClass {
         public InGameClass build(){ return inGameClass; }
 
     }
-
 }

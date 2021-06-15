@@ -34,7 +34,6 @@ import java.util.ArrayList;
 
 public class CombatArtsFragment extends Fragment {
 
-    //private Dialog myDialog;
     private final String character;
     private final SQLiteDatabase db;
     private final CombatArtsFragment fragment;
@@ -45,7 +44,7 @@ public class CombatArtsFragment extends Fragment {
     private RecyclerView allCombatArtsRecycler;
     private RecyclerView uniqueRecycler;
 
-    // Dialog components
+    // PopUp components
     private TextView titleCombatArtName;
     private TextView textEffect;
     private TextView textWeapon;
@@ -78,25 +77,9 @@ public class CombatArtsFragment extends Fragment {
         // Search and display combat arts common to all characters
         prepareNotUniqueCombatArts();
 
-        addListeners();                 // Listeners for both the CombatArtsFragment and the dialog
+        addListeners();
 
         return layout;
-    }
-
-    private void initComponents(RelativeLayout layout){
-        uniqueRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_1);
-        allCombatArtsRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_2);
-        spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
-
-        // PopUp components
-        titleCombatArtName = (TextView)
-                popUpLayout.findViewById(R.id.textview_title_combat_art_name);
-        textEffect = (TextView) popUpLayout.findViewById(R.id.textview_combat_art_effect);
-        textWeapon = (TextView) popUpLayout.findViewById(R.id.text_weapon);
-        text2 = (TextView) popUpLayout.findViewById(R.id.text2_combat_art_popup);
-        text2Answer = (TextView) popUpLayout.findViewById(R.id.text2_answer);
-        table = (ConstraintLayout)
-                popUpLayout.findViewById(R.id.constraint_layout_combat_art_table);
     }
 
     private void preparePopUp(RelativeLayout layout){
@@ -108,6 +91,20 @@ public class CombatArtsFragment extends Fragment {
         customDelegate.setCustomView(popUpLayout);
         sweetSheet.setDelegate(customDelegate);
         sweetSheet.setBackgroundEffect(new DimEffect(0.5f));
+    }
+
+    private void initComponents(RelativeLayout layout){
+        uniqueRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_1);
+        allCombatArtsRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_2);
+        spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
+
+        // PopUp components
+        titleCombatArtName = (TextView) popUpLayout.findViewById(R.id.textview_title_combat_art_name);
+        textEffect = (TextView) popUpLayout.findViewById(R.id.textview_combat_art_effect);
+        textWeapon = (TextView) popUpLayout.findViewById(R.id.text_weapon);
+        text2 = (TextView) popUpLayout.findViewById(R.id.text2_combat_art_popup);
+        text2Answer = (TextView) popUpLayout.findViewById(R.id.text2_answer);
+        table = (ConstraintLayout) popUpLayout.findViewById(R.id.constraint_layout_combat_art_table);
     }
 
     private void prepareUniqueCombatArts(){

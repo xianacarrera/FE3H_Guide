@@ -10,43 +10,12 @@
         layout="@layout/toolbar_main"
         android:id="@+id/toolbar" />
 
-    <FrameLayout
-        android:id="@+id/tea_time_heading"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/content_description_heading"
-            android:scaleType="fitXY"
-            android:src="@drawable/heading_characters" />
-
-        <TextView
-            android:id="@+id/title_factions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/nav_characters"
-            android:textAppearance="@style/heading_title" />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="35dp"
-            android:src="@drawable/character_icon" />
-    </FrameLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/characters_factions_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginEnd="8dp"/>
 
 </LinearLayout>

@@ -15,20 +15,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.AbilitiesAdapter;
+import com.mingle.sweetpick.CustomDelegate;
+import com.mingle.sweetpick.DimEffect;
+import com.mingle.sweetpick.SweetSheet;
 
 import java.util.ArrayList;
 
 public class AbilitiesFragment extends Fragment {
 
-    private Dialog myDialog;
     private final String character;
     private final SQLiteDatabase db;
     private final AbilitiesFragment fragment;
+    private SweetSheet sweetSheet;
+    private View popUpLayout;
+
+    private Spinner spinner;
+    private RecyclerView allAbilitiesRecycler;
+    private RecyclerView uniqueRecycler;
+
+    // PopUp components;
+    private TextView titleAbilityName;
+    private ImageView iconAbility;
+    private TextView abilityEffect;
+    private TextView abilityOrigin;
+
 
     public AbilitiesFragment(String character, SQLiteDatabase db){
         if (character.equals("BylethM") || character.equals("BylethF")){
@@ -44,10 +60,46 @@ public class AbilitiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myDialog = new Dialog(getActivity());
-        ConstraintLayout layout = (ConstraintLayout)
+        RelativeLayout layout = (RelativeLayout)
                 inflater.inflate(R.layout.fragment_abilities, container, false);
 
+        preparePopUp(layout);
+        initComponents(layout);
+
+        // Search and display abilities unique to the character
+        prepareUniqueAbilities();
+        // Search and display abilities common to all characters
+        prepareNotUniqueAbilities();
+
+        addListeners();
+
+        return layout;
+    }
+
+    private void preparePopUp(RelativeLayout layout){
+        sweetSheet = new SweetSheet(layout);
+        CustomDelegate customDelegate = new CustomDelegate(true,
+                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
+        popUpLayout = LayoutInflater.from(getContext()).inflate(R.layout.popup_ability,
+                null, false);
+        customDelegate.setCustomView(popUpLayout);
+        sweetSheet.setDelegate(customDelegate);
+        sweetSheet.setBackgroundEffect(new DimEffect(0.5f));
+    }
+
+    private void initComponents(RelativeLayout layout){
+        uniqueRecycler = (RecyclerView) layout.findViewById(R.id.recycler_abilities_1);
+        allAbilitiesRecycler = (RecyclerView) layout.findViewById(R.id.recycler_abilities_2);
+        spinner = (Spinner) layout.findViewById(R.id.spinner_abilities);
+
+        // PopUp components
+        titleAbilityName = (TextView) popUpLayout.findViewById(R.id.textview_title_ability_name);
+        iconAbility = (ImageView) popUpLayout.findViewById(R.id.ability_icon);
+        abilityEffect = (TextView) popUpLayout.findViewById(R.id.textview_ability_effect);
+        abilityOrigin = (TextView) popUpLayout.findViewById(R.id.textview_ability_origin);
+    }
+
+    private void prepareUniqueAbilities(){
         /*
          * Add all unique abilities for the character, which are considered to be the personal
          * ability, the learned abilities not common to all the characters and those ones
@@ -65,13 +117,16 @@ public class AbilitiesFragment extends Fragment {
 
         // Create adapter for the unique abilities recycler view and link them
         AbilitiesAdapter uniqueAdapter = new AbilitiesAdapter(uniqueAbilities, this);
-        RecyclerView uniqueRecycler = (RecyclerView) layout.getViewById(R.id.recycler_abilities_1);
         uniqueRecycler.setAdapter(uniqueAdapter);
 
         // Display the abilities stacked vertically
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         uniqueRecycler.setLayoutManager(layoutManager);
 
+        cursor.close();
+    }
+
+    private void prepareNotUniqueAbilities(){
         /*
          * The second recycler view is the same for every character.
          * There is a spinner with several categories (learned, master...) so that the abilities
@@ -79,7 +134,7 @@ public class AbilitiesFragment extends Fragment {
          */
 
         // By default, prepare the second recycler view to show all the abilities (not unique)
-        cursor = db.rawQuery("SELECT ability " +
+        Cursor cursor = db.rawQuery("SELECT ability " +
                 "FROM Abilities WHERE type NOT LIKE ?", new String[] {"%Unique%"});
 
         ArrayList<String> defaultAbilities = new ArrayList();
@@ -91,8 +146,6 @@ public class AbilitiesFragment extends Fragment {
 
         // Prepare the adapter
         AbilitiesAdapter defaultAdapter = new AbilitiesAdapter(defaultAbilities, this);
-        final RecyclerView allAbilitiesRecycler = (RecyclerView)
-                layout.findViewById(R.id.recycler_abilities_2);
         allAbilitiesRecycler.setAdapter(defaultAdapter);
 
         // Display the abilities stacked vertically
@@ -100,9 +153,10 @@ public class AbilitiesFragment extends Fragment {
         allAbilitiesRecycler.setLayoutManager(layoutManager2);
 
         cursor.close();
+    }
 
+    private void addListeners(){
         // Attach a listener to the spinner
-        final Spinner spinner = (Spinner) layout.findViewById(R.id.spinner_abilities);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -155,25 +209,10 @@ public class AbilitiesFragment extends Fragment {
 
             }
         });
-
-        return layout;
     }
 
     public void shopPopup(String ability){
-        myDialog.setContentView(R.layout.popup_ability);
-
-        // Set listener for the button that closes the popup
-        TextView textclose = (TextView) myDialog.findViewById(R.id.text_close);
-        textclose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myDialog.dismiss();
-            }
-        });
-
         // Set the name of the ability as the title for the popup
-        TextView titleAbilityName = (TextView)
-                myDialog.findViewById(R.id.textview_title_combat_art_name);
         titleAbilityName.setText(ability);
 
         // Search in the database for the icon, effect and origin of the ability
@@ -183,19 +222,16 @@ public class AbilitiesFragment extends Fragment {
 
         if (cursor.moveToFirst()) {
             // Show the icon of the ability
-            ImageView iconAbility = (ImageView) myDialog.findViewById(R.id.combat_art_icon);
             iconAbility.setImageResource(cursor.getInt(0));
 
             // Show the effect of the ability
-            TextView abilityEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
             abilityEffect.setText(cursor.getString(1));
 
             // Show the origin of the ability
-            TextView abilityOrigin = (TextView) myDialog.findViewById(R.id.textview_ability_origin);
             abilityOrigin.setText(cursor.getString(2));
         }
 
         cursor.close();
-        myDialog.show();
+        sweetSheet.show();
     }
 }

@@ -117,6 +117,10 @@
     <string name="avo">Avo</string>
     <string name="crit">Crit</string>
     <string name="range">Range</string>
+    <string name="weight">Weight</string>
+    <string name="description">Description</string>
+    <string name="rank">Rank</string>
+    <string name="uses">Uses</string>
 
     <string name="calculate">Calculate</string>
     <string name="displayed_hit_input">Choose a Displayed Hit:</string>
