@@ -44,7 +44,7 @@ public class ClassesFragment extends Fragment {
     private Button advancedButton;
     private Button masterButton;
 
-    private String selectedFilter = "All";          // Filter tab currently selected
+    private String selectedFilter = "all";          // Filter tab currently selected
     private String searchFilter = "";            // Current search filter
 
     public ClassesFragment(Facade fc){
@@ -180,7 +180,7 @@ public class ClassesFragment extends Fragment {
         for (InGameClass inGameClass : classes) {
             if (searchFilter.equals("") || inGameClass.getName().toLowerCase().contains(searchFilter)) {
                 // No search condition was specified or the class's name satisfies the condition
-                if (selectedFilter.equals("All") ||
+                if (selectedFilter.equals("all") ||
                         inGameClass.getClassLevel().toLowerCase().contains(selectedFilter)) {
                     // All class types are accepted or the class's type satisfies the filter
                     filteredClasses.add(inGameClass);
