@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupDBConnection(){
-        fc = new Facade(this);
+        fc = Facade.getInstance(this);
     }
 
     private void initComponents(){

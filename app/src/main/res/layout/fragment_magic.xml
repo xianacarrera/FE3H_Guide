@@ -39,6 +39,7 @@
                 android:background="@color/purple_background"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
+                android:maxLines = "1"
                 android:text="@string/skill_level"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -53,6 +54,7 @@
                 android:background="@color/purple_background"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
+                android:maxLines = "1"
                 android:text="@string/reason"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -68,6 +70,7 @@
                 android:background="@color/purple_background"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
+                android:maxLines = "1"
                 android:text="@string/faith"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -104,6 +107,7 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:padding="5dp"
+                android:maxLines = "1"
                 android:text="-"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -121,6 +125,7 @@
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="-"
+                android:maxLines = "1"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -157,6 +162,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="-"
+                android:maxLines = "1"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -173,6 +179,7 @@
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="-"
+                android:maxLines = "1"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -193,6 +200,8 @@
                 android:background="@color/purple_background"
                 android:gravity="center"
                 android:padding="5dp"
+                android:maxLines = "1"
+
                 android:text="C"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -221,6 +230,8 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_weight="1"
+                android:maxLines = "1"
+
                 android:background="#FFFFFF"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
@@ -259,6 +270,7 @@
                 android:layout_weight="1"
                 android:background="@color/blue_background"
                 android:gravity="center"
+                android:maxLines = "1"
 
                 android:padding="5dp"
                 android:text="-"
@@ -278,6 +290,8 @@
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="-"
+                android:maxLines = "1"
+
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -313,6 +327,8 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:padding="5dp"
+                android:maxLines = "1"
+
                 android:text="-"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -327,6 +343,8 @@
                 android:layout_marginEnd="1dp"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
+                android:maxLines = "1"
+
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="-"
@@ -362,6 +380,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
+                android:maxLines = "1"
+
                 android:background="@color/blue_background"
                 android:gravity="center"
                 android:padding="5dp"
@@ -377,6 +397,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
+                android:maxLines = "1"
+
                 android:layout_weight="1"
                 android:background="@color/blue_background"
                 android:gravity="center_horizontal"
@@ -413,6 +435,8 @@
                 android:layout_column="2"
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
+                android:maxLines = "1"
+
                 android:layout_weight="1"
                 android:background="#FFFFFF"
                 android:gravity="center"
@@ -430,6 +454,8 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_weight="1"
+                android:maxLines = "1"
+
                 android:background="#FFFFFF"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
@@ -468,6 +494,8 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
+                android:maxLines = "1"
+
                 android:background="@color/blue_background"
                 android:gravity="center"
                 android:padding="5dp"
@@ -483,6 +511,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
+                android:maxLines = "1"
+
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@color/blue_background"

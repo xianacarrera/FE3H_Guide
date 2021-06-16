@@ -14,6 +14,7 @@ import android.os.Bundle;
 
 import com.example.fe3hguide.database.FE3HDatabaseHelper;
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.database.Facade;
 import com.google.android.material.tabs.TabLayout;
 
 public class ProfileActivity extends AppCompatActivity {

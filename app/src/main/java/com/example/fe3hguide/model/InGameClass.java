@@ -2,6 +2,7 @@ package com.example.fe3hguide.model;
 
 import com.example.fe3hguide.R;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class InGameClass {
@@ -17,6 +18,7 @@ public class InGameClass {
     private String restrictions;
     private String certification_requirement;
     private String seal;
+    private HashMap<Stat, String> growthRates;
     private int experience;
 
     private InGameClass(){}
@@ -117,6 +119,14 @@ public class InGameClass {
         this.experience = experience;
     }
 
+    public HashMap<Stat, String> getGrowthRates() {
+        return growthRates;
+    }
+
+    public void setGrowthRates(HashMap<Stat, String> growthRates) {
+        this.growthRates = growthRates;
+    }
+
     public static class Builder {
         private final InGameClass inGameClass = new InGameClass();
 
@@ -178,6 +188,26 @@ public class InGameClass {
 
         public Builder withExperience(int experience){
             inGameClass.experience = experience;
+            return this;
+        }
+
+        public Builder withGrowthRates(String hp, String str, String mag, String dex,
+                                       String spd, String lck, String def, String res, String cha){
+            inGameClass.growthRates = new HashMap<Stat, String>();
+            inGameClass.growthRates.put(Stat.HP, hp);
+            inGameClass.growthRates.put(Stat.Str, str);
+            inGameClass.growthRates.put(Stat.Mag, mag);
+            inGameClass.growthRates.put(Stat.Dex, dex);
+            inGameClass.growthRates.put(Stat.Spd, spd);
+            inGameClass.growthRates.put(Stat.Lck, lck);
+            inGameClass.growthRates.put(Stat.Def, def);
+            inGameClass.growthRates.put(Stat.Res, res);
+            inGameClass.growthRates.put(Stat.Cha, cha);
+            return this;
+        }
+
+        public Builder withGrowthRates(HashMap<Stat, String> growthRates){
+            inGameClass.growthRates = growthRates;
             return this;
         }
 

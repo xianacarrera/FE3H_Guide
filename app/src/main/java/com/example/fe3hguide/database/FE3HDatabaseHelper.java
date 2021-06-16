@@ -90,7 +90,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         insertCharacters(db);
     }
 
-    public static void insertCharacters(SQLiteDatabase db) {
+    private void insertCharacters(SQLiteDatabase db) {
         insertCharacter(db, "Alois", R.drawable.ic_alois, "he/him", "Knights of Seiros", 44, "December 1", "Ethereal 1_Imperial Year 1135", "None", 47, 24, 8, 12, 14, 11, 17, 8, 16, "45%", "45%", "20%", "35%", "40%", "30%", "40%", "20%", "40%", "E", "E", "A_UP", "E", "B_UP", "E_DOWN", "E", "C", "C_UP", "E", "E_DOWN");
         insertCharacter(db, "Anna", R.drawable.ic_anna, "she/her", "Knights of Seiros", 25, "June 9", "Garland Moon 9_Imperial Year 1155", "Major Crest of Ernest", 28, 8, 8, 9, 11, 14, 6, 8, 9, "35%", "35%", "35%", "45%", "55%", "45%", "30%", "40%", "50%", "D_UP", "E", "E+_UP", "E+_UP", "E", "E_DOWN", "E+_UP", "E_DOWN", "E", "E$Pass", "E");
         insertCharacter(db, "Annette", R.drawable.ic_annette, "she/her", "Blue Lions", 16, "May 9", "Harpstring Moon 9_Imperial Year 1163", "Minor Crest of Dominic", 23, 6, 11, 7, 7, 6, 5, 4, 6, "25%", "30%", "50%", "50%", "35%", "35%", "20%", "30%", "35%", "E", "E", "E+_UP", "E_DOWN", "E", "D+_UP", "E", "E+_UP", "E_DOWN", "E", "E");
@@ -135,7 +135,7 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         insertCharacter(db, "BylethF", R.drawable.ic_bylethf, "Chosen by the player", null, 20, "Chosen by the player", "Chosen by the player_Imperial Year 1159", "Major Crest of Flames", 27, 13, 6, 9, 8, 8, 6, 6, 7, "45%", "45%", "35%", "45%", "45%", "45%", "35%", "30%", "45%", "D+_UP", "E", "E", "E", "E+_UP", "E", "E$White Magic Avo +20", "D_UP", "E", "E", "E");
     }
 
-    public static void insertCharacter(SQLiteDatabase db, String name, int portraitId,
+    private void insertCharacter(SQLiteDatabase db, String name, int portraitId,
                                        String pronouns, String faction, int age,
                                        String birthday, String fodlanBirthday, String crest,
                                        int baseStatsHP, int baseStatsStr, int baseStatsMag,
@@ -1455,6 +1455,15 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 + "seal TEXT, "
                 + "experience INTEGER, "
                 + "icon INTEGER, "
+                + "growthRatesHP TEXT, "
+                + "growthRatesStr TEXT, "
+                + "growthRatesMag TEXT, "
+                + "growthRatesDex TEXT, "
+                + "growthRatesSpd TEXT, "
+                + "growthRatesLck TEXT, "
+                + "growthRatesDef TEXT, "
+                + "growthRatesRes TEXT, "
+                + "growthRatesCha TEXT, "
                 + "CONSTRAINT fkClassesAb1 FOREIGN KEY (ability1) REFERENCES Abilities(ability) "
                 + "ON DELETE NO ACTION ON UPDATE CASCADE,"
                 + "CONSTRAINT fkClassesAb2 FOREIGN KEY (ability2) REFERENCES Abilities(ability) "
@@ -1476,7 +1485,9 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                 String[] parts = line.split("_");
                 insertClass(db, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
                         parts[6], parts[7], parts[8], parts[9], parts[10], parts[11],
-                        parts[12], getClassIcon(parts[0]));
+                        parts[12], getClassIcon(parts[0]), parts[13], parts[14],
+                        parts[15], parts[16], parts[17], parts[18], parts[19], parts[20],
+                        parts[21]);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -1560,7 +1571,10 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
                              String proficiencies, String ability1, String ability2,
                              String ability3, String masteryAbility, String masteryCArt,
                              String canUse, String restrictions,
-                             String certReq, String seal, String experience, int icon) {
+                             String certReq, String seal, String experience, int icon,
+                             String growthRHP, String growthRStr, String growthRMag,
+                             String growthRDex, String growthRSpd, String growthRLck,
+                             String growthRDef, String growthRRes, String growthRCha) {
         ContentValues classesValues = new ContentValues();
         classesValues.put("name", name);
         classesValues.put("classLevel", classLevel);
@@ -1576,6 +1590,15 @@ public class FE3HDatabaseHelper extends SQLiteOpenHelper {
         classesValues.put("seal", seal);
         classesValues.put("experience", Integer.valueOf(experience));
         classesValues.put("icon", icon);
+        classesValues.put("growthRatesHP", growthRHP);
+        classesValues.put("growthRatesStr", growthRStr);
+        classesValues.put("growthRatesMag", growthRMag);
+        classesValues.put("growthRatesDex", growthRDex);
+        classesValues.put("growthRatesSpd", growthRSpd);
+        classesValues.put("growthRatesLck", growthRLck);
+        classesValues.put("growthRatesDef", growthRDef);
+        classesValues.put("growthRatesRes", growthRRes);
+        classesValues.put("growthRatesCha", growthRCha);
         db.insert("Classes", null, classesValues);
     }
 

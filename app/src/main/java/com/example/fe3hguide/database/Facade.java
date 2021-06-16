@@ -12,21 +12,32 @@ import java.util.List;
 
 public class Facade {
 
-    private SQLiteDatabase db;
-    private DAOCharacters daoCharacters;
-    private DAOClasses daoClasses;
-    private DAOSupports daoSupports;
-    private DAOTeaTime daoTeaTime;
+    // Uses the Singleton pattern
+    private static Facade instance;
 
-    public Facade(Context context){
-        // Get access to the database
-        SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(context);
-        db = fe3hDatabaseHelper.getReadableDatabase();
+    private static SQLiteDatabase db;
+    private static DAOCharacters daoCharacters;
+    private static DAOClasses daoClasses;
+    private static DAOSupports daoSupports;
+    private static DAOTeaTime daoTeaTime;
 
-        daoClasses = new DAOClasses(db);
-        daoCharacters = new DAOCharacters(db);
-        daoSupports = new DAOSupports(db);
-        daoTeaTime = new DAOTeaTime(db);
+    private Facade(){
+    }
+
+    public static Facade getInstance(Context context){
+        if (instance == null) {         // Initialice the instance
+            // Get access to the database
+            SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(context);
+            db = fe3hDatabaseHelper.getReadableDatabase();
+
+            daoClasses = new DAOClasses(db);
+            daoCharacters = new DAOCharacters(db);
+            daoSupports = new DAOSupports(db);
+            daoTeaTime = new DAOTeaTime(db);
+
+            instance = new Facade();
+        }
+        return instance;
     }
 
     public void closeDatabase(){
@@ -42,6 +53,16 @@ public class Facade {
     public List<InGameClass> getClasses(){ return daoClasses.getClasses(); }
 
     public InGameClass getInGameClass(String name){ return daoClasses.getInGameClass(name); }
+
+    public List<InGameClass> getFemaleClasses(){ return daoClasses.getFemaleClasses(); }
+
+    public List<InGameClass> getMaleClasses(){ return daoClasses.getMaleClasses(); }
+
+    public List<InGameClass> getCharacterOnlyClasses(String characterName){
+        return daoClasses.getCharacterOnlyClasses(characterName);
+    }
+
+    public List<InGameClass> getNonExclusiveClasses(){ return daoClasses.getNonExclusiveClasses();}
 
     /** DAOSupports methods **/
     public ArrayList<String> getAllNames(){ return daoSupports.getAllCharacterNames(); }

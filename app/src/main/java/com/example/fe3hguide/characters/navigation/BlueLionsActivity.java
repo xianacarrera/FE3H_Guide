@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.FactionsCardsAdapter;
+import com.example.fe3hguide.database.Facade;
 
 import java.util.ArrayList;
 

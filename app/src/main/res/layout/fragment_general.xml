@@ -406,20 +406,6 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_stats" />
 
-                <TextView
-                    android:id="@+id/text_base_stats_level"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="12dp"
-                    android:text="Test"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@id/text_title_base_stats"
-                    app:layout_constraintHorizontal_bias="0.75"
-                    app:layout_constraintLeft_toRightOf="@id/text_title_base_stats"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/text_title_base_stats" />
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/table_bs"
                     android:layout_width="match_parent"
@@ -786,12 +772,13 @@
                     app:layout_constraintTop_toBottomOf="@id/divider_bs_gr" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/char_general_classes_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/text_title_growth_rates"
-                    app:layout_constraintEnd_toEndOf="@+id/text_base_stats_level"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginRight="20dp"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toRightOf="@+id/text_title_growth_rates"
                     app:layout_constraintRight_toRightOf="parent"
@@ -1852,12 +1839,13 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:background="@color/red_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_11"
@@ -1868,30 +1856,27 @@
                                 android:id="@+id/sk_sword_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down"/>
 
                             <ImageView
                                 android:id="@+id/sk_sword_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/dark_blue_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_12"
                             app:layout_constraintRight_toRightOf="@id/table_sk_12"
@@ -1901,31 +1886,28 @@
                                 android:id="@+id/sk_lance_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_lance_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent" />
 
                         </LinearLayout>
 
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/dark_green_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_13"
                             app:layout_constraintRight_toRightOf="@id/table_sk_13"
@@ -1935,30 +1917,27 @@
                                 android:id="@+id/sk_axe_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_axe_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent"/>
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/gray_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_14"
                             app:layout_constraintRight_toRightOf="@id/table_sk_14"
@@ -1968,29 +1947,27 @@
                                 android:id="@+id/sk_bow_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_bow_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
+                                android:layout_gravity="center_horizontal"
                                 android:contentDescription="@string/budding_talent"
                                 android:padding="5dp" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/yellow_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_15"
                             app:layout_constraintRight_toRightOf="@id/table_sk_15"
@@ -2001,17 +1978,14 @@
                                 android:id="@+id/sk_brawling_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_brawling_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
+                                android:layout_gravity="center_horizontal"
                                 android:contentDescription="@string/budding_talent"
                                 android:padding="5dp" />
 
@@ -2019,12 +1993,13 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/dark_gray_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_16"
                             app:layout_constraintRight_toRightOf="@id/table_sk_16"
@@ -2035,32 +2010,29 @@
                                 android:id="@+id/sk_reason_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_reason_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent"/>
 
                         </LinearLayout>
 
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:background="@color/white"
+                            android:padding="3dp"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_17"
                             app:layout_constraintRight_toRightOf="@id/table_sk_17"
                             app:layout_constraintTop_toBottomOf="@id/sk_faith_rank" >
@@ -2070,30 +2042,27 @@
                                 android:id="@+id/sk_faith_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_faith_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/pink_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_18"
                             app:layout_constraintRight_toRightOf="@id/table_sk_18"
@@ -2104,30 +2073,27 @@
                                 android:id="@+id/sk_authority_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_authority_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent" />
 
                         </LinearLayout>
 
                         <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="70dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
+                            android:padding="3dp"
                         android:background="@color/aqua_background"
                         app:layout_constraintLeft_toLeftOf="@id/table_sk_19"
                         app:layout_constraintRight_toRightOf="@id/table_sk_19"
@@ -2138,30 +2104,27 @@
                             android:id="@+id/sk_heavy_armor_ud"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="4dp"
-                            android:contentDescription="@string/up_down"
-                            android:padding="5dp" />
+                            android:layout_gravity="center_horizontal"
+                            android:contentDescription="@string/up_down" />
 
                         <ImageView
                             android:id="@+id/sk_heavy_armor_bt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="4dp"
-                            android:contentDescription="@string/budding_talent"
-                            android:padding="5dp" />
+                            android:layout_gravity="center_horizontal"
+                            android:contentDescription="@string/budding_talent" />
 
                     </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/brown_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_110"
                             app:layout_constraintRight_toRightOf="@id/table_sk_110"
@@ -2172,30 +2135,27 @@
                                 android:id="@+id/sk_riding_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down" />
 
                             <ImageView
                                 android:id="@+id/sk_riding_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:background="@color/light_blue_background"
                             app:layout_constraintLeft_toLeftOf="@id/table_sk_111"
                             app:layout_constraintRight_toRightOf="@id/table_sk_111"
@@ -2206,19 +2166,15 @@
                                 android:id="@+id/sk_flying_ud"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/up_down"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/up_down"/>
 
                             <ImageView
                                 android:id="@+id/sk_flying_bt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="4dp"
-                                android:contentDescription="@string/budding_talent"
-                                android:padding="5dp" />
+                                android:layout_gravity="center_horizontal"
+                                android:contentDescription="@string/budding_talent" />
 
                         </LinearLayout>
 

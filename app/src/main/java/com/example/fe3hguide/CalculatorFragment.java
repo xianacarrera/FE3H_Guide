@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.facebook.stetho.inspector.database.ContentProviderSchema;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.w3c.dom.Text;
 
@@ -27,37 +30,76 @@ import java.util.List;
 
 public class CalculatorFragment extends Fragment {
 
+    private NumberPicker numberPicker;
+    private TextView textViewTrueHit;
+    private Button button;
+    private FloatingActionButton fab;
+    private TableLayout hitTable;
+    private GraphView graph;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final ScrollView layout = (ScrollView) inflater.inflate(R.layout.fragment_calculator,
                 container, false);
 
+        initComponents(layout);
+        setupComponents();
+        addListeners();
+
+        createTable();
+        createGraph();
+
+        return layout;
+    }
+
+    private void initComponents(ScrollView layout){
+        numberPicker = (NumberPicker) layout.findViewById(R.id.number_picker_hit);
+        textViewTrueHit = (TextView) layout.findViewById(R.id.true_hit);
+        button = (Button) layout.findViewById(R.id.button_calculate_true_hit);
+        fab = layout.findViewById(R.id.fab);
+        hitTable = layout.findViewById(R.id.hit_table);
+        graph = (GraphView) layout.findViewById(R.id.graph);
+    }
+
+    private void setupComponents(){
         // Set the number range for the numberPicker -> [0, 100], since it represents Displayed Hit
-        final NumberPicker numberPicker = (NumberPicker) layout.findViewById(R.id.number_picker_hit);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(100);
+
+        fab.setBackgroundColor(Color.WHITE);
+    }
+
+    private void addListeners(){
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                TextView textViewTrueHit = (TextView) layout.findViewById(R.id.true_hit);
                 textViewTrueHit.setVisibility(View.INVISIBLE);
             }
         });
 
         // When the button is clicked, the True Hit is calculated and shown
-        Button button = (Button) layout.findViewById(R.id.button_calculate_true_hit);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textViewTrueHit = (TextView) layout.findViewById(R.id.true_hit);
                 textViewTrueHit.setText(Float.toString(trueHit(numberPicker.getValue())));
                 textViewTrueHit.setVisibility(View.VISIBLE);
             }
         });
 
+
+        //TODO: this
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+
+    private void createTable(){
         // Set the values of the table
-        TableLayout hitTable = layout.findViewById(R.id.hit_table);
         for (int i = 1; i < hitTable.getChildCount(); i++){
             TableRow row = (TableRow) hitTable.getChildAt(i);
             for (int j = 0; j < row.getChildCount(); j++){
@@ -77,19 +119,49 @@ public class CalculatorFragment extends Fragment {
                 }
             }
         }
-
-        FloatingActionButton fab = layout.findViewById(R.id.fab);
-        fab.setBackgroundColor(Color.WHITE);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        return layout;
     }
+
+    private void createGraph(){
+        DataPoint[] data = buildData();
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
+        customizeGraph(series, graph);
+        graph.addSeries(series);
+    }
+
+    private DataPoint[] buildData(){
+        DataPoint[] data = new DataPoint[101];
+        for (int i = 0; i <= 100; i++){
+            data[i] = new DataPoint(i, trueHit(i));
+        }
+        return data;
+    }
+
+    private void customizeGraph(LineGraphSeries<DataPoint> series, GraphView graph){
+        series.setTitle("Displayed Hit vs True Hit");
+        series.setDrawBackground(true);
+        series.setColor(Color.RED);
+        series.setBackgroundColor(R.color.light_blue_background);
+        series.setDrawDataPoints(false);
+
+        // x axis limits
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(100);
+
+        // y axis limits
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(100);
+
+        // enable scrolling
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setScrollableY(true);
+
+        // enable scalling
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScalableY(true);
+    }
+
 
     // Returns the True Hit, i.e., the real probability, given a Displayed Hit (n)
     public float trueHit(int n){

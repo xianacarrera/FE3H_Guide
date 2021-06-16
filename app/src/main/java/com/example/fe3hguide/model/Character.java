@@ -13,10 +13,10 @@ public class Character {
     private String birthday;
     private String fodlanBirthday;
     private String crest;
-    private HashMap<String, String> baseStats;     // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
+    private HashMap<Stat, String> baseStats;     // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
     private int baseLevel;
-    private HashMap<String, String> growthRates;    // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
-    private HashMap<String, String> skills;
+    private HashMap<Stat, String> growthRates;    // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
+    private HashMap<Skill, String> skills;
     // Sword, Lance, Axe, Bow, Brawling, Reason, Faith, Authority, Heavy_Armor, Riding, Flying
 
     private Character(){}
@@ -93,11 +93,11 @@ public class Character {
         this.crest = crest;
     }
 
-    public HashMap<String, String> getBaseStats() {
+    public HashMap<Stat, String> getBaseStats() {
         return baseStats;
     }
 
-    public void setBaseStats(HashMap<String, String> baseStats) {
+    public void setBaseStats(HashMap<Stat, String> baseStats) {
         this.baseStats = baseStats;
     }
 
@@ -109,19 +109,19 @@ public class Character {
         this.baseLevel = baseLevel;
     }
 
-    public HashMap<String, String> getGrowthRates() {
+    public HashMap<Stat, String> getGrowthRates() {
         return growthRates;
     }
 
-    public void setGrowthRates(HashMap<String, String> growthRates) {
+    public void setGrowthRates(HashMap<Stat, String> growthRates) {
         this.growthRates = growthRates;
     }
 
-    public HashMap<String, String> getSkills() {
+    public HashMap<Skill, String> getSkills() {
         return skills;
     }
 
-    public void setSkills(HashMap<String, String> skills) {
+    public void setSkills(HashMap<Skill, String> skills) {
         this.skills = skills;
     }
 
@@ -185,19 +185,19 @@ public class Character {
         public Builder withBaseStats(String hp, String str, String mag, String dex, String spd,
                                      String lck, String def, String res, String cha){
             character.baseStats = new HashMap<>();
-            character.baseStats.put("HP", hp);
-            character.baseStats.put("Str", str);
-            character.baseStats.put("Mag", mag);
-            character.baseStats.put("Dex", dex);
-            character.baseStats.put("Spd", spd);
-            character.baseStats.put("Lck", lck);
-            character.baseStats.put("Def", def);
-            character.baseStats.put("Res", res);
-            character.baseStats.put("Cha", cha);
+            character.baseStats.put(Stat.HP, hp);
+            character.baseStats.put(Stat.Str, str);
+            character.baseStats.put(Stat.Mag, mag);
+            character.baseStats.put(Stat.Dex, dex);
+            character.baseStats.put(Stat.Spd, spd);
+            character.baseStats.put(Stat.Lck, lck);
+            character.baseStats.put(Stat.Def, def);
+            character.baseStats.put(Stat.Res, res);
+            character.baseStats.put(Stat.Cha, cha);
             return this;
         }
 
-        public Builder withBaseStats(HashMap<String, String> baseStats){
+        public Builder withBaseStats(HashMap<Stat, String> baseStats){
             character.baseStats = baseStats;
             return this;
         }
@@ -210,19 +210,19 @@ public class Character {
         public Builder withGrowthRates(String hp, String str, String mag, String dex, String spd,
                                        String lck, String def, String res, String cha){
             character.growthRates = new HashMap<>();
-            character.growthRates.put("HP", hp);
-            character.growthRates.put("Str", str);
-            character.growthRates.put("Mag", mag);
-            character.growthRates.put("Dex", dex);
-            character.growthRates.put("Spd", spd);
-            character.growthRates.put("Lck", lck);
-            character.growthRates.put("Def", def);
-            character.growthRates.put("Res", res);
-            character.growthRates.put("Cha", cha);
+            character.growthRates.put(Stat.HP, hp);
+            character.growthRates.put(Stat.Str, str);
+            character.growthRates.put(Stat.Mag, mag);
+            character.growthRates.put(Stat.Dex, dex);
+            character.growthRates.put(Stat.Spd, spd);
+            character.growthRates.put(Stat.Lck, lck);
+            character.growthRates.put(Stat.Def, def);
+            character.growthRates.put(Stat.Res, res);
+            character.growthRates.put(Stat.Cha, cha);
             return this;
         }
 
-        public Builder withGrowthRates(HashMap<String, String> growthRates){
+        public Builder withGrowthRates(HashMap<Stat, String> growthRates){
             character.growthRates = growthRates;
             return this;
         }
@@ -231,21 +231,21 @@ public class Character {
                                   String brawling, String reason, String faith, String authority,
                                   String heavyArmor, String riding, String flying){
             character.skills = new HashMap<>();
-            character.skills.put("Sword", sword);
-            character.skills.put("Lance", lance);
-            character.skills.put("Axe", axe);
-            character.skills.put("Bow", bow);
-            character.skills.put("Brawling", brawling);
-            character.skills.put("Reason", reason);
-            character.skills.put("Faith", faith);
-            character.skills.put("Authority", authority);
-            character.skills.put("Heavy_Armor", heavyArmor);
-            character.skills.put("Riding", riding);
-            character.skills.put("Flying", flying);
+            character.skills.put(Skill.Sword, sword);
+            character.skills.put(Skill.Lance, lance);
+            character.skills.put(Skill.Axe, axe);
+            character.skills.put(Skill.Bow, bow);
+            character.skills.put(Skill.Brawling, brawling);
+            character.skills.put(Skill.Reason, reason);
+            character.skills.put(Skill.Faith, faith);
+            character.skills.put(Skill.Authority, authority);
+            character.skills.put(Skill.Heavy_Armor, heavyArmor);
+            character.skills.put(Skill.Riding, riding);
+            character.skills.put(Skill.Flying, flying);
             return this;
         }
 
-        public Builder withSkills(HashMap<String, String> skills){
+        public Builder withSkills(HashMap<Skill, String> skills){
             character.skills = skills;
             return this;
         }

@@ -20,6 +20,7 @@ import com.example.fe3hguide.characters.navigation.BlueLionsActivity;
 import com.example.fe3hguide.characters.navigation.ChurchOfSeirosActivity;
 import com.example.fe3hguide.characters.navigation.GoldenDeerActivity;
 import com.example.fe3hguide.characters.profile.ProfileActivity;
+import com.example.fe3hguide.database.Facade;
 
 import java.util.List;
 

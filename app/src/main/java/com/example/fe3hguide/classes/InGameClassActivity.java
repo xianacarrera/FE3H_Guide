@@ -20,7 +20,7 @@ public class InGameClassActivity extends AppCompatActivity {
         setContentView(R.layout.activity_class_detail);
 
         inGameClass = getSelectedClass();
-        fc = new Facade(this);
+        fc = Facade.getInstance(this);
     }
 
     // Returns the InGameClass whose cell was clicked in the ListView of ClassesFragment
