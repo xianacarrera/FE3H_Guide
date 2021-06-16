@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.fe3hguide.model.Ability;
+import com.example.fe3hguide.model.CombatArt;
 import com.example.fe3hguide.model.InGameClass;
 import com.example.fe3hguide.model.TeaTimeInfo;
 
@@ -47,6 +49,38 @@ public class Facade {
     /** Methods common to several DAOs **/
     public Integer getPortrait(String characterName){
         return daoTeaTime.getPortrait(characterName);
+    }
+
+    /** DAOCharacters methods **/
+    public Ability getAbility(String abilityName){ return daoCharacters.getAbility(abilityName); }
+
+    public List<Ability> getAllAbilities(){ return daoCharacters.getAllAbilities(); }
+
+    public List<Ability> getSkillLevelAbilities(){ return daoCharacters.getSkillLevelAbilities(); }
+
+    public List<Ability> getClassAbilities(){ return daoCharacters.getClassAbilities(); }
+
+    public List<Ability> getClassMasteryAbilities(){
+        return daoCharacters.getClassMasteryAbilities();
+    }
+
+    public List<Ability> getOtherAbilities(){ return daoCharacters.getOtherAbilities(); }
+
+    public List<Ability> getUniqueAbilities(String characterName){
+        return daoCharacters.getUniqueAbilities(characterName);
+    }
+
+    public List<Ability> getNotUniqueAbilities(){ return daoCharacters.getNotUniqueAbilities(); }
+
+
+    public List<CombatArt> getUniqueCombatArts(String characterName){
+        return daoCharacters.getUniqueCombatArts(characterName);
+    }
+
+    public List<CombatArt> getNotUniqueCombatArts(boolean prof,
+                                                  boolean exclusive,
+                                                  boolean classMastery, boolean other){
+        return daoCharacters.getNotUniqueCombatArts(prof, exclusive, classMastery, other);
     }
 
     /** DAOClasses methods **/

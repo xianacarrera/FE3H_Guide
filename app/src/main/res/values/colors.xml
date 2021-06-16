@@ -10,6 +10,8 @@
     <color name="black">#000000</color>
     <color name="red_support">#D5FF5656</color>
 
+    <color name="text_color">#000000</color>
+
     <!-- Accent -->
     <color name="purple_accent">#8950ED</color>
     <color name="purple_accent_2">#A57EE8</color>
@@ -30,6 +32,7 @@
     <color name="gray_background">#AEAEAE</color>
     <color name="purple_2_background">#8B70AF</color>
     <color name="aqua_background">#95C8B8</color>
+    <color name="cardview_with_item_background">#3eadeb</color>
 
 
     <!-- FButton -->

@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.CombatArtsAdapter;
+import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.model.CombatArt;
 import com.example.fe3hguide.model.CombatArtBuddingTalent;
 import com.example.fe3hguide.model.CombatArtClassMastery;
@@ -31,12 +32,14 @@ import com.mingle.sweetpick.DimEffect;
 import com.mingle.sweetpick.SweetSheet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CombatArtsFragment extends Fragment {
 
     private final String character;
     private final SQLiteDatabase db;
     private final CombatArtsFragment fragment;
+    private final Facade fc;
     private SweetSheet sweetSheet;
     private View popUpLayout;
 
@@ -61,6 +64,7 @@ public class CombatArtsFragment extends Fragment {
 
         this.db = db;
         this.fragment = this;
+        this.fc = Facade.getInstance(getContext());
     }
 
     @Override
@@ -114,7 +118,7 @@ public class CombatArtsFragment extends Fragment {
          * which are exclusive to some characters.
          */
 
-        ArrayList<CombatArt> uniqueCombatArts = searchForUniqueCombatArts();
+        List<CombatArt> uniqueCombatArts = fc.getUniqueCombatArts(character);
 
         // Create adapter for the unique combat arts recycler view and link them
         CombatArtsAdapter uniqueAdapter = new CombatArtsAdapter(uniqueCombatArts, this);
@@ -133,7 +137,7 @@ public class CombatArtsFragment extends Fragment {
          */
 
         // By default, prepare the second recycler view to show all the abilities (not unique)
-        ArrayList<CombatArt> combatArts = searchForNotUniqueCombatArts(db, true,
+        List<CombatArt> combatArts = fc.getNotUniqueCombatArts(true,
                 true, true, true);
 
         // Prepare the adapter
@@ -145,144 +149,6 @@ public class CombatArtsFragment extends Fragment {
         allCombatArtsRecycler.setLayoutManager(layoutManager2);
     }
 
-    private ArrayList<CombatArt> searchForUniqueCombatArts(){
-        Cursor cursor = db.rawQuery("SELECT art, effect, weapon, dur, mt, hit, avo, crit, " +
-                        "range  FROM CombatArtsBuddingTalents WHERE character = ?",
-                new String[] {character});
-
-        ArrayList<CombatArt> uniqueCombatArts = new ArrayList<>();
-        if (cursor.moveToFirst()){
-            do {
-                uniqueCombatArts.add(new CombatArtBuddingTalent.Builder(cursor.getString(0))
-                        .withEffect(cursor.getString(1))
-                        .withWeapon(cursor.getString(2))
-                        .withAssociatedCharacter(character)
-                        .withStats(cursor.getString(3), cursor.getString(4),
-                                cursor.getString(5), cursor.getString(6),
-                                cursor.getString(7), cursor.getString(8))
-                        .build());
-            } while (cursor.moveToNext());
-        }
-
-        cursor = db.rawQuery("SELECT art, specificSkillLevel " +
-                "FROM CharacterHasCombatArtWeaponProficiency " +
-                "WHERE character = ?", new String[]{character});
-
-        Cursor cursor2 = null;
-        if (cursor.moveToFirst()){
-            do {
-                cursor2 = db.rawQuery("SELECT art, effect, weapon, skillLevel, dur, " +
-                        "mt, hit, avo, crit, range FROM CombatArtsCharactersWeaponProficient " +
-                        "WHERE art = ?", new String[] {cursor.getString(0)});
-                if (cursor2.moveToFirst()){
-                    uniqueCombatArts.add(new CombatArtWeaponProficient.Builder(
-                                    cursor.getString(0)
-                            ).withEffect(cursor2.getString(1))
-                            .withWeapon(cursor2.getString(2))
-                            .withSkillLevel(cursor2.getString(3))
-                            .withStats(cursor2.getString(4), cursor2.getString(5),
-                                    cursor2.getString(6), cursor2.getString(7),
-                                    cursor2.getString(8), cursor2.getString(9))
-                            .build());
-                }
-            } while (cursor.moveToNext());
-        }
-
-        if (cursor2 != null) {
-            cursor2.close();
-        }
-        cursor.close();
-
-        return uniqueCombatArts;
-    }
-
-    private ArrayList<CombatArt> searchForNotUniqueCombatArts(SQLiteDatabase db, boolean prof,
-                                                              boolean exclusive,
-                                                              boolean classMastery, boolean other){
-        Cursor cursor = null;
-        ArrayList<CombatArt> combatArts = new ArrayList<>();
-        if (prof){
-            cursor = db.rawQuery("SELECT art, effect, weapon, skillLevel, dur, " +
-                            "mt, hit, avo, crit, range " +
-                            "FROM CombatArtsAllWeaponProficient ",
-                    new String[] {});
-
-            if (cursor.moveToFirst()){
-                do {
-                    combatArts.add(new CombatArtWeaponProficient.Builder(cursor.getString(0))
-                            .withEffect(cursor.getString(1))
-                            .withWeapon(cursor.getString(2))
-                            .withSkillLevel(cursor.getString(3))
-                            .withStats(cursor.getString(4),
-                                    cursor.getString(5), cursor.getString(6),
-                                    cursor.getString(7), cursor.getString(8),
-                                    cursor.getString(9))
-                            .build());
-                } while (cursor.moveToNext());
-            }
-        }
-        if (exclusive){
-            cursor = db.rawQuery("SELECT art, effect, weapon, crest, dur, " +
-                    "mt, hit, avo, crit, range " +
-                    "FROM CombatArtsWeaponExclusive", new String[] {});
-
-            if (cursor.moveToFirst()){
-                do {
-                    combatArts.add(new CombatArtWeaponExclusive.Builder(cursor.getString(0))
-                            .withEffect(cursor.getString(1))
-                            .withWeapon(cursor.getString(2))
-                            .withCrest(cursor.getString(3))
-                            .withStats(cursor.getString(4),
-                                    cursor.getString(5), cursor.getString(6),
-                                    cursor.getString(7), cursor.getString(8),
-                                    cursor.getString(9))
-                            .build());
-                } while (cursor.moveToNext());
-            }
-        }
-        if (classMastery){
-            cursor = db.rawQuery("SELECT art, effect, weapon, class, dur, " +
-                    "mt, hit, avo, crit, range " +
-                    "FROM CombatArtsClassMastery", new String[] {});
-
-            if (cursor.moveToFirst()){
-                do {
-                    combatArts.add(new CombatArtClassMastery.Builder(cursor.getString(0))
-                            .withEffect(cursor.getString(1))
-                            .withWeapon(cursor.getString(2))
-                            .withClass(cursor.getString(3))
-                            .withStats(cursor.getString(4),
-                                    cursor.getString(5), cursor.getString(6),
-                                    cursor.getString(7), cursor.getString(8),
-                                    cursor.getString(9))
-                            .build());
-                } while (cursor.moveToNext());
-            }
-        }
-        if (other){
-            cursor = db.rawQuery("SELECT art, effect, weapon, origin, dur, " +
-                    "mt, hit, avo, crit, range " +
-                    "FROM CombatArtsOther", new String[] {});
-
-            if (cursor.moveToFirst()){
-                do {
-                    combatArts.add(new CombatArtOther.Builder(cursor.getString(0))
-                            .withEffect(cursor.getString(1))
-                            .withWeapon(cursor.getString(2))
-                            .withOrigin(cursor.getString(3))
-                            .withStats(cursor.getString(4),
-                                    cursor.getString(5), cursor.getString(6),
-                                    cursor.getString(7), cursor.getString(8),
-                                    cursor.getString(9))
-                            .build());
-                } while (cursor.moveToNext());
-            }
-        }
-
-        cursor.close();
-        return combatArts;
-    }
-
     private void addListeners(){
         // Attach a listener to the spinner
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -292,26 +158,26 @@ public class CombatArtsFragment extends Fragment {
 
                 // The recycler view gets populated with the abilities of the selected type
                 Cursor cursor = null;
-                ArrayList<CombatArt> combatArts = new ArrayList();
+                List<CombatArt> combatArts = null;
                 switch (selection){
                     case "All combat arts":
-                        combatArts = searchForNotUniqueCombatArts(db, true,
+                        combatArts = fc.getNotUniqueCombatArts( true,
                                 true, true, true);
                         break;
                     case "Skill level combat arts":
-                        combatArts = searchForNotUniqueCombatArts(db, true,
+                        combatArts = fc.getNotUniqueCombatArts( true,
                                 false, false, false);
                         break;
                     case "Weapon exclusive combat arts":
-                        combatArts = searchForNotUniqueCombatArts(db, false,
+                        combatArts = fc.getNotUniqueCombatArts( false,
                                 true, false, false);
                         break;
                     case "Class mastery combat arts":
-                        combatArts = searchForNotUniqueCombatArts(db, false,
+                        combatArts = fc.getNotUniqueCombatArts( false,
                                 false, true, false);
                         break;
                     case "Other combat arts":
-                        combatArts = searchForNotUniqueCombatArts(db, false,
+                        combatArts = fc.getNotUniqueCombatArts( false,
                                 false, false, true);
                 }
 
