@@ -1,5 +1,7 @@
 package com.example.fe3hguide.model;
 
+import com.example.fe3hguide.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,5 +46,16 @@ public abstract class CombatArt {
 
     public void setStats(HashMap<String, String> stats) {
         this.stats = stats;
+    }
+
+    public int getIcon(){
+        switch (weapon){
+            case "Sword": return R.drawable.combat_art_sword;
+            case "Lance": return R.drawable.combat_art_lance;
+            case "Axe": return R.drawable.combat_art_axe;
+            case "Bow": return R.drawable.combat_art_bow;
+            case "Brawl": return R.drawable.combat_art_brawl;
+            default: return R.drawable.combat_art_other;
+        }
     }
 }

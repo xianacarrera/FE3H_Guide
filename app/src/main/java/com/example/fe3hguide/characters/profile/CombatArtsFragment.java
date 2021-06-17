@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class CombatArtsFragment extends Fragment {
 
     // PopUp components
     private TextView titleCombatArtName;
+    private ImageView combatArtIcon;
     private TextView textEffect;
     private TextView textWeapon;
     private TextView text2;
@@ -104,6 +106,7 @@ public class CombatArtsFragment extends Fragment {
 
         // PopUp components
         titleCombatArtName = (TextView) popUpLayout.findViewById(R.id.textview_title_combat_art_name);
+        combatArtIcon = (ImageView) popUpLayout.findViewById(R.id.combat_art_icon);
         textEffect = (TextView) popUpLayout.findViewById(R.id.textview_combat_art_effect);
         textWeapon = (TextView) popUpLayout.findViewById(R.id.text_weapon);
         text2 = (TextView) popUpLayout.findViewById(R.id.text2_combat_art_popup);
@@ -198,6 +201,9 @@ public class CombatArtsFragment extends Fragment {
     public void shopPopup(CombatArt cArt){
         // Set the name of the combat art as the title for the popup
         titleCombatArtName.setText(cArt.getName());
+
+        // Show the icon associated with the combat art's type
+        combatArtIcon.setImageResource(cArt.getIcon());
 
         // Show the effect of the combat art
         textEffect.setText(cArt.getEffect());

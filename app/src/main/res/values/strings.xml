@@ -136,4 +136,8 @@
     <string name="advanced">Advanced</string>
     <string name="master">Master</string>
 
+    <string name="disclaimer">Disclaimer</string>
+    <string name="twitter">Twitter:</string>
+    <string name="resources">Resources</string>
+
 </resources>

@@ -1,5 +1,7 @@
 package com.example.fe3hguide.model;
 
+import com.example.fe3hguide.R;
+
 import java.util.HashMap;
 
 public class CombatArtBuddingTalent extends CombatArt{
