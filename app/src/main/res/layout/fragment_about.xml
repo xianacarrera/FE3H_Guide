@@ -9,6 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/mainBackground"
         android:layout_height="wrap_content">
 
 
@@ -18,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/elevation1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -36,6 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="test"
+                    android:textColor="@color/textAlt"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +95,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:text="@string/twitter"
+                        android:textColor="@color/textAlt"
+                        android:textStyle="italic"
                         android:textSize="16sp" />
 
                     <TextView
@@ -99,6 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorPrimary"
                         android:text="\@Kinai_24"
                         android:textSize="16sp" />
 
@@ -129,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/resources"
+                    android:textColor="@color/mainText"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -141,6 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Fire Emblem Wiki - Fandom"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/title_resources" />
@@ -151,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="Fire Emblem Wiki"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/fire_emblem_fandom" />
@@ -164,6 +173,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="20dp"
                     android:text="FE3H.com"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -200,6 +210,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/disclaimer"
                     android:textSize="20sp"
+                    android:textColor="@color/mainText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -211,6 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="test"
+                    android:textColor="@color/textAlt"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -8,6 +8,7 @@
     android:layout_marginRight="4dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="@color/elevation1"
     app:cardElevation="4dp"
     app:cardCornerRadius="8dp">
     
@@ -20,6 +21,7 @@
         <!-- Text of the conversation -->
         <TextView
             android:id="@+id/textView_final_conversation"
+            android:textColor="@color/textAlt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -41,13 +43,14 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
-                app:cardBackgroundColor="@color/green_tea"
-                app:cardCornerRadius="8dp" >
+                android:background="@color/purple_accent_2"
+                app:cardBackgroundColor="@color/purple_accent_2" >
 
                 <TextView
                     android:id="@+id/text_option1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/fixedTextColor"
                     android:layout_gravity="center" />
 
             </androidx.cardview.widget.CardView>
@@ -60,13 +63,14 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
-                app:cardBackgroundColor="@color/green_tea"
-                app:cardCornerRadius="8dp" >
+                android:background="@color/purple_accent_2"
+                app:cardBackgroundColor="@color/purple_accent_2" >
 
                 <TextView
                     android:id="@+id/text_option2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/fixedTextColor"
                     android:layout_gravity="center" />
 
             </androidx.cardview.widget.CardView>
@@ -79,13 +83,14 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
-                app:cardBackgroundColor="@color/green_tea"
-                app:cardCornerRadius="8dp" >
+                android:background="@color/purple_accent_2"
+                app:cardBackgroundColor="@color/purple_accent_2" >
 
                 <TextView
                     android:id="@+id/text_option3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/fixedTextColor"
                     android:layout_gravity="center" />
 
             </androidx.cardview.widget.CardView>

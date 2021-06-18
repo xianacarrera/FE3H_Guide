@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/light_gray">
+    android:background="@color/elevation1">
     
     <TextView
         android:layout_width="wrap_content"
@@ -14,9 +14,10 @@
         android:id="@+id/textView_class_name"
         android:gravity="center_vertical"
         android:text="@string/class_name"
-        android:textColor="@color/black"
+        android:textColor="@color/mainText"
         android:textSize="25sp"
         android:layout_marginLeft="20dp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".characters.profile.AbilitiesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="@string/unique"
+            android:textSize="16sp"
+            android:textColor="@color/mainText"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +37,7 @@
 
         <Spinner
             android:id="@+id/spinner_abilities"
+            style="@android:style/Widget.Material.Spinner.Underlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

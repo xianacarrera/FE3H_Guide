@@ -5,6 +5,7 @@
     android:id="@+id/relativeLayout_classes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".classes.InGameClassActivity">
 
     <ScrollView
@@ -16,6 +17,10 @@
             android:layout_height="match_parent"
             android:paddingBottom="20dp">
 
+            <include
+                layout="@layout/toolbar_main"
+                android:id="@+id/toolbar" />
+
             <TextView
                 android:id="@+id/title_class_name"
                 android:layout_width="wrap_content"
@@ -23,19 +28,33 @@
                 android:layout_marginTop="24dp"
                 android:text="Test"
                 android:textSize="36sp"
+                android:textColor="@color/mainText"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_class_icon_detail" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView_class_icon" />
 
-            <ImageView
-                android:id="@+id/imageView_class_icon_detail"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_class_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
                 android:layout_marginTop="32dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/class_emperor" />
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/imageView_class_icon_detail"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+                    app:srcCompat="@drawable/class_emperor" />
+
+            </androidx.cardview.widget.CardView>
+
 
             <TextView
                 android:id="@+id/textView_class_level"
@@ -43,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="TextView"
+                android:textColor="@color/textAlt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_class_name" />
@@ -55,6 +75,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_class_level">
@@ -70,6 +91,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/proficiencies"
                         android:textSize="20sp"
+                        android:textColor="@color/mainText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -98,6 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_proficiency_2"
                         app:layout_constraintStart_toStartOf="@+id/textView_class_proficiency_1"
                         app:layout_constraintTop_toTopOf="@+id/imageView_class_proficiency_2" />
@@ -108,6 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_proficiency_1"
                         app:layout_constraintEnd_toStartOf="@+id/imageView_class_proficiency_1"
                         app:layout_constraintHorizontal_bias="0.19"
@@ -118,6 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_proficiency_3"
                         app:layout_constraintStart_toStartOf="@+id/textView_class_proficiency_1"
                         app:layout_constraintTop_toTopOf="@+id/imageView_class_proficiency_3" />
@@ -135,6 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_proficiency_4"
                         app:layout_constraintStart_toStartOf="@+id/textView_class_proficiency_1"
                         app:layout_constraintTop_toTopOf="@+id/imageView_class_proficiency_4" />
@@ -158,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
+                app:cardBackgroundColor="@color/elevation1"
                 android:layout_marginEnd="32dp"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -174,6 +201,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_abilities_tab"
+                        android:textColor="@color/mainText"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -203,6 +231,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@id/imageView_class_ability_2"
                         app:layout_constraintStart_toStartOf="@+id/textView_class_ability_1"
                         app:layout_constraintTop_toTopOf="@+id/imageView_class_ability_2" />
@@ -213,6 +242,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_ability_1"
                         app:layout_constraintEnd_toStartOf="@+id/imageView_class_ability_1"
                         app:layout_constraintHorizontal_bias="0.19"
@@ -229,6 +259,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView_abilities">
@@ -244,6 +275,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/mastery_ability"
                         android:textSize="20sp"
+                        android:textColor="@color/mainText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -266,6 +298,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_mastery_ability"
                         app:layout_constraintEnd_toStartOf="@+id/imageView_class_mastery_ability"
                         app:layout_constraintHorizontal_bias="0.19"
@@ -283,6 +316,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardView_mastery_ability">
@@ -298,6 +332,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/mastery_combat_art"
                         android:textSize="20sp"
+                        android:textColor="@color/mainText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -320,6 +355,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView_class_mastery_combat_art"
                         app:layout_constraintEnd_toStartOf="@+id/imageView_class_mastery_combat_art"
                         app:layout_constraintHorizontal_bias="0.19"
@@ -336,6 +372,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardView_mastery_combat_art">
@@ -352,6 +389,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/growth_rates"
                         android:textSize="20sp"
+                        android:textColor="@color/mainText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -383,7 +421,7 @@
                             android:padding="5dp"
                             android:text="@string/hp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_12"
@@ -401,7 +439,7 @@
                             android:padding="5dp"
                             android:text="@string/str"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_11"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_13"
@@ -419,7 +457,7 @@
                             android:padding="5dp"
                             android:text="@string/mag"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_12"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_14"
@@ -436,7 +474,7 @@
                             android:padding="5dp"
                             android:text="@string/dex"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_13"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_15"
@@ -456,7 +494,7 @@
                             android:padding="5dp"
                             android:text="@string/spd"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_14"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_16"
@@ -477,7 +515,7 @@
                             android:padding="5dp"
                             android:text="@string/lck"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_15"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_17"
@@ -499,7 +537,7 @@
                             android:padding="5dp"
                             android:text="@string/def"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_16"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_18"
@@ -521,7 +559,7 @@
 
                             android:text="@string/res"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_17"
                             app:layout_constraintRight_toLeftOf="@id/table_class_gr_19"
@@ -543,7 +581,7 @@
                             android:padding="5dp"
                             android:text="@string/cha"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toRightOf="@id/table_class_gr_18"
                             app:layout_constraintRight_toRightOf="parent"
@@ -561,7 +599,7 @@
                             android:maxLines="1"
                             android:padding="5dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
 
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -581,7 +619,7 @@
                             android:maxLines="1"
                             android:padding="5dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
 
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_12"
@@ -600,7 +638,7 @@
                             android:padding="5dp"
 
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_13"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_13"
@@ -618,7 +656,7 @@
                             android:padding="5dp"
 
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_14"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_14"
@@ -636,7 +674,7 @@
                             android:maxLines="1"
                             android:padding="5dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_15"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_15"
@@ -654,7 +692,7 @@
                             android:padding="5dp"
 
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_16"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_16"
@@ -672,7 +710,7 @@
                             android:padding="5dp"
 
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_17"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_17"
@@ -690,7 +728,7 @@
                             android:padding="5dp"
 
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_18"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_18"
@@ -708,7 +746,7 @@
                             android:padding="5dp"
 
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/black"
+                            android:textColor="@color/textAlt"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="@id/table_class_gr_19"
                             app:layout_constraintRight_toRightOf="@id/table_class_gr_19"
@@ -730,6 +768,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardView_class_growth_rates">
@@ -740,11 +779,23 @@
                     android:layout_margin="20dp">
 
                     <TextView
+                        android:id="@+id/title_class_certification_requirements"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/certification_requirements"
+                        android:textSize="20sp"
+                        android:textColor="@color/mainText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
                         android:id="@+id/textView_class_certification_requirements"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/title_class_certification_requirements" />
@@ -768,6 +819,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
                             android:gravity="right"
+                            android:textColor="@color/textAlt"
+                            android:textStyle="italic"
                             android:text="@string/seal" />
 
 
@@ -775,22 +828,12 @@
                             android:id="@+id/textView_class_seal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/textAlt"
                             android:layout_marginLeft="12dp"
                             android:layout_weight="5"
                             android:text="TextView" />
 
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/title_class_certification_requirements"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/certification_requirements"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -805,6 +848,7 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/elevation1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -820,6 +864,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/miscellaneous"
+                        android:textColor="@color/mainText"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -831,6 +876,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/title_class_miscellaneous" />
@@ -841,6 +887,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="TextView"
+                        android:textColor="@color/textAlt"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/textView_class_restrictions" />
@@ -863,6 +910,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
                             android:gravity="right"
+                            android:textColor="@color/mainText"
+                            android:textStyle="italic"
                             android:text="@string/experience" />
 
 
@@ -871,6 +920,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
+                            android:textColor="@color/textAlt"
                             android:layout_weight="5"
                             android:text="TextView" />
 

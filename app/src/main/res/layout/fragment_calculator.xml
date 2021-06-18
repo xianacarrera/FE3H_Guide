@@ -5,6 +5,7 @@
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".CalculatorFragment">
 
     <FrameLayout
@@ -33,13 +34,13 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/textView4"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"></NumberPicker>
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <com.example.fe3hguide.widgets.FButton
                 android:id="@+id/button_calculate_true_hit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                fbutton:buttonColor="@color/fbutton_color_wisteria"
+                fbutton:buttonColor="@color/fbutton_color_amethyst"
                 fbutton:shadowColor="@color/fbutton_color_amethyst"
                 fbutton:shadowEnabled="true"
                 fbutton:shadowHeight="5dp"
@@ -63,6 +64,7 @@
                 android:layout_marginBottom="24dp"
                 android:text="@string/true_hit_probability"
                 android:textSize="16sp"
+                android:textColor="@color/mainText"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -85,6 +87,7 @@
                 android:ems="10"
                 android:visibility="invisible"
                 android:inputType="none"
+                android:textColor="@color/mainText"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textview_true_hit"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:textColor="@color/textAlt"
                 android:text="@string/displayed_hit_input"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -160,8 +164,10 @@
                         android:padding="5dp"
                         android:layout_gravity="center"
                         android:text="@string/displayed_hit"
+                        android:textColor="@color/mainText"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -169,8 +175,10 @@
                         android:padding="5dp"
                         android:layout_gravity="center"
                         android:text="@string/true_hit"
+                        android:textColor="@color/mainText"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -178,8 +186,10 @@
                         android:padding="5dp"
                         android:layout_gravity="center"
                         android:text="@string/displayed_hit"
+                        android:textColor="@color/mainText"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -188,7 +198,9 @@
                         android:layout_gravity="center"
                         android:text="@string/true_hit"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -204,7 +216,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -212,7 +226,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,7 +236,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -228,7 +246,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -244,7 +264,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -252,7 +274,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -260,7 +284,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -268,7 +294,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -284,7 +312,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -292,7 +322,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -300,7 +332,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -308,7 +342,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -324,7 +360,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -332,7 +370,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -340,7 +380,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -348,7 +390,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -364,7 +408,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -372,7 +418,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -380,7 +428,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -388,7 +438,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -404,7 +456,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -412,7 +466,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -420,7 +476,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -428,7 +486,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -444,7 +504,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -452,7 +514,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -460,7 +524,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -468,7 +534,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -484,7 +552,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -492,7 +562,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -500,7 +572,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -508,7 +582,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -524,7 +600,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -532,7 +610,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -540,7 +620,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -548,7 +630,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -564,7 +648,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -572,7 +658,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -580,7 +668,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -588,7 +678,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -604,7 +696,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -612,7 +706,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -620,7 +716,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -628,7 +726,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -644,7 +744,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -652,7 +754,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -660,7 +764,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -668,7 +774,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -684,7 +792,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -692,7 +802,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -700,7 +812,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -708,7 +822,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -724,7 +840,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -732,7 +850,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -740,7 +860,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -748,7 +870,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -764,7 +888,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -772,7 +898,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -780,7 +908,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -788,7 +918,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -804,7 +936,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -812,7 +946,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -820,7 +956,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -828,7 +966,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -844,7 +984,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -852,7 +994,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -860,7 +1004,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -868,7 +1014,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -884,7 +1032,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -892,7 +1042,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -900,7 +1052,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -908,7 +1062,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -924,7 +1080,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -932,7 +1090,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -940,7 +1100,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -948,7 +1110,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -964,7 +1128,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -972,7 +1138,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -980,7 +1148,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -988,7 +1158,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1004,7 +1176,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1012,7 +1186,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1020,7 +1196,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1028,7 +1206,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1044,7 +1224,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1052,7 +1234,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1060,7 +1244,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1068,7 +1254,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1084,7 +1272,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1092,7 +1282,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1100,7 +1292,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1108,7 +1302,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1124,7 +1320,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1132,7 +1330,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1140,7 +1340,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1148,48 +1350,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
-                </TableRow>
-
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="4dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1205,7 +1368,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1213,7 +1378,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1221,7 +1388,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1229,7 +1398,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1245,7 +1416,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1253,7 +1426,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1261,7 +1436,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1269,7 +1446,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1285,7 +1464,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1293,7 +1474,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1301,7 +1484,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1309,7 +1494,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1325,7 +1512,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1333,7 +1522,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1341,7 +1532,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1349,7 +1542,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1365,7 +1560,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1373,7 +1570,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1381,7 +1580,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1389,7 +1590,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1405,7 +1608,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1413,7 +1618,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1421,7 +1628,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1429,7 +1638,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1445,7 +1656,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1453,7 +1666,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1461,7 +1676,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1469,7 +1686,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1485,7 +1704,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1493,7 +1714,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1501,7 +1724,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1509,7 +1734,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1525,7 +1752,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1533,7 +1762,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1541,7 +1772,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1549,7 +1782,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1565,7 +1800,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1573,7 +1810,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1581,7 +1820,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1589,7 +1830,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1605,7 +1848,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1613,7 +1858,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1621,7 +1868,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1629,7 +1878,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1645,7 +1896,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1653,7 +1906,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1661,7 +1916,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1669,7 +1926,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1685,7 +1944,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1693,7 +1954,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1701,7 +1964,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1709,7 +1974,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1725,7 +1992,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1733,7 +2002,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1741,7 +2012,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1749,7 +2022,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1765,7 +2040,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1773,7 +2050,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1781,7 +2060,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1789,7 +2070,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1805,7 +2088,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1813,7 +2098,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1821,7 +2108,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1829,7 +2118,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1845,7 +2136,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1853,7 +2146,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1861,7 +2156,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1869,7 +2166,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1885,7 +2184,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1893,7 +2194,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1901,7 +2204,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1909,7 +2214,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1925,7 +2232,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1933,7 +2242,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1941,7 +2252,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1949,7 +2262,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -1965,7 +2280,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1973,7 +2290,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1981,7 +2300,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1989,7 +2310,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -2005,7 +2328,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2013,7 +2338,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2021,7 +2348,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2029,7 +2358,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -2045,7 +2376,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2053,7 +2386,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2061,7 +2396,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2069,7 +2406,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -2085,7 +2424,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2093,7 +2434,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2101,7 +2444,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2109,7 +2454,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -2125,7 +2472,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2133,7 +2482,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2141,7 +2492,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2149,7 +2502,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -2165,7 +2520,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2173,7 +2530,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2181,7 +2540,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2189,7 +2550,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
 
                 <TableRow
@@ -2205,7 +2568,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2213,7 +2578,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2221,7 +2588,9 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -2229,7 +2598,57 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="15sp"
+                        android:textColor="@color/mainText"
+                        android:maxLines="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="15sp"
+                        android:textColor="@color/textAlt"
+                        android:maxLines="1"/>
                 </TableRow>
             </TableLayout>
 

@@ -11,12 +11,15 @@
     <color name="red_support">#D5FF5656</color>
 
     <color name="mainText">#ffffff</color>
-    <color name="textAlt">#9C9AA1</color>
-    <color name="mainBackgorund">#2D2D3D</color>
+    <color name="textAlt">#BCBCBD</color>
+    <color name="mainBackground">#121212</color>
+    <color name="elevation1">#1F1B24</color>
+
+    <color name="fixedTextColor">#424245</color>
 
     <!-- Accent -->
-    <color name="purple_accent">#8950ED</color>
-    <color name="purple_accent_2">#A57EE8</color>
+    <color name="purple_accent">#BB86FC</color>
+    <color name="purple_accent_2">#BEBB86FC</color>
 
     <!-- Backgrounds -->
     <color name="purple_background">#C0A8EC</color>
