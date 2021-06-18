@@ -1,11 +1,9 @@
 package com.example.fe3hguide.characters.profile;
 
-import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,7 +25,6 @@ import com.mingle.sweetpick.CustomDelegate;
 import com.mingle.sweetpick.DimEffect;
 import com.mingle.sweetpick.SweetSheet;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AbilitiesFragment extends Fragment {
@@ -98,9 +95,9 @@ public class AbilitiesFragment extends Fragment {
         spinner = (Spinner) layout.findViewById(R.id.spinner_abilities);
 
         // PopUp components
-        titleAbilityName = (TextView) popUpLayout.findViewById(R.id.textview_title_ability_name);
+        titleAbilityName = (TextView) popUpLayout.findViewById(R.id.textView_title_ability_name);
         iconAbility = (ImageView) popUpLayout.findViewById(R.id.ability_icon);
-        abilityEffect = (TextView) popUpLayout.findViewById(R.id.textview_ability_effect);
+        abilityEffect = (TextView) popUpLayout.findViewById(R.id.textView_ability_effect);
         abilityOrigin = (TextView) popUpLayout.findViewById(R.id.textview_ability_origin);
     }
 

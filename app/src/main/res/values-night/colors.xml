@@ -10,9 +10,9 @@
     <color name="black">#000000</color>
     <color name="red_support">#D5FF5656</color>
 
-    <color name="mainText">#2D2D3D</color>
+    <color name="mainText">#ffffff</color>
     <color name="textAlt">#9C9AA1</color>
-    <color name="mainBackgorund">#FFFFFF</color>
+    <color name="mainBackgorund">#2D2D3D</color>
 
     <!-- Accent -->
     <color name="purple_accent">#8950ED</color>

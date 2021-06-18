@@ -17,8 +17,9 @@
         <activity android:name=".characters.navigation.BlueLionsActivity" />
         <activity android:name=".characters.navigation.BlackEaglesActivity" />
         <activity android:name=".supports.SupportsTextActivity" />
-        <activity android:name=".SupportsText" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="uiMode">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

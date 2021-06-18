@@ -2,6 +2,8 @@ package com.example.fe3hguide.model;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.fe3hguide.R;
+
 import java.util.HashMap;
 
 public class Spell {
@@ -109,6 +111,16 @@ public class Spell {
 
         public Spell build(){ return spell; }
 
+    }
+
+    public int getIcon(){
+        if (magicType.toLowerCase().contains("dark") || magicType.toLowerCase().contains("black")){
+            return R.drawable.reason;
+        } else if (magicType.toLowerCase().contains("white")){
+            return R.drawable.faith;
+        } else {
+            return R.drawable.missing_number;
+        }
     }
 
 }

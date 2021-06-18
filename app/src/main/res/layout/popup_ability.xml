@@ -22,7 +22,7 @@
             app:cardCornerRadius="8dp">
 
             <TextView
-                android:id="@+id/textview_title_ability_name"
+                android:id="@+id/textView_title_ability_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -69,7 +69,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textview_ability_effect"
+                    android:id="@+id/textView_ability_effect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"

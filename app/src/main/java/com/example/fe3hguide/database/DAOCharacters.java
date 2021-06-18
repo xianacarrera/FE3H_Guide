@@ -4,12 +4,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fe3hguide.model.Ability;
+import com.example.fe3hguide.model.Character;
 import com.example.fe3hguide.model.CombatArt;
 import com.example.fe3hguide.model.CombatArtBuddingTalent;
 import com.example.fe3hguide.model.CombatArtClassMastery;
 import com.example.fe3hguide.model.CombatArtOther;
 import com.example.fe3hguide.model.CombatArtWeaponExclusive;
 import com.example.fe3hguide.model.CombatArtWeaponProficient;
+import com.example.fe3hguide.model.Spell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +22,43 @@ public class DAOCharacters extends DAO {
         super(db);
     }
 
-    public Ability getAbility(String abilityName){
-        Cursor cursor = db.rawQuery("SELECT * FROM Abilities " +
-                "WHERE ability = ?", new String[] {abilityName});
+    public Character getCharacter(String characterName){
+        Cursor cursor = db.rawQuery("SELECT * " +
+                        "FROM Characters WHERE name like ?",
+                new String[] {characterName + "%"});
 
+        Character character = null;
         if (cursor.moveToFirst()){
-            return new Ability.Builder(cursor.getString(0))
-                    .withIcon(cursor.getInt(1))
-                    .withEffect(cursor.getString(2))
-                    .withOrigin(cursor.getString(3))
-                    .withType(cursor.getString(4))
+             character = new Character.Builder(cursor.getInt(0))
+                    .withName(characterName)
+                    .withPortrait(cursor.getInt(2))
+                    .withPronouns(cursor.getString(3))
+                    .withFaction(cursor.getString(4))
+                    .withAge(cursor.getInt(5))
+                    .withBirthday(cursor.getString(6))
+                    .withFodlanBirthday(cursor.getString(7))
+                    .withCrest(cursor.getString(8))
+                    .withBaseStats(cursor.getString(9), cursor.getString(10),
+                            cursor.getString(11), cursor.getString(12),
+                            cursor.getString(13), cursor.getString(14),
+                            cursor.getString(15), cursor.getString(16),
+                            cursor.getString(17))
+                    .withGrowthRates(cursor.getString(18), cursor.getString(19),
+                            cursor.getString(20), cursor.getString(21),
+                            cursor.getString(22), cursor.getString(23),
+                            cursor.getString(24), cursor.getString(25),
+                            cursor.getString(26))
+                    .withSkills(cursor.getString(27), cursor.getString(28),
+                            cursor.getString(29), cursor.getString(30),
+                            cursor.getString(31), cursor.getString(32),
+                            cursor.getString(33), cursor.getString(34),
+                            cursor.getString(35), cursor.getString(36),
+                            cursor.getString(37))
+                     .withRecruitment(cursor.getString(38))
                     .build();
         }
 
-        return null;
+        return character;
     }
 
     public List<Ability> getAllAbilities(){
@@ -334,5 +359,62 @@ public class DAOCharacters extends DAO {
 
         cursor.close();
         return combatArts;
+    }
+
+
+    /***
+     *
+     * @param characterName
+     * @return List with two elements:
+     *  0 -> A list of the reason spells that the character can learn
+     *  1 -> A list of the faith spells that the character can learn
+     *
+     */
+    public List<List<Spell>> getSpells(String characterName){
+        // Get the information about the character's magic spells
+        Cursor cursor = db.rawQuery("SELECT m.reason, m.faith " +
+                "FROM Characters AS c NATURAL JOIN Magic AS m " +
+                "WHERE c.name = ?", new String[] {characterName});
+
+        List<List<Spell>> spells = new ArrayList<>();
+        spells.add(new ArrayList<Spell>());
+        spells.add(new ArrayList<Spell>());
+
+        if (cursor.moveToFirst()){
+            do {
+                for (int i = 0; i < 2; i++){
+                    if (cursor.getString(i).equals("null")) {   // No spell
+                        spells.get(i).add(null);
+                    } else {
+                        spells.get(i).add(getSpell(cursor.getString(i)));
+                    }
+                }
+            } while (cursor.moveToNext());
+        }
+
+        // Close cursor and database
+        cursor.close();
+        return spells;
+    }
+
+    public Spell getSpell(String spellName){
+        Cursor cursor = db.rawQuery("SELECT * FROM Spells WHERE spell = ?",
+                new String[]{spellName});
+
+        Spell spell = null;
+        if (cursor.moveToFirst()){
+            spell = new Spell.Builder(spellName)
+                    .withMagicType(cursor.getString(1))
+                    .withDescription(cursor.getString(2))
+                    .withRank(cursor.getString(3))
+                    .withUses(cursor.getString(4))
+                    .withStats(cursor.getString(5), cursor.getString(6),
+                            cursor.getString(7), cursor.getString(8),
+                            cursor.getString(9))
+                    .build();
+        }
+
+        cursor.close();
+        return spell;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.fe3hguide.characters.profile;
 
-import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,16 +22,10 @@ import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.CombatArtsAdapter;
 import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.model.CombatArt;
-import com.example.fe3hguide.model.CombatArtBuddingTalent;
-import com.example.fe3hguide.model.CombatArtClassMastery;
-import com.example.fe3hguide.model.CombatArtOther;
-import com.example.fe3hguide.model.CombatArtWeaponExclusive;
-import com.example.fe3hguide.model.CombatArtWeaponProficient;
 import com.mingle.sweetpick.CustomDelegate;
 import com.mingle.sweetpick.DimEffect;
 import com.mingle.sweetpick.SweetSheet;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CombatArtsFragment extends Fragment {
@@ -108,7 +101,7 @@ public class CombatArtsFragment extends Fragment {
         titleCombatArtName = (TextView) popUpLayout.findViewById(R.id.textview_title_combat_art_name);
         combatArtIcon = (ImageView) popUpLayout.findViewById(R.id.combat_art_icon);
         textEffect = (TextView) popUpLayout.findViewById(R.id.textview_combat_art_effect);
-        textWeapon = (TextView) popUpLayout.findViewById(R.id.text_weapon);
+        textWeapon = (TextView) popUpLayout.findViewById(R.id.popup_combat_art_text_weapon);
         text2 = (TextView) popUpLayout.findViewById(R.id.text2_combat_art_popup);
         text2Answer = (TextView) popUpLayout.findViewById(R.id.text2_answer);
         table = (ConstraintLayout) popUpLayout.findViewById(R.id.constraint_layout_combat_art_table);

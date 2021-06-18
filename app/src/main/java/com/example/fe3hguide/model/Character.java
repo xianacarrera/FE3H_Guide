@@ -17,6 +17,7 @@ public class Character {
     private int baseLevel;
     private HashMap<Stat, String> growthRates;    // HP, Str, Mag, Dex, Spd, Lck, Def, Res, Cha
     private HashMap<Skill, String> skills;
+    private String recruitment;
     // Sword, Lance, Axe, Bow, Brawling, Reason, Faith, Authority, Heavy_Armor, Riding, Flying
 
     private Character(){}
@@ -123,6 +124,14 @@ public class Character {
 
     public void setSkills(HashMap<Skill, String> skills) {
         this.skills = skills;
+    }
+
+    public String getRecruitment() {
+        return recruitment;
+    }
+
+    public void setRecruitment(String recruitment) {
+        this.recruitment = recruitment;
     }
 
     public static class Builder{
@@ -247,6 +256,11 @@ public class Character {
 
         public Builder withSkills(HashMap<Skill, String> skills){
             character.skills = skills;
+            return this;
+        }
+
+        public Builder withRecruitment(String recruitment){
+            character.recruitment = recruitment;
             return this;
         }
 

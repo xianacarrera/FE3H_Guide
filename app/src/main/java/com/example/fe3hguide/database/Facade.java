@@ -5,8 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.fe3hguide.model.Ability;
+import com.example.fe3hguide.model.Character;
 import com.example.fe3hguide.model.CombatArt;
+import com.example.fe3hguide.model.CombatArtClassMastery;
 import com.example.fe3hguide.model.InGameClass;
+import com.example.fe3hguide.model.Spell;
 import com.example.fe3hguide.model.TeaTimeInfo;
 
 import java.util.ArrayList;
@@ -52,7 +55,7 @@ public class Facade {
     }
 
     /** DAOCharacters methods **/
-    public Ability getAbility(String abilityName){ return daoCharacters.getAbility(abilityName); }
+    public Character getCharacter(String characterName){ return daoCharacters.getCharacter(characterName); }
 
     public List<Ability> getAllAbilities(){ return daoCharacters.getAllAbilities(); }
 
@@ -83,6 +86,10 @@ public class Facade {
         return daoCharacters.getNotUniqueCombatArts(prof, exclusive, classMastery, other);
     }
 
+    public List<List<Spell>> getSpells(String characterName){ return daoCharacters.getSpells(characterName); }
+
+    public Spell getSpell(String spellName){ return daoCharacters.getSpell(spellName); }
+
     /** DAOClasses methods **/
     public List<InGameClass> getClasses(){ return daoClasses.getClasses(); }
 
@@ -97,6 +104,13 @@ public class Facade {
     }
 
     public List<InGameClass> getNonExclusiveClasses(){ return daoClasses.getNonExclusiveClasses();}
+
+    public Ability getAbility(String abilityName){ return daoClasses.getAbility(abilityName); }
+
+    public CombatArtClassMastery getCombatArtClassMastery(String combatArtName){
+        return daoClasses.getMasteryCombatArt(combatArtName);
+    }
+
 
     /** DAOSupports methods **/
     public ArrayList<String> getAllNames(){ return daoSupports.getAllCharacterNames(); }

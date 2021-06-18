@@ -3,6 +3,7 @@ package com.example.fe3hguide.characters.navigation;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +27,7 @@ public class CharactersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LinearLayout layout = (LinearLayout)
+        ConstraintLayout layout = (ConstraintLayout)
                 inflater.inflate(R.layout.fragment_characters, container, false);
 
         initComponents(layout);
@@ -35,7 +36,7 @@ public class CharactersFragment extends Fragment {
         return layout;
     }
 
-    private void initComponents(LinearLayout layout){
+    private void initComponents(ConstraintLayout layout){
         // Create an ArrayList with the names of the factions
         ArrayList<String> factionsNames = createFactionsNames();
         // Create an ArrayList with the images of the factions

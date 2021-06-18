@@ -34,10 +34,9 @@ public class DAOClasses extends DAO {
 
                 classes.add(new InGameClass.Builder(cursor.getString(0)).withClassLevel(
                         cursor.getString(1)).withProficiencies(cursor.getString(2)).
-                        withAbilities(abilities).withMasteryAbility(
-                                new Ability.Builder(cursor.getString(6)).build()).
-                        withMasteryCombatArt(new CombatArtClassMastery
-                                            .Builder(cursor.getString(7)).build()).
+                        withAbilities(abilities).
+                        withMasteryAbility(getAbility(cursor.getString(6))).
+                        withMasteryCombatArt(getMasteryCombatArt(cursor.getString(7))).
                         withCanUse(cursor.getString(8)).
                         withRestrictions(cursor.getString(9)).
                         withCertificationRequirement(cursor.getString(10)).
@@ -69,16 +68,15 @@ public class DAOClasses extends DAO {
         InGameClass inGameClass = null;
         if (cursor.moveToFirst()){
             ArrayList<Ability> abilities = new ArrayList<>();
-            abilities.add(new Ability.Builder(cursor.getString(3)).build());
-            abilities.add(new Ability.Builder(cursor.getString(4)).build());
-            abilities.add(new Ability.Builder(cursor.getString(5)).build());
+            abilities.add(getAbility(cursor.getString(3)));
+            abilities.add(getAbility(cursor.getString(4)));
+            abilities.add(getAbility(cursor.getString(5)));
 
             inGameClass = new InGameClass.Builder(cursor.getString(0)).withClassLevel(
                     cursor.getString(1)).withProficiencies(cursor.getString(2)).
-                    withAbilities(abilities).withMasteryAbility(
-                    new Ability.Builder(cursor.getString(6)).build()).
-                    withMasteryCombatArt(new CombatArtClassMastery
-                                        .Builder(cursor.getString(7)).build()).
+                    withAbilities(abilities).
+                    withMasteryAbility(getAbility(cursor.getString(6))).
+                    withMasteryCombatArt(getMasteryCombatArt(cursor.getString(7))).
                     withCanUse(cursor.getString(8)).
                     withRestrictions(cursor.getString(9)).
                     withCertificationRequirement(cursor.getString(10)).
@@ -116,10 +114,9 @@ public class DAOClasses extends DAO {
 
                 classes.add(new InGameClass.Builder(cursor.getString(0)).withClassLevel(
                         cursor.getString(1)).withProficiencies(cursor.getString(2)).
-                        withAbilities(abilities).withMasteryAbility(
-                        new Ability.Builder(cursor.getString(6)).build()).
-                        withMasteryCombatArt(new CombatArtClassMastery
-                                .Builder(cursor.getString(7)).build()).
+                        withAbilities(abilities).
+                        withMasteryAbility(getAbility(cursor.getString(6))).
+                        withMasteryCombatArt(getMasteryCombatArt(cursor.getString(7))).
                         withCanUse(cursor.getString(8)).
                         withRestrictions(cursor.getString(9)).
                         withCertificationRequirement(cursor.getString(10)).
@@ -158,10 +155,9 @@ public class DAOClasses extends DAO {
 
                 classes.add(new InGameClass.Builder(cursor.getString(0)).withClassLevel(
                         cursor.getString(1)).withProficiencies(cursor.getString(2)).
-                        withAbilities(abilities).withMasteryAbility(
-                        new Ability.Builder(cursor.getString(6)).build()).
-                        withMasteryCombatArt(new CombatArtClassMastery
-                                .Builder(cursor.getString(7)).build()).
+                        withAbilities(abilities).
+                        withMasteryAbility(getAbility(cursor.getString(6))).
+                        withMasteryCombatArt(getMasteryCombatArt(cursor.getString(7))).
                         withCanUse(cursor.getString(8)).
                         withRestrictions(cursor.getString(9)).
                         withCertificationRequirement(cursor.getString(10)).
@@ -201,10 +197,9 @@ public class DAOClasses extends DAO {
 
                 classes.add(new InGameClass.Builder(cursor.getString(0)).withClassLevel(
                         cursor.getString(1)).withProficiencies(cursor.getString(2)).
-                        withAbilities(abilities).withMasteryAbility(
-                        new Ability.Builder(cursor.getString(6)).build()).
-                        withMasteryCombatArt(new CombatArtClassMastery
-                                .Builder(cursor.getString(7)).build()).
+                        withAbilities(abilities).
+                        withMasteryAbility(getAbility(cursor.getString(6))).
+                        withMasteryCombatArt(getMasteryCombatArt(cursor.getString(7))).
                         withCanUse(cursor.getString(8)).
                         withRestrictions(cursor.getString(9)).
                         withCertificationRequirement(cursor.getString(10)).
@@ -267,5 +262,38 @@ public class DAOClasses extends DAO {
 
         cursor.close();
         return classes;
+    }
+
+    public Ability getAbility(String abilityName){
+        Cursor cursor = db.rawQuery("SELECT * FROM Abilities " +
+                "WHERE ability = ?", new String[] {abilityName});
+
+        if (cursor.moveToFirst()){
+            return new Ability.Builder(abilityName)
+                    .withIcon(cursor.getInt(1))
+                    .withEffect(cursor.getString(2))
+                    .withOrigin(cursor.getString(3))
+                    .withType(cursor.getString(4))
+                    .build();
+        }
+
+        return null;
+    }
+
+    public CombatArtClassMastery getMasteryCombatArt(String name){
+        Cursor cursor = db.rawQuery("SELECT * FROM CombatArtsClassMastery " +
+                "WHERE art = ?", new String[]{name});
+
+        if (cursor.moveToFirst()){
+            return new CombatArtClassMastery.Builder(name)
+                    .withEffect(cursor.getString(1))
+                    .withWeapon(cursor.getString(2))
+                    .withClass(cursor.getString(3))
+                    .withStats(cursor.getString(4), cursor.getString(5),
+                            cursor.getString(6), cursor.getString(7),
+                            cursor.getString(8), cursor.getString(9))
+                    .build();
+        }
+        return null;
     }
 }

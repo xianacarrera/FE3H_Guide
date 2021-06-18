@@ -1,7 +1,5 @@
 package com.example.fe3hguide.model;
 
-import com.example.fe3hguide.R;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,10 +11,10 @@ public class InGameClass {
     private String proficiencies;
     private List<Ability> abilities;
     private Ability mastery_ability;
-    private CombatArt mastery_combat_art;
+    private CombatArt masteryCombatArt;
     private String canUse;
     private String restrictions;
-    private String certification_requirement;
+    private String certificationRequirement;
     private String seal;
     private HashMap<Stat, String> growthRates;
     private int experience;
@@ -63,20 +61,20 @@ public class InGameClass {
         this.abilities = abilities;
     }
 
-    public Ability getMastery_ability() {
+    public Ability getMasteryAbility() {
         return mastery_ability;
     }
 
-    public void setMastery_ability(Ability mastery_ability) {
-        this.mastery_ability = mastery_ability;
+    public void setMasteryAbility(Ability masteryAbility) {
+        this.mastery_ability = masteryAbility;
     }
 
-    public CombatArt getMastery_combat_art() {
-        return mastery_combat_art;
+    public CombatArt getMasteryCombatArt() {
+        return masteryCombatArt;
     }
 
-    public void setMastery_combat_art(CombatArt mastery_combat_art) {
-        this.mastery_combat_art = mastery_combat_art;
+    public void setMasteryCombatArt(CombatArt masteryCombatArt) {
+        this.masteryCombatArt = masteryCombatArt;
     }
 
     public String getCanUse() {
@@ -95,12 +93,12 @@ public class InGameClass {
         this.restrictions = restrictions;
     }
 
-    public String getCertification_requirement() {
-        return certification_requirement;
+    public String getCertificationRequirement() {
+        return certificationRequirement;
     }
 
-    public void setCertification_requirement(String certification_requirement) {
-        this.certification_requirement = certification_requirement;
+    public void setCertificationRequirement(String certificationRequirement) {
+        this.certificationRequirement = certificationRequirement;
     }
 
     public String getSeal() {
@@ -162,7 +160,7 @@ public class InGameClass {
         }
 
         public Builder withMasteryCombatArt(CombatArt masteryCombatArt){
-            inGameClass.mastery_combat_art = masteryCombatArt;
+            inGameClass.masteryCombatArt = masteryCombatArt;
             return this;
         }
 
@@ -177,7 +175,7 @@ public class InGameClass {
         }
 
         public Builder withCertificationRequirement(String certificationRequirement){
-            inGameClass.certification_requirement = certificationRequirement;
+            inGameClass.certificationRequirement = certificationRequirement;
             return this;
         }
 

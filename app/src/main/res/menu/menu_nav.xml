@@ -2,31 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_characters"
             android:checked="true"
-            android:icon="@drawable/ic_menu_home"
-            android:title="@string/nav_home" />
-        <item
-            android:id="@+id/nav_guide"
-            android:icon="@drawable/ic_menu_guide"
-            android:title="@string/nav_guide" />
+            android:icon="@drawable/ic_menu_characters"
+            android:title="@string/nav_characters" />
+
         <item
             android:id="@+id/nav_calculator"
             android:icon="@drawable/ic_menu_calculator"
             android:title="@string/calculator"/>
-        <item
-            android:id="@+id/nav_characters"
-            android:icon="@drawable/ic_menu_characters"
-            android:title="@string/nav_characters" />
+
         <item
             android:id="@+id/nav_classes"
             android:icon="@drawable/ic_menu_classes"
             android:title="@string/nav_classes" />
+
         <item
             android:id="@+id/nav_tea_time"
             android:icon="@drawable/ic_menu_teatime"
             android:title="@string/nav_tea_time" />
+
         <item
             android:id="@+id/nav_supports"
             android:icon="@drawable/ic_supports"

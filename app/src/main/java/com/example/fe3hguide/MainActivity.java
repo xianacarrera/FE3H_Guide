@@ -2,12 +2,14 @@ package com.example.fe3hguide;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
 
+    private SharedPreferences sharedPreferences;
+    private boolean isDarkMode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +46,10 @@ public class MainActivity extends AppCompatActivity
         initComponents();
         setupComponents();
         addListeners();
+        manageDarkMode();
 
         // By default, display the home fragment
-        Fragment fragment = new HomeFragment();
+        Fragment fragment = new CharactersFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.content_frame, fragment);
         ft.commit();
@@ -103,14 +109,8 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         switch (id){
-            case R.id.nav_guide:
-                fragment = new GuideFragment();
-                break;
             case R.id.nav_calculator:
                 fragment = new CalculatorFragment();
-                break;
-            case R.id.nav_characters:
-                fragment = new CharactersFragment();
                 break;
             case R.id.nav_classes:
                 fragment = new ClassesFragment(fc);
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new AboutFragment();
                 break;
             default:
-                fragment = new HomeFragment();
+                fragment = new CharactersFragment();
         }
 
         // Display the selected fragment
@@ -140,6 +140,18 @@ public class MainActivity extends AppCompatActivity
         drawer.closeMenu();
 
         return true;
+    }
+
+    public void manageDarkMode(){
+        sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        // Get the saved preference associated with NightMode. The default value is false.
+        isDarkMode = sharedPreferences.getBoolean("DarkMode", false);
+
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     @Override
@@ -155,6 +167,5 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        fc.closeDatabase();
     }
 }

@@ -70,47 +70,14 @@ public class GeneralFragment extends Fragment {
         ScrollView layout = (ScrollView)
                 inflater.inflate(R.layout.fragment_general, container, false);
 
-        searchCharacterInfo();
+        // Complete all the character attributes
+        character = fc.getCharacter(characterName);
+
         initComponents(layout);
         setupComponents();
         addListeners();
 
         return layout;
-    }
-
-    private void searchCharacterInfo(){
-        Cursor cursor = db.rawQuery("SELECT * " +
-                        "FROM Characters WHERE name like ?",
-                new String[] {characterName + "%"});
-
-        if (cursor.moveToFirst()){
-            character = new Character.Builder(cursor.getInt(0))
-                    .withName(characterName)
-                    .withPortrait(cursor.getInt(2))
-                    .withPronouns(cursor.getString(3))
-                    .withFaction(cursor.getString(4))
-                    .withAge(cursor.getInt(5))
-                    .withBirthday(cursor.getString(6))
-                    .withFodlanBirthday(cursor.getString(7))
-                    .withCrest(cursor.getString(8))
-                    .withBaseStats(cursor.getString(9), cursor.getString(10),
-                            cursor.getString(11), cursor.getString(12),
-                            cursor.getString(13), cursor.getString(14),
-                            cursor.getString(15), cursor.getString(16),
-                            cursor.getString(17))
-                    .withGrowthRates(cursor.getString(18), cursor.getString(19),
-                            cursor.getString(20), cursor.getString(21),
-                            cursor.getString(22), cursor.getString(23),
-                            cursor.getString(24), cursor.getString(25),
-                            cursor.getString(26))
-                    .withSkills(cursor.getString(27), cursor.getString(28),
-                            cursor.getString(29), cursor.getString(30),
-                            cursor.getString(31), cursor.getString(32),
-                            cursor.getString(33), cursor.getString(34),
-                            cursor.getString(35), cursor.getString(36),
-                            cursor.getString(37))
-                    .build();
-        }
     }
 
     private void initComponents(ScrollView layout){
@@ -303,7 +270,11 @@ public class GeneralFragment extends Fragment {
         recruitment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                recruitment.setText("");
+                String[] recruitmentLines = character.getRecruitment().split("_");
+                for (int i = 0; i < recruitmentLines.length; i++){
+                    recruitment.append(recruitmentLines[i] + "\n");
+                }
             }
         });
 

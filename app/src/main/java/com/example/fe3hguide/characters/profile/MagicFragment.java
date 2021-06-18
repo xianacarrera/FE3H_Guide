@@ -7,15 +7,23 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
+import com.example.fe3hguide.adapters.CombatArtsAdapter;
+import com.example.fe3hguide.adapters.SpellsAdapter;
+import com.example.fe3hguide.database.Facade;
+import com.example.fe3hguide.model.CombatArt;
+import com.example.fe3hguide.model.Spell;
 import com.mingle.sweetpick.CustomDelegate;
 import com.mingle.sweetpick.DimEffect;
 import com.mingle.sweetpick.SweetSheet;
@@ -29,8 +37,14 @@ public class MagicFragment extends Fragment {
     private final SQLiteDatabase db;
     private SweetSheet sweetSheet;
     private View popUpLayout;
+    private Facade fc;
+
+    private List<List<Spell>> spells;
+    // spells.get(0) -> reason spells of the character
+    // spells.get(1) -> faith spells of the character
 
     private ArrayList<TextView> textViews;
+    private RecyclerView recyclerViewSpells;
 
     // PopUp components
     private TextView titleSpellName;
@@ -53,12 +67,16 @@ public class MagicFragment extends Fragment {
         RelativeLayout layout = (RelativeLayout)
                 inflater.inflate(R.layout.fragment_magic, container, false);
 
+        fc = Facade.getInstance(getContext());
+        spells = fc.getSpells(character);
+
         preparePopUp(layout);
         initComponents(layout);
+        setUpRecyclerViewSpells();
         addListeners();
 
-        // Search for all the character's spells and put them in the layout
-        loadSpells();
+        // Put reason spells and faith spells in the layout
+        putSpellsTextViews(spells.get(0), spells.get(1));
 
 
         return layout;
@@ -97,6 +115,9 @@ public class MagicFragment extends Fragment {
         textViews.add((TextView) layout.findViewById(R.id.faith_A_plus));
 
 
+        recyclerViewSpells = (RecyclerView) layout.findViewById(R.id.recycler_spells);
+
+
         // PopUp components
         titleSpellName = (TextView) popUpLayout.findViewById(R.id.textview_title_spell_name);
         iconMagicType = (ImageView) popUpLayout.findViewById(R.id.spell_magic_type_icon);
@@ -109,6 +130,19 @@ public class MagicFragment extends Fragment {
         crit = (TextView) popUpLayout.findViewById(R.id.crit_popup);
         range = (TextView) popUpLayout.findViewById(R.id.range_popup);
         weight = (TextView) popUpLayout.findViewById(R.id.weight_popup);
+    }
+
+    private void setUpRecyclerViewSpells(){
+        /*
+         * The RecyclerView shows all spells available to the character. Clicking on one opens
+         * a popup with information about the spell.
+         */
+
+        SpellsAdapter adapter = new SpellsAdapter(spells, this);
+        recyclerViewSpells.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerViewSpells.setLayoutManager(layoutManager);
     }
 
     private void addListeners(){
@@ -129,76 +163,69 @@ public class MagicFragment extends Fragment {
         }
     }
 
-    private void loadSpells(){
-        // Get the information about the character's magic spells
-        Cursor cursor = db.rawQuery("SELECT m.reason, m.faith " +
-                "FROM Characters AS c NATURAL JOIN Magic AS m " +
-                "WHERE c.name = ?", new String[] {character});
-
-        ArrayList<String> reasonSpells = new ArrayList<>(8);
-        ArrayList<String> faithSpells = new ArrayList<>(8);
-        if (cursor.moveToFirst()){
-            do {
-                reasonSpells.add(cursor.getString(0));
-                faithSpells.add(cursor.getString(1));
-            } while (cursor.moveToNext());
-        }
-
-        // Put the spells in the layout
-        putSpellsTextViews(reasonSpells, faithSpells);
-
-        // Close cursor and database
-        cursor.close();
-    }
-
-    private void putSpellsTextViews(List<String> reasonSpells, List<String> faithSpells){
-        String spell = null;
+    private void putSpellsTextViews(List<Spell> reasonSpells, List<Spell> faithSpells){
+        Spell spell = null;
         // The first 8 TextViews correspond to reason spells
         for (int i = 0; i < 8; i++){
-            if (!(spell = reasonSpells.get(i)).equals("null")){
-                // If there's no spell, the default text ("-") stays
-                textViews.get(i).setText(spell);
+            if ((spell = reasonSpells.get(i)) != null){
+                textViews.get(i).setText(spell.getName());
                 textViews.get(i).setBackgroundColor(getResources().getColor(R.color.blue_background));
             } else {
+                // If there's no spell, the default text ("-") stays
                 textViews.get(i).setText("-");
                 textViews.get(i).setBackgroundColor(getResources().getColor(R.color.light_gray));
             }
         }
         // The last 8 TextViews correspond to faith spells
         for (int i = 0; i < 8; i++){
-            if (!(spell = faithSpells.get(i)).equals("null")){
-                // If there's no spell, the default text ("-") stays
-                textViews.get(i + 8).setText(spell);
+            if ((spell = faithSpells.get(i)) != null){
+                textViews.get(i + 8).setText(spell.getName());
                 textViews.get(i + 8).setBackgroundColor(getResources().getColor(R.color.blue_background));
             } else {
+                // If there's no spell, the default text ("-") stays
                 textViews.get(i + 8).setText("-");
                 textViews.get(i + 8).setBackgroundColor(getResources().getColor(R.color.light_gray));
             }
         }
     }
 
-    public void showPopup(String spell){
+    public void showPopup(String spellName){
         // Set the name of the spell as the title
-        titleSpellName.setText(spell);
+        titleSpellName.setText(spellName);
 
         // Search for the spell's complete information
-        Cursor cursor = db.rawQuery("SELECT magicType, description, rank, uses, mt, hit," +
-                "range, crit, weight " +
-                "FROM Spells WHERE spell = ?", new String[]{spell});
+        Spell spell = fc.getSpell(spellName);
 
-        if (cursor.moveToFirst()){
-            textMagicType.setText(cursor.getString(0));
-            description.setText(cursor.getString(1));
-            rank.setText(cursor.getString(2));
-            uses.setText(cursor.getString(3));
-            mt.setText(cursor.getString(4));
-            hit.setText(cursor.getString(5));
-            range.setText(cursor.getString(6));
-            crit.setText(cursor.getString(7));
-            weight.setText(cursor.getString(8));
+        if (spell != null){
+            textMagicType.setText(spell.getMagicType());
+            iconMagicType.setImageResource(spell.getIcon());
+            description.setText(spell.getDescription());
+            rank.setText(spell.getRank());
+            uses.setText(spell.getUses());
+            mt.setText(spell.getStats().get("mt"));
+            hit.setText(spell.getStats().get("hit"));
+            range.setText(spell.getStats().get("range"));
+            crit.setText(spell.getStats().get("crit"));
+            weight.setText(spell.getStats().get("weight"));
         }
+;
+        sweetSheet.show();
+    }
 
-        cursor.close();
+    public void showPopup(Spell spell) {
+        // Set the name of the spell as the title
+        titleSpellName.setText(spell.getName());
+        iconMagicType.setImageResource(spell.getIcon());
+        textMagicType.setText(spell.getMagicType());
+        description.setText(spell.getDescription());
+        rank.setText(spell.getRank());
+        uses.setText(spell.getUses());
+        mt.setText(spell.getStats().get("mt"));
+        hit.setText(spell.getStats().get("hit"));
+        range.setText(spell.getStats().get("range"));
+        crit.setText(spell.getStats().get("crit"));
+        weight.setText(spell.getStats().get("weight"));
+
         sweetSheet.show();
     }
 }
