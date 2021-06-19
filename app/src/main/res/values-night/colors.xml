@@ -10,10 +10,13 @@
     <color name="black">#000000</color>
     <color name="red_support">#D5FF5656</color>
 
+    <!-- Dark Mode -->
     <color name="mainText">#ffffff</color>
     <color name="textAlt">#BCBCBD</color>
     <color name="mainBackground">#121212</color>
     <color name="elevation1">#1F1B24</color>
+
+    <color name="purpleDarkMode">#4310B6</color>
 
     <color name="fixedTextColor">#424245</color>
 

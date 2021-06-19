@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
+    android:background="@color/mainBackground"
     tools:context=".characters.profile.GeneralFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,8 @@
             android:layout_marginTop="36dp"
             android:text="Test"
             android:textSize="34sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/mainText"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="34dp"
-            app:cardBackgroundColor="@color/purple_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/pronouns"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/mainText"
                     android:textStyle="italic" />
 
 
@@ -69,6 +70,7 @@
                     android:layout_marginBottom="6dp"
                     android:gravity="center_horizontal"
                     android:text="test"
+                    android:textColor="@color/textAlt"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             </LinearLayout>
@@ -77,19 +79,18 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/faction_card"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            app:cardBackgroundColor="@color/blue_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="@id/fodlan_birtday_card"
-            app:layout_constraintLeft_toRightOf="@id/gender_card"
+            app:layout_constraintLeft_toLeftOf="@id/fodlan_birthday_card"
+            app:layout_constraintRight_toRightOf="@id/fodlan_birthday_card"
             app:layout_constraintTop_toTopOf="@+id/gender_card">
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -97,12 +98,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="35dp"
                     android:layout_marginTop="6dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/faction"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/mainText"
+                    android:maxLines="1"
                     android:textStyle="italic" />
 
 
@@ -122,8 +124,7 @@
                     android:layout_marginBottom="6dp"
                     android:gravity="center_horizontal"
                     android:text="test"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
+                    android:textColor="@color/textAlt"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -134,13 +135,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/blue_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:layout_constraintLeft_toLeftOf="@+id/gender_card"
             app:layout_constraintRight_toRightOf="@+id/gender_card"
             app:layout_constraintTop_toBottomOf="@id/gender_card"
-            app:layout_constraintBottom_toBottomOf="@id/fodlan_birtday_card">
+            app:layout_constraintBottom_toBottomOf="@id/fodlan_birthday_card">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,7 +157,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/birthday"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/mainText"
                     android:textStyle="italic" />
 
                 <View
@@ -174,7 +175,7 @@
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
                     android:text="test"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    android:textColor="@color/textAlt" />
 
             </LinearLayout>
 
@@ -182,14 +183,14 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/fodlan_birtday_card"
+            android:id="@+id/fodlan_birthday_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/purple_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
-            app:layout_constraintLeft_toRightOf="@+id/birthday_card"
-            app:layout_constraintStart_toStartOf="@+id/faction_card"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toRightOf="@+id/gender_card"
             app:layout_constraintTop_toTopOf="@+id/birthday_card">
 
             <LinearLayout
@@ -208,7 +209,8 @@
                     android:layout_marginBottom="3dp"
                     android:text="@string/fodlan_birthday"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:textColor="@color/mainText"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -220,12 +222,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
                     android:gravity="center"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
-                    android:layout_marginBottom="6dp"
                     android:text="test"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    android:textColor="@color/textAlt" />
 
             </LinearLayout>
 
@@ -240,7 +242,7 @@
             android:background="@color/white"
             android:contentDescription="@string/content_description_icon"
             android:src="@drawable/ic_edelgard"
-            app:layout_constraintBottom_toBottomOf="@+id/fodlan_birtday_card"
+            app:layout_constraintBottom_toBottomOf="@+id/fodlan_birthday_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/faction_card"
             app:layout_constraintTop_toTopOf="@+id/faction_card" />
@@ -253,12 +255,12 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
-            app:cardBackgroundColor="@color/blue_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fodlan_birtday_card">
+            app:layout_constraintTop_toBottomOf="@+id/fodlan_birthday_card">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -274,7 +276,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/crest"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/mainText"
                     android:textStyle="italic" />
 
 
@@ -294,8 +296,7 @@
                     android:layout_marginBottom="6dp"
                     android:gravity="center_horizontal"
                     android:text="@string/spoiler_alert"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
+                    android:textColor="@color/textAlt"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -306,7 +307,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardBackgroundColor="@color/purple_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="@+id/cardView2"
@@ -327,7 +328,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="3dp"
                     android:text="@string/recruitment"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/mainText"
                     android:textStyle="italic" />
 
 
@@ -347,6 +348,7 @@
                     android:layout_marginBottom="6dp"
                     android:gravity="center_horizontal"
                     android:text="@string/spoiler_alert"
+                    android:textColor="@color/textAlt"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             </LinearLayout>
@@ -357,7 +359,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:elevation="8dp"
-            app:cardBackgroundColor="@color/blue_background"
+            app:cardBackgroundColor="@color/elevation1"
             app:cardCornerRadius="12dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -377,7 +379,7 @@
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="@string/stats"
-                    android:textColor="@color/black"
+                    android:textColor="@color/mainText"
                     android:textSize="24sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -401,7 +403,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/base_stats"
-                    android:textColor="@color/black"
+                    android:textColor="@color/mainText"
                     android:textSize="22sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_stats" />
@@ -800,7 +802,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/growth_rates"
-                    android:textColor="@color/black"
+                    android:textColor="@color/mainText"
                     android:textSize="22sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_bs_gr" />
@@ -1517,7 +1519,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/skills"
-                    android:textColor="@color/black"
+                    android:textColor="@color/mainText"
                     android:textSize="22sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider_gr_skills" />

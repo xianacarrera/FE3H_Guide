@@ -13,12 +13,15 @@ Each class is contained in a cell_class.xml cell-->
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/mainBackground"
     tools:context=".classes.ClassesFragment">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/classesListSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/elevation1"
+            android:theme="@style/SearchView"
             app:iconifiedByDefault="false"
             app:queryHint="Class name" />
 
@@ -33,15 +36,17 @@ Each class is contained in a cell_class.xml cell-->
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="@string/all" />
+                android:background="@color/purpleDarkMode"
+                android:text="@string/all"
+                android:textColor="@color/mainText"/>
 
             <Button
                 android:id="@+id/classesUniqueButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
+                android:textColor="@color/mainText"
+                android:background="@color/purpleDarkMode"
                 android:text="@string/unique" />
 
             <Button
@@ -49,7 +54,8 @@ Each class is contained in a cell_class.xml cell-->
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
+                android:textColor="@color/mainText"
+                android:background="@color/purpleDarkMode"
                 android:text="@string/beginner" />
 
         </LinearLayout>
@@ -65,7 +71,8 @@ Each class is contained in a cell_class.xml cell-->
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
+                android:textColor="@color/mainText"
+                android:background="@color/purpleDarkMode"
                 android:text="@string/intermediate" />
 
             <Button
@@ -73,7 +80,8 @@ Each class is contained in a cell_class.xml cell-->
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
+                android:textColor="@color/mainText"
+                android:background="@color/purpleDarkMode"
                 android:text="@string/advanced" />
 
             <Button
@@ -81,7 +89,8 @@ Each class is contained in a cell_class.xml cell-->
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"
+                android:textColor="@color/mainText"
+                android:background="@color/purpleDarkMode"
                 android:text="@string/master" />
 
         </LinearLayout>
@@ -90,6 +99,7 @@ Each class is contained in a cell_class.xml cell-->
         <ListView
             android:id="@+id/listView_classes"
             android:layout_width="match_parent"
+            android:background="@color/mainBackground"
             android:layout_height="match_parent" />
 
     </LinearLayout>
