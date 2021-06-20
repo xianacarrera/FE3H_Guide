@@ -22,8 +22,6 @@ public class ProfileActivity extends AppCompatActivity {
     private String character;
     private SQLiteDatabase db;
 
-    // TODO: close db on destroy!!!!!!!!!
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

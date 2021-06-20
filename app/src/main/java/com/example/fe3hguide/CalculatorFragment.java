@@ -1,6 +1,7 @@
 package com.example.fe3hguide;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -77,6 +78,10 @@ public class CalculatorFragment extends Fragment {
                 textViewTrueHit.setVisibility(View.INVISIBLE);
             }
         });
+        // NumberPicker text color can only be changed after version 29
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            numberPicker.setTextColor(getResources().getColor(R.color.mainText));
+        }
 
         // When the button is clicked, the True Hit is calculated and shown
         button.setOnClickListener(new View.OnClickListener() {
