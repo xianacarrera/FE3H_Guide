@@ -4,13 +4,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,10 +32,10 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Facade fc;
-    private Toolbar toolbar;
+    public static Toolbar toolbar;
     private FlowingDrawer drawer;
     private ActionBarDrawerToggle toggle;
-    private NavigationView navigationView;
+    public static NavigationView navigationView;
 
     private SharedPreferences sharedPreferences;
     private boolean isDarkMode;
@@ -143,16 +147,38 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void manageDarkMode(){
-        sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("FireEmblemGuideSharedPrefs", MODE_PRIVATE);
         // Get the saved preference associated with NightMode. The default value is false.
         isDarkMode = sharedPreferences.getBoolean("DarkMode", false);
 
         if (isDarkMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            // To fix bug that prevented toolbar from changing color automatically
+            toolbar.setBackgroundColor(getResources().getColor(R.color.elevation1));
+            // To fix bug that prevented navigation view from changing color automatically
+            navigationView.setBackgroundColor(getResources().getColor(R.color.elevation1));
+            navigationView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+            navigationView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+
+            // Change color of "Options" string
+            setTextColorForMenuItem(navigationView.getMenu().getItem(5), R.color.white);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            navigationView.setBackgroundColor(getResources().getColor(R.color.mainBackground));
+            navigationView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.mainText)));
+            navigationView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.mainText)));
+            setTextColorForMenuItem(navigationView.getMenu().getItem(5), R.color.mainText);
         }
     }
+
+    private void setTextColorForMenuItem(MenuItem menuItem, int color) {
+        SpannableString spanString = new SpannableString(menuItem.getTitle().toString());
+        spanString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, color)),
+                0, spanString.length(), 0);
+        menuItem.setTitle(spanString);
+    }
+
 
     @Override
     // If the navigation drawer is open, the back button closes it

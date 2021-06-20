@@ -1,5 +1,6 @@
 package com.example.fe3hguide.characters.profile;
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.Image;
@@ -24,9 +25,6 @@ import com.example.fe3hguide.adapters.SpellsAdapter;
 import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.model.CombatArt;
 import com.example.fe3hguide.model.Spell;
-import com.mingle.sweetpick.CustomDelegate;
-import com.mingle.sweetpick.DimEffect;
-import com.mingle.sweetpick.SweetSheet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +33,6 @@ public class MagicFragment extends Fragment {
 
     private final String character;
     private final SQLiteDatabase db;
-    private SweetSheet sweetSheet;
     private View popUpLayout;
     private Facade fc;
 
@@ -47,6 +44,7 @@ public class MagicFragment extends Fragment {
     private RecyclerView recyclerViewSpells;
 
     // PopUp components
+    private Dialog myDialog;
     private TextView titleSpellName;
     private ImageView iconMagicType;
     private TextView textMagicType;
@@ -67,10 +65,12 @@ public class MagicFragment extends Fragment {
         RelativeLayout layout = (RelativeLayout)
                 inflater.inflate(R.layout.fragment_magic, container, false);
 
+        myDialog = new Dialog(getActivity());
+        myDialog.setContentView(R.layout.popup_spell);
+
         fc = Facade.getInstance(getContext());
         spells = fc.getSpells(character);
 
-        preparePopUp(layout);
         initComponents(layout);
         setUpRecyclerViewSpells();
         addListeners();
@@ -82,16 +82,6 @@ public class MagicFragment extends Fragment {
         return layout;
     }
 
-    private void preparePopUp(RelativeLayout layout){
-        sweetSheet = new SweetSheet(layout);
-        CustomDelegate customDelegate = new CustomDelegate(true,
-                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
-        popUpLayout = LayoutInflater.from(getContext()).inflate(R.layout.popup_spell,
-                null, false);
-        customDelegate.setCustomView(popUpLayout);
-        sweetSheet.setDelegate(customDelegate);
-        sweetSheet.setBackgroundEffect(new DimEffect(0.5f));
-    }
 
     private void initComponents(RelativeLayout layout){
         // Get all the text views
@@ -119,17 +109,17 @@ public class MagicFragment extends Fragment {
 
 
         // PopUp components
-        titleSpellName = (TextView) popUpLayout.findViewById(R.id.textview_title_spell_name);
-        iconMagicType = (ImageView) popUpLayout.findViewById(R.id.spell_magic_type_icon);
-        textMagicType = (TextView) popUpLayout.findViewById(R.id.textView_magic_type);
-        description = (TextView) popUpLayout.findViewById(R.id.textView_spell_description);
-        rank = (TextView) popUpLayout.findViewById(R.id.textview_spell_rank);
-        uses = (TextView) popUpLayout.findViewById(R.id.textview_spell_uses);
-        mt = (TextView) popUpLayout.findViewById(R.id.mt_popup);
-        hit = (TextView) popUpLayout.findViewById(R.id.hit_popup);
-        crit = (TextView) popUpLayout.findViewById(R.id.crit_popup);
-        range = (TextView) popUpLayout.findViewById(R.id.range_popup);
-        weight = (TextView) popUpLayout.findViewById(R.id.weight_popup);
+        titleSpellName = (TextView) myDialog.findViewById(R.id.textview_title_spell_name);
+        iconMagicType = (ImageView) myDialog.findViewById(R.id.spell_magic_type_icon);
+        textMagicType = (TextView) myDialog.findViewById(R.id.textView_magic_type);
+        description = (TextView) myDialog.findViewById(R.id.textView_spell_description);
+        rank = (TextView) myDialog.findViewById(R.id.textview_spell_rank);
+        uses = (TextView) myDialog.findViewById(R.id.textview_spell_uses);
+        mt = (TextView) myDialog.findViewById(R.id.mt_popup);
+        hit = (TextView) myDialog.findViewById(R.id.hit_popup);
+        crit = (TextView) myDialog.findViewById(R.id.crit_popup);
+        range = (TextView) myDialog.findViewById(R.id.range_popup);
+        weight = (TextView) myDialog.findViewById(R.id.weight_popup);
     }
 
     private void setUpRecyclerViewSpells(){
@@ -209,7 +199,7 @@ public class MagicFragment extends Fragment {
             weight.setText(spell.getStats().get("weight"));
         }
 ;
-        sweetSheet.show();
+        myDialog.show();
     }
 
     public void showPopup(Spell spell) {
@@ -226,6 +216,6 @@ public class MagicFragment extends Fragment {
         crit.setText(spell.getStats().get("crit"));
         weight.setText(spell.getStats().get("weight"));
 
-        sweetSheet.show();
+        myDialog.show();
     }
 }

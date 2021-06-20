@@ -3,8 +3,11 @@ package com.example.fe3hguide.classes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,9 +21,6 @@ import com.example.fe3hguide.model.CombatArtClassMastery;
 import com.example.fe3hguide.model.InGameClass;
 import com.example.fe3hguide.model.Skill;
 import com.example.fe3hguide.model.Stat;
-import com.mingle.sweetpick.CustomDelegate;
-import com.mingle.sweetpick.DimEffect;
-import com.mingle.sweetpick.SweetSheet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,17 +49,17 @@ public class InGameClassActivity extends AppCompatActivity {
     private TextView experience;
 
     private RelativeLayout relativeLayout;
-    private SweetSheet sweetSheetAbility, sweetSheetCombatArt;
-    private View popUpLayoutAbility, popUpLayoutCombatArt;
 
 
     // Ability popUp components
+    private Dialog myDialogAbility;
     private TextView aPUTitle;
     private ImageView aPUIcon;
     private TextView aPUEffect;
     private TextView aPUOrigin;
 
     // Combat art popUp components
+    private Dialog myDialogCombatArt;
     private TextView cPUTitle;
     private ImageView cPUIcon;
     private TextView cPUEffect;
@@ -74,40 +74,20 @@ public class InGameClassActivity extends AppCompatActivity {
         setContentView(R.layout.activity_class_detail);
         relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout_classes);
 
+        myDialogAbility = new Dialog(this);
+        myDialogAbility.setContentView(R.layout.popup_ability);
+        myDialogCombatArt = new Dialog(this);
+        myDialogCombatArt.setContentView(R.layout.popup_combat_art);
+
         fc = Facade.getInstance(this);
         inGameClass = getSelectedClass();
-
-        prepareAbilitiesPopUp();
-        prepareCombatArtsPopUp();
 
         initComponents();
         setData();
     }
 
-    private void prepareAbilitiesPopUp(){
-        sweetSheetAbility = new SweetSheet(relativeLayout);
-        CustomDelegate customDelegate = new CustomDelegate(true,
-                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
-        popUpLayoutAbility = LayoutInflater.from(this).inflate(R.layout.popup_ability,
-                null, false);
-        customDelegate.setCustomView(popUpLayoutAbility);
-        sweetSheetAbility.setDelegate(customDelegate);
-        sweetSheetAbility.setBackgroundEffect(new DimEffect(0.5f));
-    }
-
-    private void prepareCombatArtsPopUp(){
-        sweetSheetCombatArt = new SweetSheet(relativeLayout);
-        CustomDelegate customDelegate = new CustomDelegate(true,
-                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
-        popUpLayoutCombatArt = LayoutInflater.from(this).inflate(R.layout.popup_combat_art,
-                null, false);
-        customDelegate.setCustomView(popUpLayoutCombatArt);
-        sweetSheetCombatArt.setDelegate(customDelegate);
-        sweetSheetCombatArt.setBackgroundEffect(new DimEffect(0.5f));
-    }
-
     // Returns the InGameClass whose cell was clicked in the ListView of ClassesFragment
-    public InGameClass getSelectedClass(){
+    public InGameClass getSelectedClass() {
         Intent previousIntent = getIntent();
         // The name of the InGameClass was passed as extra info with the intent
         String className = previousIntent.getStringExtra("className");
@@ -116,7 +96,7 @@ public class InGameClassActivity extends AppCompatActivity {
         return fc.getInGameClass(className);
     }
 
-    public void initComponents(){
+    public void initComponents() {
         title = (TextView) findViewById(R.id.title_class_name);
         icon = (ImageView) findViewById(R.id.imageView_class_icon_detail);
         classLevel = (TextView) findViewById(R.id.textView_class_level);
@@ -138,10 +118,12 @@ public class InGameClassActivity extends AppCompatActivity {
         abilities = new ArrayList<>();
         abilities.add((TextView) findViewById(R.id.textView_class_ability_1));
         abilities.add((TextView) findViewById(R.id.textView_class_ability_2));
+        abilities.add((TextView) findViewById(R.id.textView_class_ability_3));
 
         imageViewsAbilities = new ArrayList<>();
         imageViewsAbilities.add((ImageView) findViewById(R.id.imageView_class_ability_1));
         imageViewsAbilities.add((ImageView) findViewById(R.id.imageView_class_ability_2));
+        imageViewsAbilities.add((ImageView) findViewById(R.id.imageView_class_ability_3));
 
         masteryAbility = (TextView) findViewById(R.id.textView_class_mastery_ability);
         imageViewMasteryAbility = (ImageView) findViewById(R.id.imageView_class_mastery_ability);
@@ -169,75 +151,92 @@ public class InGameClassActivity extends AppCompatActivity {
 
 
         // Ability popUp components
-        aPUTitle = (TextView) popUpLayoutAbility.findViewById(R.id.textView_title_ability_name);
-        aPUIcon = (ImageView) popUpLayoutAbility.findViewById(R.id.ability_icon);
-        aPUEffect = (TextView) popUpLayoutAbility.findViewById(R.id.textView_ability_effect);
-        aPUOrigin = (TextView) popUpLayoutAbility.findViewById(R.id.textview_ability_origin);
+        aPUTitle = (TextView) myDialogAbility.findViewById(R.id.textView_title_ability_name);
+        aPUIcon = (ImageView) myDialogAbility.findViewById(R.id.ability_icon);
+        aPUEffect = (TextView) myDialogAbility.findViewById(R.id.textView_ability_effect);
+        aPUOrigin = (TextView) myDialogAbility.findViewById(R.id.textview_ability_origin);
 
 
         // Combat art popUp components
-        cPUTitle = (TextView) popUpLayoutCombatArt.findViewById(R.id.textview_title_combat_art_name);
-        cPUIcon = (ImageView) popUpLayoutCombatArt.findViewById(R.id.combat_art_icon);
-        cPUEffect = (TextView) popUpLayoutCombatArt.findViewById(R.id.textview_combat_art_effect);
-        cPUWeapon = (TextView) popUpLayoutCombatArt.findViewById(R.id.popup_combat_art_text_weapon);
-        cPUText2 = (TextView) popUpLayoutCombatArt.findViewById(R.id.text2_combat_art_popup);
-        cPUText2Answer = (TextView) popUpLayoutCombatArt.findViewById(R.id.text2_answer);
-        cPUTable = (ConstraintLayout) popUpLayoutCombatArt.findViewById(R.id.constraint_layout_combat_art_table);
+        cPUTitle = (TextView) myDialogCombatArt.findViewById(R.id.textview_title_combat_art_name);
+        cPUIcon = (ImageView) myDialogCombatArt.findViewById(R.id.combat_art_icon);
+        cPUEffect = (TextView) myDialogCombatArt.findViewById(R.id.textview_combat_art_effect);
+        cPUWeapon = (TextView) myDialogCombatArt.findViewById(R.id.popup_combat_art_text_weapon);
+        cPUText2 = (TextView) myDialogCombatArt.findViewById(R.id.text2_combat_art_popup);
+        cPUText2Answer = (TextView) myDialogCombatArt.findViewById(R.id.text2_answer);
+        cPUTable = (ConstraintLayout) myDialogCombatArt.findViewById(R.id.constraint_layout_combat_art_table);
     }
 
-    private void setData(){
+    private void setData() {
         title.setText(inGameClass.getName());
         icon.setImageResource(inGameClass.getIcon());
         classLevel.setText(inGameClass.getClassLevel());
 
         String[] proficienciesDivided = inGameClass.getProficiencies().split("\\$");
-        for (int i = 0; i < proficienciesDivided.length; i++){
+        int nOfAbilities = (proficienciesDivided.length == 1 && proficienciesDivided[0].equals("-")) ?
+                0 : proficienciesDivided.length;
+        for (int i = 0; i < nOfAbilities; i++) {
             proficiencies.get(i).setText(proficienciesDivided[i]);
             imageViewsProficiencies.get(i).setImageResource(Skill.getIcon(proficienciesDivided[i]));
         }
-        for (int j = proficienciesDivided.length; j < 3; j++){
+        for (int j = nOfAbilities; j < 4; j++) {
             proficiencies.get(j).setVisibility(View.GONE);
             imageViewsProficiencies.get(j).setVisibility(View.GONE);
         }
 
-        for (int i = 0; i < 2; i++){
-            if (inGameClass.getAbilities().get(i) == null || inGameClass.getAbilities().get(i).getName().equals("-")){
+        for (int i = 0; i < 3; i++) {
+            if (inGameClass.getAbilities().get(i) == null || inGameClass.getAbilities().get(i).getName().equals("-")) {
                 abilities.get(i).setVisibility(View.GONE);
                 imageViewsAbilities.get(i).setVisibility(View.GONE);
             } else {
-                abilities.get(i).setText(inGameClass.getAbilities().get(0).getName());
-                imageViewsAbilities.get(i).setImageResource(inGameClass.getAbilities().get(0).getIcon());
+                // Set the text, underline it and give it color
+                SpannableString text = new SpannableString(inGameClass.getAbilities().get(i).getName());
+                text.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+                abilities.get(i).setText(text);
+                abilities.get(i).setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                imageViewsAbilities.get(i).setImageResource(inGameClass.getAbilities().get(i).getIcon());
                 addListenerAbilities(i);
             }
         }
 
-        if (inGameClass.getMasteryAbility() == null || inGameClass.getMasteryAbility().getName().equals("-")){
-            masteryAbility.setText("-");
-            imageViewMasteryAbility.setVisibility(View.INVISIBLE);
+        if (inGameClass.getMasteryAbility() == null || inGameClass.getMasteryAbility().getName().equals("-")) {
+            masteryAbility.setVisibility(View.GONE);
+            imageViewMasteryAbility.setVisibility(View.GONE);
         } else {
-            masteryAbility.setText(inGameClass.getMasteryAbility().getName());
+            // Set the text, underline it and give it color
+            SpannableString text = new SpannableString(inGameClass.getMasteryAbility().getName());
+            text.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+            masteryAbility.setText(text);
+            masteryAbility.setTextColor(getResources().getColor(R.color.colorPrimary));
+
             imageViewMasteryAbility.setImageResource(inGameClass.getMasteryAbility().getIcon());
             addListenerMasteryAbility();
         }
 
 
-        if (inGameClass.getMasteryCombatArt() == null || inGameClass.getMasteryCombatArt().getName().equals("-")){
-            masteryCombatArt.setText("-");
-            imageViewMasteryCombatArt.setVisibility(View.INVISIBLE);
+        if (inGameClass.getMasteryCombatArt() == null || inGameClass.getMasteryCombatArt().getName().equals("-")) {
+            masteryCombatArt.setVisibility(View.GONE);
+            imageViewMasteryCombatArt.setVisibility(View.GONE);
         } else {
-            masteryCombatArt.setText(inGameClass.getMasteryCombatArt().getName());
+            // Set the text, underline it and give it color
+            SpannableString text = new SpannableString(inGameClass.getMasteryCombatArt().getName());
+            text.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+            masteryCombatArt.setText(text);
+            masteryCombatArt.setTextColor(getResources().getColor(R.color.colorPrimary));
+
             imageViewMasteryCombatArt.setImageResource(inGameClass.getMasteryCombatArt().getIcon());
             addListenerMasteryCombatArt();
         }
 
-        for (Stat stat : Stat.values()){
+        for (Stat stat : Stat.values()) {
             growthRates.get(stat).setText(inGameClass.getGrowthRates().get(stat));
         }
 
         certificationRequirements.setText(inGameClass.getCertificationRequirement());
         seal.setText(inGameClass.getSeal());
         restrictions.setText(inGameClass.getRestrictions());
-        if (inGameClass.getCanUse().equals("-")){
+        if (inGameClass.getCanUse().equals("-")) {
             canUse.setVisibility(View.GONE);
         } else {
             canUse.setText(inGameClass.getCanUse());
@@ -245,7 +244,7 @@ public class InGameClassActivity extends AppCompatActivity {
         experience.setText(String.valueOf(inGameClass.getExperience()));
     }
 
-    private void addListenerAbilities(int i){
+    private void addListenerAbilities(int i) {
         abilities.get(i).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,7 +254,7 @@ public class InGameClassActivity extends AppCompatActivity {
         });
     }
 
-    private void addListenerMasteryAbility(){
+    private void addListenerMasteryAbility() {
         masteryAbility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -265,7 +264,7 @@ public class InGameClassActivity extends AppCompatActivity {
         });
     }
 
-    private void addListenerMasteryCombatArt(){
+    private void addListenerMasteryCombatArt() {
         masteryCombatArt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -275,7 +274,7 @@ public class InGameClassActivity extends AppCompatActivity {
         });
     }
 
-    public void showAbilityPopup(String abilityName){
+    public void showAbilityPopup(String abilityName) {
         Ability ability = fc.getAbility(abilityName);
 
         // Set the name of the ability as the title for the popup
@@ -290,10 +289,10 @@ public class InGameClassActivity extends AppCompatActivity {
         // Show the origin of the ability
         aPUOrigin.setText(ability.getOrigin());
 
-        sweetSheetAbility.show();
+        myDialogAbility.show();
     }
 
-    public void showCombatArtPopup(String combatArtName){
+    public void showCombatArtPopup(String combatArtName) {
         CombatArtClassMastery cArt = fc.getCombatArtClassMastery(combatArtName);
 
         // Set the name of the combat art as the title for the popup
@@ -316,13 +315,23 @@ public class InGameClassActivity extends AppCompatActivity {
 
         // Set all 6 stats to the table (dur, mt, hit, avo, crit, range)
         int i = 6;
-        for (String stat : cArt.getStats().values()){
+        for (String stat : cArt.getStats().values()) {
             TextView textViewStat = (TextView) cPUTable.getChildAt(i);
             textViewStat.setText(stat);
             i++;
         }
 
-        sweetSheetCombatArt.show();
+        myDialogCombatArt.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (myDialogAbility.isShowing()) {
+            myDialogAbility.dismiss();
+        } else if (myDialogCombatArt.isShowing()) {
+            myDialogCombatArt.dismiss();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

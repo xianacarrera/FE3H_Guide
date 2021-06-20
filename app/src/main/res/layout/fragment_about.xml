@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/mainBackground"
     tools:context=".AboutFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/elevation1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_about_info">
@@ -121,6 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/elevation1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_twitter">
@@ -190,6 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/elevation1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

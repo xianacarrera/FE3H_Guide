@@ -15,15 +15,20 @@
     <color name="textAlt">#424245</color>
     <color name="mainBackground">#E3E3E3</color>
     <color name="elevation1">#FFFFFF</color>
+    <color name="elevation2">#BFFFFFFF</color>
+    <color name="elevation3">#FFFFFFFF</color>
 
     <color name="purpleDarkMode">#975EE8</color>
+    <color name="toolbar">#975EE8</color>
+    <color name="navigation_view_dark">#121212</color>
+
 
 
     <color name="fixedTextColor">#424245</color>
 
 
     <!-- Accent -->
-    <color name="purple_accent">#BB86FC</color>
+    <color name="purple_accent">#9856EA</color>
     <color name="purple_accent_2">#BEBB86FC</color>
 
     <!-- Backgrounds -->

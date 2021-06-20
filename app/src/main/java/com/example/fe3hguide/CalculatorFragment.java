@@ -160,6 +160,10 @@ public class CalculatorFragment extends Fragment {
         // enable scalling
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
+
+        // colors
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(getResources().getColor(R.color.mainText));
+        graph.getGridLabelRenderer().setVerticalLabelsColor(getResources().getColor(R.color.mainText));
     }
 
 

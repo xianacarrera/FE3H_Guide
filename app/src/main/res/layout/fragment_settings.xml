@@ -13,8 +13,12 @@
         android:id="@+id/switch_dark_moode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Switch"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/enable_dark_mode"
+        android:textColor="@color/mainText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

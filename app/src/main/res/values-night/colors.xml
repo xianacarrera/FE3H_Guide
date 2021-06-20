@@ -12,16 +12,23 @@
 
     <!-- Dark Mode -->
     <color name="mainText">#ffffff</color>
-    <color name="textAlt">#BCBCBD</color>
+    <color name="textAlt">#F5E6E5E5</color>
     <color name="mainBackground">#121212</color>
-    <color name="elevation1">#1F1B24</color>
+    <color name="elevation1">#CB342E3C</color>
+    <color name="elevation2">#66544E5A</color>
+    <color name="elevation3">#66968E9E</color>
+
+
 
     <color name="purpleDarkMode">#4310B6</color>
+    <color name="toolbar">#CB342E3C</color>
+    <color name="navigation_view_dark">#121212</color>
+
 
     <color name="fixedTextColor">#424245</color>
 
     <!-- Accent -->
-    <color name="purple_accent">#BB86FC</color>
+    <color name="purple_accent">#9856EA</color>
     <color name="purple_accent_2">#BEBB86FC</color>
 
     <!-- Backgrounds -->

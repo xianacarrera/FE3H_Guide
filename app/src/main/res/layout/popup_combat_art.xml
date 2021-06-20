@@ -6,12 +6,12 @@
     android:layout_height="475dp"
     android:layout_gravity="bottom|center_horizontal"
     android:orientation="vertical"
+    android:background="@color/elevation2"
     android:padding="5dp">
 
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="35dp"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -21,7 +21,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            app:cardBackgroundColor="@color/purple_accent"
+            app:cardBackgroundColor="@color/purpleDarkMode"
             app:cardCornerRadius="8dp">
 
             <TextView
@@ -52,7 +52,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            app:cardBackgroundColor="@color/purple_accent_2"
+            app:cardBackgroundColor="@color/purple_accent"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -69,8 +69,8 @@
                     android:layout_marginRight="16dp"
                     android:text="@string/effect"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textColor="@color/mainText"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/textview_combat_art_effect"
@@ -83,7 +83,7 @@
                     android:gravity="center_horizontal"
                     android:text="@string/error"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/textAlt" />
 
 
 
@@ -101,22 +101,24 @@
                     android:paddingLeft="6dp"
                     android:text="@string/weapon"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:textColor="@color/mainText"
+                    android:textStyle="bold|italic"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/text2_combat_art_popup"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/popup_combat_art_text_weapon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="48dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginEnd="12dp"
                     android:text="text"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textAlt"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toRightOf="@id/weapon_text_popup_combat_art"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/weapon_text_popup_combat_art" />
 
                 <TextView
@@ -129,21 +131,25 @@
                     android:layout_marginBottom="16dp"
                     android:text="text:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:textColor="@color/mainText"
+                    android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/weapon_text_popup_combat_art" />
 
                 <TextView
                     android:id="@+id/text2_answer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="48dp"
                     android:text="text"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/popup_combat_art_text_weapon"
+                    android:textColor="@color/textAlt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/weapon_text_popup_combat_art"
                     app:layout_constraintTop_toTopOf="@+id/text2_combat_art_popup" />
 
                 <ImageView

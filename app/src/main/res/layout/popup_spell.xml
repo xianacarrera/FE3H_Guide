@@ -5,6 +5,7 @@
     android:layout_height="450dp"
     android:layout_gravity="bottom|center_horizontal"
     android:orientation="vertical"
+    android:background="@color/elevation2"
     android:padding="5dp">
 
     <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            app:cardBackgroundColor="@color/purple_accent"
+            app:cardBackgroundColor="@color/purpleDarkMode"
             app:cardCornerRadius="8dp">
 
             <TextView
@@ -57,7 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Test"
-                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textColor="@color/mainText"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +75,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            app:cardBackgroundColor="@color/purple_accent_2"
+            app:cardBackgroundColor="@color/purple_accent"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -94,8 +96,8 @@
                         android:layout_marginLeft="20dp"
                         android:text="@string/description"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textColor="@color/mainText"
+                        android:textStyle="bold|italic" />
 
                     <TextView
                         android:id="@+id/textView_spell_description"
@@ -105,7 +107,7 @@
                         android:layout_marginLeft="10dp"
                         android:text="@string/error"
                         android:gravity="left"
-                        android:textColor="@color/black"
+                        android:textColor="@color/textAlt"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </LinearLayout>
@@ -129,8 +131,8 @@
                         android:layout_marginLeft="20dp"
                         android:text="@string/rank"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textColor="@color/mainText"
+                        android:textStyle="bold|italic" />
 
                     <TextView
                         android:id="@+id/textview_spell_rank"
@@ -140,7 +142,7 @@
                         android:layout_marginLeft="10dp"
                         android:text="@string/error"
                         android:gravity="left"
-                        android:textColor="@color/black"
+                        android:textColor="@color/textAlt"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </LinearLayout>
@@ -164,8 +166,8 @@
                         android:layout_marginLeft="20dp"
                         android:text="@string/uses"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textColor="@color/mainText"
+                        android:textStyle="bold|italic" />
 
                     <TextView
                         android:id="@+id/textview_spell_uses"
@@ -176,7 +178,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="@string/error"
                         android:gravity="left"
-                        android:textColor="@color/black"
+                        android:textColor="@color/textAlt"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </LinearLayout>

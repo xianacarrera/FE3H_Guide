@@ -1,8 +1,10 @@
 package com.example.fe3hguide.teaTime;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -50,7 +52,7 @@ public class TeaTimeFragment extends Fragment
     // Second half of the screen
     private CardView cardInfoTeas;
     private ConstraintLayout layoutTeas, layoutTopics, layoutFinalConvos;
-    private ImageView imageFavouriteTeas, imageTopics, iamgeFinalConvos;
+    private Button buttonFavouriteTeas, buttonTopics, buttonFinalConvos;
     private ConstraintLayout bottomTab;
     private String selectedCharacter;
 
@@ -91,9 +93,9 @@ public class TeaTimeFragment extends Fragment
         layoutFinalConvos = (ConstraintLayout)
                 scrollView.findViewById(R.id.constraintLayout_info_final_convos);
         bottomTab = (ConstraintLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
-        imageFavouriteTeas = (ImageView) scrollView.findViewById(R.id.imageView_tea_cup);
-        imageTopics = (ImageView) scrollView.findViewById(R.id.imageView_topics);
-        iamgeFinalConvos = (ImageView) scrollView.findViewById(R.id.imageView_final_convo);
+        buttonFavouriteTeas = (Button) scrollView.findViewById(R.id.button_favourite_teas);
+        buttonTopics = (Button) scrollView.findViewById(R.id.button_topics);
+        buttonFinalConvos = (Button) scrollView.findViewById(R.id.button_final_conversations);
 
         // Search result
         likedSpecifically = (TextView) scrollView.findViewById(R.id.textView_liked_especifically_by);
@@ -170,9 +172,9 @@ public class TeaTimeFragment extends Fragment
         buttonHaveTea.setOnClickListener(this);     // Button that displays information
 
         // Prepare listeners for the bottom tab buttons
-        imageFavouriteTeas.setOnClickListener(this);
-        imageTopics.setOnClickListener(this);
-        iamgeFinalConvos.setOnClickListener(this);
+        buttonFavouriteTeas.setOnClickListener(this);
+        buttonTopics.setOnClickListener(this);
+        buttonFinalConvos.setOnClickListener(this);
     }
 
     @Override
@@ -205,16 +207,24 @@ public class TeaTimeFragment extends Fragment
                 // The bottom tab is now visible
                 bottomTab.setVisibility(View.VISIBLE);
 
+                // The bottom tab buttons are not visible, but work as intended
+                buttonFavouriteTeas.setVisibility(View.VISIBLE);
+                buttonFavouriteTeas.setBackgroundColor(Color.TRANSPARENT);
+                buttonTopics.setVisibility(View.VISIBLE);
+                buttonTopics.setBackgroundColor(Color.TRANSPARENT);
+                buttonFinalConvos.setVisibility(View.VISIBLE);
+                buttonFinalConvos.setBackgroundColor(Color.TRANSPARENT);
+
                 break;
-            case R.id.imageView_tea_cup:
+            case R.id.button_favourite_teas:
                 // Show views related to the character's favourite teas and hide the rest
                 changeTab(0);
                 break;
-            case R.id.imageView_topics:
+            case R.id.button_topics:
                 // Show views related to the topics and hide the rest
                 changeTab(1);
                 break;
-            case R.id.imageView_final_convo:
+            case R.id.button_final_conversations:
                 // Show views related to the character's final conversations and hide the rest
                 changeTab(2);
         }

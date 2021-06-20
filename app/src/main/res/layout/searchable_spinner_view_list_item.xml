@@ -7,6 +7,7 @@
     android:paddingBottom="4dp"
     android:paddingEnd="4dp"
     android:paddingStart="8dp"
+    android:background="@color/fbutton_color_wisteria"
     android:orientation="horizontal">
 
     <ImageView
@@ -18,6 +19,7 @@
         android:id="@+id/TxtVw_DisplayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/mainText"
         android:layout_marginStart="8dp"
         android:layout_gravity="center_vertical"/>
 

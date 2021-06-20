@@ -5,7 +5,7 @@
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
+    android:background="@color/mainBackground"
     android:fillViewport="true"
     tools:context=".teaTime.TeaTimeFragment">
 
@@ -33,13 +33,13 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="7dp"
                 android:gravity="center_horizontal"
-                app:DoneSearchTintColor="@android:color/holo_purple"
-                app:RevealViewBackgroundColor="@android:color/holo_purple"
+                app:DoneSearchTintColor="@color/fbutton_color_wisteria"
+                app:RevealViewBackgroundColor="@color/fbutton_color_wisteria"
                 app:SearchHintText="@string/character_hint"
-                app:SearchViewBackgroundColor="@android:color/secondary_text_dark"
+                app:SearchViewBackgroundColor="@color/fbutton_color_wisteria"
                 app:ShowBorders="false"
                 app:SpinnerExpandHeight="300dp"
-                app:StartSearchTintColor="@android:color/white"
+                app:StartSearchTintColor="@color/elevation1"
                 android:hint="@string/character_hint"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="@id/guideline6"
@@ -71,6 +71,7 @@
                 fbutton:shadowHeight="5dp"
                 fbutton:cornerRadius="10dp"
                 android:text="@string/have_tea"
+                android:textColor="@color/mainText"
                 app:layout_constraintEnd_toEndOf="@+id/searchable_spinner"
                 app:layout_constraintStart_toStartOf="@+id/searchable_spinner"
                 app:layout_constraintTop_toBottomOf="@+id/searchable_spinner"
@@ -94,6 +95,7 @@
             android:layout_marginBottom="12dp"
             android:elevation="4dp"
             app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/elevation1"
             app:layout_constraintBottom_toTopOf="@id/tea_time_botton_tab"
             app:layout_constraintEnd_toEndOf="@id/contraint_search_tea_character"
             app:layout_constraintStart_toStartOf="@id/contraint_search_tea_character"
@@ -110,6 +112,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/favourite_teas"
+                    android:textColor="@color/mainText"
+                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -119,13 +123,13 @@
                     android:id="@+id/divider_teas"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/light_gray"
+                    android:background="@color/elevation2"
                     android:layout_marginTop="8dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintLeft_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textview_favourite_teas" />
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/linearLayout_favourite_teas"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -133,85 +137,110 @@
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="@id/constraintLayout_infoTeas"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider_teas">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardview"
-                        android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="32dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_favourite_teas">
+                        app:layout_goneMarginEnd="32dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
 
-                        <LinearLayout
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardview_liked_by_everyone"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/green_tea"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginStart="4dp"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginBottom="12dp"
-                                android:gravity="center_horizontal"
-                                android:text="@string/liked_by_everyone"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/purpleDarkMode"
+                                android:orientation="vertical"
+                                android:paddingTop="16dp"
+                                android:paddingBottom="16dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/teas_liked_by_everyone"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:gravity="center_horizontal"
+                                    android:text="@string/liked_by_everyone"
+                                    android:textColor="@color/mainText"
+                                    android:textSize="16sp" />
 
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                                <TextView
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center_horizontal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/teas_liked_by_everyone"
+                                    android:textColor="@color/textAlt" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="4dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_favourite_teas">
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@color/green_tea"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginBottom="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cardview_liked_by_everyone"
+                            >
 
-                            <TextView
-                                android:id="@+id/textView_liked_especifically_by"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginStart="4dp"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginBottom="12dp"
-                                android:gravity="center_horizontal"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/purpleDarkMode"
+                                android:orientation="vertical"
+                                android:paddingTop="16dp"
+                                android:paddingBottom="16dp">
 
-                            <TextView
-                                android:id="@+id/textView_teas_liked_specifically"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                                <TextView
+                                    android:id="@+id/textView_liked_especifically_by"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:gravity="center_horizontal"
+                                    android:textColor="@color/mainText"
+                                    android:textSize="16sp" />
 
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                                <TextView
+                                    android:gravity="center_horizontal"
+                                    android:layout_gravity="center_horizontal"
+                                    android:id="@+id/textView_teas_liked_specifically"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/textAlt" />
 
-                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -219,6 +248,7 @@
                 android:id="@+id/contraint_layout_info_topics"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/elevation1"
                 android:visibility="gone">
 
                 <TextView
@@ -227,6 +257,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/topics"
+                    android:textColor="@color/mainText"
+                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -237,7 +269,7 @@
                     android:id="@+id/divider_topics"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/light_gray"
+                    android:background="@color/elevation2"
                     android:layout_marginTop="8dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintLeft_toRightOf="parent"
@@ -253,6 +285,8 @@
                     android:completionThreshold="1"
                     android:ems="14"
                     android:hint="@string/search_for_a_topic"
+                    android:textColor="@color/mainText"
+                    android:textColorHint="@color/mainText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider_topics" />
@@ -275,6 +309,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:cacheColorHint="@color/mainText"
                             android:paddingStart="?android:attr/expandableListPreferredItemIndicatorLeft" />
 
                     </LinearLayout>
@@ -286,6 +321,7 @@
                 android:id="@+id/constraintLayout_info_final_convos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/elevation1"
                 android:visibility="gone">
 
 
@@ -295,6 +331,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/final_conversation_title"
+                    android:textColor="@color/mainText"
+                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -304,7 +342,7 @@
                     android:id="@+id/divider_final_convos"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/light_gray"
+                    android:background="@color/elevation2"
                     android:layout_marginTop="8dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintLeft_toRightOf="parent"
@@ -334,7 +372,7 @@
             android:id="@+id/tea_time_botton_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/green_tea"
+            android:background="@color/purpleDarkMode"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -357,7 +395,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/favourite_teas"
-                android:textColor="@color/black"
+                android:textColor="@color/mainText"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="@id/imageView_tea_cup"
@@ -380,7 +418,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/topics"
-                android:textColor="@color/black"
+                android:textColor="@color/mainText"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="@id/imageView_topics"
@@ -403,12 +441,58 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/final_conversation_title"
-                android:textColor="@color/black"
+                android:textColor="@color/mainText"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="@id/imageView_final_convo"
                 app:layout_constraintRight_toRightOf="@id/imageView_final_convo"
                 app:layout_constraintTop_toBottomOf="@id/imageView_final_convo" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.33"
+                fbutton:layout_constraintGuide_begin="109dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6"
+                fbutton:layout_constraintGuide_begin="235dp" />
+
+            <Button
+                android:id="@+id/button_favourite_teas"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text=""
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <Button
+                android:id="@+id/button_topics"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text=""
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toStartOf="@+id/guideline7" />
+
+            <Button
+                android:id="@+id/button_final_conversations"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text=""
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline8" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,6 +44,5 @@ dependencies {
     implementation 'com.mxn.soul:flowingdrawer-core:2.1.0'
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'info.hoang8f:fbutton:1.0.5'
-    implementation 'com.github.zzz40500:AndroidSweetSheet:1.1.0'
     implementation 'com.jjoe64:graphview:4.2.2'
 }

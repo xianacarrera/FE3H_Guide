@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="350dp"
-    android:layout_height="450dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom|center_horizontal"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:background="@color/elevation2"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:layout_gravity="center_horizontal|bottom"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -18,7 +20,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            app:cardBackgroundColor="@color/purple_accent"
+            app:cardBackgroundColor="@color/purpleDarkMode"
             app:cardCornerRadius="8dp">
 
             <TextView
@@ -28,6 +30,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="4dp"
                 android:text="Test"
+                android:gravity="center_horizontal"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:textStyle="bold" />
@@ -49,7 +52,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            app:cardBackgroundColor="@color/purple_accent_2"
+            app:cardBackgroundColor="@color/purple_accent"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -65,7 +68,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="@string/effect"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
+                    android:textColor="@color/mainText"
                     android:textStyle="bold" />
 
                 <TextView
@@ -75,7 +78,7 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/error"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textAlt"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <View
@@ -83,7 +86,7 @@
                     android:id="@+id/divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/black" />
+                    android:background="@color/elevation3" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,7 +96,7 @@
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/mainText" />
 
                 <TextView
                     android:id="@+id/textview_ability_origin"
@@ -102,7 +105,7 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/error"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textAlt"
                     android:layout_marginBottom="12dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

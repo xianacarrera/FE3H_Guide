@@ -1,5 +1,6 @@
 package com.example.fe3hguide.characters.profile;
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -21,9 +23,6 @@ import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.AbilitiesAdapter;
 import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.model.Ability;
-import com.mingle.sweetpick.CustomDelegate;
-import com.mingle.sweetpick.DimEffect;
-import com.mingle.sweetpick.SweetSheet;
 
 import java.util.List;
 
@@ -33,7 +32,6 @@ public class AbilitiesFragment extends Fragment {
     private final SQLiteDatabase db;
     private final AbilitiesFragment fragment;
     private final Facade fc;
-    private SweetSheet sweetSheet;
     private View popUpLayout;
 
     private Spinner spinner;
@@ -41,6 +39,7 @@ public class AbilitiesFragment extends Fragment {
     private RecyclerView uniqueRecycler;
 
     // PopUp components;
+    private Dialog myDialog;
     private TextView titleAbilityName;
     private ImageView iconAbility;
     private TextView abilityEffect;
@@ -65,8 +64,11 @@ public class AbilitiesFragment extends Fragment {
         RelativeLayout layout = (RelativeLayout)
                 inflater.inflate(R.layout.fragment_abilities, container, false);
 
-        preparePopUp(layout);
+        myDialog = new Dialog(getActivity());
+        myDialog.setContentView(R.layout.popup_ability);
+
         initComponents(layout);
+        setUpComponents();
 
         // Search and display abilities unique to the character
         prepareUniqueAbilities();
@@ -78,27 +80,23 @@ public class AbilitiesFragment extends Fragment {
         return layout;
     }
 
-    private void preparePopUp(RelativeLayout layout) {
-        sweetSheet = new SweetSheet(layout);
-        CustomDelegate customDelegate = new CustomDelegate(true,
-                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
-        popUpLayout = LayoutInflater.from(getContext()).inflate(R.layout.popup_ability,
-                null, false);
-        customDelegate.setCustomView(popUpLayout);
-        sweetSheet.setDelegate(customDelegate);
-        sweetSheet.setBackgroundEffect(new DimEffect(0.5f));
-    }
-
     private void initComponents(RelativeLayout layout) {
         uniqueRecycler = (RecyclerView) layout.findViewById(R.id.recycler_abilities_1);
         allAbilitiesRecycler = (RecyclerView) layout.findViewById(R.id.recycler_abilities_2);
         spinner = (Spinner) layout.findViewById(R.id.spinner_abilities);
 
         // PopUp components
-        titleAbilityName = (TextView) popUpLayout.findViewById(R.id.textView_title_ability_name);
-        iconAbility = (ImageView) popUpLayout.findViewById(R.id.ability_icon);
-        abilityEffect = (TextView) popUpLayout.findViewById(R.id.textView_ability_effect);
-        abilityOrigin = (TextView) popUpLayout.findViewById(R.id.textview_ability_origin);
+        titleAbilityName = (TextView) myDialog.findViewById(R.id.textView_title_ability_name);
+        iconAbility = (ImageView) myDialog.findViewById(R.id.ability_icon);
+        abilityEffect = (TextView) myDialog.findViewById(R.id.textView_ability_effect);
+        abilityOrigin = (TextView) myDialog.findViewById(R.id.textview_ability_origin);
+    }
+
+    private void setUpComponents(){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.abilities_types, R.layout.spinner_list);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 
     private void prepareUniqueAbilities() {
@@ -191,6 +189,6 @@ public class AbilitiesFragment extends Fragment {
         // Show the origin of the ability
         abilityOrigin.setText(ability.getOrigin());
 
-        sweetSheet.show();
+        myDialog.show();
     }
 }

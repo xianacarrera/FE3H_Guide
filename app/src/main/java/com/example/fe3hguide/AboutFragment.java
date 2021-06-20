@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -56,6 +57,9 @@ public class AboutFragment extends Fragment {
     }
 
     private void setUpComponents(){
+        // Set "About" as the text in the toolbar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.nav_about));
+
         setUpAboutInfo();
         setUpDisclaimer();
     }

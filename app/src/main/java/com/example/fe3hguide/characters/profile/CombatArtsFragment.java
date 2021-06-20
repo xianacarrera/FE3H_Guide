@@ -1,5 +1,6 @@
 package com.example.fe3hguide.characters.profile;
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -22,9 +24,6 @@ import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.CombatArtsAdapter;
 import com.example.fe3hguide.database.Facade;
 import com.example.fe3hguide.model.CombatArt;
-import com.mingle.sweetpick.CustomDelegate;
-import com.mingle.sweetpick.DimEffect;
-import com.mingle.sweetpick.SweetSheet;
 
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class CombatArtsFragment extends Fragment {
     private final SQLiteDatabase db;
     private final CombatArtsFragment fragment;
     private final Facade fc;
-    private SweetSheet sweetSheet;
     private View popUpLayout;
 
     private Spinner spinner;
@@ -42,6 +40,7 @@ public class CombatArtsFragment extends Fragment {
     private RecyclerView uniqueRecycler;
 
     // PopUp components
+    private Dialog myDialog;
     private TextView titleCombatArtName;
     private ImageView combatArtIcon;
     private TextView textEffect;
@@ -68,8 +67,11 @@ public class CombatArtsFragment extends Fragment {
         RelativeLayout layout = (RelativeLayout)
                 inflater.inflate(R.layout.fragment_combat_arts, container, false);
 
-        preparePopUp(layout);
+        myDialog = new Dialog(getActivity());
+        myDialog.setContentView(R.layout.popup_combat_art);
+
         initComponents(layout);         // Components of the CombatArtsFragment and the dialog
+        setUpComponents();
 
         // Search and display combat arts unique to the character
         prepareUniqueCombatArts();
@@ -81,16 +83,6 @@ public class CombatArtsFragment extends Fragment {
         return layout;
     }
 
-    private void preparePopUp(RelativeLayout layout){
-        sweetSheet = new SweetSheet(layout);
-        CustomDelegate customDelegate = new CustomDelegate(true,
-                CustomDelegate.AnimationType.DuangLayoutAnimation, 1700);
-        popUpLayout = LayoutInflater.from(getContext()).inflate(R.layout.popup_combat_art,
-                null, false);
-        customDelegate.setCustomView(popUpLayout);
-        sweetSheet.setDelegate(customDelegate);
-        sweetSheet.setBackgroundEffect(new DimEffect(0.5f));
-    }
 
     private void initComponents(RelativeLayout layout){
         uniqueRecycler = (RecyclerView) layout.findViewById(R.id.recycler_combat_arts_1);
@@ -98,13 +90,20 @@ public class CombatArtsFragment extends Fragment {
         spinner = (Spinner) layout.findViewById(R.id.spinner_combat_arts);
 
         // PopUp components
-        titleCombatArtName = (TextView) popUpLayout.findViewById(R.id.textview_title_combat_art_name);
-        combatArtIcon = (ImageView) popUpLayout.findViewById(R.id.combat_art_icon);
-        textEffect = (TextView) popUpLayout.findViewById(R.id.textview_combat_art_effect);
-        textWeapon = (TextView) popUpLayout.findViewById(R.id.popup_combat_art_text_weapon);
-        text2 = (TextView) popUpLayout.findViewById(R.id.text2_combat_art_popup);
-        text2Answer = (TextView) popUpLayout.findViewById(R.id.text2_answer);
-        table = (ConstraintLayout) popUpLayout.findViewById(R.id.constraint_layout_combat_art_table);
+        titleCombatArtName = (TextView) myDialog.findViewById(R.id.textview_title_combat_art_name);
+        combatArtIcon = (ImageView) myDialog.findViewById(R.id.combat_art_icon);
+        textEffect = (TextView) myDialog.findViewById(R.id.textview_combat_art_effect);
+        textWeapon = (TextView) myDialog.findViewById(R.id.popup_combat_art_text_weapon);
+        text2 = (TextView) myDialog.findViewById(R.id.text2_combat_art_popup);
+        text2Answer = (TextView) myDialog.findViewById(R.id.text2_answer);
+        table = (ConstraintLayout) myDialog.findViewById(R.id.constraint_layout_combat_art_table);
+    }
+
+    private void setUpComponents(){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.combat_arts_types, R.layout.spinner_list);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 
     private void prepareUniqueCombatArts(){
@@ -218,6 +217,6 @@ public class CombatArtsFragment extends Fragment {
             i++;
         }
 
-        sweetSheet.show();
+        myDialog.show();
     }
 }

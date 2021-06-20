@@ -249,8 +249,9 @@ public class GeneralFragment extends Fragment {
         }
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
-                getContext(), R.layout.support_simple_spinner_dropdown_item, spinnerClassesNames
+                getContext(), R.layout.spinner_list, spinnerClassesNames
         );
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
 
         spinner.setSelection(0);        // "None" is selected by default

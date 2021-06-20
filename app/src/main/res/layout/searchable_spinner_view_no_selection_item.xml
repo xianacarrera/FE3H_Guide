@@ -5,6 +5,7 @@
     android:orientation="horizontal"
     android:paddingStart="8dp"
     android:paddingTop="8dp"
+    android:background="@color/fbutton_color_wisteria"
     android:paddingEnd="4dp"
     android:paddingBottom="8dp">
 
@@ -14,5 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dp"
-        android:text="@string/no_selection" />
+        android:text="@string/no_selection"
+        android:textStyle="italic"
+        android:textColor="@color/mainText"/>
 </LinearLayout>

@@ -47,6 +47,9 @@
         <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@color/mainBackground"
+            app:itemIconTint="@color/mainText"
+            app:itemTextColor="@color/mainText"
             android:id="@+id/nav_view"
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header"
