@@ -371,82 +371,43 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tea_time_botton_tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="@color/purpleDarkMode"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView_tea_cup"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_cup"
-                app:layout_constraintHorizontal_bias="0.38"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/imageView_topics"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/favourite_teas"
-                android:textColor="@color/mainText"
-                android:textSize="16sp"
+            <devlight.io.library.ntb.NavigationTabBar
+                android:id="@+id/navigation_tab_bar_tea_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:ntb_animation_duration="400"
+                app:ntb_preview_colors="@array/nav_tab_bar_colors"
+                app:ntb_corners_radius="10dp"
+                app:ntb_active_color="@color/white"
+                app:ntb_inactive_color="@color/nav_tab_bar_inactive"
+                app:ntb_badged="true"
+                app:ntb_titled="true"
+                app:ntb_scaled="true"
+                app:ntb_tinted="true"
+                app:ntb_title_mode="all"
+                app:ntb_badge_position="right"
+                app:ntb_badge_gravity="top"
+                app:ntb_badge_bg_color="@color/purple_2_background"
+                app:ntb_badge_title_color="#ffffffff"
+                app:ntb_typeface="fonts/custom_typeface.ttf"
+                app:ntb_badge_use_typeface="true"
+                app:ntb_swiped="true"
+                app:ntb_bg_color="@color/purpleDarkMode"
+                app:ntb_icon_size_fraction="0.5"
+                app:ntb_badge_size="10sp"
+                app:ntb_title_size="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/imageView_tea_cup"
-                app:layout_constraintRight_toRightOf="@id/imageView_tea_cup"
-                app:layout_constraintTop_toBottomOf="@id/imageView_tea_cup" />
-
-
-            <ImageView
-                android:id="@+id/imageView_topics"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_topics"
-                app:layout_constraintLeft_toLeftOf="@id/imageView_tea_cup"
-                app:layout_constraintRight_toRightOf="@id/imageView_final_convo"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/topics"
-                android:textColor="@color/mainText"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/imageView_topics"
-                app:layout_constraintRight_toRightOf="@id/imageView_topics"
-                app:layout_constraintTop_toBottomOf="@id/imageView_topics" />
-
-
-            <ImageView
-                android:id="@+id/imageView_final_convo"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_final_convo"
-                app:layout_constraintLeft_toRightOf="@id/imageView_topics"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/imageView_topics" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/final_conversation_title"
-                android:textColor="@color/mainText"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/imageView_final_convo"
-                app:layout_constraintRight_toRightOf="@id/imageView_final_convo"
-                app:layout_constraintTop_toBottomOf="@id/imageView_final_convo" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="4dp"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline7"
@@ -461,39 +422,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.6"
+                app:layout_constraintGuide_percent="0.665"
                 fbutton:layout_constraintGuide_begin="235dp" />
-
-            <Button
-                android:id="@+id/button_favourite_teas"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text=""
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline7"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <Button
-                android:id="@+id/button_topics"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text=""
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline8"
-                app:layout_constraintStart_toStartOf="@+id/guideline7" />
-
-            <Button
-                android:id="@+id/button_final_conversations"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text=""
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline8" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

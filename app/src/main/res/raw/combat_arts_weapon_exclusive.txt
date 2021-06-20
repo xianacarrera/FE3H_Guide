@@ -1,13 +1,13 @@
 Ruptured Heaven_Might increases based on user's Magic. Effective against Dragon foes_Sword of the Creator_Crest of Flames (only usable by Byleth)_-3_+7_+10_-_+10_1-2
 Sublime Heaven_Might increases based on user's Magic. Effective against Dragon foes_Sublime Creator Sword_Crest of Flames (only usable by Byleth)_-3_+10_+10_-_+20_1-2
 Heaven's Fall_Might increases based on user's Magic_Dark Creator Sword_Crest of Flames_-3_+10_+10_-_+10_1-2
-Foudroyant Strike_Effective against Armored and Dragon foes_Thunderbrand_Crest of Charon_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+6_+30_+30_0_1
-Raging Storm_If attack lands, user can move again. Effective against Dragon foes_Amyr_Crest of Seiros_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+14_+10_-_-_1
-Atrocity_Effective against all foes_Areadbhar_Crest of Blaiddyd_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+15_+20_-_-_1
-Fallen Star_Avoids all attacks during the next round of combat. Effective against Dragon foes_Failnaught_Crest of Riegan_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+10_+30_+10_-_2-3
-Ruined Sky_Effective against Flying and Dragon foes_Lance of Ruin_Crest of Gautier_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+13_+10_+10_+10_1
-Burning Quake_Might increases based on user's Speed. Effective against Dragon foes_Lúin_Crest of Daphnel_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+8_-_+20_+10_1
-Dust_Inflicts Def -5 on foe for 1 turn. Effective against Dragon foes_Crusher_Crest of Dominic_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+20_-_-_-_1
-Apocalyptic Flame_Inflicts Str -5 on foe for 1 turn. Effective against Dragon foes_Freikugel_Crest of Doneril_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+15_+20_-_-_1
-Beast Fang_Effective against Cavalry and Dragon foes_Blutgang_Crest of the Beast/Maurice_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+10_-_+30_-_1
-Eviscerate_Calculates damage using the lower of foe's Def or Res_Vajra-Mushti_Crest of Chevalier_-3 (Major Crest), -4 (Minor Crest), -5 (Crest Sign)_+10_+10_-_+10_1
+Foudroyant Strike_Effective against Armored and Dragon foes_Thunderbrand_Crest of Charon_-3/-4/-5_+6_+30_+30_0_1
+Raging Storm_If attack lands, user can move again. Effective against Dragon foes_Amyr_Crest of Seiros_-3/-4/-5_+14_+10_-_-_1
+Atrocity_Effective against all foes_Areadbhar_Crest of Blaiddyd_-3/-4/-5_+15_+20_-_-_1
+Fallen Star_Avoids all attacks during the next round of combat. Effective against Dragon foes_Failnaught_Crest of Riegan_-3/-4/-5_+10_+30_+10_-_2-3
+Ruined Sky_Effective against Flying and Dragon foes_Lance of Ruin_Crest of Gautier_-3/-4/-5_+13_+10_+10_+10_1
+Burning Quake_Might increases based on user's Speed. Effective against Dragon foes_Lúin_Crest of Daphnel_-3/-4/-5_+8_-_+20_+10_1
+Dust_Inflicts Def -5 on foe for 1 turn. Effective against Dragon foes_Crusher_Crest of Dominic_-3/-4/-5_+20_-_-_-_1
+Apocalyptic Flame_Inflicts Str -5 on foe for 1 turn. Effective against Dragon foes_Freikugel_Crest of Doneril_-3/-4/-5_+15_+20_-_-_1
+Beast Fang_Effective against Cavalry and Dragon foes_Blutgang_Crest of the Beast/Maurice_-3/-4/-5_+10_-_+30_-_1
+Eviscerate_Calculates damage using the lower of foe's Def or Res_Vajra-Mushti_Crest of Chevalier_-3/-4/-5_+10_+10_-_+10_1

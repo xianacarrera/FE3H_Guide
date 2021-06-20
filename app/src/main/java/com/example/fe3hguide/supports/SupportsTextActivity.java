@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.fe3hguide.R;
@@ -19,8 +20,14 @@ public class SupportsTextActivity extends AppCompatActivity {
         setContentView(R.layout.activity_supports_text);
         // Set up the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Support conversations");
         setSupportActionBar(toolbar);
-        // TODO: up button in toolbar
+
+        // Add back arrow to the toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         // Get info
         Intent intent = getIntent();
@@ -45,5 +52,15 @@ public class SupportsTextActivity extends AppCompatActivity {
         // Set the texts
         titleTextView.setText(title);
         textTextView.setText(text);
+    }
+
+    @Override
+    // Back arrow on the toolbar returns to previous activity (if there is any)
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

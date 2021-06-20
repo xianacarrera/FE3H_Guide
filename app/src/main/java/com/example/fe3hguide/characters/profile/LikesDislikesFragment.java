@@ -1,5 +1,6 @@
 package com.example.fe3hguide.characters.profile;
 
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +21,16 @@ import com.example.fe3hguide.adapters.LikesDislikesItemsAdapter;
 
 import java.util.ArrayList;
 
+import devlight.io.library.ntb.NavigationTabBar;
+
 
 public class LikesDislikesFragment extends Fragment {
 
     private final String character;
     private final SQLiteDatabase db;
+    private NavigationTabBar navigationTabBar;
+    private ViewPager viewPager;
+
 
     public LikesDislikesFragment(String character, SQLiteDatabase db){
         this.character = character;
@@ -36,14 +44,120 @@ public class LikesDislikesFragment extends Fragment {
         ConstraintLayout layout = (ConstraintLayout)
                 inflater.inflate(R.layout.fragment_likes_dislikes, container, false);
 
-        prepareRecyclerViewsGifts(layout);
-        prepareRecyclerViewsMeals(layout);
-        prepareRecyclerLostItems(layout);
+        initComponents(layout);
+        setUpComponents();
+        addListeners();
 
         return layout;
     }
 
-    private void prepareRecyclerViewsGifts(ConstraintLayout layout){
+    private void initComponents(ConstraintLayout layout){
+        navigationTabBar = (NavigationTabBar) layout.findViewById(R.id.navigation_tab_bar_likes_dislikes);
+        viewPager = (ViewPager) layout.findViewById(R.id.viewPager_likes_dislikes);
+    }
+
+    private void setUpComponents(){
+        viewPager.setAdapter(new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public boolean isViewFromObject(final View view, final Object object) {
+                return view.equals(object);
+            }
+
+            @Override
+            public void destroyItem(final View container, final int position, final Object object) {
+                ((ViewPager) container).removeView((View) object);
+            }
+
+            @Override
+            public Object instantiateItem(final ViewGroup container, final int position) {
+                View view = null;
+                switch (position){
+                    case 1:
+                        view = LayoutInflater.from(
+                                getContext()).inflate(R.layout.meals, null, false);
+                        prepareRecyclerViewsMeals(view);
+                        break;
+                    case 2:
+                        view = LayoutInflater.from(
+                                getContext()).inflate(R.layout.lost_items, null, false);
+                        prepareRecyclerLostItems(view);
+                        break;
+                    default:
+                        view = LayoutInflater.from(
+                                getContext()).inflate(R.layout.gifts, null, false);
+                        prepareRecyclerViewsGifts(view);
+                }
+
+                container.addView(view);
+                return view;
+            }
+        });
+
+
+
+        ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
+
+        // Get the array with the colors for each tab
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.nav_tab_bar_colors);
+        ArrayList<Integer> navTabColors = new ArrayList<>();
+        for (int i = 0; i < typedArray.length(); i++){
+            navTabColors.add(typedArray.getColor(i, 0));
+        }
+        typedArray.recycle();
+
+        // Prepare the icons and names of the tabs
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.gift),
+                        navTabColors.get(0)
+                ).title("Gifts")
+                .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.meals),
+                        navTabColors.get(1)
+                ).title("Meals")
+                .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.lost_items),
+                        navTabColors.get(2)
+                ).title("Lost items")
+                .build()
+        );
+
+        // Add the model
+        navigationTabBar.setModels(models);
+        navigationTabBar.setViewPager(viewPager);
+    }
+
+    private void addListeners(){
+        navigationTabBar.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(final int position) {
+                navigationTabBar.getModels().get(position).hideBadge();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(final int state) {
+
+            }
+        });
+    }
+
+    private void prepareRecyclerViewsGifts(View layout){
         // Get the information about the character's liked and disliked gifts
         Cursor cursor = db.rawQuery("SELECT g.gift, g.liked " +
                 "FROM Characters AS c NATURAL JOIN CharacterGifts AS g " +
@@ -86,7 +200,7 @@ public class LikesDislikesFragment extends Fragment {
         cursor.close();
     }
 
-    private void prepareRecyclerViewsMeals(ConstraintLayout layout){
+    private void prepareRecyclerViewsMeals(View layout){
         // Get the information about the character's liked and disliked meals
         Cursor cursor = db.rawQuery("SELECT m.meal, m.liked " +
                 "FROM Characters AS c NATURAL JOIN CharacterMeals AS m " +
@@ -129,7 +243,7 @@ public class LikesDislikesFragment extends Fragment {
         cursor.close();
     }
 
-    private void prepareRecyclerLostItems(ConstraintLayout layout){
+    private void prepareRecyclerLostItems(View layout){
         // Get the information about the character's lost items
         Cursor cursor = db.rawQuery("SELECT l.item " +
                 "FROM Characters AS c NATURAL JOIN CharacterLostItems AS l " +

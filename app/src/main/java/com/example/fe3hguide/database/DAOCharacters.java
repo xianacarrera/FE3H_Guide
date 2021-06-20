@@ -372,9 +372,10 @@ public class DAOCharacters extends DAO {
      */
     public List<List<Spell>> getSpells(String characterName){
         // Get the information about the character's magic spells
+        // Search condition is defined as 'like ...%' to take into account both BylethM and BylethF
         Cursor cursor = db.rawQuery("SELECT m.reason, m.faith " +
                 "FROM Characters AS c NATURAL JOIN Magic AS m " +
-                "WHERE c.name = ?", new String[] {characterName});
+                "WHERE c.name like ?", new String[] {characterName + "%"});
 
         List<List<Spell>> spells = new ArrayList<>();
         spells.add(new ArrayList<Spell>());

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.FactionsCardsAdapter;
@@ -41,9 +42,15 @@ public class GoldenDeerActivity extends AppCompatActivity {
     }
 
     private void setupComponents(){
+        // Set "Golden Deer characters" as the text in the toolbar
+        toolbar.setTitle("Golden Deer characters");
         setSupportActionBar(toolbar);
-        // Set "Characters" as the text in the toolbar
-        toolbar.setTitle(getString(R.string.nav_characters));
+
+        // Add back arrow to the toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         // Set adapter for the recycler view
         factionsRecycler.setAdapter(adapter);
@@ -79,5 +86,15 @@ public class GoldenDeerActivity extends AppCompatActivity {
         goldenDeerImages.add(R.drawable.ic_raphael);
         goldenDeerImages.add(R.drawable.ic_ignatz);
         return goldenDeerImages;
+    }
+
+    @Override
+    // Back arrow on the toolbar returns to previous activity (if there is any)
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

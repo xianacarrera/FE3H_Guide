@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.fe3hguide.database.FE3HDatabaseHelper;
 import com.example.fe3hguide.R;
@@ -29,7 +30,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Get access to the database
         SQLiteOpenHelper fe3hDatabaseHelper = new FE3HDatabaseHelper(this);
-        // TODO: TRY-CATCH?
         db = fe3hDatabaseHelper.getReadableDatabase();
 
         // Get the name of the character that defines the profile
@@ -38,7 +38,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Set up the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Character profile");
         setSupportActionBar(toolbar);
+
+        // Add back arrow to the toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         // Attach a TabsPagerAdapter to the ViewPager
         SwipePagerAdapter pagerAdapter = new SwipePagerAdapter(getSupportFragmentManager());
@@ -96,5 +103,15 @@ public class ProfileActivity extends AppCompatActivity {
             }
             return null;
         }
+    }
+
+    @Override
+    // Back arrow on the toolbar returns to previous activity (if there is any)
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -31,6 +31,14 @@
     <color name="purple_accent">#9856EA</color>
     <color name="purple_accent_2">#BEBB86FC</color>
 
+    <!-- Navigation Tab Bar -->
+    <array name="nav_tab_bar_colors">
+        <item>#D5FF5656</item>
+        <item>#95C8B8</item>
+        <item>#B59570</item>
+    </array>
+    <color name="nav_tab_bar_inactive">#F5A3A3A3</color>
+
     <!-- Backgrounds -->
     <color name="purple_background">#C0A8EC</color>
     <color name="blue_background">#81C7FF</color>

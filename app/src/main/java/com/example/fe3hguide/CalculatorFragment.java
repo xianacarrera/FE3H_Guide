@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -69,6 +70,9 @@ public class CalculatorFragment extends Fragment {
         numberPicker.setMaxValue(100);
 
         fab.setBackgroundColor(Color.WHITE);
+
+        // Set "Calculator" as the text in the toolbar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("True hit calculator");
     }
 
     private void addListeners(){

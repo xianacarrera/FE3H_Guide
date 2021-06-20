@@ -1,6 +1,7 @@
 package com.example.fe3hguide.classes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -49,6 +51,7 @@ public class InGameClassActivity extends AppCompatActivity {
     private TextView experience;
 
     private RelativeLayout relativeLayout;
+    private Toolbar toolbar;
 
 
     // Ability popUp components
@@ -84,6 +87,7 @@ public class InGameClassActivity extends AppCompatActivity {
 
         initComponents();
         setData();
+        setUpToolbar();
     }
 
     // Returns the InGameClass whose cell was clicked in the ListView of ClassesFragment
@@ -97,6 +101,8 @@ public class InGameClassActivity extends AppCompatActivity {
     }
 
     public void initComponents() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         title = (TextView) findViewById(R.id.title_class_name);
         icon = (ImageView) findViewById(R.id.imageView_class_icon_detail);
         classLevel = (TextView) findViewById(R.id.textView_class_level);
@@ -244,6 +250,17 @@ public class InGameClassActivity extends AppCompatActivity {
         experience.setText(String.valueOf(inGameClass.getExperience()));
     }
 
+    private void setUpToolbar(){
+        toolbar.setTitle("Classes");
+        setSupportActionBar(toolbar);
+
+        // Add back arrow to the toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
+
     private void addListenerAbilities(int i) {
         abilities.get(i).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -333,5 +350,15 @@ public class InGameClassActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    // Back arrow on the toolbar returns to previous activity (if there is any)
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

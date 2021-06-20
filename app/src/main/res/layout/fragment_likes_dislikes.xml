@@ -4,315 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
+    android:background="@color/mainBackground"
     tools:context=".characters.profile.LikesDislikesFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager_likes_dislikes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginBottom="3dp"
-                android:text="@string/gifts" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/favourite" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_favourite_gifts"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginBottom="8dp">
-
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/disliked" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_disliked_gifts"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp">
-
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardCornerRadius="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView_lost_items"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/cardView3">
+        app:layout_constraintBottom_toTopOf="@id/navigation_tab_bar_likes_dislikes"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginBottom="3dp"
-                android:text="@string/meals" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/favourite" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_favourite_meals"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginBottom="8dp">
-
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/disliked" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_disliked_meals"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp">
-
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_lost_items"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
+    <devlight.io.library.ntb.NavigationTabBar
+        android:id="@+id/navigation_tab_bar_likes_dislikes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:ntb_animation_duration="400"
+        app:ntb_preview_colors="@array/nav_tab_bar_colors"
+        app:ntb_corners_radius="10dp"
+        app:ntb_active_color="@color/white"
+        app:ntb_inactive_color="@color/nav_tab_bar_inactive"
+        app:ntb_badged="true"
+        app:ntb_titled="true"
+        app:ntb_scaled="true"
+        app:ntb_tinted="true"
+        app:ntb_title_mode="all"
+        app:ntb_badge_position="right"
+        app:ntb_badge_gravity="top"
+        app:ntb_badge_bg_color="@color/purple_2_background"
+        app:ntb_badge_title_color="#ffffffff"
+        app:ntb_typeface="fonts/custom_typeface.ttf"
+        app:ntb_badge_use_typeface="true"
+        app:ntb_swiped="true"
+        app:ntb_bg_color="@color/purpleDarkMode"
+        app:ntb_icon_size_fraction="0.5"
+        app:ntb_badge_size="10sp"
+        app:ntb_title_size="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline2"
-        app:layout_constraintVertical_bias="0.78">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="3dp"
-                android:text="@string/lost_items" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_lost_items"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="8dp">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

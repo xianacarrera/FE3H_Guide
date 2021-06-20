@@ -3,6 +3,7 @@ package com.example.fe3hguide.classes;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toolbar;
 
 import com.example.fe3hguide.R;
 import com.example.fe3hguide.adapters.InGameClassAdapter;
@@ -36,6 +38,8 @@ public class ClassesFragment extends Fragment {
     private List<InGameClass> classes;
     private ListView listView;
     private SearchView searchView;
+
+    private Toolbar toolbar;
 
     private Button allButton;
     private Button uniqueButton;
@@ -68,6 +72,7 @@ public class ClassesFragment extends Fragment {
     }
 
     public void initComponents(LinearLayout layout){
+        toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
         listView = (ListView) layout.findViewById(R.id.listView_classes);
         initSearchWidgets(layout);
     }
@@ -86,6 +91,9 @@ public class ClassesFragment extends Fragment {
         // Get an adapter for the cells and the in game classes
         InGameClassAdapter adapter = new InGameClassAdapter(getActivity(), 0, classes);
         listView.setAdapter(adapter);
+
+        // Set "Classes" as the text in the toolbar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.nav_classes));
     }
 
     public void addListeners(){

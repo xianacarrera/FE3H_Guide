@@ -1,5 +1,6 @@
 package com.example.fe3hguide.teaTime;
 
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,7 @@ import com.example.fe3hguide.model.TeaTimeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import devlight.io.library.ntb.NavigationTabBar;
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
 import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 
@@ -62,6 +65,8 @@ public class TeaTimeFragment extends Fragment
     private ExpandableListView expandableTopics;
     private RecyclerView recyclerFinalConversations;
 
+    // Navigation Tab Bar
+    private NavigationTabBar navigationTabBar;
 
 
     public TeaTimeFragment(Facade fc) {
@@ -81,7 +86,7 @@ public class TeaTimeFragment extends Fragment
         return scrollView;
     }
 
-    private void initComponents(ScrollView scrollView){
+    private void initComponents(ScrollView scrollView) {
         searchCharacter = (SearchableSpinner) scrollView.findViewById(
                 R.id.searchable_spinner);
         icon = (ImageView) scrollView.findViewById(R.id.imageview_icon);
@@ -93,9 +98,10 @@ public class TeaTimeFragment extends Fragment
         layoutFinalConvos = (ConstraintLayout)
                 scrollView.findViewById(R.id.constraintLayout_info_final_convos);
         bottomTab = (ConstraintLayout) scrollView.findViewById(R.id.tea_time_botton_tab);
-        buttonFavouriteTeas = (Button) scrollView.findViewById(R.id.button_favourite_teas);
-        buttonTopics = (Button) scrollView.findViewById(R.id.button_topics);
-        buttonFinalConvos = (Button) scrollView.findViewById(R.id.button_final_conversations);
+        //buttonFavouriteTeas = (Button) scrollView.findViewById(R.id.button_favourite_teas);
+        //buttonTopics = (Button) scrollView.findViewById(R.id.button_topics);
+        //buttonFinalConvos = (Button) scrollView.findViewById(R.id.button_final_conversations);
+        navigationTabBar = (NavigationTabBar) scrollView.findViewById(R.id.navigation_tab_bar_tea_time);
 
         // Search result
         likedSpecifically = (TextView) scrollView.findViewById(R.id.textView_liked_especifically_by);
@@ -108,7 +114,7 @@ public class TeaTimeFragment extends Fragment
                 scrollView.findViewById(R.id.recycler_final_conversations);
     }
 
-    private void setupComponents(){
+    private void setupComponents() {
         // Set "Tea time" as the text in the toolbar
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.nav_tea_time));
 
@@ -128,9 +134,49 @@ public class TeaTimeFragment extends Fragment
 
         // Hide bottom tab until the button "have tea" is clicked
         bottomTab.setVisibility(View.INVISIBLE);
+
+        prepareNavigationTabBar();
     }
 
-    private void addListeners(){
+    private void prepareNavigationTabBar() {
+        ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
+
+        // Get the array with the colors for each tab
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.nav_tab_bar_colors);
+        ArrayList<Integer> navTabColors = new ArrayList<>();
+        for (int i = 0; i < typedArray.length(); i++) {
+            navTabColors.add(typedArray.getColor(i, 0));
+        }
+        typedArray.recycle();
+
+        // Prepare the icons and names of the tabs
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_menu_teatime),
+                        navTabColors.get(0)
+                ).title("Favorite teas")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_topics),
+                        navTabColors.get(1)
+                ).title("Topics")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.ic_final_convo),
+                        navTabColors.get(2)
+                ).title("Final conversations")
+                        .build()
+        );
+
+        // Add the model
+        navigationTabBar.setModels(models);
+    }
+
+    private void addListeners() {
         // Declare the class as a listener for the SearchableSpinner
         searchCharacter.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -171,65 +217,50 @@ public class TeaTimeFragment extends Fragment
         // Prepare listener for the "Have tea" button
         buttonHaveTea.setOnClickListener(this);     // Button that displays information
 
-        // Prepare listeners for the bottom tab buttons
-        buttonFavouriteTeas.setOnClickListener(this);
-        buttonTopics.setOnClickListener(this);
-        buttonFinalConvos.setOnClickListener(this);
+        // Prepare a listener for the bottom tabs
+        navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
+            @Override
+            public void onStartTabSelected(NavigationTabBar.Model model, int index) {
+                changeTab(index);
+            }
+
+            @Override
+            public void onEndTabSelected(NavigationTabBar.Model model, int index) {
+
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button_have_tea:
-                /*
-                 * When the button is clicked, if the name that was introduced corresponds to a
-                 * character, their information is displayed.
-                 */
+        /*
+         * When the button is clicked, if the name that was introduced corresponds to a
+         * character, their information is displayed.
+         */
 
-                if (selectedCharacter == null){         // Invalid character
-                    return;
-                }
-
-                // Look up the character's info (favourite teas, topics and final conversations)
-                TeaTimeInfo teaTimeInfo = fc.getTeaTimeInfo(selectedCharacter);
-
-                if (teaTimeInfo.getFavouriteTeas() == null) {
-                    // The character was not valid
-                    return;
-                }
-
-                // The information is shown to the user
-                changeTab(0);
-                showInfo(selectedCharacter, teaTimeInfo.getFavouriteTeas(),
-                        teaTimeInfo.getTopics(), teaTimeInfo.getFinalConversations(),
-                        teaTimeInfo.getOptions());
-
-                // The bottom tab is now visible
-                bottomTab.setVisibility(View.VISIBLE);
-
-                // The bottom tab buttons are not visible, but work as intended
-                buttonFavouriteTeas.setVisibility(View.VISIBLE);
-                buttonFavouriteTeas.setBackgroundColor(Color.TRANSPARENT);
-                buttonTopics.setVisibility(View.VISIBLE);
-                buttonTopics.setBackgroundColor(Color.TRANSPARENT);
-                buttonFinalConvos.setVisibility(View.VISIBLE);
-                buttonFinalConvos.setBackgroundColor(Color.TRANSPARENT);
-
-                break;
-            case R.id.button_favourite_teas:
-                // Show views related to the character's favourite teas and hide the rest
-                changeTab(0);
-                break;
-            case R.id.button_topics:
-                // Show views related to the topics and hide the rest
-                changeTab(1);
-                break;
-            case R.id.button_final_conversations:
-                // Show views related to the character's final conversations and hide the rest
-                changeTab(2);
+        if (selectedCharacter == null) {         // Invalid character
+            return;
         }
 
+        // Look up the character's info (favourite teas, topics and final conversations)
+        TeaTimeInfo teaTimeInfo = fc.getTeaTimeInfo(selectedCharacter);
 
+        if (teaTimeInfo.getFavouriteTeas() == null) {
+            // The character was not valid
+            return;
+        }
+
+        // The information is shown to the user
+        changeTab(0);
+        showInfo(selectedCharacter, teaTimeInfo.getFavouriteTeas(),
+                teaTimeInfo.getTopics(), teaTimeInfo.getFinalConversations(),
+                teaTimeInfo.getOptions());
+
+        // The bottom tab is now visible
+        bottomTab.setVisibility(View.VISIBLE);
+
+        // Select the first tab from the navigation tab bar (favorite teas)
+        navigationTabBar.setModelIndex(0);
     }
 
     // Method that displays the information regarding teas, topics or final convos depending on
