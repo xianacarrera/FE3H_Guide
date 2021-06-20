@@ -226,8 +226,8 @@ public class DAOCharacters extends DAO {
 
     public ArrayList<CombatArt> getUniqueCombatArts(String characterName){
         Cursor cursor = db.rawQuery("SELECT art, effect, weapon, dur, mt, hit, avo, crit, " +
-                        "range  FROM CombatArtsBuddingTalents WHERE character = ?",
-                new String[] {characterName});
+                        "range  FROM CombatArtsBuddingTalents WHERE character like ?",
+                new String[] {characterName + "%"});
 
         ArrayList<CombatArt> uniqueCombatArts = new ArrayList<>();
         if (cursor.moveToFirst()){
