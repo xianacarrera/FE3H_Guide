@@ -247,14 +247,23 @@ public class SupportsFragment extends Fragment implements View.OnClickListener {
                 }
 
                 // name1 must be before name2 following alphabetical order
-                if (name1.compareTo(name2) > 0) {            // Swap
-                    String temp = name1;
-                    name1 = name2;
-                    name2 = temp;
+                // name1 and name2 are copied into new variables so as to never change the order
+                // of the attributes themselves, and only swap the local variables
+                String char1 = name1;
+                String char2 = name2;
+                // Byleth must always be the second character
+                if (char1.contains("Byleth")){
+                    String temp = char1;
+                    char1 = char2;
+                    char2 = temp;
+                } else if (char1.compareTo(char2) > 0) {            // Swap
+                    String temp = char1;
+                    char1 = char2;
+                    char2 = temp;
                 }
 
                 // Get the supports between the two characters
-                ArrayList<String> supports = fc.searchSupports(name1, name2);
+                ArrayList<String> supports = fc.searchSupports(char1, char2);
 
                 if (supports == null) {
                     return;

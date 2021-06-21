@@ -83,12 +83,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner_combat_arts"
-            android:layout_width="wrap_content"
-            style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_height="wrap_content"
-            android:entries="@array/combat_arts_types"/>
+            <Spinner
+                android:id="@+id/spinner_combat_arts"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/combat_arts_types" />
 
         </LinearLayout>
         </androidx.cardview.widget.CardView>

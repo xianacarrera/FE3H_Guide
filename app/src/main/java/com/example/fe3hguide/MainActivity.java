@@ -52,11 +52,8 @@ public class MainActivity extends AppCompatActivity
         addListeners();
         manageDarkMode();
 
-        // By default, display the home fragment
-        Fragment fragment = new CharactersFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.content_frame, fragment);
-        ft.commit();
+        // Get the default fragment and display it¡
+        displayDefaultFragment();
     }
 
     private void setupDBConnection(){
@@ -177,6 +174,35 @@ public class MainActivity extends AppCompatActivity
         spanString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, color)),
                 0, spanString.length(), 0);
         menuItem.setTitle(spanString);
+    }
+
+    public void displayDefaultFragment(){
+        // The default fragment starts as CharactersFragment, but can be changed by the user in the
+        // settings
+        int defaultFragment = sharedPreferences.getInt("DefaultTab", 0);
+        Fragment fragment = null;
+
+        switch (defaultFragment){
+            case 1:
+                fragment = new CalculatorFragment();
+                break;
+            case 2:
+                fragment = new ClassesFragment(fc);
+                break;
+            case 3:
+                fragment = new TeaTimeFragment(fc);
+                break;
+            case 4:
+                fragment = new SupportsFragment(fc);
+                break;
+            default:
+                fragment = new CharactersFragment();
+        }
+
+        // Apply the change
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.content_frame, fragment);
+        ft.commit();
     }
 
 

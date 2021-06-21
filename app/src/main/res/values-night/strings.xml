@@ -127,6 +127,9 @@
     <string name="true_hit_probability">True Hit Probability:</string>
     <string name="displayed_hit">Displayed Hit</string>
     <string name="true_hit">True Hit</string>
+    <string name="explanation">In regards to the probability of hitting an enemy with an attack, Fire Emblem: Three Houses does not show the real value used in the game calulations.</string>
+    <string name="explanation_2">Instead, the player sees a slightly altered percentage (Displayed Hit), so that it appears that luck has a lesser impact on the combat.</string>
+    <string name="explanation_3">The system used to calculate the real hit probability (True Hit) is called 2RN, as it generates two random numbers. This value is not directly shown ingame, but can be checked here.</string>
 
     <string name="class_name">Class name</string>
     <string name="class_icon">Class icon</string>
@@ -148,5 +151,6 @@
     <string name="resources">Resources</string>
 
     <string name="enable_dark_mode">Enable Dark Mode</string>
+    <string name="choose_home">Select app font</string>
 
 </resources>

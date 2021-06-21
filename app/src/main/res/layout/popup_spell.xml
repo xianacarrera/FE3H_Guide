@@ -55,10 +55,13 @@
 
             <TextView
                 android:id="@+id/textView_magic_type"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Test"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
                 android:textColor="@color/mainText"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"

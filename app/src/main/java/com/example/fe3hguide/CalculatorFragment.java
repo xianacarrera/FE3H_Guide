@@ -1,5 +1,6 @@
 package com.example.fe3hguide;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -97,12 +98,16 @@ public class CalculatorFragment extends Fragment {
         });
 
 
-        //TODO: this
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_calculator);
+                TextView textView = (TextView) dialog.findViewById(R.id.textView_dialog_calculator);
+                textView.setText(getResources().getString(R.string.explanation) + "\n\n" +
+                        getResources().getString(R.string.explanation_2) + "\n\n" +
+                        getResources().getString(R.string.explanation_3));
+                dialog.show();
             }
         });
     }
@@ -173,6 +178,13 @@ public class CalculatorFragment extends Fragment {
         // colors
         graph.getGridLabelRenderer().setHorizontalLabelsColor(getResources().getColor(R.color.mainText));
         graph.getGridLabelRenderer().setVerticalLabelsColor(getResources().getColor(R.color.mainText));
+
+        // Title for each axis
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Displayed Hit");
+        graph.getGridLabelRenderer().setHorizontalAxisTitleColor(getResources().getColor(R.color.mainText));
+        graph.getGridLabelRenderer().setVerticalAxisTitle("True Hit");
+        graph.getGridLabelRenderer().setVerticalAxisTitleColor(getResources().getColor(R.color.mainText));
+
     }
 
 

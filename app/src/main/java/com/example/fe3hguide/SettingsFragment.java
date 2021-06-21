@@ -1,10 +1,14 @@
 package com.example.fe3hguide;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -20,10 +24,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.lang.reflect.Field;
 
 public class SettingsFragment extends Fragment {
 
@@ -34,6 +41,7 @@ public class SettingsFragment extends Fragment {
     private boolean isDarkMode;
 
     private ConstraintLayout layout;
+    private Button homeButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +66,7 @@ public class SettingsFragment extends Fragment {
 
     private void initComponents(ConstraintLayout layout) {
         switchDarkMode = (SwitchCompat) layout.findViewById(R.id.switch_dark_moode);
+        homeButton = (Button) layout.findViewById(R.id.button_settings_font);
     }
 
     private void setUpComponents() {
@@ -65,6 +74,8 @@ public class SettingsFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.nav_settings));
 
         switchDarkMode.setChecked(isDarkMode);
+        // The button works, but it is not visible
+        homeButton.setBackgroundColor(Color.TRANSPARENT);
     }
 
     private void addListeners() {
@@ -95,7 +106,31 @@ public class SettingsFragment extends Fragment {
                 ft.commit();
             }
         });
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create a dialog with the options for the default tab
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Choose the default tab shown when opening the app");
+                final String[] tabs = {"Characters", "Calculator", "Classes", "Tea time",
+                "Supports"};
+
+                // Each item is a tab option
+                builder.setItems(tabs, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int positionClicked) {
+                        // Save the preference chosen by the user
+                        editor.putInt("DefaultTab", positionClicked);
+                        editor.apply();
+                    }
+                });
+
+                builder.show();
+            }
+        });
     }
+
 
     public void manageDarkMode(boolean isDarkMode) {
         Toolbar toolbar = MainActivity.toolbar;

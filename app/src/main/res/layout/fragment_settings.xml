@@ -22,4 +22,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/elevation1"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switch_dark_moode"/>
+
+    <TextView
+        android:id="@+id/textView_select_font"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_home"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/mainText"
+        app:layout_constraintStart_toStartOf="@id/switch_dark_moode"
+        app:layout_constraintTop_toBottomOf="@id/settings_divider"/>
+
+    <Button
+        android:id="@+id/button_settings_font"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/settings_divider"
+        app:layout_constraintBottom_toBottomOf="@id/settings_divider_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/settings_divider_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/elevation1"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_select_font"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

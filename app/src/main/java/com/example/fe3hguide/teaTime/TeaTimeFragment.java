@@ -39,7 +39,7 @@ import devlight.io.library.ntb.NavigationTabBar;
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
 import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 
-//TODO: CONSTANCE
+
 
 public class TeaTimeFragment extends Fragment
         implements View.OnClickListener {

@@ -100,7 +100,17 @@ public class DAOTeaTime extends DAO {
             }
             if (cursor.moveToFirst()) {
                 do {
-                    finalConversations.add(cursor.getString(0));
+                    if (character.equals("Constance")){
+                        // More final conversations, some indoors, some outdoors
+                        if (cursor.getString(0).startsWith("$")) {
+                            finalConversations.add(cursor.getString(0).replace("$", "(Outdoors) "));
+                        } else {
+                            finalConversations.add("(Indoors) " + cursor.getString(0));
+                        }
+                    } else {
+                        finalConversations.add(cursor.getString(0));
+                    }
+
                     for (int i = 0; i < 3; i++) {
                         options.get(i).add(cursor.getString(i + 1));
                     }
