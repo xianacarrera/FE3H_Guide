@@ -1,10 +1,12 @@
 package com.xiana.fe3hguide;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -122,7 +124,11 @@ public class SettingsFragment extends Fragment {
                     }
                 });
 
-                builder.show();
+                Dialog dialog = builder.create();
+                dialog.show();
+                dialog.getWindow().getDecorView().getBackground().setColorFilter(
+                        getResources().getColor(R.color.about_dialog_tab), PorterDuff.Mode.SRC
+                );
             }
         });
     }

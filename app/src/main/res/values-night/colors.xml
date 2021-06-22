@@ -23,6 +23,7 @@
     <color name="purpleDarkMode">#4310B6</color>
     <color name="toolbar">#CB342E3C</color>
     <color name="navigation_view_dark">#121212</color>
+    <color name="about_dialog_tab">#AEAEAE</color>
 
 
     <color name="fixedTextColor">#424245</color>

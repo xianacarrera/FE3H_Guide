@@ -151,6 +151,6 @@
     <string name="resources">Resources</string>
 
     <string name="enable_dark_mode">Enable Dark Mode</string>
-    <string name="choose_home">Select app font</string>
+    <string name="choose_home">Select default tab</string>
 
 </resources>
