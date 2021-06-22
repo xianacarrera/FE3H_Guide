@@ -126,7 +126,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <com.example.fe3hguide.widgets.FButton
+        <com.xiana.fe3hguide.widgets.FButton
             android:id="@+id/button_see_supports"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                 android:layout_marginBottom="12dp"
                 android:orientation="vertical">
 
-                <com.example.fe3hguide.widgets.FButton
+                <com.xiana.fe3hguide.widgets.FButton
                     android:id="@+id/button_support0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                     fbutton:shadowEnabled="true"
                     fbutton:shadowHeight="5dp" />
 
-                <com.example.fe3hguide.widgets.FButton
+                <com.xiana.fe3hguide.widgets.FButton
                     android:id="@+id/button_support1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
                     fbutton:shadowEnabled="true"
                     fbutton:shadowHeight="5dp" />
 
-                <com.example.fe3hguide.widgets.FButton
+                <com.xiana.fe3hguide.widgets.FButton
                     android:id="@+id/button_support2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                     fbutton:shadowEnabled="true"
                     fbutton:shadowHeight="5dp" />
 
-                <com.example.fe3hguide.widgets.FButton
+                <com.xiana.fe3hguide.widgets.FButton
                     android:id="@+id/button_support3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -238,7 +238,7 @@
                     fbutton:shadowEnabled="true"
                     fbutton:shadowHeight="5dp" />
 
-                <com.example.fe3hguide.widgets.FButton
+                <com.xiana.fe3hguide.widgets.FButton
                     android:id="@+id/button_Ssupport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

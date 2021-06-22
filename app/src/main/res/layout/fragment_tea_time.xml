@@ -59,7 +59,7 @@
                 app:layout_constraintStart_toEndOf="@+id/guideline6"
                 app:layout_constraintTop_toTopOf="@id/contraint_search_tea_character" />
 
-            <com.example.fe3hguide.widgets.FButton
+            <com.xiana.fe3hguide.widgets.FButton
                 android:id="@+id/button_have_tea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

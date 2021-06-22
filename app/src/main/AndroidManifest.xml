@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fe3hguide">
+    package="com.xiana.fe3hguide">
 
     <application
         android:allowBackup="true"
@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".classes.InGameClassActivity"></activity>
-        <activity android:name=".characters.profile.ProfileActivity" />
-        <activity android:name=".characters.navigation.ChurchOfSeirosActivity" />
-        <activity android:name=".characters.navigation.AshenWolvesActivity" />
-        <activity android:name=".characters.navigation.GoldenDeerActivity" />
-        <activity android:name=".characters.navigation.BlueLionsActivity" />
-        <activity android:name=".characters.navigation.BlackEaglesActivity" />
-        <activity android:name=".supports.SupportsTextActivity" />
-        <activity android:name=".MainActivity"
+        <activity android:name="com.xiana.fe3hguide.classes.InGameClassActivity"></activity>
+        <activity android:name="com.xiana.fe3hguide.characters.profile.ProfileActivity" />
+        <activity android:name="com.xiana.fe3hguide.characters.navigation.ChurchOfSeirosActivity" />
+        <activity android:name="com.xiana.fe3hguide.characters.navigation.AshenWolvesActivity" />
+        <activity android:name="com.xiana.fe3hguide.characters.navigation.GoldenDeerActivity" />
+        <activity android:name="com.xiana.fe3hguide.characters.navigation.BlueLionsActivity" />
+        <activity android:name="com.xiana.fe3hguide.characters.navigation.BlackEaglesActivity" />
+        <activity android:name="com.xiana.fe3hguide.supports.SupportsTextActivity" />
+        <activity android:name="com.xiana.fe3hguide.MainActivity"
             android:configChanges="uiMode">
 
             <intent-filter>
