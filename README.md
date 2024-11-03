@@ -6,7 +6,7 @@ This app was originally developed as a beginner project to learn more about both
 
 Still, the app was moderately popular among the Fire Emblem community, and had received +10K downloads. I have also been requested to make it publicly available again, so I have decided to keep the code open-source and accessible here for anyone interested. You’ll also find the latest APK release available in the Releases section.
 
-Feel free to use, modify, or learn from the code, but please be aware that no further updates or support will be provided.
+Feel free to use, modify, or learn from the code, but please be aware that no further updates or maintenance will be provided.
 
 Thank you for your understanding and support!
 <br/><br/>
