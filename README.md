@@ -4,7 +4,7 @@ Although I had released this project as a mobile app on Google Play, where it wa
 
 This app was originally developed as a beginner project to learn more about both Java and the Android development framework. I believe that my coding skills have progressed significantly since then, and the project does no longer meet my standards of quality. However, to bring it up to those standards, a complete rewrite would be necessary - a task that I am not interested in pursuing at this point in my career (in the hope of avoiding the [sunk cost fallacy](https://en.wikipedia.org/wiki/Sunk_cost)).
 
-Still, the app was moderately popular among the Fire Emblem community, and had received +10K downloads. I have also been requested to make it publicly available again, so I have decided to keep the code open-source and accessible here for anyone interested. You’ll also find the latest APK release available in the Releases section.
+Still, the app was moderately popular among the Fire Emblem community, and had received +10K downloads. I have also been requested to make it publicly available again, so I have decided to keep the code open-source and accessible here for anyone interested.
 
 Feel free to use, modify, or learn from the code, but please be aware that no further updates or maintenance will be provided.
 
